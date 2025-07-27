@@ -1,0 +1,31 @@
+server:
+  port: ${SERVER_PORT:8080}
+  error:
+    include-stacktrace: never
+spring:
+  application:
+    name: user-manager-api
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    password: ${POSTGRES_PASSWORD:postgres}
+    url: jdbc:postgresql://localhost:5432/meuMenu
+    username: ${POSTGRES_USER:postgres}
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+#  sql:
+#    init:
+#      data-locations: classpath:data.sql
+#      mode: always
+#  logging:
+#    file:
+#      name: /var/log/app/application.log
+
+jwt:
+    secret: ${JWT_SECRET_KEY:minhaChaveUltraSecretaComMaisDe32Bytes}
+    prazoExpiracao: ${JWT_EXPIRATION_TIME:3600000}
