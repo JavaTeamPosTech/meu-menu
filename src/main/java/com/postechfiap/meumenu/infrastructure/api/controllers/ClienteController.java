@@ -1,5 +1,7 @@
 package com.postechfiap.meumenu.infrastructure.api.controllers;
 
+import com.postechfiap.meumenu.core.controllers.BuscarClientePorIdInputPort;
+import com.postechfiap.meumenu.core.controllers.BuscarTodosClientesInputPort;
 import com.postechfiap.meumenu.core.controllers.CadastrarClienteInputPort;
 import com.postechfiap.meumenu.core.domain.entities.ClienteDomain;
 import com.postechfiap.meumenu.core.domain.usecases.cliente.BuscarClientePorIdUseCase;
@@ -29,8 +31,8 @@ import java.util.UUID;
 public class ClienteController {
 
     private final CadastrarClienteInputPort cadastrarClienteInputPort;
-    private final BuscarClientePorIdUseCase buscarClientePorIdUseCase;
-    private final BuscarTodosClientesUseCase buscarTodosClientesUseCase;
+    private final BuscarClientePorIdInputPort buscarClientePorIdInputPort;
+    private final BuscarTodosClientesInputPort buscarTodosClientesInputPort;
 
     private final CadastrarClientePresenter cadastrarClientePresenter;
     private final BuscarClientePorIdPresenter buscarClientePorIdPresenter;
@@ -55,7 +57,7 @@ public class ClienteController {
     )
     @GetMapping("/{id}")
     public ResponseEntity<ClienteResponseDTO> buscarClientePorId(@PathVariable UUID id) {
-        Optional<ClienteDomain> cliente = buscarClientePorIdUseCase.execute(id);
+        Optional<ClienteDomain> cliente = buscarClientePorIdInputPort.execute(id);
         ClienteResponseDTO responseDTO = buscarClientePorIdPresenter.getViewModel();
 
         if (cliente.isPresent()) {
@@ -71,7 +73,7 @@ public class ClienteController {
     )
     @GetMapping
     public ResponseEntity<List<ClienteResponseDTO>> buscarTodosClientes() {
-        buscarTodosClientesUseCase.execute();
+        buscarTodosClientesInputPort.execute();
 
         List<ClienteResponseDTO> responseDTOs = buscarTodosClientesPresenter.getViewModel();
 
