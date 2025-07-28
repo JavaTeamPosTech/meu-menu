@@ -16,7 +16,7 @@ import java.util.UUID;
 public class BuscarClientePorIdUseCaseImpl implements BuscarClientePorIdUseCase {
 
     private final ClienteGateway clienteGateway;
-    private final BuscarClienteOutputPort buscarClienteOutputPort; // O Presenter (OutputPort)
+    private final BuscarClienteOutputPort buscarClienteOutputPort;
 
     @Override
     public Optional<ClienteDomain> execute(UUID id) {

@@ -40,6 +40,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers(HttpMethod.POST, "/clientes").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/clientes").permitAll() //  TODO REMOVER ESSA LINHA
                                 .requestMatchers(HttpMethod.POST, "/proprietarios").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/restaurantes").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/usuarios/login").permitAll()

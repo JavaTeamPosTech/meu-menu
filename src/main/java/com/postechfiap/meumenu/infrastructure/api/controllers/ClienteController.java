@@ -3,10 +3,12 @@ package com.postechfiap.meumenu.infrastructure.api.controllers;
 import com.postechfiap.meumenu.core.controllers.CadastrarClienteInputPort;
 import com.postechfiap.meumenu.core.domain.entities.ClienteDomain;
 import com.postechfiap.meumenu.core.domain.usecases.cliente.BuscarClientePorIdUseCase;
+import com.postechfiap.meumenu.core.domain.usecases.cliente.BuscarTodosClientesUseCase;
 import com.postechfiap.meumenu.infrastructure.api.dtos.request.CadastrarClienteRequestDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.CadastrarClienteResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.ClienteResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.presenters.BuscarClientePorIdPresenter;
+import com.postechfiap.meumenu.infrastructure.api.presenters.BuscarTodosClientesPresenter;
 import com.postechfiap.meumenu.infrastructure.api.presenters.CadastrarClientePresenter;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -16,6 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -27,9 +30,11 @@ public class ClienteController {
 
     private final CadastrarClienteInputPort cadastrarClienteInputPort;
     private final BuscarClientePorIdUseCase buscarClientePorIdUseCase;
+    private final BuscarTodosClientesUseCase buscarTodosClientesUseCase;
 
     private final CadastrarClientePresenter cadastrarClientePresenter;
     private final BuscarClientePorIdPresenter buscarClientePorIdPresenter;
+    private final BuscarTodosClientesPresenter buscarTodosClientesPresenter;
 
     @Operation(
             summary = "Realiza o cadastro de um novo usuário do tipo Cliente",
@@ -57,6 +62,23 @@ public class ClienteController {
             return ResponseEntity.ok(responseDTO);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseDTO);
+        }
+    }
+
+    @Operation(
+            summary = "Lista todos os clientes",
+            description = "Este endpoint retorna uma lista de todos os clientes cadastrados no sistema."
+    )
+    @GetMapping
+    public ResponseEntity<List<ClienteResponseDTO>> buscarTodosClientes() {
+        buscarTodosClientesUseCase.execute();
+
+        List<ClienteResponseDTO> responseDTOs = buscarTodosClientesPresenter.getViewModel();
+
+        if (buscarTodosClientesPresenter.isNoContent()) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.ok(responseDTOs);
         }
     }
 }
