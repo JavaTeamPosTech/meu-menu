@@ -42,10 +42,11 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.POST, "/clientes").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/clientes").permitAll() //  TODO REMOVER ESSA LINHA
                                 .requestMatchers(HttpMethod.DELETE, "/clientes/*").permitAll() //  TODO REMOVER ESSA LINHA
+                                .requestMatchers(HttpMethod.GET, "/clientes/*").permitAll()  //  TODO REMOVER ESSA LINHA
                                 .requestMatchers(HttpMethod.POST, "/proprietarios").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/proprietarios/*").permitAll() //  TODO REMOVER ESSA LINHA
                                 .requestMatchers(HttpMethod.POST, "/restaurantes").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/usuarios/login").permitAll()
-                                .requestMatchers(HttpMethod.GET, "/clientes/*").permitAll()  //  TODO REMOVER ESSA LINHA
                                 .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
                                 .anyRequest().authenticated()
                 )
