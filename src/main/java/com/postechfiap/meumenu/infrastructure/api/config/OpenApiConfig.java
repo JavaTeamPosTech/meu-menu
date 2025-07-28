@@ -16,13 +16,13 @@ public class OpenApiConfig {
     @Bean
     public OpenAPI getOpenAPI() {
         return new OpenAPI()
-//                .components(new Components()
-//                        .addSecuritySchemes("bearerAuth",
-//                                new SecurityScheme()
-//                                        .name("Authorization")
-//                                        .type(SecurityScheme.Type.HTTP)
-//                                        .scheme("bearer")
-//                                        .bearerFormat("JWT")))
+                .components(new Components()
+                        .addSecuritySchemes("bearerAuth",
+                                new SecurityScheme()
+                                        .name("Authorization")
+                                        .type(SecurityScheme.Type.HTTP)
+                                        .scheme("bearer")
+                                        .bearerFormat("JWT")))
                 .info(
                         new Info().title("Meu Menu API")
                                 .description("Meu Menu - API para Restaurantes e Clientes")

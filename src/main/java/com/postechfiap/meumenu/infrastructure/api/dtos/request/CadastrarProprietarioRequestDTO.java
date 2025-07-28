@@ -33,7 +33,7 @@ public record CadastrarProprietarioRequestDTO(
         @Size(min = 4, max = 50, message = "O login deve ter entre 4 e 50 caracteres")
         String login,
 
-        @Schema(description = "Senha do proprietário. Precisa estar preenchida e ser forte.", example = "SenhaForte456!")
+        @Schema(description = "Senha do proprietário. Precisa estar preenchida e ser forte.", example = "SenhaForte123!")
         @NotBlank(message = "Senha é obrigatória")
         @Size(min = 6, max = 100, message = "A senha deve ter entre 6 e 100 caracteres")
         String senha,
