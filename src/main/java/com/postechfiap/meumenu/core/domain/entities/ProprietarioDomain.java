@@ -14,20 +14,23 @@ import java.util.UUID;
 @NoArgsConstructor
 public class ProprietarioDomain extends UsuarioDomain {
 
+    private String cpf;
     private String whatsapp;
     private StatusContaEnum statusConta;
 
-    public ProprietarioDomain(UUID id, String whatsapp, StatusContaEnum statusConta,
+    public ProprietarioDomain(UUID id, String cpf, String whatsapp, StatusContaEnum statusConta,
                               String nome, String email, String login, String senha,
                               LocalDateTime dataCriacao, LocalDateTime dataAtualizacao, List<EnderecoDomain> enderecos) {
         super(id, nome, email, login, senha, dataCriacao, dataAtualizacao, enderecos);
+        this.cpf = cpf;
         this.whatsapp = whatsapp;
         this.statusConta = statusConta;
     }
 
     public ProprietarioDomain(String nome, String email, String login, String senha,
-                              String whatsapp) {
+                              String cpf, String whatsapp) {
         super(nome, email, login, senha);
+        this.cpf = cpf;
         this.whatsapp = whatsapp;
         this.statusConta = StatusContaEnum.ATIVO;
     }

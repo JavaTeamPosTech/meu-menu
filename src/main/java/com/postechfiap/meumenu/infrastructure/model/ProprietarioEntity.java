@@ -16,6 +16,7 @@ import lombok.Setter;
 @PrimaryKeyJoinColumn(name = "id")
 public class ProprietarioEntity extends UsuarioEntity {
 
+    private String cpf;
     private String whatsapp;
 
     @Column(name = "status_conta")

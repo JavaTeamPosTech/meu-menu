@@ -5,8 +5,6 @@ import com.postechfiap.meumenu.core.controllers.BuscarTodosClientesInputPort;
 import com.postechfiap.meumenu.core.controllers.CadastrarClienteInputPort;
 import com.postechfiap.meumenu.core.controllers.DeletarClienteInputPort;
 import com.postechfiap.meumenu.core.domain.entities.ClienteDomain;
-import com.postechfiap.meumenu.core.domain.usecases.cliente.BuscarClientePorIdUseCase;
-import com.postechfiap.meumenu.core.domain.usecases.cliente.BuscarTodosClientesUseCase;
 import com.postechfiap.meumenu.infrastructure.api.dtos.request.CadastrarClienteRequestDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.CadastrarClienteResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.ClienteResponseDTO;

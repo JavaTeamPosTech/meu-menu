@@ -27,13 +27,13 @@ public class UsuarioDomain {
         this.email = email;
         this.login = login;
         this.senha = senha;
-        this.enderecos = new ArrayList<>(); // Inicializa a lista
-        this.dataCriacao = LocalDateTime.now(); // Padrão
-        this.dataAtualizacao = LocalDateTime.now(); // Padrão
+        this.enderecos = new ArrayList<>();
+        this.dataCriacao = LocalDateTime.now();
+        this.dataAtualizacao = LocalDateTime.now();
     }
 
     public UsuarioDomain(UUID id, String nome, String email, String login, String senha) {
-        this(nome, email, login, senha); // Chama o construtor acima para inicialização básica
+        this(nome, email, login, senha);
         this.id = id;
     }
 
