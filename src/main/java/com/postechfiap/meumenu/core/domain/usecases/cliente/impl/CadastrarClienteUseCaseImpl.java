@@ -1,0 +1,79 @@
+package com.postechfiap.meumenu.core.domain.usecases.cliente.impl;
+
+import com.postechfiap.meumenu.core.domain.entities.ClienteDomain;
+import com.postechfiap.meumenu.core.domain.entities.EnderecoDomain;
+import com.postechfiap.meumenu.core.domain.presenters.CadastrarClienteOutputPort;
+import com.postechfiap.meumenu.core.domain.services.PasswordService;
+import com.postechfiap.meumenu.core.domain.usecases.cliente.CadastrarClienteUseCase;
+import com.postechfiap.meumenu.core.dtos.cliente.CadastrarClienteInputModel;
+import com.postechfiap.meumenu.core.gateways.ClienteGateway;
+import com.postechfiap.meumenu.core.gateways.UsuarioGateway;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Service
+@RequiredArgsConstructor
+public class CadastrarClienteUseCaseImpl implements CadastrarClienteUseCase {
+
+        private final ClienteGateway clienteGateway;
+        private final UsuarioGateway usuarioGateway;
+        private final PasswordService passwordService;
+        private final CadastrarClienteOutputPort clienteOutputPort;
+
+        @Override
+        public void execute(CadastrarClienteInputModel input) {
+
+            if (usuarioGateway.existsByLogin(input.getLogin())) {
+//                clienteOutputPort.presentError("Login já cadastrado.");
+//                throw new BusinessException("Login já cadastrado.");
+            }
+            if (usuarioGateway.existsByEmail(input.getEmail())) {
+//                clienteOutputPort.presentError("Email já cadastrado.");
+//                throw new BusinessException("Email já cadastrado.");
+            }
+
+            if (clienteGateway.existsByCpf(input.getCpf())) {
+//                clienteOutputPort.presentError("CPF já cadastrado.");
+//                throw new BusinessException("CPF já cadastrado.");
+            }
+
+            String senhaCriptografada = passwordService.encryptPassword(input.getSenha());
+
+            ClienteDomain novoCliente = new ClienteDomain(
+                    input.getNome(),
+                    input.getEmail(),
+                    input.getLogin(),
+                    senhaCriptografada,
+                    input.getCpf(),
+                    input.getDataNascimento(),
+                    input.getGenero(),
+                    input.getTelefone(),
+                    input.getPreferenciasAlimentares(),
+                    input.getAlergias(),
+                    input.getMetodoPagamentoPreferido(),
+                    input.getNotificacoesAtivas() != null ? input.getNotificacoesAtivas() : true,
+                    false
+            );
+
+            List<EnderecoDomain> enderecosDomain = input.getEnderecos().stream()
+                    .map(enderecoInput -> new EnderecoDomain(
+                            enderecoInput.getEstado(),
+                            enderecoInput.getCidade(),
+                            enderecoInput.getBairro(),
+                            enderecoInput.getRua(),
+                            enderecoInput.getNumero(),
+                            enderecoInput.getComplemento(),
+                            enderecoInput.getCep()
+                    ))
+                    .collect(Collectors.toList());
+
+            enderecosDomain.forEach(endereco -> endereco.setUsuario(novoCliente));
+            novoCliente.setEnderecos(enderecosDomain);
+
+            ClienteDomain clienteSalvo = clienteGateway.cadastrarCliente(novoCliente);
+            clienteOutputPort.presentSuccess(clienteSalvo);
+        }
+}

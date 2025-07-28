@@ -1,0 +1,62 @@
+package com.postechfiap.meumenu.infrastructure.api.controllers;
+
+import com.postechfiap.meumenu.core.controllers.CadastrarClienteInputPort;
+import com.postechfiap.meumenu.core.domain.entities.ClienteDomain;
+import com.postechfiap.meumenu.core.domain.usecases.cliente.BuscarClientePorIdUseCase;
+import com.postechfiap.meumenu.infrastructure.api.dtos.request.CadastrarClienteRequestDTO;
+import com.postechfiap.meumenu.infrastructure.api.dtos.response.CadastrarClienteResponseDTO;
+import com.postechfiap.meumenu.infrastructure.api.dtos.response.ClienteResponseDTO;
+import com.postechfiap.meumenu.infrastructure.api.presenters.BuscarClientePorIdPresenter;
+import com.postechfiap.meumenu.infrastructure.api.presenters.CadastrarClientePresenter;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
+import java.util.UUID;
+
+@RestController
+@Tag(name = "Cliente Controller", description = "Operações relacionadas ao Cliente")
+@RequestMapping("/clientes")
+@RequiredArgsConstructor
+public class ClienteController {
+
+    private final CadastrarClienteInputPort cadastrarClienteInputPort;
+    private final BuscarClientePorIdUseCase buscarClientePorIdUseCase;
+
+    private final CadastrarClientePresenter cadastrarClientePresenter;
+    private final BuscarClientePorIdPresenter buscarClientePorIdPresenter;
+
+    @Operation(
+            summary = "Realiza o cadastro de um novo usuário do tipo Cliente",
+            description = "Este endpoint cria um novo usuário do tipo Cliente no sistema"
+    )
+    @PostMapping
+    public ResponseEntity<CadastrarClienteResponseDTO> cadastrarCliente(@RequestBody @Valid CadastrarClienteRequestDTO cadastrarClienteRequestDTO) {
+
+        // TODO fazer um mapper para converter o DTO para o InputModel
+        cadastrarClienteInputPort.execute(cadastrarClienteRequestDTO.toInputModel());
+        CadastrarClienteResponseDTO responseDTO = cadastrarClientePresenter.getViewModel();
+        return ResponseEntity.status(HttpStatus.CREATED).body(responseDTO);
+    }
+
+    @Operation(
+            summary = "Busca um cliente por ID",
+            description = "Este endpoint retorna os detalhes de um cliente específico pelo seu ID."
+    )
+    @GetMapping("/{id}")
+    public ResponseEntity<ClienteResponseDTO> buscarClientePorId(@PathVariable UUID id) {
+        Optional<ClienteDomain> cliente = buscarClientePorIdUseCase.execute(id);
+        ClienteResponseDTO responseDTO = buscarClientePorIdPresenter.getViewModel();
+
+        if (cliente.isPresent()) {
+            return ResponseEntity.ok(responseDTO);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseDTO);
+        }
+    }
+}
