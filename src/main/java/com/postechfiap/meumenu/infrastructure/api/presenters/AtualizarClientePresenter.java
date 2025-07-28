@@ -2,12 +2,11 @@ package com.postechfiap.meumenu.infrastructure.api.presenters;
 
 import com.postechfiap.meumenu.core.domain.entities.ClienteDomain;
 import com.postechfiap.meumenu.core.domain.entities.EnderecoDomain;
-import com.postechfiap.meumenu.core.domain.presenters.BuscarClienteOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.AtualizarClienteOutputPort;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.ClienteResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.EnderecoResponseDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -15,9 +14,8 @@ import java.util.stream.Collectors;
 
 @Component
 @Getter
-@Setter
 @NoArgsConstructor
-public class BuscarClientePorIdPresenter implements BuscarClienteOutputPort {
+public class AtualizarClientePresenter implements AtualizarClienteOutputPort {
 
     private ClienteResponseDTO viewModel;
 
@@ -52,7 +50,6 @@ public class BuscarClientePorIdPresenter implements BuscarClienteOutputPort {
                 enderecosResponse
         );
     }
-
     private EnderecoResponseDTO mapEnderecoDomainToResponseDTO(EnderecoDomain enderecoDomain) {
         if (enderecoDomain == null) {
             return null;

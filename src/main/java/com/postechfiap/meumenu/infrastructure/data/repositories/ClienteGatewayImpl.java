@@ -52,4 +52,9 @@ public class ClienteGatewayImpl implements ClienteGateway {
     public void deletarCliente(UUID id) {
         clienteSpringRepository.deleteById(id);
     }
+
+    @Override
+    public ClienteDomain atualizarCliente(ClienteDomain clienteDomain) {
+        return cadastrarCliente(clienteDomain);
+    }
 }

@@ -43,6 +43,7 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.GET, "/clientes").permitAll() //  TODO REMOVER ESSA LINHA
                                 .requestMatchers(HttpMethod.DELETE, "/clientes/*").permitAll() //  TODO REMOVER ESSA LINHA
                                 .requestMatchers(HttpMethod.GET, "/clientes/*").permitAll()  //  TODO REMOVER ESSA LINHA
+                                .requestMatchers(HttpMethod.PUT, "/clientes/*").permitAll()  //  TODO REMOVER ESSA LINHA
                                 .requestMatchers(HttpMethod.POST, "/proprietarios").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/proprietarios/*").permitAll() //  TODO REMOVER ESSA LINHA
                                 .requestMatchers(HttpMethod.DELETE, "/proprietarios/*").permitAll() //  TODO REMOVER ESSA LINHA
