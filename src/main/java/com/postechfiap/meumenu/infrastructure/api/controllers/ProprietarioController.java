@@ -2,11 +2,14 @@ package com.postechfiap.meumenu.infrastructure.api.controllers;
 
 import com.postechfiap.meumenu.core.controllers.BuscarProprietarioPorIdInputPort;
 import com.postechfiap.meumenu.core.controllers.CadastrarProprietarioInputPort;
+import com.postechfiap.meumenu.core.controllers.DeletarProprietarioInputPort;
 import com.postechfiap.meumenu.infrastructure.api.dtos.request.CadastrarProprietarioRequestDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.CadastrarProprietarioResponseDTO;
+import com.postechfiap.meumenu.infrastructure.api.dtos.response.DeletarProprietarioResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.ProprietarioResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.presenters.BuscarProprietarioPorIdPresenter;
 import com.postechfiap.meumenu.infrastructure.api.presenters.CadastrarProprietarioPresenter;
+import com.postechfiap.meumenu.infrastructure.api.presenters.DeletarProprietarioPresenter;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -27,6 +30,8 @@ public class ProprietarioController {
     private final CadastrarProprietarioPresenter cadastrarProprietarioPresenter;
     private final BuscarProprietarioPorIdInputPort buscarProprietarioPorIdInputPort;
     private final BuscarProprietarioPorIdPresenter buscarProprietarioPorIdPresenter;
+    private final DeletarProprietarioInputPort deletarProprietarioInputPort;
+    private final DeletarProprietarioPresenter deletarProprietarioPresenter;
 
     @Operation(
             summary = "Realiza o cadastro de um novo usuário do tipo Proprietário",
@@ -49,5 +54,18 @@ public class ProprietarioController {
 
         buscarProprietarioPorIdInputPort.execute(id);
         return ResponseEntity.ok(buscarProprietarioPorIdPresenter.getViewModel());
+    }
+
+    @Operation(
+            summary = "Deleta um proprietário por ID",
+            description = "Este endpoint deleta um proprietário específico pelo seu ID."
+    )
+    @DeleteMapping("/{id}")
+    public ResponseEntity<DeletarProprietarioResponseDTO> deletarProprietario(@PathVariable UUID id) {
+        deletarProprietarioInputPort.execute(id);
+
+//        return ResponseEntity.noContent().build();
+         DeletarProprietarioResponseDTO responseDTO = deletarProprietarioPresenter.getViewModel();
+         return ResponseEntity.ok(responseDTO);
     }
 }

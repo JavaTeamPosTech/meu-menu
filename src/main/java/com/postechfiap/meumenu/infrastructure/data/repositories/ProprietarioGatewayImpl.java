@@ -34,4 +34,9 @@ public class ProprietarioGatewayImpl implements ProprietarioGateway {
     public boolean existsByCpf(String cpf) {
         return proprietarioSpringRepository.findByCpf(cpf).isPresent();
     }
+
+    @Override
+    public void deletarProprietario(UUID id) {
+        proprietarioSpringRepository.deleteById(id);
+    }
 }

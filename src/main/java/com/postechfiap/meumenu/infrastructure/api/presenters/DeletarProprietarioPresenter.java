@@ -1,0 +1,29 @@
+package com.postechfiap.meumenu.infrastructure.api.presenters;
+
+import com.postechfiap.meumenu.core.domain.presenters.DeletarProprietarioOutputPort;
+import com.postechfiap.meumenu.infrastructure.api.dtos.response.DeletarProprietarioResponseDTO;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.stereotype.Component;
+
+@Component
+@Getter
+@Setter
+@NoArgsConstructor
+public class DeletarProprietarioPresenter implements DeletarProprietarioOutputPort {
+
+    private DeletarProprietarioResponseDTO viewModel;
+
+    @Override
+    public void presentSuccess(String message) {
+        this.viewModel = new DeletarProprietarioResponseDTO(
+                message,
+                "SUCCESS"
+        );
+    }
+
+    public DeletarProprietarioResponseDTO getViewModel() {
+        return viewModel;
+    }
+}

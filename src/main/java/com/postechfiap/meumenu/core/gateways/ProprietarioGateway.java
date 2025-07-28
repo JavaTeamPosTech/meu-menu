@@ -9,4 +9,5 @@ public interface ProprietarioGateway {
     ProprietarioDomain cadastrarProprietario(ProprietarioDomain proprietarioDomain);
     Optional<ProprietarioDomain> buscarProprietarioPorId(UUID id);
     boolean existsByCpf(String cpf);
+    void deletarProprietario(UUID id);
 }
