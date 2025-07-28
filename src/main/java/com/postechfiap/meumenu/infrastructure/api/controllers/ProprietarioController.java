@@ -1,12 +1,15 @@
 package com.postechfiap.meumenu.infrastructure.api.controllers;
 
+import com.postechfiap.meumenu.core.controllers.AtualizarProprietarioInputPort;
 import com.postechfiap.meumenu.core.controllers.BuscarProprietarioPorIdInputPort;
 import com.postechfiap.meumenu.core.controllers.CadastrarProprietarioInputPort;
 import com.postechfiap.meumenu.core.controllers.DeletarProprietarioInputPort;
+import com.postechfiap.meumenu.infrastructure.api.dtos.request.AtualizarProprietarioRequestDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.request.CadastrarProprietarioRequestDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.CadastrarProprietarioResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.DeletarProprietarioResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.ProprietarioResponseDTO;
+import com.postechfiap.meumenu.infrastructure.api.presenters.AtualizarProprietarioPresenter;
 import com.postechfiap.meumenu.infrastructure.api.presenters.BuscarProprietarioPorIdPresenter;
 import com.postechfiap.meumenu.infrastructure.api.presenters.CadastrarProprietarioPresenter;
 import com.postechfiap.meumenu.infrastructure.api.presenters.DeletarProprietarioPresenter;
@@ -32,6 +35,8 @@ public class ProprietarioController {
     private final BuscarProprietarioPorIdPresenter buscarProprietarioPorIdPresenter;
     private final DeletarProprietarioInputPort deletarProprietarioInputPort;
     private final DeletarProprietarioPresenter deletarProprietarioPresenter;
+    private final AtualizarProprietarioInputPort atualizarProprietarioInputPort;
+    private final AtualizarProprietarioPresenter atualizarProprietarioPresenter;
 
     @Operation(
             summary = "Realiza o cadastro de um novo usuário do tipo Proprietário",
@@ -67,5 +72,15 @@ public class ProprietarioController {
 //        return ResponseEntity.noContent().build();
          DeletarProprietarioResponseDTO responseDTO = deletarProprietarioPresenter.getViewModel();
          return ResponseEntity.ok(responseDTO);
+    }
+
+    @Operation(
+            summary = "Atualiza um proprietário por ID",
+            description = "Este endpoint atualiza os dados de um proprietário existente pelo seu ID."
+    )
+    @PutMapping("/{id}")
+    public ResponseEntity<ProprietarioResponseDTO> atualizarProprietario(@PathVariable UUID id, @RequestBody @Valid AtualizarProprietarioRequestDTO requestDTO) {
+        atualizarProprietarioInputPort.execute(requestDTO.toInputModel(id));
+        return ResponseEntity.ok(atualizarProprietarioPresenter.getViewModel());
     }
 }

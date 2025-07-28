@@ -39,4 +39,9 @@ public class ProprietarioGatewayImpl implements ProprietarioGateway {
     public void deletarProprietario(UUID id) {
         proprietarioSpringRepository.deleteById(id);
     }
+
+    @Override
+    public ProprietarioDomain atualizarProprietario(ProprietarioDomain proprietarioDomain) {
+        return cadastrarProprietario(proprietarioDomain);
+    }
 }

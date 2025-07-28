@@ -10,4 +10,5 @@ public interface ProprietarioGateway {
     Optional<ProprietarioDomain> buscarProprietarioPorId(UUID id);
     boolean existsByCpf(String cpf);
     void deletarProprietario(UUID id);
+    ProprietarioDomain atualizarProprietario(ProprietarioDomain proprietarioDomain);
 }
