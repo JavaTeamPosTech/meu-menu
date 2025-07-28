@@ -11,4 +11,6 @@ public interface ClienteGateway {
     boolean existsByCpf(String cpf);
     Optional<ClienteDomain> buscarClientePorId(UUID id);
     List<ClienteDomain> buscarTodosClientes();
+
+    void deletarCliente(UUID id);
 }

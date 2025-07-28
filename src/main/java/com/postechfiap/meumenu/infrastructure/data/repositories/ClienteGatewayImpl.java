@@ -47,4 +47,9 @@ public class ClienteGatewayImpl implements ClienteGateway {
                 .map(clienteDataMapper::toDomain)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public void deletarCliente(UUID id) {
+        clienteSpringRepository.deleteById(id);
+    }
 }

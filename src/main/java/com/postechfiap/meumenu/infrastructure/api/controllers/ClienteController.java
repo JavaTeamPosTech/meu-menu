@@ -3,15 +3,18 @@ package com.postechfiap.meumenu.infrastructure.api.controllers;
 import com.postechfiap.meumenu.core.controllers.BuscarClientePorIdInputPort;
 import com.postechfiap.meumenu.core.controllers.BuscarTodosClientesInputPort;
 import com.postechfiap.meumenu.core.controllers.CadastrarClienteInputPort;
+import com.postechfiap.meumenu.core.controllers.DeletarClienteInputPort;
 import com.postechfiap.meumenu.core.domain.entities.ClienteDomain;
 import com.postechfiap.meumenu.core.domain.usecases.cliente.BuscarClientePorIdUseCase;
 import com.postechfiap.meumenu.core.domain.usecases.cliente.BuscarTodosClientesUseCase;
 import com.postechfiap.meumenu.infrastructure.api.dtos.request.CadastrarClienteRequestDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.CadastrarClienteResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.ClienteResponseDTO;
+import com.postechfiap.meumenu.infrastructure.api.dtos.response.DeletarClienteResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.presenters.BuscarClientePorIdPresenter;
 import com.postechfiap.meumenu.infrastructure.api.presenters.BuscarTodosClientesPresenter;
 import com.postechfiap.meumenu.infrastructure.api.presenters.CadastrarClientePresenter;
+import com.postechfiap.meumenu.infrastructure.api.presenters.DeletarClientePresenter;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -33,10 +36,12 @@ public class ClienteController {
     private final CadastrarClienteInputPort cadastrarClienteInputPort;
     private final BuscarClientePorIdInputPort buscarClientePorIdInputPort;
     private final BuscarTodosClientesInputPort buscarTodosClientesInputPort;
+    private final DeletarClienteInputPort deletarClienteInputPort;
 
     private final CadastrarClientePresenter cadastrarClientePresenter;
     private final BuscarClientePorIdPresenter buscarClientePorIdPresenter;
     private final BuscarTodosClientesPresenter buscarTodosClientesPresenter;
+    private final DeletarClientePresenter deletarClientePresenter;
 
     @Operation(
             summary = "Realiza o cadastro de um novo usuário do tipo Cliente",
@@ -83,4 +88,16 @@ public class ClienteController {
             return ResponseEntity.ok(responseDTOs);
         }
     }
+    @Operation(
+            summary = "Deleta um cliente por ID",
+            description = "Este endpoint deleta um cliente específico pelo seu ID."
+    )
+    @DeleteMapping("/{id}")
+    public ResponseEntity<DeletarClienteResponseDTO> deletarCliente(@PathVariable UUID id) {
+        deletarClienteInputPort.execute(id);
+
+//         return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); // 204 No Content para exclusão bem-sucedida sem corpo de resposta
+        return ResponseEntity.ok(deletarClientePresenter.getViewModel()); // Retorna 200 OK com mensagem no corpo
+    }
+
 }
