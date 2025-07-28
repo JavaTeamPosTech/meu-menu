@@ -9,11 +9,13 @@ import com.postechfiap.meumenu.infrastructure.api.dtos.response.ClienteResponseD
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.DeletarClienteResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.presenters.*;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,17 +28,16 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class ClienteController {
 
-    private final CadastrarClienteInputPort cadastrarClienteInputPort;
-    private final BuscarClientePorIdInputPort buscarClientePorIdInputPort;
-    private final BuscarTodosClientesInputPort buscarTodosClientesInputPort;
-    private final DeletarClienteInputPort deletarClienteInputPort;
     private final AtualizarClienteInputPort atualizarClienteInputPort;
-
-    private final CadastrarClientePresenter cadastrarClientePresenter;
-    private final BuscarClientePorIdPresenter buscarClientePorIdPresenter;
-    private final BuscarTodosClientesPresenter buscarTodosClientesPresenter;
-    private final DeletarClientePresenter deletarClientePresenter;
     private final AtualizarClientePresenter atualizarClientePresenter;
+    private final BuscarClientePorIdInputPort buscarClientePorIdInputPort;
+    private final BuscarClientePorIdPresenter buscarClientePorIdPresenter;
+    private final BuscarTodosClientesInputPort buscarTodosClientesInputPort;
+    private final BuscarTodosClientesPresenter buscarTodosClientesPresenter;
+    private final CadastrarClienteInputPort cadastrarClienteInputPort;
+    private final CadastrarClientePresenter cadastrarClientePresenter;
+    private final DeletarClienteInputPort deletarClienteInputPort;
+    private final DeletarClientePresenter deletarClientePresenter;
 
     @Operation(
             summary = "Realiza o cadastro de um novo usuário do tipo Cliente",
@@ -53,6 +54,8 @@ public class ClienteController {
             summary = "Busca um cliente por ID",
             description = "Este endpoint retorna os detalhes de um cliente específico pelo seu ID."
     )
+    @SecurityRequirement(name = "bearerAuth")
+    @PreAuthorize("#id == authentication.principal.id")
     @GetMapping("/{id}")
     public ResponseEntity<ClienteResponseDTO> buscarClientePorId(@PathVariable UUID id) {
         Optional<ClienteDomain> cliente = buscarClientePorIdInputPort.execute(id);
@@ -85,6 +88,8 @@ public class ClienteController {
             summary = "Deleta um cliente por ID",
             description = "Este endpoint deleta um cliente específico pelo seu ID."
     )
+    @SecurityRequirement(name = "bearerAuth")
+    @PreAuthorize("#id == authentication.principal.id")
     @DeleteMapping("/{id}")
     public ResponseEntity<DeletarClienteResponseDTO> deletarCliente(@PathVariable UUID id) {
         deletarClienteInputPort.execute(id);
@@ -97,10 +102,11 @@ public class ClienteController {
             summary = "Atualiza um cliente por ID",
             description = "Este endpoint atualiza os dados de um cliente existente pelo seu ID."
     )
+    @SecurityRequirement(name = "bearerAuth")
+    @PreAuthorize("#id == authentication.principal.id")
     @PutMapping("/{id}")
     public ResponseEntity<ClienteResponseDTO> atualizarCliente(@PathVariable UUID id, @RequestBody @Valid AtualizarClienteRequestDTO requestDTO) {
         atualizarClienteInputPort.execute(requestDTO.toInputModel(id));
         return ResponseEntity.ok(atualizarClientePresenter.getViewModel());
     }
-
 }

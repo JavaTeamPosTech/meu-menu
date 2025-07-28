@@ -14,11 +14,13 @@ import com.postechfiap.meumenu.infrastructure.api.presenters.BuscarProprietarioP
 import com.postechfiap.meumenu.infrastructure.api.presenters.CadastrarProprietarioPresenter;
 import com.postechfiap.meumenu.infrastructure.api.presenters.DeletarProprietarioPresenter;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -54,6 +56,8 @@ public class ProprietarioController {
             summary = "Busca um proprietário por ID",
             description = "Este endpoint retorna os detalhes de um proprietário específico pelo seu ID."
     )
+    @SecurityRequirement(name = "bearerAuth")
+    @PreAuthorize("#id == authentication.principal.id")
     @GetMapping("/{id}")
     public ResponseEntity<ProprietarioResponseDTO> buscarProprietarioPorId(@PathVariable UUID id) {
 
@@ -65,6 +69,8 @@ public class ProprietarioController {
             summary = "Deleta um proprietário por ID",
             description = "Este endpoint deleta um proprietário específico pelo seu ID."
     )
+    @SecurityRequirement(name = "bearerAuth")
+    @PreAuthorize("#id == authentication.principal.id")
     @DeleteMapping("/{id}")
     public ResponseEntity<DeletarProprietarioResponseDTO> deletarProprietario(@PathVariable UUID id) {
         deletarProprietarioInputPort.execute(id);
@@ -78,6 +84,8 @@ public class ProprietarioController {
             summary = "Atualiza um proprietário por ID",
             description = "Este endpoint atualiza os dados de um proprietário existente pelo seu ID."
     )
+    @SecurityRequirement(name = "bearerAuth")
+    @PreAuthorize("#id == authentication.principal.id")
     @PutMapping("/{id}")
     public ResponseEntity<ProprietarioResponseDTO> atualizarProprietario(@PathVariable UUID id, @RequestBody @Valid AtualizarProprietarioRequestDTO requestDTO) {
         atualizarProprietarioInputPort.execute(requestDTO.toInputModel(id));
