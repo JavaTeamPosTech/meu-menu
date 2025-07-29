@@ -105,6 +105,11 @@ public class RestauranteGatewayImpl implements RestauranteGateway {
     }
 
     @Override
+    public void deletarRestaurante(UUID id) {
+        restauranteSpringRepository.deleteById(id);
+    }
+
+    @Override
     @Transactional
     public ItemCardapioDomain adicionarItemCardapio(UUID restauranteId, ItemCardapioDomain itemCardapioDomain) {
         RestauranteEntity restauranteEntity = restauranteSpringRepository.findById(restauranteId)
@@ -118,7 +123,23 @@ public class RestauranteGatewayImpl implements RestauranteGateway {
     }
 
     @Override
-    public void deletarRestaurante(UUID id) {
-        restauranteSpringRepository.deleteById(id);
+    @Transactional
+    public ItemCardapioDomain atualizarItemCardapio(ItemCardapioDomain itemCardapioDomain) {
+        if (itemCardapioDomain.getId() == null) {
+            throw new IllegalArgumentException("ID do item cardápio não pode ser nulo para atualização.");
+        }
+
+        ItemCardapioEntity existingItemEntity = itemCardapioSpringRepository.findById(itemCardapioDomain.getId())
+                .orElseThrow(() -> new ResourceNotFoundException("Item cardápio com ID " + itemCardapioDomain.getId() + " não encontrado para atualização."));
+
+        existingItemEntity.setNome(itemCardapioDomain.getNome());
+        existingItemEntity.setDescricao(itemCardapioDomain.getDescricao());
+        existingItemEntity.setPreco(itemCardapioDomain.getPreco());
+        existingItemEntity.setDisponivelApenasNoRestaurante(itemCardapioDomain.getDisponivelApenasNoRestaurante());
+        existingItemEntity.setUrlFoto(itemCardapioDomain.getUrlFoto());
+        ItemCardapioEntity updatedItemEntity = itemCardapioSpringRepository.save(existingItemEntity);
+
+        return itemCardapioDataMapper.toDomain(updatedItemEntity);
     }
+
 }

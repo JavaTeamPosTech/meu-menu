@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@Tag(name = "Usuário Controller", description = "Operações relacionadas a usuários (genéricas)")
+@Tag(name = "Usuário")
 @RequestMapping("/usuarios")
 @RequiredArgsConstructor
 public class UsuarioController {

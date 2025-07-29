@@ -2,8 +2,9 @@ package com.postechfiap.meumenu.core.domain.usecases.restaurante.item.impl;
 
 import com.postechfiap.meumenu.core.domain.entities.ItemCardapioDomain;
 import com.postechfiap.meumenu.core.domain.entities.RestauranteDomain;
-import com.postechfiap.meumenu.core.domain.presenters.AtualizarItemCardapioOutputPort; // NOVO: OutputPort
+import com.postechfiap.meumenu.core.domain.presenters.AtualizarItemCardapioOutputPort;
 import com.postechfiap.meumenu.core.domain.usecases.restaurante.item.AtualizarItemCardapioUseCase;
+import com.postechfiap.meumenu.core.dtos.restaurante.item.ItemCardapioInputModel;
 import com.postechfiap.meumenu.core.exceptions.BusinessException;
 import com.postechfiap.meumenu.core.exceptions.ResourceNotFoundException;
 import com.postechfiap.meumenu.core.gateways.RestauranteGateway;
@@ -21,7 +22,7 @@ public class AtualizarItemCardapioUseCaseImpl implements AtualizarItemCardapioUs
     private final AtualizarItemCardapioOutputPort atualizarItemCardapioOutputPort;
 
     @Override
-    public ItemCardapioDomain execute(UUID restauranteId, UUID itemId, ItemCardapioDomain itemCardapioAtualizado, UUID proprietarioLogadoId) {
+    public ItemCardapioDomain execute(UUID restauranteId, UUID itemId, ItemCardapioInputModel inputModel, UUID proprietarioLogadoId) {
         Optional<RestauranteDomain> restauranteOptional = restauranteGateway.buscarRestaurantePorId(restauranteId);
         if (restauranteOptional.isEmpty()) {
             throw new ResourceNotFoundException("Restaurante com ID " + restauranteId + " não encontrado para atualizar item.");
@@ -41,21 +42,17 @@ public class AtualizarItemCardapioUseCaseImpl implements AtualizarItemCardapioUs
         }
         ItemCardapioDomain itemExistente = itemOptional.get();
 
-        itemExistente.setNome(itemCardapioAtualizado.getNome());
-        itemExistente.setDescricao(itemCardapioAtualizado.getDescricao());
-        itemExistente.setPreco(itemCardapioAtualizado.getPreco());
-        itemExistente.setDisponivelApenasNoRestaurante(itemCardapioAtualizado.getDisponivelApenasNoRestaurante());
-        itemExistente.setUrlFoto(itemCardapioAtualizado.getUrlFoto());
+        itemExistente.setNome(inputModel.getNome());
+        itemExistente.setDescricao(inputModel.getDescricao());
+        itemExistente.setPreco(inputModel.getPreco());
+        itemExistente.setDisponivelApenasNoRestaurante(inputModel.getDisponivelApenasNoRestaurante());
+        itemExistente.setUrlFoto(inputModel.getUrlFoto());
 
-        RestauranteDomain restauranteAtualizado = restauranteGateway.atualizarRestaurante(restauranteExistente);
+        ItemCardapioDomain itemAtualizado = restauranteGateway.atualizarItemCardapio(itemExistente);
 
-        ItemCardapioDomain itemAtualizadoRetornado = restauranteAtualizado.getItensCardapio().stream()
-                .filter(item -> item.getId().equals(itemExistente.getId()))
-                .findFirst()
-                .orElseThrow(() -> new BusinessException("Falha ao recuperar o item cardápio atualizado."));
+        atualizarItemCardapioOutputPort.presentSuccess(itemAtualizado);
 
-        atualizarItemCardapioOutputPort.presentSuccess(itemAtualizadoRetornado);
-
-        return itemAtualizadoRetornado;
+        return itemAtualizado;
     }
+
 }

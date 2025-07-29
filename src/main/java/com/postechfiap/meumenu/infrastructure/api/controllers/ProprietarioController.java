@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@Tag(name = "Proprietario Controller", description = "Operações relacionadas ao Proprietário")
+@Tag(name = "Proprietario")
 @RequestMapping("/proprietarios")
 @RequiredArgsConstructor
 public class ProprietarioController {

@@ -1,0 +1,21 @@
+package com.postechfiap.meumenu.core.controllers.impl;
+
+import com.postechfiap.meumenu.core.controllers.AtualizarItemCardapioInputPort;
+import com.postechfiap.meumenu.core.domain.usecases.restaurante.item.AtualizarItemCardapioUseCase;
+import com.postechfiap.meumenu.core.dtos.restaurante.item.ItemCardapioInputModel;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
+import java.util.UUID;
+
+@Component
+@RequiredArgsConstructor
+public class AtualizarItemCardapioInputPortImpl implements AtualizarItemCardapioInputPort {
+
+    private final AtualizarItemCardapioUseCase atualizarItemCardapioUseCase;
+
+    @Override
+    public void execute(UUID restauranteId, UUID itemId, ItemCardapioInputModel inputModel, UUID proprietarioLogadoId) {
+        atualizarItemCardapioUseCase.execute(restauranteId, itemId, inputModel, proprietarioLogadoId);
+    }
+}

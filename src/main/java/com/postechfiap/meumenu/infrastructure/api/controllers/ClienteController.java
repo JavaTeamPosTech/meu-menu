@@ -23,7 +23,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@Tag(name = "Cliente Controller", description = "Operações relacionadas ao Cliente")
+@Tag(name = "Cliente")
 @RequestMapping("/clientes")
 @RequiredArgsConstructor
 public class ClienteController {
