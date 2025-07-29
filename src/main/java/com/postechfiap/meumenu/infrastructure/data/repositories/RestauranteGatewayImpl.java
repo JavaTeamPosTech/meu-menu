@@ -5,11 +5,10 @@ import com.postechfiap.meumenu.core.gateways.RestauranteGateway;
 import com.postechfiap.meumenu.infrastructure.data.datamappers.RestauranteDataMapper;
 import com.postechfiap.meumenu.infrastructure.model.RestauranteEntity;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
-import java.util.Optional;
-import java.util.UUID;
 
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Component
@@ -29,5 +28,13 @@ public class RestauranteGatewayImpl implements RestauranteGateway {
     @Override
     public boolean existsByCnpj(String cnpj) {
         return restauranteSpringRepository.findByCnpj(cnpj).isPresent();
+    }
+
+    @Override
+    public List<RestauranteDomain> buscarTodosRestaurantes() {
+        List<RestauranteEntity> restaurantesEntities = restauranteSpringRepository.findAll();
+        return restaurantesEntities.stream()
+                .map(restauranteDataMapper::toDomain)
+                .collect(Collectors.toList());
     }
 }
