@@ -14,7 +14,7 @@ public class AtualizarRestauranteInputPortImpl implements AtualizarRestauranteIn
     private final AtualizarRestauranteUseCase atualizarRestauranteUseCase;
 
     @Override
-    public void execute(UUID restauranteId, AtualizarRestauranteInputModel inputModel, UUID proprietarioLogadoId) {
-        atualizarRestauranteUseCase.execute(restauranteId, inputModel, proprietarioLogadoId);
+    public void execute(UUID restauranteId, AtualizarRestauranteInputModel inputModel) {
+        atualizarRestauranteUseCase.execute(restauranteId, inputModel);
     }
 }

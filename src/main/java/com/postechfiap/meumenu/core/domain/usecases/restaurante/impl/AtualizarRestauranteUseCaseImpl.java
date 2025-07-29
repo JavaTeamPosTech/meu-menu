@@ -29,7 +29,7 @@ public class AtualizarRestauranteUseCaseImpl implements AtualizarRestauranteUseC
     private final AtualizarRestauranteOutputPort atualizarRestauranteOutputPort;
 
     @Override
-    public RestauranteDomain execute(UUID restauranteId, AtualizarRestauranteInputModel inputModel, UUID proprietarioLogadoId) {
+    public RestauranteDomain execute(UUID restauranteId, AtualizarRestauranteInputModel inputModel) {
 
         Optional<RestauranteDomain> restauranteOptional = restauranteGateway.buscarRestaurantePorId(restauranteId);
         if (restauranteOptional.isEmpty()) {
@@ -37,7 +37,7 @@ public class AtualizarRestauranteUseCaseImpl implements AtualizarRestauranteUseC
         }
         RestauranteDomain restauranteExistente = restauranteOptional.get();
 
-        if (!restauranteExistente.getProprietario().getId().equals(proprietarioLogadoId)) {
+        if (!restauranteExistente.getProprietario().getId().equals(inputModel.getProprietarioLogadoId())) {
             throw new BusinessException("Acesso negado. O restaurante com ID " + restauranteId + " não pertence ao proprietário logado.");
         }
 

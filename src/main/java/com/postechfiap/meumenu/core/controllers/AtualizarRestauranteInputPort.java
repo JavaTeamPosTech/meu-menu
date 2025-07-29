@@ -4,5 +4,5 @@ import com.postechfiap.meumenu.core.dtos.restaurante.AtualizarRestauranteInputMo
 import java.util.UUID;
 
 public interface AtualizarRestauranteInputPort {
-    void execute(UUID restauranteId, AtualizarRestauranteInputModel inputMode, UUID proprietarioLogadoIdl);
+    void execute(UUID restauranteId, AtualizarRestauranteInputModel inputModel);
 }

@@ -6,5 +6,5 @@ import com.postechfiap.meumenu.core.dtos.restaurante.AtualizarRestauranteInputMo
 import java.util.UUID;
 
 public interface AtualizarRestauranteUseCase {
-    RestauranteDomain execute(UUID restauranteId, AtualizarRestauranteInputModel inputModel, UUID proprietarioLogadoId);
+    RestauranteDomain execute(UUID restauranteId, AtualizarRestauranteInputModel inputModel);
 }

@@ -44,6 +44,9 @@ public class RestauranteController {
     private final AtualizarRestaurantePresenter atualizarRestaurantePresenter;
     private final DeletarRestauranteInputPort deletarRestauranteInputPort;
     private final DeletarRestaurantePresenter deletarRestaurantePresenter;
+    private final DeletarItemCardapioInputPort deletarItemCardapioInputPort;
+    private final DeletarItemCardapioPresenter deletarItemCardapioPresenter;
+
 
     @Operation(
             summary = "Realiza o cadastro de um novo restaurante",
@@ -89,34 +92,6 @@ public class RestauranteController {
     }
 
     @Operation(
-            summary = "Adiciona um item ao cardápio de um restaurante",
-            description = "Este endpoint permite que o Proprietário de um restaurante adicione um novo item ao cardápio. O proprietário logado deve ser o dono do restaurante."
-    )
-    @SecurityRequirement(name = "bearerAuth")
-    @PreAuthorize("hasRole('PROPRIETARIOENTITY')")
-    @PostMapping("/{restauranteId}/itens")
-    public ResponseEntity<ItemCardapioResponseDTO> adicionarItemCardapio(
-            @PathVariable UUID restauranteId,
-            @RequestBody @Valid AdicionarItemCardapioRequestDTO requestDTO
-    ) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UUID proprietarioLogadoId;
-
-        if (authentication != null && authentication.isAuthenticated() && authentication.getPrincipal() instanceof UserDetails) {
-            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-            if (userDetails instanceof com.postechfiap.meumenu.infrastructure.model.ProprietarioEntity) {
-                proprietarioLogadoId = ((com.postechfiap.meumenu.infrastructure.model.ProprietarioEntity) userDetails).getId();
-            } else {
-                throw new BusinessException("Apenas usuários do tipo Proprietário podem gerenciar itens do cardápio. Tipo de principal inesperado.");
-            }
-        } else {
-            throw new BusinessException("Usuário não autenticado. Acesso negado.");
-        }
-        adicionarItemCardapioInputPort.execute(restauranteId, requestDTO.toInputModel());
-        return ResponseEntity.status(HttpStatus.CREATED).body(adicionarItemCardapioPresenter.getViewModel());
-    }
-
-    @Operation(
             summary = "Busca um restaurante por ID",
             description = "Este endpoint retorna os detalhes completos de um restaurante específico pelo seu ID, incluindo itens do cardápio."
     )
@@ -151,7 +126,7 @@ public class RestauranteController {
             throw new BusinessException("Usuário não autenticado. Acesso negado.");
         }
 
-        atualizarRestauranteInputPort.execute(restauranteId, requestDTO.toInputModel(proprietarioLogadoId), proprietarioLogadoId);
+        atualizarRestauranteInputPort.execute(restauranteId, requestDTO.toInputModel(proprietarioLogadoId));
         return ResponseEntity.ok(atualizarRestaurantePresenter.getViewModel());
     }
 
@@ -177,6 +152,63 @@ public class RestauranteController {
             throw new BusinessException("Usuário não autenticado. Acesso negado.");
         }
         deletarRestauranteInputPort.execute(id, proprietarioLogadoId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @Operation(
+            summary = "Adiciona um item ao cardápio de um restaurante",
+            description = "Este endpoint permite que o Proprietário de um restaurante adicione um novo item ao cardápio. O proprietário logado deve ser o dono do restaurante."
+    )
+    @SecurityRequirement(name = "bearerAuth")
+    @PreAuthorize("hasRole('PROPRIETARIOENTITY')")
+    @PostMapping("/{restauranteId}/itens")
+    public ResponseEntity<ItemCardapioResponseDTO> adicionarItemCardapio(
+            @PathVariable UUID restauranteId,
+            @RequestBody @Valid AdicionarItemCardapioRequestDTO requestDTO
+    ) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UUID proprietarioLogadoId;
+
+        if (authentication != null && authentication.isAuthenticated() && authentication.getPrincipal() instanceof UserDetails) {
+            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+            if (userDetails instanceof com.postechfiap.meumenu.infrastructure.model.ProprietarioEntity) {
+                proprietarioLogadoId = ((com.postechfiap.meumenu.infrastructure.model.ProprietarioEntity) userDetails).getId();
+            } else {
+                throw new BusinessException("Apenas usuários do tipo Proprietário podem gerenciar itens do cardápio. Tipo de principal inesperado.");
+            }
+        } else {
+            throw new BusinessException("Usuário não autenticado. Acesso negado.");
+        }
+        adicionarItemCardapioInputPort.execute(restauranteId, requestDTO.toInputModel());
+        return ResponseEntity.status(HttpStatus.CREATED).body(adicionarItemCardapioPresenter.getViewModel());
+    }
+
+    @Operation(
+            summary = "Deleta um item do cardápio de um restaurante",
+            description = "Este endpoint permite que o Proprietário de um restaurante exclua um item específico do cardápio. Apenas o proprietário do restaurante pode realizar esta operação."
+    )
+    @SecurityRequirement(name = "bearerAuth")
+    @PreAuthorize("hasRole('PROPRIETARIOENTITY')")
+    @DeleteMapping("/{restauranteId}/itens/{itemId}")
+    public ResponseEntity<Void> deletarItemCardapio(
+            @PathVariable UUID restauranteId,
+            @PathVariable UUID itemId
+    ) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UUID proprietarioLogadoId;
+
+        if (authentication != null && authentication.isAuthenticated() && authentication.getPrincipal() instanceof UserDetails) {
+            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+            if (userDetails instanceof com.postechfiap.meumenu.infrastructure.model.ProprietarioEntity) {
+                proprietarioLogadoId = ((com.postechfiap.meumenu.infrastructure.model.ProprietarioEntity) userDetails).getId();
+            } else {
+                throw new BusinessException("Apenas usuários do tipo Proprietário podem deletar itens do cardápio. Tipo de principal inesperado.");
+            }
+        } else {
+            throw new BusinessException("Usuário não autenticado. Acesso negado.");
+        }
+
+        deletarItemCardapioInputPort.execute(restauranteId, itemId, proprietarioLogadoId);
         return ResponseEntity.noContent().build();
     }
 }
