@@ -1,6 +1,7 @@
 package com.postechfiap.meumenu.infrastructure.api.controllers;
 
 import com.postechfiap.meumenu.core.controllers.AdicionarItemCardapioInputPort;
+import com.postechfiap.meumenu.core.controllers.BuscarRestaurantePorIdInputPort;
 import com.postechfiap.meumenu.core.controllers.BuscarTodosRestaurantesInputPort;
 import com.postechfiap.meumenu.core.controllers.CadastrarRestauranteInputPort;
 import com.postechfiap.meumenu.core.exceptions.BusinessException;
@@ -10,6 +11,7 @@ import com.postechfiap.meumenu.infrastructure.api.dtos.response.CadastrarRestaur
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.ItemCardapioResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.RestauranteResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.presenters.AdicionarItemCardapioPresenter;
+import com.postechfiap.meumenu.infrastructure.api.presenters.BuscarRestaurantePorIdPresenter;
 import com.postechfiap.meumenu.infrastructure.api.presenters.BuscarTodosRestaurantesPresenter;
 import com.postechfiap.meumenu.infrastructure.api.presenters.CadastrarRestaurantePresenter;
 import io.swagger.v3.oas.annotations.Operation;
@@ -40,6 +42,8 @@ public class RestauranteController {
     private final BuscarTodosRestaurantesPresenter buscarTodosRestaurantesPresenter;
     private final AdicionarItemCardapioInputPort adicionarItemCardapioInputPort;
     private final AdicionarItemCardapioPresenter adicionarItemCardapioPresenter;
+    private final BuscarRestaurantePorIdInputPort buscarRestaurantePorIdInputPort;
+    private final BuscarRestaurantePorIdPresenter buscarRestaurantePorIdPresenter;
 
     @Operation(
             summary = "Realiza o cadastro de um novo restaurante",
@@ -110,5 +114,15 @@ public class RestauranteController {
         }
         adicionarItemCardapioInputPort.execute(restauranteId, requestDTO.toInputModel());
         return ResponseEntity.status(HttpStatus.CREATED).body(adicionarItemCardapioPresenter.getViewModel());
+    }
+
+    @Operation(
+            summary = "Busca um restaurante por ID",
+            description = "Este endpoint retorna os detalhes completos de um restaurante específico pelo seu ID, incluindo itens do cardápio."
+    )
+    @GetMapping("/{id}")
+    public ResponseEntity<RestauranteResponseDTO> buscarRestaurantePorId(@PathVariable UUID id) {
+        buscarRestaurantePorIdInputPort.execute(id);
+        return ResponseEntity.ok(buscarRestaurantePorIdPresenter.getViewModel());
     }
 }

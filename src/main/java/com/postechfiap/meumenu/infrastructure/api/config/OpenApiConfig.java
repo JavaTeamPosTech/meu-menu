@@ -16,18 +16,18 @@ public class OpenApiConfig {
     @Bean
     public OpenAPI getOpenAPI() {
         return new OpenAPI()
-                .components(new Components()
-                        .addSecuritySchemes("bearerAuth",
-                                new SecurityScheme()
-                                        .name("Authorization")
-                                        .type(SecurityScheme.Type.HTTP)
-                                        .scheme("bearer")
-                                        .bearerFormat("JWT")))
-                .info(
-                        new Info().title("Meu Menu API")
-                                .description("Meu Menu - API para Restaurantes e Clientes")
-                                .version("v0.0.1")
-                                .license(new License().name("FIAP").url("https://github.com/JavaTeamPosTech/Piloto"))
-                );
+            .components(new Components()
+                    .addSecuritySchemes("bearerAuth",
+                            new SecurityScheme()
+                                    .name("Authorization")
+                                    .type(SecurityScheme.Type.HTTP)
+                                    .scheme("bearer")
+                                    .bearerFormat("JWT")))
+            .info(
+                    new Info().title("Meu Menu API")
+                            .description("Meu Menu - API para Restaurantes")
+                            .version("v0.0.1")
+                            .license(new License().name("FIAP").url("https://github.com/JavaTeamPosTech/meu-menu"))
+            );
     }
 }

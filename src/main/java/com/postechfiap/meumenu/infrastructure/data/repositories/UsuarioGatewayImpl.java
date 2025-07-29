@@ -49,7 +49,7 @@ public class UsuarioGatewayImpl implements UsuarioGateway {
         existingEntity.setNome(usuarioDomain.getNome());
         existingEntity.setEmail(usuarioDomain.getEmail());
         existingEntity.setLogin(usuarioDomain.getLogin());
-        existingEntity.setSenha(usuarioDomain.getSenha()); // Senha já criptografada
+        existingEntity.setSenha(usuarioDomain.getSenha());
         existingEntity.setDataAtualizacao(usuarioDomain.getDataAtualizacao());
         UsuarioEntity updatedEntity = usuarioSpringRepository.save(existingEntity);
 
