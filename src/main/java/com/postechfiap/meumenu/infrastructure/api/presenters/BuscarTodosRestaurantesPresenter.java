@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 public class BuscarTodosRestaurantesPresenter implements BuscarTodosRestaurantesOutputPort {
 
-    private List<RestauranteResponseDTO> restaurantesViewModel; // NOME CORRIGIDO
+    private List<RestauranteResponseDTO> restaurantesViewModel;
 
     private boolean isNoContent = false;
     private String noContentMessage;
@@ -64,8 +64,6 @@ public class BuscarTodosRestaurantesPresenter implements BuscarTodosRestaurantes
         }
 
         List<ItemCardapioResponseDTO> itensResponse = Collections.emptyList();
-
-
         return new RestauranteResponseDTO(
                 domain.getId(),
                 domain.getCnpj(),

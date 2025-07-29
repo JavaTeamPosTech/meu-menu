@@ -1,11 +1,15 @@
 package com.postechfiap.meumenu.infrastructure.api.controllers;
 
+import com.postechfiap.meumenu.core.controllers.AdicionarItemCardapioInputPort;
 import com.postechfiap.meumenu.core.controllers.BuscarTodosRestaurantesInputPort;
 import com.postechfiap.meumenu.core.controllers.CadastrarRestauranteInputPort;
 import com.postechfiap.meumenu.core.exceptions.BusinessException;
+import com.postechfiap.meumenu.infrastructure.api.dtos.request.AdicionarItemCardapioRequestDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.request.CadastrarRestauranteRequestDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.CadastrarRestauranteResponseDTO;
+import com.postechfiap.meumenu.infrastructure.api.dtos.response.ItemCardapioResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.RestauranteResponseDTO;
+import com.postechfiap.meumenu.infrastructure.api.presenters.AdicionarItemCardapioPresenter;
 import com.postechfiap.meumenu.infrastructure.api.presenters.BuscarTodosRestaurantesPresenter;
 import com.postechfiap.meumenu.infrastructure.api.presenters.CadastrarRestaurantePresenter;
 import io.swagger.v3.oas.annotations.Operation;
@@ -34,6 +38,8 @@ public class RestauranteController {
     private final CadastrarRestaurantePresenter cadastrarRestaurantePresenter;
     private final BuscarTodosRestaurantesInputPort buscarTodosRestaurantesInputPort;
     private final BuscarTodosRestaurantesPresenter buscarTodosRestaurantesPresenter;
+    private final AdicionarItemCardapioInputPort adicionarItemCardapioInputPort;
+    private final AdicionarItemCardapioPresenter adicionarItemCardapioPresenter;
 
     @Operation(
             summary = "Realiza o cadastro de um novo restaurante",
@@ -76,5 +82,33 @@ public class RestauranteController {
         } else {
             return ResponseEntity.ok(responseDTOs);
         }
+    }
+
+    @Operation(
+            summary = "Adiciona um item ao cardápio de um restaurante",
+            description = "Este endpoint permite que o Proprietário de um restaurante adicione um novo item ao cardápio. O proprietário logado deve ser o dono do restaurante."
+    )
+    @SecurityRequirement(name = "bearerAuth")
+    @PreAuthorize("hasRole('PROPRIETARIOENTITY')")
+    @PostMapping("/{restauranteId}/itens")
+    public ResponseEntity<ItemCardapioResponseDTO> adicionarItemCardapio(
+            @PathVariable UUID restauranteId,
+            @RequestBody @Valid AdicionarItemCardapioRequestDTO requestDTO
+    ) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UUID proprietarioLogadoId;
+
+        if (authentication != null && authentication.isAuthenticated() && authentication.getPrincipal() instanceof UserDetails) {
+            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+            if (userDetails instanceof com.postechfiap.meumenu.infrastructure.model.ProprietarioEntity) {
+                proprietarioLogadoId = ((com.postechfiap.meumenu.infrastructure.model.ProprietarioEntity) userDetails).getId();
+            } else {
+                throw new BusinessException("Apenas usuários do tipo Proprietário podem gerenciar itens do cardápio. Tipo de principal inesperado.");
+            }
+        } else {
+            throw new BusinessException("Usuário não autenticado. Acesso negado.");
+        }
+        adicionarItemCardapioInputPort.execute(restauranteId, requestDTO.toInputModel());
+        return ResponseEntity.status(HttpStatus.CREATED).body(adicionarItemCardapioPresenter.getViewModel());
     }
 }
