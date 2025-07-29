@@ -13,7 +13,6 @@ import com.postechfiap.meumenu.infrastructure.api.presenters.*;
 import com.postechfiap.meumenu.infrastructure.model.ProprietarioEntity;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -48,8 +47,8 @@ public class RestauranteController {
     private final DeletarItemCardapioPresenter deletarItemCardapioPresenter;
     private final AtualizarItemCardapioInputPort atualizarItemCardapioInputPort;
     private final AtualizarItemCardapioPresenter atualizarItemCardapioPresenter;
-
-
+    private final BuscarItemCardapioPorIdInputPort buscarItemCardapioPorIdInputPort;
+    private final BuscarItemCardapioPorIdPresenter buscarItemCardapioPorIdPresenter;
 
     @Operation(
             summary = "Realiza o cadastro de um novo restaurante",
@@ -251,5 +250,19 @@ public class RestauranteController {
 
         atualizarItemCardapioInputPort.execute(restauranteId, itemId, requestDTO.toInputModel(), proprietarioLogadoId);
         return ResponseEntity.ok(atualizarItemCardapioPresenter.getViewModel());
+    }
+
+    @Operation(
+            summary = "Busca um item do cardápio de um restaurante por ID",
+            description = "Este endpoint retorna os detalhes de um item específico do cardápio de um restaurante.",
+            tags = {"Item do Cardápio"}
+    )
+    @GetMapping("/{restauranteId}/itens/{itemId}")
+    public ResponseEntity<ItemCardapioResponseDTO> buscarItemCardapioPorId(
+            @PathVariable UUID restauranteId,
+            @PathVariable UUID itemId
+    ) {
+        buscarItemCardapioPorIdInputPort.execute(restauranteId, itemId);
+        return ResponseEntity.ok(buscarItemCardapioPorIdPresenter.getViewModel());
     }
 }
