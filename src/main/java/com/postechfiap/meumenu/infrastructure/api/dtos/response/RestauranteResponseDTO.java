@@ -1,5 +1,6 @@
 package com.postechfiap.meumenu.infrastructure.api.dtos.response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.List;
@@ -35,6 +36,7 @@ public record RestauranteResponseDTO(
         List<HorarioFuncionamentoResponseDTO> horariosFuncionamento,
 
         @Schema(description = "Itens do cardápio do restaurante (pode ser nulo ou vazio na listagem geral)")
+        @JsonInclude(JsonInclude.Include.NON_EMPTY)
         List<ItemCardapioResponseDTO> itensCardapio
 ) {
 }
