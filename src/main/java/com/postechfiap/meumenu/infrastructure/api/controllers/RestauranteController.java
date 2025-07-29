@@ -42,6 +42,8 @@ public class RestauranteController {
     private final BuscarRestaurantePorIdPresenter buscarRestaurantePorIdPresenter;
     private final AtualizarRestauranteInputPort atualizarRestauranteInputPort;
     private final AtualizarRestaurantePresenter atualizarRestaurantePresenter;
+    private final DeletarRestauranteInputPort deletarRestauranteInputPort;
+    private final DeletarRestaurantePresenter deletarRestaurantePresenter;
 
     @Operation(
             summary = "Realiza o cadastro de um novo restaurante",
@@ -151,5 +153,30 @@ public class RestauranteController {
 
         atualizarRestauranteInputPort.execute(restauranteId, requestDTO.toInputModel(proprietarioLogadoId), proprietarioLogadoId);
         return ResponseEntity.ok(atualizarRestaurantePresenter.getViewModel());
+    }
+
+    @Operation(
+            summary = "Deleta um restaurante por ID",
+            description = "Este endpoint permite que o Proprietário de um restaurante o exclua. Apenas o proprietário do restaurante pode realizar esta operação."
+    )
+    @SecurityRequirement(name = "bearerAuth")
+    @PreAuthorize("hasRole('PROPRIETARIOENTITY')")
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarRestaurante(@PathVariable UUID id) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UUID proprietarioLogadoId;
+
+        if (authentication != null && authentication.isAuthenticated() && authentication.getPrincipal() instanceof UserDetails) {
+            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+            if (userDetails instanceof com.postechfiap.meumenu.infrastructure.model.ProprietarioEntity) {
+                proprietarioLogadoId = ((com.postechfiap.meumenu.infrastructure.model.ProprietarioEntity) userDetails).getId();
+            } else {
+                throw new BusinessException("Apenas usuários do tipo Proprietário podem deletar restaurantes. Tipo de principal inesperado.");
+            }
+        } else {
+            throw new BusinessException("Usuário não autenticado. Acesso negado.");
+        }
+        deletarRestauranteInputPort.execute(id, proprietarioLogadoId);
+        return ResponseEntity.noContent().build();
     }
 }

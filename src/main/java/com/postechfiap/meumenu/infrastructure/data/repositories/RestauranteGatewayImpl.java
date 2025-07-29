@@ -112,9 +112,13 @@ public class RestauranteGatewayImpl implements RestauranteGateway {
 
         ItemCardapioEntity itemCardapioEntity = itemCardapioDataMapper.toEntity(itemCardapioDomain);
         itemCardapioEntity.setRestaurante(restauranteEntity);
-
         ItemCardapioEntity savedItemEntity = itemCardapioSpringRepository.save(itemCardapioEntity);
 
         return itemCardapioDataMapper.toDomain(savedItemEntity);
+    }
+
+    @Override
+    public void deletarRestaurante(UUID id) {
+        restauranteSpringRepository.deleteById(id);
     }
 }

@@ -14,4 +14,5 @@ public interface RestauranteGateway {
     Optional<RestauranteDomain> buscarRestaurantePorId(UUID id);
     RestauranteDomain atualizarRestaurante(RestauranteDomain restauranteDomain);
     ItemCardapioDomain adicionarItemCardapio(UUID restauranteId, ItemCardapioDomain itemCardapioDomain);
+    void deletarRestaurante(UUID id);
 }
