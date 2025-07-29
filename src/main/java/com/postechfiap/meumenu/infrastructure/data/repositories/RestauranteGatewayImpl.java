@@ -6,6 +6,8 @@ import com.postechfiap.meumenu.core.exceptions.ResourceNotFoundException;
 import com.postechfiap.meumenu.core.gateways.RestauranteGateway;
 import com.postechfiap.meumenu.infrastructure.data.datamappers.ItemCardapioDataMapper;
 import com.postechfiap.meumenu.infrastructure.data.datamappers.RestauranteDataMapper;
+import com.postechfiap.meumenu.infrastructure.model.EnderecoRestauranteEntity;
+import com.postechfiap.meumenu.infrastructure.model.HorarioFuncionamentoEntity;
 import com.postechfiap.meumenu.infrastructure.model.ItemCardapioEntity;
 import com.postechfiap.meumenu.infrastructure.model.RestauranteEntity;
 import lombok.RequiredArgsConstructor;
@@ -56,7 +58,6 @@ public class RestauranteGatewayImpl implements RestauranteGateway {
 
     @Override
     public RestauranteDomain atualizarRestaurante(RestauranteDomain restauranteDomain) {
-
         RestauranteEntity existingEntity = restauranteSpringRepository.findById(restauranteDomain.getId())
                 .orElseThrow(() -> new ResourceNotFoundException("Restaurante não encontrado para atualização."));
 
@@ -65,7 +66,39 @@ public class RestauranteGatewayImpl implements RestauranteGateway {
         existingEntity.setNomeFantasia(restauranteDomain.getNomeFantasia());
         existingEntity.setInscricaoEstadual(restauranteDomain.getInscricaoEstadual());
         existingEntity.setTelefoneComercial(restauranteDomain.getTelefoneComercial());
-        existingEntity.setTiposCozinha(restauranteDataMapper.toTipoCozinhaEntityList(restauranteDomain.getTiposCozinha()));
+
+        if (restauranteDomain.getEndereco() == null) {
+            if (existingEntity.getEndereco() != null) {
+                existingEntity.setEndereco(null);
+            }
+        } else {
+            if (existingEntity.getEndereco() != null) {
+                EnderecoRestauranteEntity enderecoEntity = existingEntity.getEndereco();
+                enderecoEntity.setEstado(restauranteDataMapper.toEnderecoRestauranteEntity(restauranteDomain.getEndereco()).getEstado());
+                enderecoEntity.setCidade(restauranteDataMapper.toEnderecoRestauranteEntity(restauranteDomain.getEndereco()).getCidade());
+                enderecoEntity.setBairro(restauranteDataMapper.toEnderecoRestauranteEntity(restauranteDomain.getEndereco()).getBairro());
+                enderecoEntity.setRua(restauranteDataMapper.toEnderecoRestauranteEntity(restauranteDomain.getEndereco()).getRua());
+                enderecoEntity.setNumero(restauranteDataMapper.toEnderecoRestauranteEntity(restauranteDomain.getEndereco()).getNumero());
+                enderecoEntity.setComplemento(restauranteDataMapper.toEnderecoRestauranteEntity(restauranteDomain.getEndereco()).getComplemento());
+                enderecoEntity.setCep(restauranteDataMapper.toEnderecoRestauranteEntity(restauranteDomain.getEndereco()).getCep());
+            } else {
+                EnderecoRestauranteEntity novoEnderecoEntity = restauranteDataMapper.toEnderecoRestauranteEntity(restauranteDomain.getEndereco());
+                novoEnderecoEntity.setRestaurante(existingEntity);
+                existingEntity.setEndereco(novoEnderecoEntity);
+            }
+        }
+
+        existingEntity.getTiposCozinha().clear();
+        if (restauranteDomain.getTiposCozinha() != null) {
+            existingEntity.getTiposCozinha().addAll(restauranteDataMapper.toTipoCozinhaEntityList(restauranteDomain.getTiposCozinha()));
+        }
+
+        existingEntity.getHorariosFuncionamento().clear();
+        if (restauranteDomain.getHorariosFuncionamento() != null) {
+            List<HorarioFuncionamentoEntity> novosHorariosEntities = restauranteDataMapper.toHorarioFuncionamentoEntityList(restauranteDomain.getHorariosFuncionamento());
+            novosHorariosEntities.forEach(horario -> horario.setRestaurante(existingEntity));
+            existingEntity.getHorariosFuncionamento().addAll(novosHorariosEntities);
+        }
 
         RestauranteEntity updatedEntity = restauranteSpringRepository.save(existingEntity);
         return restauranteDataMapper.toDomain(updatedEntity);

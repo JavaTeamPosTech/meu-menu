@@ -1,7 +1,6 @@
 package com.postechfiap.meumenu.infrastructure.data.datamappers.impl;
 
 import com.postechfiap.meumenu.core.domain.entities.RestauranteDomain;
-import com.postechfiap.meumenu.core.domain.entities.ProprietarioDomain;
 import com.postechfiap.meumenu.core.domain.entities.EnderecoRestauranteDomain;
 import com.postechfiap.meumenu.core.domain.entities.HorarioFuncionamentoDomain;
 import com.postechfiap.meumenu.core.domain.entities.ItemCardapioDomain;
@@ -10,7 +9,6 @@ import com.postechfiap.meumenu.infrastructure.data.datamappers.RestauranteDataMa
 import com.postechfiap.meumenu.infrastructure.data.datamappers.ProprietarioDataMapper;
 import com.postechfiap.meumenu.infrastructure.data.datamappers.UsuarioDataMapper;
 import com.postechfiap.meumenu.infrastructure.model.RestauranteEntity;
-import com.postechfiap.meumenu.infrastructure.model.ProprietarioEntity;
 import com.postechfiap.meumenu.infrastructure.model.EnderecoRestauranteEntity;
 import com.postechfiap.meumenu.infrastructure.model.HorarioFuncionamentoEntity;
 import com.postechfiap.meumenu.infrastructure.model.ItemCardapioEntity;
@@ -19,7 +17,6 @@ import com.postechfiap.meumenu.infrastructure.model.TipoCozinhaEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

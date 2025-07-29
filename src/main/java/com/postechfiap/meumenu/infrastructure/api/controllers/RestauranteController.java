@@ -1,19 +1,15 @@
 package com.postechfiap.meumenu.infrastructure.api.controllers;
 
-import com.postechfiap.meumenu.core.controllers.AdicionarItemCardapioInputPort;
-import com.postechfiap.meumenu.core.controllers.BuscarRestaurantePorIdInputPort;
-import com.postechfiap.meumenu.core.controllers.BuscarTodosRestaurantesInputPort;
-import com.postechfiap.meumenu.core.controllers.CadastrarRestauranteInputPort;
+import com.postechfiap.meumenu.core.controllers.*;
 import com.postechfiap.meumenu.core.exceptions.BusinessException;
 import com.postechfiap.meumenu.infrastructure.api.dtos.request.AdicionarItemCardapioRequestDTO;
+import com.postechfiap.meumenu.infrastructure.api.dtos.request.AtualizarRestauranteRequestDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.request.CadastrarRestauranteRequestDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.CadastrarRestauranteResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.ItemCardapioResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.RestauranteResponseDTO;
-import com.postechfiap.meumenu.infrastructure.api.presenters.AdicionarItemCardapioPresenter;
-import com.postechfiap.meumenu.infrastructure.api.presenters.BuscarRestaurantePorIdPresenter;
-import com.postechfiap.meumenu.infrastructure.api.presenters.BuscarTodosRestaurantesPresenter;
-import com.postechfiap.meumenu.infrastructure.api.presenters.CadastrarRestaurantePresenter;
+import com.postechfiap.meumenu.infrastructure.api.presenters.*;
+import com.postechfiap.meumenu.infrastructure.model.ProprietarioEntity;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -44,6 +40,8 @@ public class RestauranteController {
     private final AdicionarItemCardapioPresenter adicionarItemCardapioPresenter;
     private final BuscarRestaurantePorIdInputPort buscarRestaurantePorIdInputPort;
     private final BuscarRestaurantePorIdPresenter buscarRestaurantePorIdPresenter;
+    private final AtualizarRestauranteInputPort atualizarRestauranteInputPort;
+    private final AtualizarRestaurantePresenter atualizarRestaurantePresenter;
 
     @Operation(
             summary = "Realiza o cadastro de um novo restaurante",
@@ -124,5 +122,34 @@ public class RestauranteController {
     public ResponseEntity<RestauranteResponseDTO> buscarRestaurantePorId(@PathVariable UUID id) {
         buscarRestaurantePorIdInputPort.execute(id);
         return ResponseEntity.ok(buscarRestaurantePorIdPresenter.getViewModel());
+    }
+
+    @Operation(
+            summary = "Atualiza um restaurante por ID",
+            description = "Este endpoint permite que o Proprietário de um restaurante atualize seus dados. Apenas o proprietário do restaurante pode realizar esta operação."
+    )
+    @SecurityRequirement(name = "bearerAuth")
+    @PreAuthorize("hasRole('PROPRIETARIOENTITY')")
+    @PutMapping("/{restauranteId}")
+    public ResponseEntity<RestauranteResponseDTO> atualizarRestaurante(
+            @PathVariable UUID restauranteId,
+            @RequestBody @Valid AtualizarRestauranteRequestDTO requestDTO
+    ) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UUID proprietarioLogadoId;
+
+        if (authentication != null && authentication.isAuthenticated() && authentication.getPrincipal() instanceof UserDetails) {
+            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+            if (userDetails instanceof ProprietarioEntity) {
+                proprietarioLogadoId = ((ProprietarioEntity) userDetails).getId();
+            } else {
+                throw new BusinessException("Apenas usuários do tipo Proprietário podem atualizar restaurantes. Tipo de principal inesperado.");
+            }
+        } else {
+            throw new BusinessException("Usuário não autenticado. Acesso negado.");
+        }
+
+        atualizarRestauranteInputPort.execute(restauranteId, requestDTO.toInputModel(proprietarioLogadoId), proprietarioLogadoId);
+        return ResponseEntity.ok(atualizarRestaurantePresenter.getViewModel());
     }
 }
