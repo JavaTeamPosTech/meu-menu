@@ -6,6 +6,7 @@ import com.postechfiap.meumenu.core.domain.presenters.CadastrarClienteOutputPort
 import com.postechfiap.meumenu.core.domain.services.PasswordService;
 import com.postechfiap.meumenu.core.domain.usecases.cliente.CadastrarClienteUseCase;
 import com.postechfiap.meumenu.core.dtos.cliente.CadastrarClienteInputModel;
+import com.postechfiap.meumenu.core.exceptions.BusinessException;
 import com.postechfiap.meumenu.core.gateways.ClienteGateway;
 import com.postechfiap.meumenu.core.gateways.UsuarioGateway;
 import lombok.RequiredArgsConstructor;
@@ -27,17 +28,17 @@ public class CadastrarClienteUseCaseImpl implements CadastrarClienteUseCase {
         public void execute(CadastrarClienteInputModel input) {
 
             if (usuarioGateway.existsByLogin(input.getLogin())) {
-//                clienteOutputPort.presentError("Login já cadastrado.");
-//                throw new BusinessException("Login já cadastrado.");
+                clienteOutputPort.presentError("Login já cadastrado.");
+                throw new BusinessException("Login já cadastrado.");
             }
             if (usuarioGateway.existsByEmail(input.getEmail())) {
-//                clienteOutputPort.presentError("Email já cadastrado.");
-//                throw new BusinessException("Email já cadastrado.");
+                clienteOutputPort.presentError("Email já cadastrado.");
+                throw new BusinessException("Email já cadastrado.");
             }
 
             if (clienteGateway.existsByCpf(input.getCpf())) {
-//                clienteOutputPort.presentError("CPF já cadastrado.");
-//                throw new BusinessException("CPF já cadastrado.");
+                clienteOutputPort.presentError("CPF já cadastrado.");
+                throw new BusinessException("CPF já cadastrado.");
             }
 
             String senhaCriptografada = passwordService.encryptPassword(input.getSenha());

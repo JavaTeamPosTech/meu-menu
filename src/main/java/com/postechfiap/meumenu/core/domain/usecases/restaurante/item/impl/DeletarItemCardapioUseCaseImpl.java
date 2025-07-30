@@ -47,7 +47,6 @@ public class DeletarItemCardapioUseCaseImpl implements DeletarItemCardapioUseCas
         }
 
         restauranteGateway.atualizarRestaurante(restauranteExistente);
-
         deletarItemCardapioOutputPort.presentSuccess("Item do cardápio com ID " + itemId + " excluído com sucesso do restaurante ID " + restauranteId + ".");
     }
 }

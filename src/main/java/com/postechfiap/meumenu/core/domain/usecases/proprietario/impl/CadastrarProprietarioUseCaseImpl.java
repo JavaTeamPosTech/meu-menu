@@ -34,6 +34,10 @@ public class CadastrarProprietarioUseCaseImpl implements CadastrarProprietarioUs
             cadastrarProprietarioOutputPort.presentError("Email já cadastrado.");
             throw new BusinessException("Email já cadastrado.");
         }
+        if (proprietarioGateway.existsByCpf(input.getCpf())) {
+            cadastrarProprietarioOutputPort.presentError("CPF já cadastrado.");
+            throw new BusinessException("CPF já cadastrado.");
+        }
 
         String senhaCriptografada = passwordService.encryptPassword(input.getSenha());
 
