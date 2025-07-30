@@ -7,6 +7,7 @@ import com.postechfiap.meumenu.infrastructure.api.dtos.response.ClienteResponseD
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.EnderecoResponseDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 
 @Component
 @Getter
+@Setter
 @NoArgsConstructor
 public class AtualizarClientePresenter implements AtualizarClienteOutputPort {
 
