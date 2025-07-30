@@ -1,4 +1,4 @@
-package com.postechfiap.meumenu.integration.cliente;
+package com.postechfiap.meumenu.integration.proprietario;
 
 import com.postechfiap.meumenu.core.domain.entities.ProprietarioDomain;
 import com.postechfiap.meumenu.core.domain.entities.EnderecoDomain;
