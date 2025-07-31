@@ -10,12 +10,10 @@ import com.postechfiap.meumenu.core.exceptions.BusinessException;
 import com.postechfiap.meumenu.core.gateways.ClienteGateway;
 import com.postechfiap.meumenu.core.gateways.UsuarioGateway;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
 @RequiredArgsConstructor
 public class CadastrarClienteUseCaseImpl implements CadastrarClienteUseCase {
 

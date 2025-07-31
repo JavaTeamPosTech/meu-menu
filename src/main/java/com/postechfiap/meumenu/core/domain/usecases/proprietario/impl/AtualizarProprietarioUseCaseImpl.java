@@ -9,12 +9,10 @@ import com.postechfiap.meumenu.core.exceptions.ResourceNotFoundException;
 import com.postechfiap.meumenu.core.gateways.ProprietarioGateway;
 import com.postechfiap.meumenu.core.gateways.UsuarioGateway;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
 
-@Service
 @RequiredArgsConstructor
 public class AtualizarProprietarioUseCaseImpl implements AtualizarProprietarioUseCase {
 

@@ -6,12 +6,10 @@ import com.postechfiap.meumenu.core.domain.usecases.cliente.BuscarClientePorIdUs
 import com.postechfiap.meumenu.core.exceptions.BusinessException;
 import com.postechfiap.meumenu.core.gateways.ClienteGateway;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.UUID;
 
-@Service
 @RequiredArgsConstructor
 public class BuscarClientePorIdUseCaseImpl implements BuscarClientePorIdUseCase {
 

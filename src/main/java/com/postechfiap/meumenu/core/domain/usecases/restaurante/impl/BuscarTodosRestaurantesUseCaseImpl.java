@@ -5,12 +5,10 @@ import com.postechfiap.meumenu.core.domain.presenters.BuscarTodosRestaurantesOut
 import com.postechfiap.meumenu.core.domain.usecases.restaurante.BuscarTodosRestaurantesUseCase;
 import com.postechfiap.meumenu.core.gateways.RestauranteGateway;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
 
-@Service
 @RequiredArgsConstructor
 public class BuscarTodosRestaurantesUseCaseImpl implements BuscarTodosRestaurantesUseCase {
 

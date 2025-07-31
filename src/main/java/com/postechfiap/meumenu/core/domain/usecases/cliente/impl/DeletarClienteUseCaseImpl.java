@@ -6,12 +6,10 @@ import com.postechfiap.meumenu.core.domain.usecases.cliente.DeletarClienteUseCas
 import com.postechfiap.meumenu.core.gateways.ClienteGateway;
 import com.postechfiap.meumenu.core.exceptions.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.UUID;
 
-@Service
 @RequiredArgsConstructor
 public class DeletarClienteUseCaseImpl implements DeletarClienteUseCase {
 

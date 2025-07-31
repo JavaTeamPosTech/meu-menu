@@ -1,21 +1,18 @@
 package com.postechfiap.meumenu.core.domain.usecases.usuario.impl;
 
-import com.postechfiap.meumenu.core.domain.entities.UsuarioDomain; // Importar UsuarioDomain
-import com.postechfiap.meumenu.core.domain.presenters.AlterarSenhaOutputPort; // NOVO: Interface do Presenter
-import com.postechfiap.meumenu.core.domain.services.PasswordService; // Para criptografia
+import com.postechfiap.meumenu.core.domain.entities.UsuarioDomain;
+import com.postechfiap.meumenu.core.domain.presenters.AlterarSenhaOutputPort;
+import com.postechfiap.meumenu.core.domain.services.PasswordService;
 import com.postechfiap.meumenu.core.domain.usecases.usuario.AlterarSenhaUseCase;
 import com.postechfiap.meumenu.core.dtos.usuario.AlterarSenhaInputModel;
 import com.postechfiap.meumenu.core.exceptions.BusinessException;
 import com.postechfiap.meumenu.core.exceptions.ResourceNotFoundException;
-import com.postechfiap.meumenu.core.gateways.UsuarioGateway; // Para buscar e atualizar usuário
+import com.postechfiap.meumenu.core.gateways.UsuarioGateway;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime; // Para dataAtualizacao
+import java.time.LocalDateTime;
 import java.util.Optional;
-import java.util.UUID;
 
-@Service
 @RequiredArgsConstructor
 public class AlterarSenhaUseCaseImpl implements AlterarSenhaUseCase {
 

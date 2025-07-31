@@ -5,12 +5,10 @@ import com.postechfiap.meumenu.core.domain.presenters.BuscarTodosClientesOutputP
 import com.postechfiap.meumenu.core.domain.usecases.cliente.BuscarTodosClientesUseCase;
 import com.postechfiap.meumenu.core.gateways.ClienteGateway;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
 
-@Service
 @RequiredArgsConstructor
 public class BuscarTodosClientesUseCaseImpl implements BuscarTodosClientesUseCase {
 
