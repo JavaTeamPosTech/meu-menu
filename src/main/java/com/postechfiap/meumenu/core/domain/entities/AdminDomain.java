@@ -17,4 +17,8 @@ public class AdminDomain extends UsuarioDomain {
     public AdminDomain(UUID id, String nome, String email, String login, String senha, LocalDateTime dataCriacao, LocalDateTime dataAtualizacao, List<EnderecoDomain> enderecos) {
         super(id, nome, email, login, senha, dataCriacao, dataAtualizacao, enderecos);
     }
+    public AdminDomain(String nome, String email, String login, String senha) {
+        super(nome, email, login, senha);
+    }
+
 }

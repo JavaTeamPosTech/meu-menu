@@ -4,6 +4,7 @@ import com.postechfiap.meumenu.core.controllers.*;
 import com.postechfiap.meumenu.core.controllers.impl.*;
 import com.postechfiap.meumenu.core.domain.usecases.admin.BuscarTodosClientesAdminUseCase;
 import com.postechfiap.meumenu.core.domain.usecases.admin.BuscarTodosProprietariosAdminUseCase;
+import com.postechfiap.meumenu.core.domain.usecases.admin.CadastrarAdminUseCase;
 import com.postechfiap.meumenu.core.domain.usecases.cliente.*;
 import com.postechfiap.meumenu.core.domain.usecases.proprietario.AtualizarProprietarioUseCase;
 import com.postechfiap.meumenu.core.domain.usecases.proprietario.BuscarProprietarioPorIdUseCase;
@@ -158,6 +159,13 @@ public class InputPortsConfig {
             BuscarTodosProprietariosAdminUseCase buscarTodosProprietariosAdminUseCase) {
         return new BuscarTodosProprietariosAdminAdminInputPortImpl(
                 buscarTodosProprietariosAdminUseCase);
+    }
+
+    @Bean
+    public CadastrarAdminInputPort cadastrarAdminInputPort(
+            CadastrarAdminUseCase cadastrarAdminUseCase) {
+        return new CadastrarAdminInputPortImpl(
+                cadastrarAdminUseCase);
     }
 
 }

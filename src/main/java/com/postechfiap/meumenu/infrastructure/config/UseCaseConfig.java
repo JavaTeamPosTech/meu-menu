@@ -4,8 +4,10 @@ import com.postechfiap.meumenu.core.domain.presenters.*;
 import com.postechfiap.meumenu.core.domain.services.PasswordService;
 import com.postechfiap.meumenu.core.domain.usecases.admin.BuscarTodosClientesAdminUseCase;
 import com.postechfiap.meumenu.core.domain.usecases.admin.BuscarTodosProprietariosAdminUseCase;
+import com.postechfiap.meumenu.core.domain.usecases.admin.CadastrarAdminUseCase;
 import com.postechfiap.meumenu.core.domain.usecases.admin.impl.BuscarTodosClientesAdminUseCaseImpl;
 import com.postechfiap.meumenu.core.domain.usecases.admin.impl.BuscarTodosProprietariosAdminUseCaseImpl;
+import com.postechfiap.meumenu.core.domain.usecases.admin.impl.CadastrarAdminUseCaseImpl;
 import com.postechfiap.meumenu.core.domain.usecases.cliente.*;
 import com.postechfiap.meumenu.core.domain.usecases.cliente.impl.*;
 import com.postechfiap.meumenu.core.domain.usecases.proprietario.AtualizarProprietarioUseCase;
@@ -259,6 +261,19 @@ public class UseCaseConfig {
         return new BuscarTodosProprietariosAdminUseCaseImpl(
                 proprietarioGateway,
                 buscarTodosProprietariosOutputPort);
+    }
+
+    @Bean
+    public CadastrarAdminUseCase cadastrarAdminUseCase(
+            AdminGateway adminGateway,
+            UsuarioGateway  usuarioGateway,
+            PasswordService passwordService,
+            CadastrarAdminOutputPort cadastrarAdminOutputPort) {
+        return new CadastrarAdminUseCaseImpl(
+                adminGateway,
+                usuarioGateway,
+                passwordService,
+                cadastrarAdminOutputPort);
     }
 
 }
