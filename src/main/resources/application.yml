@@ -8,7 +8,7 @@ spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     password: ${POSTGRES_PASSWORD:postgres}
-    url: jdbc:postgresql://localhost:5432/meuMenu
+    url: jdbc:postgresql://${POSTGRES_HOST:db}:${POSTGRES_PORT:5432}/${POSTGRES_DB:meuMenu}
     username: ${POSTGRES_USER:postgres}
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
