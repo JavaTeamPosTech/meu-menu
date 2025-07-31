@@ -1,12 +1,11 @@
-package com.postechfiap.meumenu.infrastructure.api.presenters;
+package com.postechfiap.meumenu.infrastructure.api.presenters.restaurante;
 
 import com.postechfiap.meumenu.core.domain.entities.RestauranteDomain;
 import com.postechfiap.meumenu.core.domain.entities.EnderecoRestauranteDomain;
 import com.postechfiap.meumenu.core.domain.entities.HorarioFuncionamentoDomain;
 import com.postechfiap.meumenu.core.domain.entities.ItemCardapioDomain;
 import com.postechfiap.meumenu.core.domain.entities.TipoCozinhaDomain;
-import com.postechfiap.meumenu.core.domain.presenters.restaurante.BuscarRestaurantePorIdOutputPort;
-
+import com.postechfiap.meumenu.core.domain.presenters.restaurante.CadastrarRestauranteOutputPort;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,13 +19,12 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @NoArgsConstructor
-public class BuscarRestaurantePorIdPresenter implements BuscarRestaurantePorIdOutputPort {
+public class CadastrarRestaurantePresenter implements CadastrarRestauranteOutputPort {
 
-    private RestauranteResponseDTO viewModel;
+    private CadastrarRestauranteResponseDTO viewModel;
 
     @Override
     public void presentSuccess(RestauranteDomain restaurante) {
-
         EnderecoRestauranteResponseDTO enderecoResponse = null;
         if (restaurante.getEndereco() != null) {
             enderecoResponse = mapEnderecoRestauranteDomainToResponseDTO(restaurante.getEndereco());
@@ -53,17 +51,30 @@ public class BuscarRestaurantePorIdPresenter implements BuscarRestaurantePorIdOu
                     .collect(Collectors.toList());
         }
 
-        this.viewModel = new RestauranteResponseDTO(
+        this.viewModel = new CadastrarRestauranteResponseDTO(
                 restaurante.getId(),
                 restaurante.getCnpj(),
                 restaurante.getRazaoSocial(),
                 restaurante.getNomeFantasia(),
                 restaurante.getInscricaoEstadual(),
                 restaurante.getTelefoneComercial(),
+                restaurante.getProprietario().getId(),
                 enderecoResponse,
                 tiposCozinhaResponse,
                 horariosResponse,
-                itensResponse
+                itensResponse,
+                "Restaurante cadastrado com sucesso!",
+                "SUCCESS"
+        );
+    }
+
+    @Override
+    public void presentError(String message) {
+        this.viewModel = new CadastrarRestauranteResponseDTO(
+                null, null, null, null, null, null, null,
+                null, null, null, null,
+                message,
+                "FAIL"
         );
     }
 
@@ -92,7 +103,7 @@ public class BuscarRestaurantePorIdPresenter implements BuscarRestaurantePorIdOu
                 domain.getDisponivelApenasNoRestaurante(), domain.getUrlFoto());
     }
 
-    public RestauranteResponseDTO getViewModel() {
+    public CadastrarRestauranteResponseDTO getViewModel() {
         return viewModel;
     }
 }

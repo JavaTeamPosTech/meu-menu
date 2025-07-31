@@ -1,4 +1,4 @@
-package com.postechfiap.meumenu.infrastructure.api.presenters;
+package com.postechfiap.meumenu.infrastructure.api.presenters.restaurante;
 
 import com.postechfiap.meumenu.core.domain.presenters.restaurante.DeletarRestauranteOutputPort;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.DeletarRestauranteResponseDTO;

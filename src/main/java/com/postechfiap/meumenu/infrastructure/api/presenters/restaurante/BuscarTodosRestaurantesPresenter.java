@@ -1,80 +1,80 @@
-package com.postechfiap.meumenu.infrastructure.api.presenters;
+package com.postechfiap.meumenu.infrastructure.api.presenters.restaurante;
 
 import com.postechfiap.meumenu.core.domain.entities.RestauranteDomain;
 import com.postechfiap.meumenu.core.domain.entities.EnderecoRestauranteDomain;
 import com.postechfiap.meumenu.core.domain.entities.HorarioFuncionamentoDomain;
 import com.postechfiap.meumenu.core.domain.entities.ItemCardapioDomain;
 import com.postechfiap.meumenu.core.domain.entities.TipoCozinhaDomain;
-import com.postechfiap.meumenu.core.domain.presenters.restaurante.CadastrarRestauranteOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.restaurante.BuscarTodosRestaurantesOutputPort;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
 @Getter
-@Setter
 @NoArgsConstructor
-public class CadastrarRestaurantePresenter implements CadastrarRestauranteOutputPort {
+public class BuscarTodosRestaurantesPresenter implements BuscarTodosRestaurantesOutputPort {
 
-    private CadastrarRestauranteResponseDTO viewModel;
+    private List<RestauranteResponseDTO> restaurantesViewModel;
+
+    private boolean isNoContent = false;
+    private String noContentMessage;
 
     @Override
-    public void presentSuccess(RestauranteDomain restaurante) {
+    public void presentSuccess(List<RestauranteDomain> restaurantes) {
+        this.restaurantesViewModel = restaurantes.stream()
+                .map(this::mapRestauranteDomainToResponseDTO)
+                .collect(Collectors.toList());
+        this.isNoContent = false;
+        this.noContentMessage = null;
+    }
+
+    @Override
+    public void presentNoContent(String message) {
+        this.restaurantesViewModel = Collections.emptyList();
+        this.isNoContent = true;
+        this.noContentMessage = message;
+    }
+
+    private RestauranteResponseDTO mapRestauranteDomainToResponseDTO(RestauranteDomain domain) {
+        if (domain == null) return null;
+
         EnderecoRestauranteResponseDTO enderecoResponse = null;
-        if (restaurante.getEndereco() != null) {
-            enderecoResponse = mapEnderecoRestauranteDomainToResponseDTO(restaurante.getEndereco());
+        if (domain.getEndereco() != null) {
+            enderecoResponse = mapEnderecoRestauranteDomainToResponseDTO(domain.getEndereco());
         }
 
         List<TipoCozinhaResponseDTO> tiposCozinhaResponse = null;
-        if (restaurante.getTiposCozinha() != null) {
-            tiposCozinhaResponse = restaurante.getTiposCozinha().stream()
+        if (domain.getTiposCozinha() != null) {
+            tiposCozinhaResponse = domain.getTiposCozinha().stream()
                     .map(this::mapTipoCozinhaDomainToResponseDTO)
                     .collect(Collectors.toList());
         }
 
         List<HorarioFuncionamentoResponseDTO> horariosResponse = null;
-        if (restaurante.getHorariosFuncionamento() != null) {
-            horariosResponse = restaurante.getHorariosFuncionamento().stream()
+        if (domain.getHorariosFuncionamento() != null) {
+            horariosResponse = domain.getHorariosFuncionamento().stream()
                     .map(this::mapHorarioFuncionamentoDomainToResponseDTO)
                     .collect(Collectors.toList());
         }
 
-        List<ItemCardapioResponseDTO> itensResponse = null;
-        if (restaurante.getItensCardapio() != null) {
-            itensResponse = restaurante.getItensCardapio().stream()
-                    .map(this::mapItemCardapioDomainToResponseDTO)
-                    .collect(Collectors.toList());
-        }
-
-        this.viewModel = new CadastrarRestauranteResponseDTO(
-                restaurante.getId(),
-                restaurante.getCnpj(),
-                restaurante.getRazaoSocial(),
-                restaurante.getNomeFantasia(),
-                restaurante.getInscricaoEstadual(),
-                restaurante.getTelefoneComercial(),
-                restaurante.getProprietario().getId(),
+        List<ItemCardapioResponseDTO> itensResponse = Collections.emptyList();
+        return new RestauranteResponseDTO(
+                domain.getId(),
+                domain.getCnpj(),
+                domain.getRazaoSocial(),
+                domain.getNomeFantasia(),
+                domain.getInscricaoEstadual(),
+                domain.getTelefoneComercial(),
                 enderecoResponse,
                 tiposCozinhaResponse,
                 horariosResponse,
-                itensResponse,
-                "Restaurante cadastrado com sucesso!",
-                "SUCCESS"
-        );
-    }
-
-    @Override
-    public void presentError(String message) {
-        this.viewModel = new CadastrarRestauranteResponseDTO(
-                null, null, null, null, null, null, null,
-                null, null, null, null,
-                message,
-                "FAIL"
+                itensResponse
         );
     }
 
@@ -103,7 +103,7 @@ public class CadastrarRestaurantePresenter implements CadastrarRestauranteOutput
                 domain.getDisponivelApenasNoRestaurante(), domain.getUrlFoto());
     }
 
-    public CadastrarRestauranteResponseDTO getViewModel() {
-        return viewModel;
+    public List<RestauranteResponseDTO> getViewModel() {
+        return restaurantesViewModel;
     }
 }

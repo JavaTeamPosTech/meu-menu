@@ -7,8 +7,8 @@ import com.postechfiap.meumenu.infrastructure.api.dtos.request.AlterarSenhaReque
 import com.postechfiap.meumenu.infrastructure.api.dtos.request.LoginRequestDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.LoginResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.MensagemResponseDTO;
-import com.postechfiap.meumenu.infrastructure.api.presenters.AlterarSenhaPresenter;
-import com.postechfiap.meumenu.infrastructure.api.presenters.LoginPresenter;
+import com.postechfiap.meumenu.infrastructure.api.presenters.usuario.AlterarSenhaPresenter;
+import com.postechfiap.meumenu.infrastructure.api.presenters.usuario.LoginPresenter;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;

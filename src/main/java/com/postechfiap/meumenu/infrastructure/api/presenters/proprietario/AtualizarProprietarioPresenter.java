@@ -1,70 +1,48 @@
-package com.postechfiap.meumenu.infrastructure.api.presenters;
+package com.postechfiap.meumenu.infrastructure.api.presenters.proprietario;
 
 import com.postechfiap.meumenu.core.domain.entities.*;
-import com.postechfiap.meumenu.core.domain.presenters.proprietario.BuscarTodosProprietariosOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.proprietario.AtualizarProprietarioOutputPort;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.stereotype.Component;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
 @Getter
-@Setter
 @NoArgsConstructor
-public class BuscarTodosProprietariosPresenter implements BuscarTodosProprietariosOutputPort {
+public class AtualizarProprietarioPresenter implements AtualizarProprietarioOutputPort {
 
-    private List<ProprietarioResponseDTO> viewModel;
-    private boolean isNoContent = false;
-    private String noContentMessage;
+    private ProprietarioResponseDTO viewModel;
 
     @Override
-    public void presentSuccess(List<ProprietarioDomain> proprietarios) {
-        this.viewModel = proprietarios.stream()
-                .map(this::mapProprietarioDomainToResponseDTO)
-                .collect(Collectors.toList());
-        this.isNoContent = false;
-        this.noContentMessage = null;
-    }
-
-    @Override
-    public void presentNoContent(String message) {
-        this.viewModel = Collections.emptyList();
-        this.isNoContent = true;
-        this.noContentMessage = message;
-    }
-
-    private ProprietarioResponseDTO mapProprietarioDomainToResponseDTO(ProprietarioDomain domain) {
-        if (domain == null) return null;
-
+    public void presentSuccess(ProprietarioDomain proprietario) {
         List<EnderecoResponseDTO> enderecosResponse = null;
-        if (domain.getEnderecos() != null) {
-            enderecosResponse = domain.getEnderecos().stream()
+        if (proprietario.getEnderecos() != null) {
+            enderecosResponse = proprietario.getEnderecos().stream()
                     .map(this::mapEnderecoDomainToResponseDTO)
                     .collect(Collectors.toList());
         }
 
         List<RestauranteResponseDTO> restaurantesResponse = null;
-        if (domain.getRestaurantes() != null) {
-            restaurantesResponse = domain.getRestaurantes().stream()
+        if (proprietario.getRestaurantes() != null) {
+            restaurantesResponse = proprietario.getRestaurantes().stream()
                     .map(this::mapRestauranteDomainToResponseDTO)
                     .collect(Collectors.toList());
         }
 
-        return new ProprietarioResponseDTO(
-                domain.getId(),
-                domain.getNome(),
-                domain.getCpf(),
-                domain.getEmail(),
-                domain.getLogin(),
-                domain.getWhatsapp(),
-                domain.getStatusConta(),
-                domain.getDataCriacao(),
-                domain.getDataAtualizacao(),
+        this.viewModel = new ProprietarioResponseDTO(
+                proprietario.getId(),
+                proprietario.getNome(),
+                proprietario.getCpf(),
+                proprietario.getEmail(),
+                proprietario.getLogin(),
+                proprietario.getWhatsapp(),
+                proprietario.getStatusConta(),
+                proprietario.getDataCriacao(),
+                proprietario.getDataAtualizacao(),
                 enderecosResponse,
                 restaurantesResponse
         );
@@ -117,7 +95,6 @@ public class BuscarTodosProprietariosPresenter implements BuscarTodosProprietari
                     .collect(Collectors.toList());
         }
 
-
         return new RestauranteResponseDTO(
                 domain.getId(),
                 domain.getCnpj(),
@@ -150,7 +127,7 @@ public class BuscarTodosProprietariosPresenter implements BuscarTodosProprietari
                 domain.getDisponivelApenasNoRestaurante(), domain.getUrlFoto());
     }
 
-    public List<ProprietarioResponseDTO> getViewModel() {
+    public ProprietarioResponseDTO getViewModel() {
         return viewModel;
     }
 }

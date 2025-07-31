@@ -10,7 +10,10 @@ import com.postechfiap.meumenu.infrastructure.api.dtos.request.CadastrarClienteR
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.CadastrarClienteResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.ClienteResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.DeletarClienteResponseDTO;
-import com.postechfiap.meumenu.infrastructure.api.presenters.*;
+import com.postechfiap.meumenu.infrastructure.api.presenters.cliente.AtualizarClientePresenter;
+import com.postechfiap.meumenu.infrastructure.api.presenters.cliente.BuscarClientePorIdPresenter;
+import com.postechfiap.meumenu.infrastructure.api.presenters.cliente.CadastrarClientePresenter;
+import com.postechfiap.meumenu.infrastructure.api.presenters.cliente.DeletarClientePresenter;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;

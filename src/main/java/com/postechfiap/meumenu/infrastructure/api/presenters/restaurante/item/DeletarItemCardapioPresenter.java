@@ -1,6 +1,6 @@
-package com.postechfiap.meumenu.infrastructure.api.presenters;
+package com.postechfiap.meumenu.infrastructure.api.presenters.restaurante.item;
 
-import com.postechfiap.meumenu.core.domain.presenters.usuario.AlterarSenhaOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.restaurante.item.DeletarItemCardapioOutputPort;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.MensagemResponseDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Getter
 @Setter
 @NoArgsConstructor
-public class AlterarSenhaPresenter implements AlterarSenhaOutputPort {
+public class DeletarItemCardapioPresenter implements DeletarItemCardapioOutputPort {
 
     private MensagemResponseDTO viewModel;
 
@@ -20,14 +20,6 @@ public class AlterarSenhaPresenter implements AlterarSenhaOutputPort {
         this.viewModel = new MensagemResponseDTO(
                 message,
                 "SUCCESS"
-        );
-    }
-
-    @Override
-    public void presentError(String message) {
-        this.viewModel = new MensagemResponseDTO(
-                message,
-                "FAIL"
         );
     }
 

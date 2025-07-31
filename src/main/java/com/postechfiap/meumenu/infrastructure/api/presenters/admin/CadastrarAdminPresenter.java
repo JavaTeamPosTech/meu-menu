@@ -1,4 +1,4 @@
-package com.postechfiap.meumenu.infrastructure.api.presenters;
+package com.postechfiap.meumenu.infrastructure.api.presenters.admin;
 
 import com.postechfiap.meumenu.core.domain.entities.AdminDomain;
 import com.postechfiap.meumenu.core.domain.presenters.admin.CadastrarAdminOutputPort;

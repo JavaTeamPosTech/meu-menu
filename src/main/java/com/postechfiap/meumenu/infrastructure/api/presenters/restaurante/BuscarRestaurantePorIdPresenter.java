@@ -1,11 +1,12 @@
-package com.postechfiap.meumenu.infrastructure.api.presenters;
+package com.postechfiap.meumenu.infrastructure.api.presenters.restaurante;
 
 import com.postechfiap.meumenu.core.domain.entities.RestauranteDomain;
 import com.postechfiap.meumenu.core.domain.entities.EnderecoRestauranteDomain;
 import com.postechfiap.meumenu.core.domain.entities.HorarioFuncionamentoDomain;
 import com.postechfiap.meumenu.core.domain.entities.ItemCardapioDomain;
 import com.postechfiap.meumenu.core.domain.entities.TipoCozinhaDomain;
-import com.postechfiap.meumenu.core.domain.presenters.restaurante.AtualizarRestauranteOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.restaurante.BuscarRestaurantePorIdOutputPort;
+
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,12 +20,13 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @NoArgsConstructor
-public class AtualizarRestaurantePresenter implements AtualizarRestauranteOutputPort {
+public class BuscarRestaurantePorIdPresenter implements BuscarRestaurantePorIdOutputPort {
 
     private RestauranteResponseDTO viewModel;
 
     @Override
     public void presentSuccess(RestauranteDomain restaurante) {
+
         EnderecoRestauranteResponseDTO enderecoResponse = null;
         if (restaurante.getEndereco() != null) {
             enderecoResponse = mapEnderecoRestauranteDomainToResponseDTO(restaurante.getEndereco());

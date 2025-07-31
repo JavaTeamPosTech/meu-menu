@@ -1,7 +1,7 @@
-package com.postechfiap.meumenu.infrastructure.api.presenters;
+package com.postechfiap.meumenu.infrastructure.api.presenters.restaurante.item;
 
 import com.postechfiap.meumenu.core.domain.entities.ItemCardapioDomain;
-import com.postechfiap.meumenu.core.domain.presenters.restaurante.item.AdicionarItemCardapioOutputPort; // Importar a interface do Core
+import com.postechfiap.meumenu.core.domain.presenters.restaurante.item.BuscarItemCardapioPorIdOutputPort;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.ItemCardapioResponseDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Getter
 @Setter
 @NoArgsConstructor
-public class AdicionarItemCardapioPresenter implements AdicionarItemCardapioOutputPort {
+public class BuscarItemCardapioPorIdPresenter implements BuscarItemCardapioPorIdOutputPort {
 
     private ItemCardapioResponseDTO viewModel;
 

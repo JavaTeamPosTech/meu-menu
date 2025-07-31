@@ -2,6 +2,7 @@ package com.postechfiap.meumenu.infrastructure.api.presenters;
 
 import com.postechfiap.meumenu.core.domain.entities.ItemCardapioDomain;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.ItemCardapioResponseDTO;
+import com.postechfiap.meumenu.infrastructure.api.presenters.restaurante.item.AtualizarItemCardapioPresenter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

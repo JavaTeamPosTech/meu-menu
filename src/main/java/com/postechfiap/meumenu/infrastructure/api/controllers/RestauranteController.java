@@ -13,7 +13,11 @@ import com.postechfiap.meumenu.infrastructure.api.dtos.request.CadastrarRestaura
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.CadastrarRestauranteResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.ItemCardapioResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.RestauranteResponseDTO;
-import com.postechfiap.meumenu.infrastructure.api.presenters.*;
+import com.postechfiap.meumenu.infrastructure.api.presenters.restaurante.*;
+import com.postechfiap.meumenu.infrastructure.api.presenters.restaurante.item.AdicionarItemCardapioPresenter;
+import com.postechfiap.meumenu.infrastructure.api.presenters.restaurante.item.AtualizarItemCardapioPresenter;
+import com.postechfiap.meumenu.infrastructure.api.presenters.restaurante.item.BuscarItemCardapioPorIdPresenter;
+import com.postechfiap.meumenu.infrastructure.api.presenters.restaurante.item.DeletarItemCardapioPresenter;
 import com.postechfiap.meumenu.infrastructure.model.ProprietarioEntity;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;

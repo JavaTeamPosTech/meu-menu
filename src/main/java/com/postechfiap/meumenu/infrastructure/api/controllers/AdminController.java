@@ -7,9 +7,9 @@ import com.postechfiap.meumenu.infrastructure.api.dtos.request.CadastrarAdminReq
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.CadastrarAdminResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.ClienteResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.ProprietarioResponseDTO;
-import com.postechfiap.meumenu.infrastructure.api.presenters.BuscarTodosClientesPresenter;
-import com.postechfiap.meumenu.infrastructure.api.presenters.BuscarTodosProprietariosPresenter;
-import com.postechfiap.meumenu.infrastructure.api.presenters.CadastrarAdminPresenter;
+import com.postechfiap.meumenu.infrastructure.api.presenters.cliente.BuscarTodosClientesPresenter;
+import com.postechfiap.meumenu.infrastructure.api.presenters.proprietario.BuscarTodosProprietariosPresenter;
+import com.postechfiap.meumenu.infrastructure.api.presenters.admin.CadastrarAdminPresenter;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;

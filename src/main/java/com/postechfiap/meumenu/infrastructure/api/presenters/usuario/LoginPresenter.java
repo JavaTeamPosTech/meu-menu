@@ -1,4 +1,4 @@
-package com.postechfiap.meumenu.infrastructure.api.presenters;
+package com.postechfiap.meumenu.infrastructure.api.presenters.usuario;
 
 import com.postechfiap.meumenu.core.domain.presenters.usuario.LoginOutputPort;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.LoginResponseDTO;

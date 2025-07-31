@@ -9,10 +9,10 @@ import com.postechfiap.meumenu.infrastructure.api.dtos.request.CadastrarPropriet
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.CadastrarProprietarioResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.DeletarProprietarioResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.ProprietarioResponseDTO;
-import com.postechfiap.meumenu.infrastructure.api.presenters.AtualizarProprietarioPresenter;
-import com.postechfiap.meumenu.infrastructure.api.presenters.BuscarProprietarioPorIdPresenter;
-import com.postechfiap.meumenu.infrastructure.api.presenters.CadastrarProprietarioPresenter;
-import com.postechfiap.meumenu.infrastructure.api.presenters.DeletarProprietarioPresenter;
+import com.postechfiap.meumenu.infrastructure.api.presenters.proprietario.AtualizarProprietarioPresenter;
+import com.postechfiap.meumenu.infrastructure.api.presenters.proprietario.BuscarProprietarioPorIdPresenter;
+import com.postechfiap.meumenu.infrastructure.api.presenters.proprietario.CadastrarProprietarioPresenter;
+import com.postechfiap.meumenu.infrastructure.api.presenters.proprietario.DeletarProprietarioPresenter;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;

@@ -1,10 +1,11 @@
-package com.postechfiap.meumenu.infrastructure.api.presenters;
+package com.postechfiap.meumenu.infrastructure.api.presenters.proprietario;
 
 import com.postechfiap.meumenu.core.domain.entities.*;
-import com.postechfiap.meumenu.core.domain.presenters.proprietario.AtualizarProprietarioOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.proprietario.BuscarProprietarioOutputPort;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -12,8 +13,9 @@ import java.util.stream.Collectors;
 
 @Component
 @Getter
+@Setter
 @NoArgsConstructor
-public class AtualizarProprietarioPresenter implements AtualizarProprietarioOutputPort {
+public class BuscarProprietarioPorIdPresenter implements BuscarProprietarioOutputPort {
 
     private ProprietarioResponseDTO viewModel;
 
@@ -88,7 +90,7 @@ public class AtualizarProprietarioPresenter implements AtualizarProprietarioOutp
                     .collect(Collectors.toList());
         }
 
-        List<ItemCardapioResponseDTO> itensResponse = null; // Para lista completa, pode ser nula ou vazia
+        List<ItemCardapioResponseDTO> itensResponse = null;
         if (domain.getItensCardapio() != null) {
             itensResponse = domain.getItensCardapio().stream()
                     .map(this::mapItemCardapioDomainToResponseDTO)

@@ -1,8 +1,8 @@
-package com.postechfiap.meumenu.infrastructure.api.presenters;
+package com.postechfiap.meumenu.infrastructure.api.presenters.cliente;
 
 import com.postechfiap.meumenu.core.domain.entities.ClienteDomain;
 import com.postechfiap.meumenu.core.domain.entities.EnderecoDomain;
-import com.postechfiap.meumenu.core.domain.presenters.cliente.AtualizarClienteOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.cliente.BuscarClienteOutputPort;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.ClienteResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.EnderecoResponseDTO;
 import lombok.Getter;
@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @NoArgsConstructor
-public class AtualizarClientePresenter implements AtualizarClienteOutputPort {
+public class BuscarClientePorIdPresenter implements BuscarClienteOutputPort {
 
     private ClienteResponseDTO viewModel;
 
@@ -52,6 +52,7 @@ public class AtualizarClientePresenter implements AtualizarClienteOutputPort {
                 enderecosResponse
         );
     }
+
     private EnderecoResponseDTO mapEnderecoDomainToResponseDTO(EnderecoDomain enderecoDomain) {
         if (enderecoDomain == null) {
             return null;

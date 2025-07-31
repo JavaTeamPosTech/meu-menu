@@ -1,4 +1,4 @@
-package com.postechfiap.meumenu.infrastructure.api.presenters;
+package com.postechfiap.meumenu.infrastructure.api.presenters.cliente;
 
 import com.postechfiap.meumenu.core.domain.presenters.cliente.DeletarClienteOutputPort;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.DeletarClienteResponseDTO;

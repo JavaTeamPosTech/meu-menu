@@ -1,13 +1,14 @@
-package com.postechfiap.meumenu.infrastructure.api.presenters;
+package com.postechfiap.meumenu.infrastructure.api.presenters.proprietario;
 
 import com.postechfiap.meumenu.core.domain.entities.*;
-import com.postechfiap.meumenu.core.domain.presenters.proprietario.BuscarProprietarioOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.proprietario.BuscarTodosProprietariosOutputPort;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,36 +16,55 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @NoArgsConstructor
-public class BuscarProprietarioPorIdPresenter implements BuscarProprietarioOutputPort {
+public class BuscarTodosProprietariosPresenter implements BuscarTodosProprietariosOutputPort {
 
-    private ProprietarioResponseDTO viewModel;
+    private List<ProprietarioResponseDTO> viewModel;
+    private boolean isNoContent = false;
+    private String noContentMessage;
 
     @Override
-    public void presentSuccess(ProprietarioDomain proprietario) {
+    public void presentSuccess(List<ProprietarioDomain> proprietarios) {
+        this.viewModel = proprietarios.stream()
+                .map(this::mapProprietarioDomainToResponseDTO)
+                .collect(Collectors.toList());
+        this.isNoContent = false;
+        this.noContentMessage = null;
+    }
+
+    @Override
+    public void presentNoContent(String message) {
+        this.viewModel = Collections.emptyList();
+        this.isNoContent = true;
+        this.noContentMessage = message;
+    }
+
+    private ProprietarioResponseDTO mapProprietarioDomainToResponseDTO(ProprietarioDomain domain) {
+        if (domain == null) return null;
+
         List<EnderecoResponseDTO> enderecosResponse = null;
-        if (proprietario.getEnderecos() != null) {
-            enderecosResponse = proprietario.getEnderecos().stream()
+        if (domain.getEnderecos() != null) {
+            enderecosResponse = domain.getEnderecos().stream()
                     .map(this::mapEnderecoDomainToResponseDTO)
                     .collect(Collectors.toList());
         }
 
         List<RestauranteResponseDTO> restaurantesResponse = null;
-        if (proprietario.getRestaurantes() != null) {
-            restaurantesResponse = proprietario.getRestaurantes().stream()
+        if (domain.getRestaurantes() != null) {
+            restaurantesResponse = domain.getRestaurantes().stream()
                     .map(this::mapRestauranteDomainToResponseDTO)
                     .collect(Collectors.toList());
         }
 
-        this.viewModel = new ProprietarioResponseDTO(
-                proprietario.getId(),
-                proprietario.getNome(),
-                proprietario.getCpf(),
-                proprietario.getEmail(),
-                proprietario.getLogin(),
-                proprietario.getWhatsapp(),
-                proprietario.getStatusConta(),
-                proprietario.getDataCriacao(),
-                proprietario.getDataAtualizacao(),
+        return new ProprietarioResponseDTO(
+                domain.getId(),
+                domain.getNome(),
+                domain.getCpf(),
+                domain.getEmail(),
+                domain.getLogin(),
+                domain.getWhatsapp(),
+                domain.getStatusConta(),
+                domain.getDataCriacao(),
+                domain.getDataAtualizacao(),
                 enderecosResponse,
                 restaurantesResponse
         );
@@ -90,12 +110,13 @@ public class BuscarProprietarioPorIdPresenter implements BuscarProprietarioOutpu
                     .collect(Collectors.toList());
         }
 
-        List<ItemCardapioResponseDTO> itensResponse = null;
+        List<ItemCardapioResponseDTO> itensResponse = null; // Para lista completa, pode ser nula ou vazia
         if (domain.getItensCardapio() != null) {
             itensResponse = domain.getItensCardapio().stream()
                     .map(this::mapItemCardapioDomainToResponseDTO)
                     .collect(Collectors.toList());
         }
+
 
         return new RestauranteResponseDTO(
                 domain.getId(),
@@ -129,7 +150,7 @@ public class BuscarProprietarioPorIdPresenter implements BuscarProprietarioOutpu
                 domain.getDisponivelApenasNoRestaurante(), domain.getUrlFoto());
     }
 
-    public ProprietarioResponseDTO getViewModel() {
+    public List<ProprietarioResponseDTO> getViewModel() {
         return viewModel;
     }
 }
