@@ -2,6 +2,10 @@ package com.postechfiap.meumenu.infrastructure.config;
 
 import com.postechfiap.meumenu.core.domain.presenters.*;
 import com.postechfiap.meumenu.core.domain.services.PasswordService;
+import com.postechfiap.meumenu.core.domain.usecases.admin.BuscarTodosClientesAdminUseCase;
+import com.postechfiap.meumenu.core.domain.usecases.admin.BuscarTodosProprietariosAdminUseCase;
+import com.postechfiap.meumenu.core.domain.usecases.admin.impl.BuscarTodosClientesAdminUseCaseImpl;
+import com.postechfiap.meumenu.core.domain.usecases.admin.impl.BuscarTodosProprietariosAdminUseCaseImpl;
 import com.postechfiap.meumenu.core.domain.usecases.cliente.*;
 import com.postechfiap.meumenu.core.domain.usecases.cliente.impl.*;
 import com.postechfiap.meumenu.core.domain.usecases.proprietario.AtualizarProprietarioUseCase;
@@ -237,6 +241,24 @@ public class UseCaseConfig {
                 usuarioGateway,
                 passwordService,
                 alterarSenhaOutputPort);
+    }
+
+    @Bean
+    public BuscarTodosClientesAdminUseCase buscarTodosClientesAdminUseCase(
+            ClienteGateway clienteGateway,
+            BuscarTodosClientesOutputPort buscarTodosClientesOutputPort) {
+        return new BuscarTodosClientesAdminUseCaseImpl(
+                clienteGateway,
+                buscarTodosClientesOutputPort);
+    }
+
+    @Bean
+    public BuscarTodosProprietariosAdminUseCase buscarTodosProprietariosAdminUseCase(
+            ProprietarioGateway proprietarioGateway,
+            BuscarTodosProprietariosOutputPort buscarTodosProprietariosOutputPort) {
+        return new BuscarTodosProprietariosAdminUseCaseImpl(
+                proprietarioGateway,
+                buscarTodosProprietariosOutputPort);
     }
 
 }

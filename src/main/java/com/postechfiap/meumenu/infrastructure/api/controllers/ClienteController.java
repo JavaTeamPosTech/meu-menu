@@ -84,6 +84,7 @@ public class ClienteController {
             return ResponseEntity.ok(responseDTOs);
         }
     }
+
     @Operation(
             summary = "Deleta um cliente por ID",
             description = "Este endpoint deleta um cliente específico pelo seu ID."

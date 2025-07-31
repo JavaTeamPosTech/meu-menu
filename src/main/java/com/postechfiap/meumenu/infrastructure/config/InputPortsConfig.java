@@ -2,6 +2,8 @@ package com.postechfiap.meumenu.infrastructure.config;
 
 import com.postechfiap.meumenu.core.controllers.*;
 import com.postechfiap.meumenu.core.controllers.impl.*;
+import com.postechfiap.meumenu.core.domain.usecases.admin.BuscarTodosClientesAdminUseCase;
+import com.postechfiap.meumenu.core.domain.usecases.admin.BuscarTodosProprietariosAdminUseCase;
 import com.postechfiap.meumenu.core.domain.usecases.cliente.*;
 import com.postechfiap.meumenu.core.domain.usecases.proprietario.AtualizarProprietarioUseCase;
 import com.postechfiap.meumenu.core.domain.usecases.proprietario.BuscarProprietarioPorIdUseCase;
@@ -142,6 +144,20 @@ public class InputPortsConfig {
     public DeletarItemCardapioInputPort deletarItemCardapioInputPort(
             DeletarItemCardapioUseCase deletarItemCardapioUseCase) {
         return new DeletarItemCardapioInputPortImpl(deletarItemCardapioUseCase);
+    }
+
+    @Bean
+    public BuscarTodosClientesAdminInputPort buscarTodosClientesAdminInputPort(
+            BuscarTodosClientesAdminUseCase buscarTodosClientesAdminUseCase) {
+        return new BuscarTodosClientesAdminInputPortImpl(
+                buscarTodosClientesAdminUseCase);
+    }
+
+    @Bean
+    public BuscarTodosProprietariosAdminInputPort buscarTodosProprietariosAdminInputPort(
+            BuscarTodosProprietariosAdminUseCase buscarTodosProprietariosAdminUseCase) {
+        return new BuscarTodosProprietariosAdminAdminInputPortImpl(
+                buscarTodosProprietariosAdminUseCase);
     }
 
 }

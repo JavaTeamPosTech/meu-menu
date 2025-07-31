@@ -48,6 +48,7 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.GET, "/proprietarios/*").permitAll() //  TODO REMOVER ESSA LINHA
                                 .requestMatchers(HttpMethod.DELETE, "/proprietarios/*").permitAll() //  TODO REMOVER ESSA LINHA
                                 .requestMatchers(HttpMethod.PUT, "/proprietarios/*").permitAll() //  TODO REMOVER ESSA LINHA
+                                .requestMatchers(HttpMethod.GET, "/admin/*").permitAll() //  TODO REMOVER ESSA LINHA
                                 .requestMatchers(HttpMethod.GET, "/restaurantes").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/restaurantes/*").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/restaurantes/*/itens/*").permitAll()

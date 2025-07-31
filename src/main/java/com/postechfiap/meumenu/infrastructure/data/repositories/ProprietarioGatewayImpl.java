@@ -7,8 +7,10 @@ import com.postechfiap.meumenu.infrastructure.model.ProprietarioEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
@@ -43,5 +45,13 @@ public class ProprietarioGatewayImpl implements ProprietarioGateway {
     @Override
     public ProprietarioDomain atualizarProprietario(ProprietarioDomain proprietarioDomain) {
         return cadastrarProprietario(proprietarioDomain);
+    }
+
+    @Override
+    public List<ProprietarioDomain> buscarTodosProprietarios() {
+        List<ProprietarioEntity> proprietariosEntities = proprietarioSpringRepository.findAll();
+        return proprietariosEntities.stream()
+                .map(proprietarioDataMapper::toDomain)
+                .collect(Collectors.toList());
     }
 }
