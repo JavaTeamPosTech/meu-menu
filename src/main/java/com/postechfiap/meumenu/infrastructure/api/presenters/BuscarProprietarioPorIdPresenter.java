@@ -90,7 +90,7 @@ public class BuscarProprietarioPorIdPresenter implements BuscarProprietarioOutpu
                     .collect(Collectors.toList());
         }
 
-        List<ItemCardapioResponseDTO> itensResponse = null; // Para lista completa, pode ser nula ou vazia
+        List<ItemCardapioResponseDTO> itensResponse = null;
         if (domain.getItensCardapio() != null) {
             itensResponse = domain.getItensCardapio().stream()
                     .map(this::mapItemCardapioDomainToResponseDTO)

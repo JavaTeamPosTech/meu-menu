@@ -44,7 +44,7 @@ class BuscarRestaurantePorIdUseCaseImplTest {
         proprietarioMock = new ProprietarioDomain(
                 UUID.randomUUID(), "11122233344", "11988887777", null,
                 "Dono Teste", "dono@teste.com", "dono.login", "hash_senha",
-                LocalDateTime.now(), LocalDateTime.now(), Collections.emptyList()
+                LocalDateTime.now(), LocalDateTime.now(), Collections.emptyList(), Collections.emptyList()
         );
 
         // Criar uma instância de RestauranteDomain para simular um retorno de sucesso

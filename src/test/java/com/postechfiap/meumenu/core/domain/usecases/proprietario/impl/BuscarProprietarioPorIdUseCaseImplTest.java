@@ -50,6 +50,7 @@ class BuscarProprietarioPorIdUseCaseImplTest {
                 "senha_hash",
                 LocalDateTime.now(),
                 LocalDateTime.now(),
+                Collections.emptyList(),
                 Collections.emptyList()
         );
     }

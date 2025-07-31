@@ -72,7 +72,7 @@ class AtualizarRestauranteUseCaseImplTest {
         proprietarioDomain = new ProprietarioDomain(
                 proprietarioId, "11122233344", "11988887777", StatusContaEnum.ATIVO,
                 "Dono Teste", "dono@teste.com", "dono.login", "hash_senha",
-                LocalDateTime.now(), LocalDateTime.now(), Collections.emptyList()
+                LocalDateTime.now(), LocalDateTime.now(), Collections.emptyList(),  Collections.emptyList()
         );
 
         // Endereço Existente do Restaurante

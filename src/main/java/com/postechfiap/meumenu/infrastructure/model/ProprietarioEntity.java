@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.UUID;
 
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Setter
 @Getter
@@ -31,4 +30,11 @@ public class ProprietarioEntity extends UsuarioEntity {
     @OneToMany(mappedBy = "proprietario", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<RestauranteEntity> restaurantes = new ArrayList<>();
 
+    public ProprietarioEntity(UUID id, String nome, String email, String login, String senha, LocalDateTime dataAtualizacao, LocalDateTime dataCriacao, List<EnderecoEntity> enderecos, String cpf, String whatsapp, StatusContaEnum statusConta, List<RestauranteEntity> restaurantes) {
+        super(id, nome, email, login, senha, dataAtualizacao, dataCriacao, enderecos);
+        this.cpf = cpf;
+        this.whatsapp = whatsapp;
+        this.statusConta = statusConta;
+        this.restaurantes = restaurantes;
+    }
 }

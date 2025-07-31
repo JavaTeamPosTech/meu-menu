@@ -42,7 +42,7 @@ class BuscarTodosRestaurantesUseCaseImplTest {
         proprietarioMock = new ProprietarioDomain(
                 UUID.randomUUID(), "11122233344", "11988887777", null, // StatusContaEnum.ATIVO
                 "Proprietario Teste", "prop@test.com", "proplogin", "hash",
-                LocalDateTime.now(), LocalDateTime.now(), Collections.emptyList()
+                LocalDateTime.now(), LocalDateTime.now(), Collections.emptyList(), Collections.emptyList()
         );
 
         restaurante1 = new RestauranteDomain(

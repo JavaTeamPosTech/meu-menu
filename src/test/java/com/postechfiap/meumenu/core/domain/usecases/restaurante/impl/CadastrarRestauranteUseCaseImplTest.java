@@ -63,7 +63,7 @@ class CadastrarRestauranteUseCaseImplTest {
         proprietarioDomain = new ProprietarioDomain(
                 proprietarioId, "12345678900", "11987654321", StatusContaEnum.ATIVO,
                 "Dono Teste", "dono@teste.com", "dono.login", "hash_senha",
-                LocalDateTime.now(), LocalDateTime.now(), Collections.emptyList()
+                LocalDateTime.now(), LocalDateTime.now(), Collections.emptyList(), Collections.emptyList()
         );
 
         EnderecoRestauranteInputModel enderecoInput = new EnderecoRestauranteInputModel(

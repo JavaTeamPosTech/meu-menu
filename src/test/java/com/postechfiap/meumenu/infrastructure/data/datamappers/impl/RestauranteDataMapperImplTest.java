@@ -93,7 +93,7 @@ class RestauranteDataMapperImplTest {
         proprietarioDomain = new ProprietarioDomain(
                 proprietarioId, "12345678900", "11999999999", StatusContaEnum.ATIVO,
                 "Prop Teste", "prop@test.com", "prop.login", "prop_hash",
-                LocalDateTime.now(), LocalDateTime.now(), Collections.emptyList()
+                LocalDateTime.now(), LocalDateTime.now(), Collections.emptyList(), Collections.emptyList()
         );
 
         enderecoRestauranteDomain = new EnderecoRestauranteDomain(
@@ -144,7 +144,8 @@ class RestauranteDataMapperImplTest {
                 Collections.emptyList(),
                 "12345678900",
                 "11999999999",
-                StatusContaEnum.ATIVO
+                StatusContaEnum.ATIVO,
+                null // Lista de Restaurantes será setada depois
         );
 
         enderecoRestauranteEntity = new EnderecoRestauranteEntity(

@@ -55,7 +55,8 @@ class ProprietarioGatewayIntegrationTest extends AbstractIntegrationTest {
                 "proplogin" + counter, // Login único
                 "senha_hash_" + counter, // Senha criptografada
                 LocalDateTime.now().minusDays(10), LocalDateTime.now().minusDays(5),
-                Collections.singletonList(enderecoDomain) // Endereços
+                Collections.singletonList(enderecoDomain), // Endereços
+                Collections.emptyList() // Restaurantes (inicialmente vazio)
         );
         // Setar a relação bidirecional no domínio
         enderecoDomain.setUsuario(proprietarioDomain);
@@ -161,7 +162,8 @@ class ProprietarioGatewayIntegrationTest extends AbstractIntegrationTest {
                 savedProprietario.getSenha(), // Senha original
                 savedProprietario.getDataCriacao(), // Data Criação original
                 LocalDateTime.now(), // Data Atualização (simula que mudou)
-                savedProprietario.getEnderecos() // Endereços (os mesmos)
+                savedProprietario.getEnderecos(), // Endereços (os mesmos)
+                savedProprietario.getRestaurantes() // Restaurantes (os mesmos)
         );
         // Ação: Atualizar o proprietário
         ProprietarioDomain resultProprietario = proprietarioGateway.atualizarProprietario(updatedProprietarioDomain);

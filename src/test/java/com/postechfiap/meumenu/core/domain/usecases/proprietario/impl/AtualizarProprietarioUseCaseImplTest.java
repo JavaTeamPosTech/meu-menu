@@ -59,6 +59,7 @@ class AtualizarProprietarioUseCaseImplTest {
                 "senha_hash_original",
                 LocalDateTime.now().minusDays(10),
                 LocalDateTime.now().minusDays(10),
+                Collections.emptyList(),
                 Collections.emptyList()
         );
 
@@ -83,6 +84,7 @@ class AtualizarProprietarioUseCaseImplTest {
                 "senha_hash_original",
                 proprietarioExistente.getDataCriacao(),
                 LocalDateTime.now(),
+                Collections.emptyList(),
                 Collections.emptyList()
         );
     }

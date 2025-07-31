@@ -37,9 +37,9 @@
             LocalDateTime dataAtualizacao,
 
             @Schema(description = "Lista de endereços do proprietário")
-            List<EnderecoResponseDTO> enderecos, // Já existia
+            List<EnderecoResponseDTO> enderecos,
 
             @Schema(description = "Lista de restaurantes do proprietário")
-            List<RestauranteResponseDTO> restaurantes // NOVO: Adicionado aqui
+            List<RestauranteResponseDTO> restaurantes
     ) {
     }

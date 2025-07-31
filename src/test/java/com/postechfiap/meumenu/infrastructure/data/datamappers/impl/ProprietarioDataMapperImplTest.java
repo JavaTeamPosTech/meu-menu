@@ -71,7 +71,8 @@ class ProprietarioDataMapperImplTest {
                 proprietarioId, "12345678900", "11987654321", StatusContaEnum.ATIVO,
                 "Nome Proprietario", "prop@email.com", "login_prop", "senha_prop_hash",
                 LocalDateTime.now().minusDays(10), LocalDateTime.now().minusDays(5),
-                Collections.singletonList(enderecoDomain) // Lista de Endereços
+                Collections.singletonList(enderecoDomain), // Lista de Endereços
+                Collections.emptyList() // Lista de Restaurantes (vazia para este teste)
 
         );
         enderecoDomain.setUsuario(proprietarioDomain); // Garante bidirecionalidade no Domain
@@ -88,7 +89,8 @@ class ProprietarioDataMapperImplTest {
                 Collections.singletonList(enderecoEntity), // Lista de Endereços
                 "12345678900",
                 "11987654321",
-                StatusContaEnum.ATIVO
+                StatusContaEnum.ATIVO,
+                Collections.emptyList() // Lista de Restaurantes (vazia para este teste)
         );
 
         enderecoEntity.setUsuario(proprietarioEntity); // Garante bidirecionalidade na Entity
@@ -225,7 +227,7 @@ class ProprietarioDataMapperImplTest {
         proprietarioDomain = new ProprietarioDomain(
                 proprietarioId, "cpf", "zap", StatusContaEnum.ATIVO,
                 "nome", "email", "login", "senha",
-                LocalDateTime.now(), LocalDateTime.now(), Collections.emptyList()
+                LocalDateTime.now(), LocalDateTime.now(), Collections.emptyList(), Collections.emptyList()
         );
         ProprietarioEntity mappedEntity = proprietarioDataMapper.toEntity(proprietarioDomain);
         assertNotNull(mappedEntity.getEnderecos());
