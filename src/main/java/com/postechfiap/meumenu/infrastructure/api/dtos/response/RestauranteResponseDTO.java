@@ -27,12 +27,15 @@ public record RestauranteResponseDTO(
         String telefoneComercial,
 
         @Schema(description = "Endereço do restaurante")
+        @JsonInclude(JsonInclude.Include.NON_EMPTY)
         EnderecoRestauranteResponseDTO endereco,
 
         @Schema(description = "Tipos de cozinha do restaurante")
+        @JsonInclude(JsonInclude.Include.NON_EMPTY)
         List<TipoCozinhaResponseDTO> tiposCozinha,
 
         @Schema(description = "Horários de funcionamento do restaurante")
+        @JsonInclude(JsonInclude.Include.NON_EMPTY)
         List<HorarioFuncionamentoResponseDTO> horariosFuncionamento,
 
         @Schema(description = "Itens do cardápio do restaurante (pode ser nulo ou vazio na listagem geral)")

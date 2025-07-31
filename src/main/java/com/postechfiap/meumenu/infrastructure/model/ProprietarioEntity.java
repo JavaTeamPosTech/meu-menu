@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -27,10 +28,7 @@ public class ProprietarioEntity extends UsuarioEntity {
     @Enumerated(EnumType.STRING)
     private StatusContaEnum statusConta;
 
-    public ProprietarioEntity(UUID id, String nome, String email, String login, String senha, LocalDateTime dataAtualizacao, LocalDateTime dataCriacao, List<EnderecoEntity> enderecos, String cpf, String whatsapp, StatusContaEnum statusConta) {
-        super(id, nome, email, login, senha, dataAtualizacao, dataCriacao, enderecos);
-        this.cpf = cpf;
-        this.whatsapp = whatsapp;
-        this.statusConta = statusConta;
-    }
+    @OneToMany(mappedBy = "proprietario", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<RestauranteEntity> restaurantes = new ArrayList<>();
+
 }

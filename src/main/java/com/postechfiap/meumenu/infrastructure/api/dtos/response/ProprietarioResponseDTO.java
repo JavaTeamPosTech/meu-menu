@@ -9,15 +9,37 @@
 
     @Schema(description = "DTO para resposta com detalhes completos de um Proprietário")
     public record ProprietarioResponseDTO(
+            @Schema(description = "ID único do proprietário")
             UUID id,
+
+            @Schema(description = "Nome completo do proprietário")
             String nome,
+
+            @Schema(description = "CPF do proprietário (apenas números)")
             String cpf,
+
+            @Schema(description = "Endereço de e-mail do proprietário")
             String email,
+
+            @Schema(description = "Login do proprietário")
             String login,
+
+            @Schema(description = "Número de WhatsApp do proprietário")
             String whatsapp,
+
+            @Schema(description = "Status da conta do proprietário")
             StatusContaEnum statusConta,
+
+            @Schema(description = "Data de criação do registro do proprietário")
             LocalDateTime dataCriacao,
+
+            @Schema(description = "Data da última atualização do registro do proprietário")
             LocalDateTime dataAtualizacao,
-            List<EnderecoResponseDTO> enderecos
+
+            @Schema(description = "Lista de endereços do proprietário")
+            List<EnderecoResponseDTO> enderecos, // Já existia
+
+            @Schema(description = "Lista de restaurantes do proprietário")
+            List<RestauranteResponseDTO> restaurantes // NOVO: Adicionado aqui
     ) {
     }

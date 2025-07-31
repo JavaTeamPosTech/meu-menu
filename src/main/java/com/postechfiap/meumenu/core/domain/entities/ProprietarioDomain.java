@@ -22,7 +22,7 @@ public class ProprietarioDomain extends UsuarioDomain {
 
     public ProprietarioDomain(UUID id, String cpf, String whatsapp, StatusContaEnum statusConta,
                               String nome, String email, String login, String senha,
-                              LocalDateTime dataCriacao, LocalDateTime dataAtualizacao, List<EnderecoDomain> enderecos) {
+                              LocalDateTime dataCriacao, LocalDateTime dataAtualizacao, List<EnderecoDomain> enderecos, List<RestauranteDomain> restaurantes) {
         super(id, nome, email, login, senha, dataCriacao, dataAtualizacao, enderecos);
         this.cpf = cpf;
         this.whatsapp = whatsapp;

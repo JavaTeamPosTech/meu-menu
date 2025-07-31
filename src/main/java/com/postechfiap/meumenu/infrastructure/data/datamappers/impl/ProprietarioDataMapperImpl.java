@@ -1,18 +1,25 @@
 package com.postechfiap.meumenu.infrastructure.data.datamappers.impl;
 
 import com.postechfiap.meumenu.core.domain.entities.ProprietarioDomain;
+import com.postechfiap.meumenu.core.domain.entities.RestauranteDomain;
 import com.postechfiap.meumenu.core.domain.entities.UsuarioDomain;
 import com.postechfiap.meumenu.core.domain.entities.EnderecoDomain;
+import com.postechfiap.meumenu.infrastructure.data.datamappers.RestauranteBasicDataMapper;
 import com.postechfiap.meumenu.infrastructure.model.ProprietarioEntity;
 import com.postechfiap.meumenu.infrastructure.model.EnderecoEntity;
 import com.postechfiap.meumenu.infrastructure.data.datamappers.ProprietarioDataMapper;
+import com.postechfiap.meumenu.infrastructure.model.RestauranteEntity;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@AllArgsConstructor
 @Component
 public class ProprietarioDataMapperImpl implements ProprietarioDataMapper {
+
+    private final RestauranteBasicDataMapper restauranteBasicDataMapper;
 
     @Override
     public ProprietarioEntity toEntity(ProprietarioDomain domain) {
@@ -36,6 +43,13 @@ public class ProprietarioDataMapperImpl implements ProprietarioDataMapper {
             enderecosEntities.forEach(e -> e.setUsuario(entity));
         }
         entity.setEnderecos(enderecosEntities);
+
+        List<RestauranteEntity> restaurantesEntities = toRestauranteEntityList(domain.getRestaurantes());
+        if (restaurantesEntities != null) {
+            restaurantesEntities.forEach(r -> r.setProprietario(entity));
+        }
+        entity.setRestaurantes(restaurantesEntities);
+
         return entity;
     }
 
@@ -44,7 +58,7 @@ public class ProprietarioDataMapperImpl implements ProprietarioDataMapper {
         if (entity == null) {
             return null;
         }
-        return new ProprietarioDomain(
+        ProprietarioDomain domain = new ProprietarioDomain(
                 entity.getId(),
                 entity.getCpf(),
                 entity.getWhatsapp(),
@@ -55,8 +69,13 @@ public class ProprietarioDataMapperImpl implements ProprietarioDataMapper {
                 entity.getSenha(),
                 entity.getDataCriacao(),
                 entity.getDataAtualizacao(),
-                toEnderecoDomainList(entity.getEnderecos())
+                toEnderecoDomainList(entity.getEnderecos()),
+                toRestauranteDomainList(entity.getRestaurantes())
         );
+        domain.getRestaurantes().forEach(restaurante -> restaurante.setProprietario(domain));
+
+        return domain;
+
     }
 
     @Override
@@ -117,6 +136,30 @@ public class ProprietarioDataMapperImpl implements ProprietarioDataMapper {
         if (entityList == null) return null;
         return entityList.stream()
                 .map(this::toEnderecoDomain)
+                .collect(Collectors.toList());
+    }
+
+    private RestauranteEntity toRestauranteEntity(RestauranteDomain domain) {
+        if (domain == null) return null;
+        return restauranteBasicDataMapper.toBasicEntity(domain);
+    }
+
+    private RestauranteDomain toRestauranteDomain(RestauranteEntity entity) {
+        if (entity == null) return null;
+        return restauranteBasicDataMapper.toBasicDomain(entity);
+    }
+
+    private List<RestauranteEntity> toRestauranteEntityList(List<RestauranteDomain> domainList) {
+        if (domainList == null) return null;
+        return domainList.stream()
+                .map(this::toRestauranteEntity)
+                .collect(Collectors.toList());
+    }
+
+    private List<RestauranteDomain> toRestauranteDomainList(List<RestauranteEntity> entityList) {
+        if (entityList == null) return null;
+        return entityList.stream()
+                .map(this::toRestauranteDomain)
                 .collect(Collectors.toList());
     }
 }

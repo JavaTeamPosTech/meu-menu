@@ -1,10 +1,8 @@
 package com.postechfiap.meumenu.infrastructure.api.presenters;
 
-import com.postechfiap.meumenu.core.domain.entities.ProprietarioDomain;
-import com.postechfiap.meumenu.core.domain.entities.EnderecoDomain;
+import com.postechfiap.meumenu.core.domain.entities.*;
 import com.postechfiap.meumenu.core.domain.presenters.BuscarProprietarioOutputPort;
-import com.postechfiap.meumenu.infrastructure.api.dtos.response.ProprietarioResponseDTO;
-import com.postechfiap.meumenu.infrastructure.api.dtos.response.EnderecoResponseDTO;
+import com.postechfiap.meumenu.infrastructure.api.dtos.response.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,6 +28,13 @@ public class BuscarProprietarioPorIdPresenter implements BuscarProprietarioOutpu
                     .collect(Collectors.toList());
         }
 
+        List<RestauranteResponseDTO> restaurantesResponse = null;
+        if (proprietario.getRestaurantes() != null) {
+            restaurantesResponse = proprietario.getRestaurantes().stream()
+                    .map(this::mapRestauranteDomainToResponseDTO)
+                    .collect(Collectors.toList());
+        }
+
         this.viewModel = new ProprietarioResponseDTO(
                 proprietario.getId(),
                 proprietario.getNome(),
@@ -40,7 +45,8 @@ public class BuscarProprietarioPorIdPresenter implements BuscarProprietarioOutpu
                 proprietario.getStatusConta(),
                 proprietario.getDataCriacao(),
                 proprietario.getDataAtualizacao(),
-                enderecosResponse
+                enderecosResponse,
+                restaurantesResponse
         );
     }
 
@@ -58,6 +64,69 @@ public class BuscarProprietarioPorIdPresenter implements BuscarProprietarioOutpu
                 enderecoDomain.getComplemento(),
                 enderecoDomain.getCep()
         );
+    }
+
+    private RestauranteResponseDTO mapRestauranteDomainToResponseDTO(RestauranteDomain domain) {
+        if (domain == null) return null;
+
+        EnderecoRestauranteResponseDTO enderecoResponse = null;
+        if (domain.getEndereco() != null) {
+            enderecoResponse = new EnderecoRestauranteResponseDTO(
+                    domain.getEndereco().getId(), domain.getEndereco().getEstado(), domain.getEndereco().getCidade(), domain.getEndereco().getBairro(),
+                    domain.getEndereco().getRua(), domain.getEndereco().getNumero(), domain.getEndereco().getComplemento(), domain.getEndereco().getCep());
+        }
+
+        List<TipoCozinhaResponseDTO> tiposCozinhaResponse = null;
+        if (domain.getTiposCozinha() != null) {
+            tiposCozinhaResponse = domain.getTiposCozinha().stream()
+                    .map(this::mapTipoCozinhaDomainToResponseDTO)
+                    .collect(Collectors.toList());
+        }
+
+        List<HorarioFuncionamentoResponseDTO> horariosResponse = null;
+        if (domain.getHorariosFuncionamento() != null) {
+            horariosResponse = domain.getHorariosFuncionamento().stream()
+                    .map(this::mapHorarioFuncionamentoDomainToResponseDTO)
+                    .collect(Collectors.toList());
+        }
+
+        List<ItemCardapioResponseDTO> itensResponse = null; // Para lista completa, pode ser nula ou vazia
+        if (domain.getItensCardapio() != null) {
+            itensResponse = domain.getItensCardapio().stream()
+                    .map(this::mapItemCardapioDomainToResponseDTO)
+                    .collect(Collectors.toList());
+        }
+
+        return new RestauranteResponseDTO(
+                domain.getId(),
+                domain.getCnpj(),
+                domain.getRazaoSocial(),
+                domain.getNomeFantasia(),
+                domain.getInscricaoEstadual(),
+                domain.getTelefoneComercial(),
+                enderecoResponse,
+                tiposCozinhaResponse,
+                horariosResponse,
+                itensResponse
+        );
+    }
+
+    private TipoCozinhaResponseDTO mapTipoCozinhaDomainToResponseDTO(TipoCozinhaDomain domain) {
+        if (domain == null) return null;
+        return new TipoCozinhaResponseDTO(domain.getId(), domain.getNome());
+    }
+
+    private HorarioFuncionamentoResponseDTO mapHorarioFuncionamentoDomainToResponseDTO(HorarioFuncionamentoDomain domain) {
+        if (domain == null) return null;
+        return new HorarioFuncionamentoResponseDTO(
+                domain.getId(), domain.getAbre(), domain.getFecha(), domain.getDiaSemana());
+    }
+
+    private ItemCardapioResponseDTO mapItemCardapioDomainToResponseDTO(ItemCardapioDomain domain) {
+        if (domain == null) return null;
+        return new ItemCardapioResponseDTO(
+                domain.getId(), domain.getNome(), domain.getDescricao(), domain.getPreco(),
+                domain.getDisponivelApenasNoRestaurante(), domain.getUrlFoto());
     }
 
     public ProprietarioResponseDTO getViewModel() {
