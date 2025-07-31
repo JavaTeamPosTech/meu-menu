@@ -1,5 +1,6 @@
 package com.postechfiap.meumenu.core.controllers.impl;
 
+import com.postechfiap.meumenu.core.controllers.usuario.impl.AlterarSenhaInputPortImpl;
 import com.postechfiap.meumenu.core.domain.usecases.usuario.AlterarSenhaUseCase;
 import com.postechfiap.meumenu.core.dtos.usuario.AlterarSenhaInputModel;
 import org.junit.jupiter.api.BeforeEach;

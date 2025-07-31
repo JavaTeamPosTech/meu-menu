@@ -1,5 +1,6 @@
 package com.postechfiap.meumenu.core.controllers.impl;
 
+import com.postechfiap.meumenu.core.controllers.restaurante.item.impl.AtualizarItemCardapioInputPortImpl;
 import com.postechfiap.meumenu.core.domain.usecases.restaurante.item.AtualizarItemCardapioUseCase;
 import com.postechfiap.meumenu.core.dtos.restaurante.item.ItemCardapioInputModel;
 import org.junit.jupiter.api.BeforeEach;

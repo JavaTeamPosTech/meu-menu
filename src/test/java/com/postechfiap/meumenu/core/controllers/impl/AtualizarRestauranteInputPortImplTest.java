@@ -1,5 +1,6 @@
 package com.postechfiap.meumenu.core.controllers.impl;
 
+import com.postechfiap.meumenu.core.controllers.restaurante.impl.AtualizarRestauranteInputPortImpl;
 import com.postechfiap.meumenu.core.domain.usecases.restaurante.AtualizarRestauranteUseCase;
 import com.postechfiap.meumenu.core.dtos.restaurante.AtualizarRestauranteInputModel;
 import com.postechfiap.meumenu.core.dtos.restaurante.endereco.EnderecoRestauranteInputModel;

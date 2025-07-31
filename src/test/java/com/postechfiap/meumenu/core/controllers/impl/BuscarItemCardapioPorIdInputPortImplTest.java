@@ -1,5 +1,6 @@
 package com.postechfiap.meumenu.core.controllers.impl;
 
+import com.postechfiap.meumenu.core.controllers.restaurante.item.impl.BuscarItemCardapioPorIdInputPortImpl;
 import com.postechfiap.meumenu.core.domain.usecases.restaurante.item.BuscarItemCardapioPorIdUseCase; // Importar
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

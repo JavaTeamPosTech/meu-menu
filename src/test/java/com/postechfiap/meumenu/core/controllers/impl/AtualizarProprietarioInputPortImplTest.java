@@ -1,5 +1,6 @@
 package com.postechfiap.meumenu.core.controllers.impl;
 
+import com.postechfiap.meumenu.core.controllers.proprietario.impl.AtualizarProprietarioInputPortImpl;
 import com.postechfiap.meumenu.core.domain.usecases.proprietario.AtualizarProprietarioUseCase;
 import com.postechfiap.meumenu.core.dtos.proprietario.AtualizarProprietarioInputModel;
 import com.postechfiap.meumenu.core.domain.entities.enums.StatusContaEnum;

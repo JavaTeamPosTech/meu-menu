@@ -1,6 +1,6 @@
 package com.postechfiap.meumenu.core.controllers.impl;
 
-import com.postechfiap.meumenu.core.controllers.CadastrarProprietarioInputPort;
+import com.postechfiap.meumenu.core.controllers.proprietario.impl.CadastrarProprietarioInputPortImpl;
 import com.postechfiap.meumenu.core.domain.usecases.proprietario.CadastrarProprietarioUseCase;
 import com.postechfiap.meumenu.core.dtos.proprietario.CadastrarProprietarioInputModel;
 import com.postechfiap.meumenu.core.dtos.endereco.EnderecoInputModel; // Importar
@@ -14,7 +14,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 import java.util.UUID;
-import java.math.BigDecimal; // Se necessário para EnderecoInputModel ou outros
 
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;

@@ -1,5 +1,6 @@
 package com.postechfiap.meumenu.core.controllers.impl;
 
+import com.postechfiap.meumenu.core.controllers.proprietario.impl.DeletarProprietarioInputPortImpl;
 import com.postechfiap.meumenu.core.domain.usecases.proprietario.DeletarProprietarioUseCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

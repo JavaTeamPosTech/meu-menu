@@ -1,5 +1,6 @@
 package com.postechfiap.meumenu.core.controllers.impl;
 
+import com.postechfiap.meumenu.core.controllers.cliente.impl.AtualizarClienteInputPortImpl;
 import com.postechfiap.meumenu.core.domain.usecases.cliente.AtualizarClienteUseCase;
 import com.postechfiap.meumenu.core.dtos.cliente.AtualizarClienteInputModel;
 import com.postechfiap.meumenu.core.domain.entities.enums.GeneroEnum;

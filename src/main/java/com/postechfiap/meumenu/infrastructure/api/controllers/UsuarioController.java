@@ -1,7 +1,7 @@
 package com.postechfiap.meumenu.infrastructure.api.controllers;
 
-import com.postechfiap.meumenu.core.controllers.AlterarSenhaInputPort;
-import com.postechfiap.meumenu.core.controllers.LoginInputPort;
+import com.postechfiap.meumenu.core.controllers.usuario.AlterarSenhaInputPort;
+import com.postechfiap.meumenu.core.controllers.usuario.LoginInputPort;
 import com.postechfiap.meumenu.core.exceptions.BusinessException;
 import com.postechfiap.meumenu.infrastructure.api.dtos.request.AlterarSenhaRequestDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.request.LoginRequestDTO;

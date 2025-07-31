@@ -1,8 +1,8 @@
 package com.postechfiap.meumenu.infrastructure.api.controllers;
 
-import com.postechfiap.meumenu.core.controllers.BuscarTodosClientesAdminInputPort;
-import com.postechfiap.meumenu.core.controllers.BuscarTodosProprietariosAdminInputPort;
-import com.postechfiap.meumenu.core.controllers.CadastrarAdminInputPort;
+import com.postechfiap.meumenu.core.controllers.admin.BuscarTodosClientesAdminInputPort;
+import com.postechfiap.meumenu.core.controllers.admin.BuscarTodosProprietariosAdminInputPort;
+import com.postechfiap.meumenu.core.controllers.admin.CadastrarAdminInputPort;
 import com.postechfiap.meumenu.infrastructure.api.dtos.request.CadastrarAdminRequestDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.CadastrarAdminResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.ClienteResponseDTO;

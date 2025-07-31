@@ -1,6 +1,9 @@
 package com.postechfiap.meumenu.infrastructure.api.controllers;
 
-import com.postechfiap.meumenu.core.controllers.*;
+import com.postechfiap.meumenu.core.controllers.cliente.AtualizarClienteInputPort;
+import com.postechfiap.meumenu.core.controllers.cliente.BuscarClientePorIdInputPort;
+import com.postechfiap.meumenu.core.controllers.cliente.CadastrarClienteInputPort;
+import com.postechfiap.meumenu.core.controllers.cliente.DeletarClienteInputPort;
 import com.postechfiap.meumenu.core.domain.entities.ClienteDomain;
 import com.postechfiap.meumenu.infrastructure.api.dtos.request.AtualizarClienteRequestDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.request.CadastrarClienteRequestDTO;

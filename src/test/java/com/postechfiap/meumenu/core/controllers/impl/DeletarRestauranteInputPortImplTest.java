@@ -1,5 +1,6 @@
 package com.postechfiap.meumenu.core.controllers.impl;
 
+import com.postechfiap.meumenu.core.controllers.restaurante.impl.DeletarRestauranteInputPortImpl;
 import com.postechfiap.meumenu.core.domain.usecases.restaurante.DeletarRestauranteUseCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

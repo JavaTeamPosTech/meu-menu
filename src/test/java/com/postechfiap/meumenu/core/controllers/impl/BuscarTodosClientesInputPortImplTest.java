@@ -1,5 +1,6 @@
 package com.postechfiap.meumenu.core.controllers.impl;
 
+import com.postechfiap.meumenu.core.controllers.cliente.impl.BuscarTodosClientesInputPortImpl;
 import com.postechfiap.meumenu.core.domain.usecases.cliente.BuscarTodosClientesUseCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

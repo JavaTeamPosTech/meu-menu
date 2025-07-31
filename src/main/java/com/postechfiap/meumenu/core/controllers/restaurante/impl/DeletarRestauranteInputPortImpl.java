@@ -1,0 +1,18 @@
+package com.postechfiap.meumenu.core.controllers.restaurante.impl;
+
+import com.postechfiap.meumenu.core.controllers.restaurante.DeletarRestauranteInputPort;
+import com.postechfiap.meumenu.core.domain.usecases.restaurante.DeletarRestauranteUseCase;
+import lombok.RequiredArgsConstructor;
+
+import java.util.UUID;
+
+@RequiredArgsConstructor
+public class DeletarRestauranteInputPortImpl implements DeletarRestauranteInputPort {
+
+    private final DeletarRestauranteUseCase deletarRestauranteUseCase;
+
+    @Override
+    public void execute(UUID id, UUID proprietarioLogadoId) {
+        deletarRestauranteUseCase.execute(id, proprietarioLogadoId);
+    }
+}

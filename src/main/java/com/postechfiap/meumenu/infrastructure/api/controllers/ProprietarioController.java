@@ -1,9 +1,9 @@
 package com.postechfiap.meumenu.infrastructure.api.controllers;
 
-import com.postechfiap.meumenu.core.controllers.AtualizarProprietarioInputPort;
-import com.postechfiap.meumenu.core.controllers.BuscarProprietarioPorIdInputPort;
-import com.postechfiap.meumenu.core.controllers.CadastrarProprietarioInputPort;
-import com.postechfiap.meumenu.core.controllers.DeletarProprietarioInputPort;
+import com.postechfiap.meumenu.core.controllers.proprietario.AtualizarProprietarioInputPort;
+import com.postechfiap.meumenu.core.controllers.proprietario.BuscarProprietarioPorIdInputPort;
+import com.postechfiap.meumenu.core.controllers.proprietario.CadastrarProprietarioInputPort;
+import com.postechfiap.meumenu.core.controllers.proprietario.DeletarProprietarioInputPort;
 import com.postechfiap.meumenu.infrastructure.api.dtos.request.AtualizarProprietarioRequestDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.request.CadastrarProprietarioRequestDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.CadastrarProprietarioResponseDTO;

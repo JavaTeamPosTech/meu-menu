@@ -1,5 +1,6 @@
 package com.postechfiap.meumenu.core.controllers.impl;
 
+import com.postechfiap.meumenu.core.controllers.proprietario.impl.BuscarProprietarioPorIdInputPortImpl;
 import com.postechfiap.meumenu.core.domain.usecases.proprietario.BuscarProprietarioPorIdUseCase; // Importar
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

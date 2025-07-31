@@ -1,5 +1,6 @@
 package com.postechfiap.meumenu.core.controllers.impl;
 
+import com.postechfiap.meumenu.core.controllers.usuario.impl.LoginInputPortImpl;
 import com.postechfiap.meumenu.core.domain.usecases.usuario.LoginUseCase;
 import com.postechfiap.meumenu.core.dtos.usuario.LoginInputModel;
 import org.junit.jupiter.api.BeforeEach;

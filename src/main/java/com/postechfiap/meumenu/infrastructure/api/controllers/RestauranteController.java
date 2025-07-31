@@ -1,6 +1,10 @@
 package com.postechfiap.meumenu.infrastructure.api.controllers;
 
-import com.postechfiap.meumenu.core.controllers.*;
+import com.postechfiap.meumenu.core.controllers.restaurante.*;
+import com.postechfiap.meumenu.core.controllers.restaurante.item.AdicionarItemCardapioInputPort;
+import com.postechfiap.meumenu.core.controllers.restaurante.item.AtualizarItemCardapioInputPort;
+import com.postechfiap.meumenu.core.controllers.restaurante.item.BuscarItemCardapioPorIdInputPort;
+import com.postechfiap.meumenu.core.controllers.restaurante.item.DeletarItemCardapioInputPort;
 import com.postechfiap.meumenu.core.exceptions.BusinessException;
 import com.postechfiap.meumenu.infrastructure.api.dtos.request.AdicionarItemCardapioRequestDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.request.AtualizarItemCardapioRequestDTO;

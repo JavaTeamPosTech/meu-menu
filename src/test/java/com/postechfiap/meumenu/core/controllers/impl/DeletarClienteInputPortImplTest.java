@@ -1,6 +1,6 @@
 package com.postechfiap.meumenu.core.controllers.impl;
 
-import com.postechfiap.meumenu.core.controllers.DeletarClienteInputPort;
+import com.postechfiap.meumenu.core.controllers.cliente.impl.DeletarClienteInputPortImpl;
 import com.postechfiap.meumenu.core.domain.usecases.cliente.DeletarClienteUseCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

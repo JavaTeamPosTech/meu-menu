@@ -1,5 +1,6 @@
 package com.postechfiap.meumenu.core.controllers.impl;
 
+import com.postechfiap.meumenu.core.controllers.cliente.impl.CadastrarClienteInputPortImpl;
 import com.postechfiap.meumenu.core.domain.usecases.cliente.CadastrarClienteUseCase;
 import com.postechfiap.meumenu.core.dtos.cliente.CadastrarClienteInputModel;
 import com.postechfiap.meumenu.core.domain.entities.enums.AlergiaAlimentarEnum;
