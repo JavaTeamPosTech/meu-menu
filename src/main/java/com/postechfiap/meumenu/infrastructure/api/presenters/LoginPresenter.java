@@ -1,6 +1,6 @@
 package com.postechfiap.meumenu.infrastructure.api.presenters;
 
-import com.postechfiap.meumenu.core.domain.presenters.LoginOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.usuario.LoginOutputPort;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.LoginResponseDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

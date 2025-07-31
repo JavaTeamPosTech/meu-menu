@@ -3,7 +3,7 @@ import com.postechfiap.meumenu.core.domain.entities.RestauranteDomain;
 import com.postechfiap.meumenu.core.domain.entities.EnderecoRestauranteDomain;
 import com.postechfiap.meumenu.core.domain.entities.HorarioFuncionamentoDomain;
 import com.postechfiap.meumenu.core.domain.entities.TipoCozinhaDomain;
-import com.postechfiap.meumenu.core.domain.presenters.AtualizarRestauranteOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.restaurante.AtualizarRestauranteOutputPort;
 import com.postechfiap.meumenu.core.domain.usecases.restaurante.AtualizarRestauranteUseCase;
 import com.postechfiap.meumenu.core.dtos.restaurante.AtualizarRestauranteInputModel;
 import com.postechfiap.meumenu.core.exceptions.BusinessException;

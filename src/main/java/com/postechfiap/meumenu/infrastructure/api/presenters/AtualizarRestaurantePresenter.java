@@ -5,7 +5,7 @@ import com.postechfiap.meumenu.core.domain.entities.EnderecoRestauranteDomain;
 import com.postechfiap.meumenu.core.domain.entities.HorarioFuncionamentoDomain;
 import com.postechfiap.meumenu.core.domain.entities.ItemCardapioDomain;
 import com.postechfiap.meumenu.core.domain.entities.TipoCozinhaDomain;
-import com.postechfiap.meumenu.core.domain.presenters.AtualizarRestauranteOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.restaurante.AtualizarRestauranteOutputPort;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

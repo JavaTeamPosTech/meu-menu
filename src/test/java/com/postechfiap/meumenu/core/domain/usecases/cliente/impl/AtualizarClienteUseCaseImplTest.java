@@ -5,7 +5,7 @@ import com.postechfiap.meumenu.core.domain.entities.enums.AlergiaAlimentarEnum;
 import com.postechfiap.meumenu.core.domain.entities.enums.GeneroEnum;
 import com.postechfiap.meumenu.core.domain.entities.enums.MetodoPagamentoEnum;
 import com.postechfiap.meumenu.core.domain.entities.enums.TiposComidaEnum;
-import com.postechfiap.meumenu.core.domain.presenters.AtualizarClienteOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.cliente.AtualizarClienteOutputPort;
 import com.postechfiap.meumenu.core.dtos.cliente.AtualizarClienteInputModel;
 import com.postechfiap.meumenu.core.exceptions.BusinessException;
 import com.postechfiap.meumenu.core.exceptions.ResourceNotFoundException;

@@ -2,7 +2,7 @@ package com.postechfiap.meumenu.core.domain.usecases.restaurante.item.impl;
 
 import com.postechfiap.meumenu.core.domain.entities.ItemCardapioDomain;
 import com.postechfiap.meumenu.core.domain.entities.RestauranteDomain;
-import com.postechfiap.meumenu.core.domain.presenters.AdicionarItemCardapioOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.restaurante.item.AdicionarItemCardapioOutputPort;
 import com.postechfiap.meumenu.core.domain.usecases.restaurante.item.AdicionarItemCardapioUseCase;
 import com.postechfiap.meumenu.core.dtos.restaurante.item.ItemCardapioInputModel;
 import com.postechfiap.meumenu.core.exceptions.ResourceNotFoundException;

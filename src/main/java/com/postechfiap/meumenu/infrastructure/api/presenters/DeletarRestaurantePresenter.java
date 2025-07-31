@@ -1,6 +1,6 @@
 package com.postechfiap.meumenu.infrastructure.api.presenters;
 
-import com.postechfiap.meumenu.core.domain.presenters.DeletarRestauranteOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.restaurante.DeletarRestauranteOutputPort;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.DeletarRestauranteResponseDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

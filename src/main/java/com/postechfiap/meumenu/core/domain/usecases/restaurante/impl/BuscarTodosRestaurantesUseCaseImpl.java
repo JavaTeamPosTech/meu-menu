@@ -1,7 +1,7 @@
 package com.postechfiap.meumenu.core.domain.usecases.restaurante.impl;
 
 import com.postechfiap.meumenu.core.domain.entities.RestauranteDomain;
-import com.postechfiap.meumenu.core.domain.presenters.BuscarTodosRestaurantesOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.restaurante.BuscarTodosRestaurantesOutputPort;
 import com.postechfiap.meumenu.core.domain.usecases.restaurante.BuscarTodosRestaurantesUseCase;
 import com.postechfiap.meumenu.core.gateways.RestauranteGateway;
 import lombok.RequiredArgsConstructor;

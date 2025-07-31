@@ -1,6 +1,15 @@
 package com.postechfiap.meumenu.infrastructure.config;
 
-import com.postechfiap.meumenu.core.domain.presenters.*;
+import com.postechfiap.meumenu.core.domain.presenters.admin.CadastrarAdminOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.cliente.*;
+import com.postechfiap.meumenu.core.domain.presenters.proprietario.*;
+import com.postechfiap.meumenu.core.domain.presenters.restaurante.*;
+import com.postechfiap.meumenu.core.domain.presenters.restaurante.item.AdicionarItemCardapioOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.restaurante.item.AtualizarItemCardapioOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.restaurante.item.BuscarItemCardapioPorIdOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.restaurante.item.DeletarItemCardapioOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.usuario.AlterarSenhaOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.usuario.LoginOutputPort;
 import com.postechfiap.meumenu.core.domain.services.PasswordService;
 import com.postechfiap.meumenu.core.domain.usecases.admin.BuscarTodosClientesAdminUseCase;
 import com.postechfiap.meumenu.core.domain.usecases.admin.BuscarTodosProprietariosAdminUseCase;

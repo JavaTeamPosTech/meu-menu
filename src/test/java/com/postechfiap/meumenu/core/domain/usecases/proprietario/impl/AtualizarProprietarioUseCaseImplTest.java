@@ -2,7 +2,7 @@ package com.postechfiap.meumenu.core.domain.usecases.proprietario.impl;
 
 import com.postechfiap.meumenu.core.domain.entities.ProprietarioDomain;
 import com.postechfiap.meumenu.core.domain.entities.enums.StatusContaEnum;
-import com.postechfiap.meumenu.core.domain.presenters.AtualizarProprietarioOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.proprietario.AtualizarProprietarioOutputPort;
 import com.postechfiap.meumenu.core.dtos.proprietario.AtualizarProprietarioInputModel;
 import com.postechfiap.meumenu.core.exceptions.BusinessException;
 import com.postechfiap.meumenu.core.exceptions.ResourceNotFoundException;

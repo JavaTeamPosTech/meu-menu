@@ -1,7 +1,7 @@
 package com.postechfiap.meumenu.core.domain.usecases.usuario.impl;
 
 import com.postechfiap.meumenu.core.domain.entities.UsuarioDomain;
-import com.postechfiap.meumenu.core.domain.presenters.AlterarSenhaOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.usuario.AlterarSenhaOutputPort;
 import com.postechfiap.meumenu.core.domain.services.PasswordService;
 import com.postechfiap.meumenu.core.dtos.usuario.AlterarSenhaInputModel;
 import com.postechfiap.meumenu.core.exceptions.BusinessException;

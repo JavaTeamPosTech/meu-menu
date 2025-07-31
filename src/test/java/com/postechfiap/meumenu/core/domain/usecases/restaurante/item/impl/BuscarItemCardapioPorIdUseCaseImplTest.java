@@ -3,7 +3,7 @@ package com.postechfiap.meumenu.core.domain.usecases.restaurante.item.impl;
 import com.postechfiap.meumenu.core.domain.entities.ItemCardapioDomain;
 import com.postechfiap.meumenu.core.domain.entities.ProprietarioDomain;
 import com.postechfiap.meumenu.core.domain.entities.RestauranteDomain;
-import com.postechfiap.meumenu.core.domain.presenters.BuscarItemCardapioPorIdOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.restaurante.item.BuscarItemCardapioPorIdOutputPort;
 import com.postechfiap.meumenu.core.exceptions.ResourceNotFoundException;
 import com.postechfiap.meumenu.core.gateways.RestauranteGateway;
 import org.junit.jupiter.api.BeforeEach;

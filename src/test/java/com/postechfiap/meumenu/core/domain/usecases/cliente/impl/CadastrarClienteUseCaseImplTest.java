@@ -6,7 +6,7 @@ import com.postechfiap.meumenu.core.domain.entities.enums.AlergiaAlimentarEnum;
 import com.postechfiap.meumenu.core.domain.entities.enums.GeneroEnum;
 import com.postechfiap.meumenu.core.domain.entities.enums.MetodoPagamentoEnum;
 import com.postechfiap.meumenu.core.domain.entities.enums.TiposComidaEnum;
-import com.postechfiap.meumenu.core.domain.presenters.CadastrarClienteOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.cliente.CadastrarClienteOutputPort;
 import com.postechfiap.meumenu.core.domain.services.PasswordService;
 import com.postechfiap.meumenu.core.dtos.cliente.CadastrarClienteInputModel;
 import com.postechfiap.meumenu.core.dtos.endereco.EnderecoInputModel;

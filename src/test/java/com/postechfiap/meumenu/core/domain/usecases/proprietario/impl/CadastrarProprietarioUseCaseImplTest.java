@@ -1,7 +1,7 @@
 package com.postechfiap.meumenu.core.domain.usecases.proprietario.impl;
 
 import com.postechfiap.meumenu.core.domain.entities.ProprietarioDomain;
-import com.postechfiap.meumenu.core.domain.presenters.CadastrarProprietarioOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.proprietario.CadastrarProprietarioOutputPort;
 import com.postechfiap.meumenu.core.domain.services.PasswordService;
 import com.postechfiap.meumenu.core.dtos.proprietario.CadastrarProprietarioInputModel;
 import com.postechfiap.meumenu.core.dtos.endereco.EnderecoInputModel;

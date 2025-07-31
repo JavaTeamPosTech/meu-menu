@@ -1,7 +1,7 @@
 package com.postechfiap.meumenu.core.domain.usecases.restaurante.impl;
 
 import com.postechfiap.meumenu.core.domain.entities.RestauranteDomain;
-import com.postechfiap.meumenu.core.domain.presenters.BuscarRestaurantePorIdOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.restaurante.BuscarRestaurantePorIdOutputPort;
 import com.postechfiap.meumenu.core.domain.usecases.restaurante.BuscarRestaurantePorIdUseCase;
 import com.postechfiap.meumenu.core.exceptions.ResourceNotFoundException;
 import com.postechfiap.meumenu.core.gateways.RestauranteGateway;

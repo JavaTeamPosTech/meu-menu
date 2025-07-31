@@ -2,7 +2,7 @@ package com.postechfiap.meumenu.core.domain.usecases.restaurante.impl;
 
 import com.postechfiap.meumenu.core.domain.entities.RestauranteDomain;
 import com.postechfiap.meumenu.core.domain.entities.ProprietarioDomain;
-import com.postechfiap.meumenu.core.domain.presenters.BuscarRestaurantePorIdOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.restaurante.BuscarRestaurantePorIdOutputPort;
 import com.postechfiap.meumenu.core.gateways.RestauranteGateway;
 import com.postechfiap.meumenu.core.exceptions.ResourceNotFoundException;
 import org.junit.jupiter.api.BeforeEach;

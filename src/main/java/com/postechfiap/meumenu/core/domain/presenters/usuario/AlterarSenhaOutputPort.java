@@ -1,4 +1,4 @@
-package com.postechfiap.meumenu.core.domain.presenters;
+package com.postechfiap.meumenu.core.domain.presenters.usuario;
 
 public interface AlterarSenhaOutputPort {
     void presentSuccess(String message);

@@ -2,7 +2,7 @@ package com.postechfiap.meumenu.core.domain.usecases.restaurante.impl;
 
 import com.postechfiap.meumenu.core.domain.entities.RestauranteDomain;
 import com.postechfiap.meumenu.core.domain.entities.ProprietarioDomain;
-import com.postechfiap.meumenu.core.domain.presenters.DeletarRestauranteOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.restaurante.DeletarRestauranteOutputPort;
 import com.postechfiap.meumenu.core.exceptions.BusinessException;
 import com.postechfiap.meumenu.core.exceptions.ResourceNotFoundException;
 import com.postechfiap.meumenu.core.gateways.RestauranteGateway;
@@ -14,8 +14,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.time.LocalDateTime;
-import java.util.Collections;
 import java.util.Optional;
 import java.util.UUID;
 

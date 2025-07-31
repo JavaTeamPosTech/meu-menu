@@ -4,7 +4,7 @@ import com.postechfiap.meumenu.core.domain.entities.ClienteDomain;
 import com.postechfiap.meumenu.core.domain.entities.enums.GeneroEnum;
 import com.postechfiap.meumenu.core.domain.entities.enums.MetodoPagamentoEnum;
 import com.postechfiap.meumenu.core.domain.entities.enums.TiposComidaEnum;
-import com.postechfiap.meumenu.core.domain.presenters.DeletarClienteOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.cliente.DeletarClienteOutputPort;
 import com.postechfiap.meumenu.core.exceptions.ResourceNotFoundException;
 import com.postechfiap.meumenu.core.gateways.ClienteGateway;
 import org.junit.jupiter.api.BeforeEach;

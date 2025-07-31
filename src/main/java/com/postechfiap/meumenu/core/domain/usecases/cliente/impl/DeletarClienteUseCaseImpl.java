@@ -1,7 +1,7 @@
 package com.postechfiap.meumenu.core.domain.usecases.cliente.impl;
 
 import com.postechfiap.meumenu.core.domain.entities.ClienteDomain;
-import com.postechfiap.meumenu.core.domain.presenters.DeletarClienteOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.cliente.DeletarClienteOutputPort;
 import com.postechfiap.meumenu.core.domain.usecases.cliente.DeletarClienteUseCase;
 import com.postechfiap.meumenu.core.gateways.ClienteGateway;
 import com.postechfiap.meumenu.core.exceptions.ResourceNotFoundException;

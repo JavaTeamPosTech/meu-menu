@@ -2,7 +2,7 @@ package com.postechfiap.meumenu.core.domain.usecases.cliente.impl;
 
 import com.postechfiap.meumenu.core.domain.entities.ClienteDomain;
 import com.postechfiap.meumenu.core.domain.entities.EnderecoDomain;
-import com.postechfiap.meumenu.core.domain.presenters.CadastrarClienteOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.cliente.CadastrarClienteOutputPort;
 import com.postechfiap.meumenu.core.domain.services.PasswordService;
 import com.postechfiap.meumenu.core.domain.usecases.cliente.CadastrarClienteUseCase;
 import com.postechfiap.meumenu.core.dtos.cliente.CadastrarClienteInputModel;

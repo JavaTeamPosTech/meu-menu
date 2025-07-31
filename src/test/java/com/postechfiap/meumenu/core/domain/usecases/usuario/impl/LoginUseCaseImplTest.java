@@ -1,6 +1,6 @@
 package com.postechfiap.meumenu.core.domain.usecases.usuario.impl;
 
-import com.postechfiap.meumenu.core.domain.presenters.LoginOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.usuario.LoginOutputPort;
 import com.postechfiap.meumenu.core.dtos.usuario.LoginInputModel;
 import com.postechfiap.meumenu.core.exceptions.BusinessException;
 import com.postechfiap.meumenu.infrastructure.security.services.TokenService;

@@ -1,7 +1,7 @@
 package com.postechfiap.meumenu.core.domain.usecases.admin.impl;
 
 import com.postechfiap.meumenu.core.domain.entities.AdminDomain;
-import com.postechfiap.meumenu.core.domain.presenters.CadastrarAdminOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.admin.CadastrarAdminOutputPort;
 import com.postechfiap.meumenu.core.domain.services.PasswordService;
 import com.postechfiap.meumenu.core.domain.usecases.admin.CadastrarAdminUseCase;
 import com.postechfiap.meumenu.core.dtos.admin.CadastrarAdminInputModel;

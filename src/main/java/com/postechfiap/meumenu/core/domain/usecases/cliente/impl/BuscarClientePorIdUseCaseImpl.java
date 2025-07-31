@@ -1,7 +1,7 @@
 package com.postechfiap.meumenu.core.domain.usecases.cliente.impl;
 
 import com.postechfiap.meumenu.core.domain.entities.ClienteDomain;
-import com.postechfiap.meumenu.core.domain.presenters.BuscarClienteOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.cliente.BuscarClienteOutputPort;
 import com.postechfiap.meumenu.core.domain.usecases.cliente.BuscarClientePorIdUseCase;
 import com.postechfiap.meumenu.core.exceptions.BusinessException;
 import com.postechfiap.meumenu.core.gateways.ClienteGateway;

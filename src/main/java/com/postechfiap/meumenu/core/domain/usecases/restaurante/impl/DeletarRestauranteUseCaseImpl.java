@@ -1,7 +1,7 @@
 package com.postechfiap.meumenu.core.domain.usecases.restaurante.impl;
 
 import com.postechfiap.meumenu.core.domain.entities.RestauranteDomain;
-import com.postechfiap.meumenu.core.domain.presenters.DeletarRestauranteOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.restaurante.DeletarRestauranteOutputPort;
 import com.postechfiap.meumenu.core.domain.usecases.restaurante.DeletarRestauranteUseCase;
 import com.postechfiap.meumenu.core.exceptions.BusinessException;
 import com.postechfiap.meumenu.core.exceptions.ResourceNotFoundException;

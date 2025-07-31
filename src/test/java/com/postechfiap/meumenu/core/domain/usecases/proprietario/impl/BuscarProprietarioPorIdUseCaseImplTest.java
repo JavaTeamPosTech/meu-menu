@@ -2,7 +2,7 @@ package com.postechfiap.meumenu.core.domain.usecases.proprietario.impl;
 
 import com.postechfiap.meumenu.core.domain.entities.ProprietarioDomain;
 import com.postechfiap.meumenu.core.domain.entities.enums.StatusContaEnum;
-import com.postechfiap.meumenu.core.domain.presenters.BuscarProprietarioOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.proprietario.BuscarProprietarioOutputPort;
 import com.postechfiap.meumenu.core.exceptions.ResourceNotFoundException;
 import com.postechfiap.meumenu.core.gateways.ProprietarioGateway;
 import org.junit.jupiter.api.BeforeEach;

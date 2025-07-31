@@ -7,7 +7,7 @@ import com.postechfiap.meumenu.core.domain.entities.HorarioFuncionamentoDomain;
 import com.postechfiap.meumenu.core.domain.entities.TipoCozinhaDomain;
 import com.postechfiap.meumenu.core.domain.entities.enums.DiaSemanaEnum;
 import com.postechfiap.meumenu.core.domain.entities.enums.StatusContaEnum;
-import com.postechfiap.meumenu.core.domain.presenters.CadastrarRestauranteOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.restaurante.CadastrarRestauranteOutputPort;
 import com.postechfiap.meumenu.core.dtos.restaurante.CadastrarRestauranteInputModel;
 import com.postechfiap.meumenu.core.dtos.restaurante.endereco.EnderecoRestauranteInputModel;
 import com.postechfiap.meumenu.core.dtos.restaurante.horario.HorarioFuncionamentoInputModel;

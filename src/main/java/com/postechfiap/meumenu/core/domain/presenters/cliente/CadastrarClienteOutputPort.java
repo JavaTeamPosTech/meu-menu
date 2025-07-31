@@ -1,4 +1,4 @@
-package com.postechfiap.meumenu.core.domain.presenters;
+package com.postechfiap.meumenu.core.domain.presenters.cliente;
 
 import com.postechfiap.meumenu.core.domain.entities.ClienteDomain;
 

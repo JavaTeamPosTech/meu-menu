@@ -4,7 +4,7 @@ import com.postechfiap.meumenu.core.domain.entities.ClienteDomain;
 import com.postechfiap.meumenu.core.domain.entities.enums.GeneroEnum;
 import com.postechfiap.meumenu.core.domain.entities.enums.MetodoPagamentoEnum;
 import com.postechfiap.meumenu.core.domain.entities.enums.TiposComidaEnum;
-import com.postechfiap.meumenu.core.domain.presenters.BuscarTodosClientesOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.cliente.BuscarTodosClientesOutputPort;
 import com.postechfiap.meumenu.core.gateways.ClienteGateway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

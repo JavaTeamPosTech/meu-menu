@@ -1,7 +1,7 @@
 package com.postechfiap.meumenu.infrastructure.api.presenters;
 
 import com.postechfiap.meumenu.core.domain.entities.ItemCardapioDomain;
-import com.postechfiap.meumenu.core.domain.presenters.AdicionarItemCardapioOutputPort; // Importar a interface do Core
+import com.postechfiap.meumenu.core.domain.presenters.restaurante.item.AdicionarItemCardapioOutputPort; // Importar a interface do Core
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.ItemCardapioResponseDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -3,8 +3,7 @@ package com.postechfiap.meumenu.core.domain.usecases.restaurante.item.impl;
 import com.postechfiap.meumenu.core.domain.entities.ItemCardapioDomain;
 import com.postechfiap.meumenu.core.domain.entities.RestauranteDomain;
 import com.postechfiap.meumenu.core.domain.entities.ProprietarioDomain;
-import com.postechfiap.meumenu.core.domain.presenters.AdicionarItemCardapioOutputPort;
-import com.postechfiap.meumenu.core.domain.usecases.restaurante.item.AdicionarItemCardapioUseCase;
+import com.postechfiap.meumenu.core.domain.presenters.restaurante.item.AdicionarItemCardapioOutputPort;
 import com.postechfiap.meumenu.core.dtos.restaurante.item.ItemCardapioInputModel;
 import com.postechfiap.meumenu.core.exceptions.ResourceNotFoundException;
 import com.postechfiap.meumenu.core.gateways.RestauranteGateway;
@@ -17,8 +16,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.util.Collections;
 import java.util.Optional;
 import java.util.UUID;
 

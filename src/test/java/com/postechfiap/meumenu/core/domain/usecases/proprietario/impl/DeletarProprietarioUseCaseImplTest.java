@@ -1,8 +1,7 @@
 package com.postechfiap.meumenu.core.domain.usecases.proprietario.impl;
 
 import com.postechfiap.meumenu.core.domain.entities.ProprietarioDomain;
-import com.postechfiap.meumenu.core.domain.entities.enums.StatusContaEnum;
-import com.postechfiap.meumenu.core.domain.presenters.DeletarProprietarioOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.proprietario.DeletarProprietarioOutputPort;
 import com.postechfiap.meumenu.core.exceptions.ResourceNotFoundException;
 import com.postechfiap.meumenu.core.gateways.ProprietarioGateway;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,8 +12,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.time.LocalDateTime;
-import java.util.Collections;
 import java.util.Optional;
 import java.util.UUID;
 

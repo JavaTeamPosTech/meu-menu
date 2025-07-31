@@ -1,7 +1,7 @@
 package com.postechfiap.meumenu.core.domain.usecases.admin.impl;
 
 import com.postechfiap.meumenu.core.domain.entities.ProprietarioDomain;
-import com.postechfiap.meumenu.core.domain.presenters.BuscarTodosProprietariosOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.proprietario.BuscarTodosProprietariosOutputPort;
 import com.postechfiap.meumenu.core.domain.usecases.admin.BuscarTodosProprietariosAdminUseCase;
 import com.postechfiap.meumenu.core.gateways.ProprietarioGateway;
 import lombok.RequiredArgsConstructor;

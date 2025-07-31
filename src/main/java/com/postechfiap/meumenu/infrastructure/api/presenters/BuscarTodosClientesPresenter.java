@@ -2,7 +2,7 @@ package com.postechfiap.meumenu.infrastructure.api.presenters;
 
 import com.postechfiap.meumenu.core.domain.entities.ClienteDomain;
 import com.postechfiap.meumenu.core.domain.entities.EnderecoDomain;
-import com.postechfiap.meumenu.core.domain.presenters.BuscarTodosClientesOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.cliente.BuscarTodosClientesOutputPort;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.ClienteResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.EnderecoResponseDTO;
 import lombok.Getter;

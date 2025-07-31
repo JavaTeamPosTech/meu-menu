@@ -1,12 +1,11 @@
 package com.postechfiap.meumenu.core.domain.usecases.proprietario.impl;
 
 import com.postechfiap.meumenu.core.domain.entities.ProprietarioDomain;
-import com.postechfiap.meumenu.core.domain.presenters.DeletarProprietarioOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.proprietario.DeletarProprietarioOutputPort;
 import com.postechfiap.meumenu.core.domain.usecases.proprietario.DeletarProprietarioUseCase;
 import com.postechfiap.meumenu.core.gateways.ProprietarioGateway;
 import com.postechfiap.meumenu.core.exceptions.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.UUID;
