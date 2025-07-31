@@ -47,8 +47,16 @@ Um sistema de gerenciamento de menus e pedidos para restaurantes, desenvolvido c
 2. Configure o arquivo .env:
 
 - POSTGRES_DB=meuMenu
-- POSTGRES_USER=seu_usuario
-- POSTGRES_PASSWORD=sua_senha
+- POSTGRES_USER=postgres
+- POSTGRES_PASSWORD=postgres
+- POSTGRES_PORT=5432
+- POSTGRES_HOST=localhost
+- SERVER_PORT=8080
+- JWT_SECRET_KEY="minhaChaveUltraSecretaComMaisDe32Bytes"
+- JWT_EXPIRATION_TIME=3600000
+- DEFAULT_ADMIN_LOGIN = "admin"
+- DEFAULT_ADMIN_EMAIL = "admin@meumenu.com"
+- DEFAULT_ADMIN_PASSWORD = "SenhaForte123!"
 - SPRING_PROFILES_ACTIVE=dev
 
 3. Inicie os contêineres com Docker Compose:
@@ -63,22 +71,31 @@ Um sistema de gerenciamento de menus e pedidos para restaurantes, desenvolvido c
 ## 📂 Estrutura do projeto
 
 ```plaintext
-meu-menu/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── com.meumenu/
-│   │   │       ├── controller/    # Controladores REST
-│   │   │       ├── model/         # Modelos de dados
-│   │   │       ├── repository/    # Repositórios JPA
-│   │   │       └── service/       # Lógica de negócios
-│   │   └── resources/
-│   │       ├── application.yml    # Configurações do Spring Boot
-│   │       └── static/            # Arquivos estáticos (se aplicável)
-├── Dockerfile                     # Configuração do contêiner da aplicação
-├── docker-compose.yml             # Orquestração dos serviços
-├── pom.xml                        # Dependências do Maven
-└── README.md                      # Documentação do projeto
+src/
+└── main/
+    └── java/
+        └── com/postechfiap/meumenu/
+            ├── core/                     # Camadas Internas: O Coração da Aplicação (Framework-Agnóstica)
+            │   ├── controllers/          # Interfaces dos Input Ports (Portas de Entrada)
+            │   ├── domain/
+            │   │   ├── entities/         # Entidades de Domínio (POJOs puros)
+            │   │   ├── gateways/         # Interfaces dos Gateways (Portas de Saída para o DB)
+            │   │   ├── presenters/       # Interfaces dos Output Ports (Portas de Saída para a API)
+            │   │   ├── services/         # Interfaces de Serviços de Domínio
+            │   │   └── usecases/         # Implementações dos Casos de Uso
+            │   └── dtos/                 # DTOs puros para comunicação interna (Input Models)
+            │   └── exceptions/           # Exceções de Domínio
+            └── infrastructure/           # Camada Externa: Os Adaptadores e Detalhes de Implementação
+                ├── api/
+                │   ├── controllers/      # Adaptadores da API (Controladores REST)
+                │   ├── dtos/             # DTOs de Requisição e Resposta (Swagger, Validação)
+                │   └── presenters/       # Implementações dos Output Ports
+                ├── config/               # Raiz de Composição (Gerenciamento de Beans)
+                ├── data/
+                │   ├── datamappers/      # Adaptadores de Mapeamento Domain <-> Entity
+                │   ├── model/            # Entidades JPA (@Entity)
+                │   └── repositories/     # Adaptadores de Persistência (Gateways Impl)
+                └── security/             # Adaptadores de Segurança
 ```
 
 ## 🧪 Testes
