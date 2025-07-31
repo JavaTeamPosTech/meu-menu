@@ -40,16 +40,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers(HttpMethod.POST, "/clientes").permitAll()
-                                .requestMatchers(HttpMethod.GET, "/clientes").permitAll() //  TODO REMOVER ESSA LINHA
-                                .requestMatchers(HttpMethod.DELETE, "/clientes/*").permitAll() //  TODO REMOVER ESSA LINHA
-                                .requestMatchers(HttpMethod.GET, "/clientes/*").permitAll()  //  TODO REMOVER ESSA LINHA
-                                .requestMatchers(HttpMethod.PUT, "/clientes/*").permitAll()  //  TODO REMOVER ESSA LINHA
                                 .requestMatchers(HttpMethod.POST, "/proprietarios").permitAll()
-                                .requestMatchers(HttpMethod.GET, "/proprietarios/*").permitAll() //  TODO REMOVER ESSA LINHA
-                                .requestMatchers(HttpMethod.DELETE, "/proprietarios/*").permitAll() //  TODO REMOVER ESSA LINHA
-                                .requestMatchers(HttpMethod.PUT, "/proprietarios/*").permitAll() //  TODO REMOVER ESSA LINHA
-                                .requestMatchers(HttpMethod.GET, "/admin/*").permitAll() //  TODO REMOVER ESSA LINHA
-                                .requestMatchers(HttpMethod.POST, "/admin").permitAll() //  TODO REMOVER ESSA LINHA
                                 .requestMatchers(HttpMethod.GET, "/restaurantes").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/restaurantes/*").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/restaurantes/*/itens/*").permitAll()
