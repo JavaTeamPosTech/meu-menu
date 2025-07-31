@@ -18,7 +18,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -32,8 +31,6 @@ public class ClienteController {
     private final AtualizarClientePresenter atualizarClientePresenter;
     private final BuscarClientePorIdInputPort buscarClientePorIdInputPort;
     private final BuscarClientePorIdPresenter buscarClientePorIdPresenter;
-    private final BuscarTodosClientesInputPort buscarTodosClientesInputPort;
-    private final BuscarTodosClientesPresenter buscarTodosClientesPresenter;
     private final CadastrarClienteInputPort cadastrarClienteInputPort;
     private final CadastrarClientePresenter cadastrarClientePresenter;
     private final DeletarClienteInputPort deletarClienteInputPort;
@@ -65,23 +62,6 @@ public class ClienteController {
             return ResponseEntity.ok(responseDTO);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseDTO);
-        }
-    }
-
-    @Operation(
-            summary = "Lista todos os clientes",
-            description = "Este endpoint retorna uma lista de todos os clientes cadastrados no sistema."
-    )
-    @GetMapping
-    public ResponseEntity<List<ClienteResponseDTO>> buscarTodosClientes() {
-        buscarTodosClientesInputPort.execute();
-
-        List<ClienteResponseDTO> responseDTOs = buscarTodosClientesPresenter.getViewModel();
-
-        if (buscarTodosClientesPresenter.isNoContent()) {
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.ok(responseDTOs);
         }
     }
 
