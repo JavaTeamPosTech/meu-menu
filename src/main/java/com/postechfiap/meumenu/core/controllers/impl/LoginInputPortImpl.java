@@ -4,9 +4,7 @@ import com.postechfiap.meumenu.core.controllers.LoginInputPort;
 import com.postechfiap.meumenu.core.domain.usecases.usuario.LoginUseCase;
 import com.postechfiap.meumenu.core.dtos.usuario.LoginInputModel;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
-@Component
 @RequiredArgsConstructor
 public class LoginInputPortImpl implements LoginInputPort {
 

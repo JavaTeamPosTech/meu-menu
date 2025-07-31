@@ -4,9 +4,7 @@ import com.postechfiap.meumenu.core.controllers.AtualizarProprietarioInputPort;
 import com.postechfiap.meumenu.core.domain.usecases.proprietario.AtualizarProprietarioUseCase;
 import com.postechfiap.meumenu.core.dtos.proprietario.AtualizarProprietarioInputModel;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
-@Component
 @RequiredArgsConstructor
 public class AtualizarProprietarioInputPortImpl implements AtualizarProprietarioInputPort {
 

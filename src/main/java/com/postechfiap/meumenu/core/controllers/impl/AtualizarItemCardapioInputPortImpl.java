@@ -4,11 +4,9 @@ import com.postechfiap.meumenu.core.controllers.AtualizarItemCardapioInputPort;
 import com.postechfiap.meumenu.core.domain.usecases.restaurante.item.AtualizarItemCardapioUseCase;
 import com.postechfiap.meumenu.core.dtos.restaurante.item.ItemCardapioInputModel;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 
-@Component
 @RequiredArgsConstructor
 public class AtualizarItemCardapioInputPortImpl implements AtualizarItemCardapioInputPort {
 

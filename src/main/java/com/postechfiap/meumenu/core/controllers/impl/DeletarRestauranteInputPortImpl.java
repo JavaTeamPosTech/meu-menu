@@ -3,11 +3,9 @@ package com.postechfiap.meumenu.core.controllers.impl;
 import com.postechfiap.meumenu.core.controllers.DeletarRestauranteInputPort;
 import com.postechfiap.meumenu.core.domain.usecases.restaurante.DeletarRestauranteUseCase;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 
-@Component
 @RequiredArgsConstructor
 public class DeletarRestauranteInputPortImpl implements DeletarRestauranteInputPort {
 

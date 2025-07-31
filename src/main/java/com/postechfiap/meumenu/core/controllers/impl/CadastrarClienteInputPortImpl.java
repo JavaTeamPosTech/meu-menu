@@ -4,9 +4,7 @@ import com.postechfiap.meumenu.core.controllers.CadastrarClienteInputPort;
 import com.postechfiap.meumenu.core.domain.usecases.cliente.CadastrarClienteUseCase;
 import com.postechfiap.meumenu.core.dtos.cliente.CadastrarClienteInputModel;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
-@Component
 @RequiredArgsConstructor
 public class CadastrarClienteInputPortImpl implements CadastrarClienteInputPort {
 

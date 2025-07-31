@@ -4,12 +4,10 @@ import com.postechfiap.meumenu.core.controllers.BuscarClientePorIdInputPort;
 import com.postechfiap.meumenu.core.domain.entities.ClienteDomain;
 import com.postechfiap.meumenu.core.domain.usecases.cliente.BuscarClientePorIdUseCase;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 import java.util.UUID;
 
-@Component
 @RequiredArgsConstructor
 public class BuscarClientePorIdInputPortImpl implements BuscarClientePorIdInputPort {
 
