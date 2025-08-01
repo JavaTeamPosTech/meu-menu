@@ -1,0 +1,176 @@
+[
+  {
+    "cnpj": "00000000000001",
+    "razaoSocial": "Empresa de Alimentos SA",
+    "nomeFantasia": "Restaurante Delícia",
+    "inscricaoEstadual": "123456789",
+    "telefoneComercial": "5511912345678",
+    "endereco": {
+      "estado": "SP",
+      "cidade": "São Paulo",
+      "bairro": "Centro",
+      "rua": "Rua da Paz",
+      "numero": 123,
+      "complemento": "Sala 101",
+      "cep": "01000-000"
+    },
+    "tiposCozinha": [
+      { "nome": "Italiana" }
+    ],
+    "horariosFuncionamento": [
+      { "abre": "12:00", "fecha": "22:00", "diaSemana": "SEGUNDA_FEIRA" },
+      { "abre": "12:00", "fecha": "22:00", "diaSemana": "TERCA_FEIRA" },
+      { "abre": "12:00", "fecha": "23:00", "diaSemana": "SEXTA_FEIRA" },
+      { "abre": "12:00", "fecha": "23:00", "diaSemana": "SABADO" }
+    ]
+  },
+  {
+    "cnpj": "00000000000711",
+    "razaoSocial": "Comidas do Sul LTDA",
+    "nomeFantasia": "Churrascaria Gaúcha",
+    "inscricaoEstadual": "987654321",
+    "telefoneComercial": "5547987654321",
+    "endereco": {
+      "estado": "RS",
+      "cidade": "Porto Alegre",
+      "bairro": "Moinhos de Vento",
+      "rua": "Rua das Flores",
+      "numero": 77,
+      "complemento": "",
+      "cep": "90570-020"
+    },
+    "tiposCozinha": [
+      { "nome": "Churrasco" }
+    ],
+    "horariosFuncionamento": [
+      { "abre": "11:30", "fecha": "23:00", "diaSemana": "QUINTA_FEIRA" },
+      { "abre": "11:00", "fecha": "23:00", "diaSemana": "SEXTA_FEIRA" },
+      { "abre": "11:00", "fecha": "23:30", "diaSemana": "SABADO" },
+      { "abre": "11:00", "fecha": "22:00", "diaSemana": "DOMINGO" }
+    ]
+  },
+  {
+    "cnpj": "00000000000822",
+    "razaoSocial": "Sabores do Oriente ME",
+    "nomeFantasia": "Sushi House",
+    "inscricaoEstadual": "1122334455",
+    "telefoneComercial": "5521988877665",
+    "endereco": {
+      "estado": "RJ",
+      "cidade": "Rio de Janeiro",
+      "bairro": "Barra da Tijuca",
+      "rua": "Avenida das Américas",
+      "numero": 3000,
+      "complemento": "Bloco B",
+      "cep": "22640-102"
+    },
+    "tiposCozinha": [
+      { "nome": "Japonesa" }
+    ],
+    "horariosFuncionamento": [
+      { "abre": "17:00", "fecha": "23:00", "diaSemana": "TERCA_FEIRA" },
+      { "abre": "17:00", "fecha": "23:00", "diaSemana": "QUARTA_FEIRA" },
+      { "abre": "17:00", "fecha": "00:00", "diaSemana": "SEXTA_FEIRA" },
+      { "abre": "17:00", "fecha": "00:00", "diaSemana": "SABADO" }
+    ]
+  },
+  {
+    "cnpj": "00000000000933",
+    "razaoSocial": "Delícias Naturais EIRELI",
+    "nomeFantasia": "Veggie Vida",
+    "inscricaoEstadual": "5566778899",
+    "telefoneComercial": "5531991122334",
+    "endereco": {
+      "estado": "MG",
+      "cidade": "Belo Horizonte",
+      "bairro": "Savassi",
+      "rua": "Rua Paraíba",
+      "numero": 200,
+      "complemento": "Loja 5",
+      "cep": "30130-140"
+    },
+    "tiposCozinha": [
+      { "nome": "Vegetariana" }
+    ],
+    "horariosFuncionamento": [
+      { "abre": "10:00", "fecha": "20:00", "diaSemana": "SEGUNDA_FEIRA" },
+      { "abre": "10:00", "fecha": "20:00", "diaSemana": "TERCA_FEIRA" },
+      { "abre": "10:00", "fecha": "21:00", "diaSemana": "QUINTA_FEIRA" },
+      { "abre": "12:00", "fecha": "22:00", "diaSemana": "DOMINGO" }
+    ]
+  },
+  {
+    "cnpj": "00000000001044",
+    "razaoSocial": "Cozinha Nordestina Ltda",
+    "nomeFantasia": "Sabor do Sertão",
+    "inscricaoEstadual": "4433221100",
+    "telefoneComercial": "5583981122334",
+    "endereco": {
+      "estado": "PE",
+      "cidade": "Recife",
+      "bairro": "Boa Viagem",
+      "rua": "Rua dos Navegantes",
+      "numero": 456,
+      "complemento": "Térreo",
+      "cep": "51020-010"
+    },
+    "tiposCozinha": [
+      { "nome": "Nordestina" }
+    ],
+    "horariosFuncionamento": [
+      { "abre": "11:00", "fecha": "15:00", "diaSemana": "SEGUNDA_FEIRA" },
+      { "abre": "11:00", "fecha": "15:00", "diaSemana": "TERCA_FEIRA" },
+      { "abre": "18:00", "fecha": "23:00", "diaSemana": "SEXTA_FEIRA" },
+      { "abre": "11:30", "fecha": "22:00", "diaSemana": "SABADO" },
+      { "abre": "11:30", "fecha": "21:00", "diaSemana": "DOMINGO" }
+    ]
+  },
+  {
+    "cnpj": "00000000000700",
+    "razaoSocial": "Comidas Regionais Ltda",
+    "nomeFantasia": "Sabor Nordestino",
+    "inscricaoEstadual": "987654321",
+    "telefoneComercial": "5583987654321",
+    "endereco": {
+      "estado": "PE",
+      "cidade": "Recife",
+      "bairro": "Boa Viagem",
+      "rua": "Avenida Domingos Ferreira",
+      "numero": 789,
+      "complemento": "Térreo",
+      "cep": "51011-051"
+    },
+    "tiposCozinha": [
+      {
+        "nome": "Nordestina"
+      }
+    ],
+    "horariosFuncionamento": [
+      {
+        "abre": "11:00",
+        "fecha": "15:00",
+        "diaSemana": "SEGUNDA_FEIRA"
+      },
+      {
+        "abre": "11:00",
+        "fecha": "15:00",
+        "diaSemana": "TERCA_FEIRA"
+      },
+      {
+        "abre": "11:00",
+        "fecha": "15:00",
+        "diaSemana": "QUARTA_FEIRA"
+      },
+      {
+        "abre": "11:00",
+        "fecha": "16:00",
+        "diaSemana": "SABADO"
+      },
+      {
+        "abre": "12:00",
+        "fecha": "17:00",
+        "diaSemana": "DOMINGO"
+      }
+    ]
+  }
+]

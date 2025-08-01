@@ -1,0 +1,127 @@
+[
+  {
+    "nome": "Patrícia Lima",
+    "cpf": "56789012344",
+    "email": "patricia.lima@email.com",
+    "login": "patlima",
+    "dataNascimento": "1995-01-18",
+    "genero": "FEMININO",
+    "telefone": "5583981122334",
+    "preferenciasAlimentares": ["CHURRASCO", "PIZZARIA"],
+    "alergias": ["SOJA"],
+    "metodoPagamentoPreferido": "CREDITO",
+    "notificacoesAtivas": true,
+    "senha": "SenhaForte123!",
+    "enderecos": [
+      {
+        "estado": "BA",
+        "cidade": "Salvador",
+        "bairro": "Barra",
+        "rua": "Avenida Oceânica",
+        "numero": 555,
+        "complemento": "Apto 1101",
+        "cep": "40140-130"
+      }
+    ]
+  },
+  {
+    "nome": "Carlos Mendes",
+    "cpf": "12345678901",
+    "email": "carlos.mendes@email.com",
+    "login": "cmendes",
+    "dataNascimento": "1988-07-09",
+    "genero": "MASCULINO",
+    "telefone": "5511998765432",
+    "preferenciasAlimentares": ["JAPONESA", "VEGANA"],
+    "alergias": ["AMENDOIM"],
+    "metodoPagamentoPreferido": "DEBITO",
+    "notificacoesAtivas": false,
+    "senha": "SenhaForte123!",
+    "enderecos": [
+      {
+        "estado": "SP",
+        "cidade": "São Paulo",
+        "bairro": "Vila Mariana",
+        "rua": "Rua Domingos de Morais",
+        "numero": 1234,
+        "complemento": "Casa 2",
+        "cep": "04010-001"
+      }
+    ]
+  },
+  {
+    "nome": "Mariana Souza",
+    "cpf": "23456789012",
+    "email": "mariana.souza@email.com",
+    "login": "msouza",
+    "dataNascimento": "1992-11-03",
+    "genero": "FEMININO",
+    "telefone": "5521976543210",
+    "preferenciasAlimentares": ["ITALIANA"],
+    "alergias": [],
+    "metodoPagamentoPreferido": "PIX",
+    "notificacoesAtivas": true,
+    "senha": "SenhaForte123!",
+    "enderecos": [
+      {
+        "estado": "RJ",
+        "cidade": "Rio de Janeiro",
+        "bairro": "Copacabana",
+        "rua": "Rua Barata Ribeiro",
+        "numero": 999,
+        "complemento": "Cobertura",
+        "cep": "22040-002"
+      }
+    ]
+  },
+  {
+    "nome": "José Ferreira",
+    "cpf": "34567890123",
+    "email": "jose.ferreira@email.com",
+    "login": "jferreira",
+    "dataNascimento": "1979-03-22",
+    "genero": "MASCULINO",
+    "telefone": "5531999887766",
+    "preferenciasAlimentares": ["BRASILEIRA", "ARABE"],
+    "alergias": ["GLUTEN"],
+    "metodoPagamentoPreferido": "DINHEIRO",
+    "notificacoesAtivas": false,
+    "senha": "SenhaForte123!",
+    "enderecos": [
+      {
+        "estado": "MG",
+        "cidade": "Belo Horizonte",
+        "bairro": "Savassi",
+        "rua": "Avenida Cristóvão Colombo",
+        "numero": 300,
+        "complemento": "Sala 501",
+        "cep": "30140-140"
+      }
+    ]
+  },
+  {
+    "nome": "Ana Beatriz Ramos",
+    "cpf": "45678901234",
+    "email": "ana.ramos@email.com",
+    "login": "anaramos",
+    "dataNascimento": "2000-05-14",
+    "genero": "FEMININO",
+    "telefone": "5548991122334",
+    "preferenciasAlimentares": ["MEXICANA"],
+    "alergias": [],
+    "metodoPagamentoPreferido": "CREDITO",
+    "notificacoesAtivas": true,
+    "senha": "SenhaForte123!",
+    "enderecos": [
+      {
+        "estado": "SC",
+        "cidade": "Florianópolis",
+        "bairro": "Centro",
+        "rua": "Rua Felipe Schmidt",
+        "numero": 800,
+        "complemento": "Apto 302",
+        "cep": "88010-001"
+      }
+    ]
+  }
+]

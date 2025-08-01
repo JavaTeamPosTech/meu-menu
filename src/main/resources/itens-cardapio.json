@@ -1,0 +1,128 @@
+[
+  {
+    "nome": "Spaghetti alla Carbonara",
+    "descricao": "Massa tradicional italiana com molho à base de ovos, queijo parmesão, pancetta e pimenta-do-reino.",
+    "preco": 42.00,
+    "disponivelApenasNoRestaurante": true,
+    "urlFoto": "http://example.com/spaghetti_carbonara.jpg"
+  },
+  {
+    "nome": "Risoto de Funghi",
+    "descricao": "Risoto cremoso preparado com cogumelos secos e finalizado com parmesão.",
+    "preco": 49.00,
+    "disponivelApenasNoRestaurante": true,
+    "urlFoto": "http://example.com/risoto_funghi.jpg"
+  },
+  {
+    "nome": "Lasanha à Bolonhesa",
+    "descricao": "Lasanha de massa fresca com camadas de molho à bolonhesa e molho branco.",
+    "preco": 45.00,
+    "disponivelApenasNoRestaurante": true,
+    "urlFoto": "http://example.com/lasanha_bolonhesa.jpg"
+  },
+  {
+    "nome": "Picanha na Brasa",
+    "descricao": "Picanha fatiada, grelhada na brasa, acompanhada de farofa e vinagrete.",
+    "preco": 65.00,
+    "disponivelApenasNoRestaurante": true,
+    "urlFoto": "http://example.com/picanha_brasa.jpg"
+  },
+  {
+    "nome": "Costela Bovina",
+    "descricao": "Costela bovina assada lentamente, servida com mandioca cozida.",
+    "preco": 58.00,
+    "disponivelApenasNoRestaurante": true,
+    "urlFoto": "http://example.com/costela_bovina.jpg"
+  },
+  {
+    "nome": "Espetinho Misto",
+    "descricao": "Espetinhos variados de carnes e legumes, assados na churrasqueira.",
+    "preco": 35.00,
+    "disponivelApenasNoRestaurante": true,
+    "urlFoto": "http://example.com/espetinho_misto.jpg"
+  },
+  {
+    "nome": "Sushi Combinado",
+    "descricao": "Barca com 20 peças variadas de sushi e sashimi.",
+    "preco": 75.00,
+    "disponivelApenasNoRestaurante": true,
+    "urlFoto": "http://example.com/sushi_combinado.jpg"
+  },
+  {
+    "nome": "Yakissoba de Frango",
+    "descricao": "Macarrão oriental salteado com legumes e frango ao molho shoyu.",
+    "preco": 42.00,
+    "disponivelApenasNoRestaurante": true,
+    "urlFoto": "http://example.com/yakissoba_frango.jpg"
+  },
+  {
+    "nome": "Temaki de Salmão",
+    "descricao": "Cone de alga recheado com arroz, salmão fresco e cebolinha.",
+    "preco": 28.00,
+    "disponivelApenasNoRestaurante": true,
+    "urlFoto": "http://example.com/temaki_salmao.jpg"
+  },
+  {
+    "nome": "Quibe de Abóbora com Ricota",
+    "descricao": "Delicioso quibe vegetariano feito com abóbora e recheio de ricota temperada.",
+    "preco": 32.00,
+    "disponivelApenasNoRestaurante": true,
+    "urlFoto": "http://example.com/quibe_abobora.jpg"
+  },
+  {
+    "nome": "Lasanha de Berinjela",
+    "descricao": "Lasanha vegetariana feita com berinjela grelhada, tomate e queijo.",
+    "preco": 38.00,
+    "disponivelApenasNoRestaurante": true,
+    "urlFoto": "http://example.com/lasanha_berinjela.jpg"
+  },
+  {
+    "nome": "Salada Veggie Colorida",
+    "descricao": "Mix de folhas verdes, grão de bico, cenoura ralada, beterraba e molho de iogurte.",
+    "preco": 29.00,
+    "disponivelApenasNoRestaurante": true,
+    "urlFoto": "http://example.com/salada_veggie.jpg"
+  },
+  {
+    "nome": "Carne de Sol com Macaxeira",
+    "descricao": "Tradicional carne de sol com macaxeira cozida e manteiga de garrafa.",
+    "preco": 44.00,
+    "disponivelApenasNoRestaurante": true,
+    "urlFoto": "http://example.com/carne_sol.jpg"
+  },
+  {
+    "nome": "Baião de Dois",
+    "descricao": "Arroz com feijão verde, queijo coalho e carne seca desfiada.",
+    "preco": 39.00,
+    "disponivelApenasNoRestaurante": true,
+    "urlFoto": "http://example.com/baiao_dois.jpg"
+  },
+  {
+    "nome": "Bobó de Camarão",
+    "descricao": "Camarões ao molho cremoso de mandioca e leite de coco, com arroz branco.",
+    "preco": 58.50,
+    "disponivelApenasNoRestaurante": true,
+    "urlFoto": "http://example.com/bobo_camarao.jpg"
+  },
+  {
+    "nome": "Moqueca de Peixe",
+    "descricao": "Moqueca com peixe branco, pimentões, leite de coco e azeite de dendê.",
+    "preco": 52.00,
+    "disponivelApenasNoRestaurante": true,
+    "urlFoto": "http://example.com/moqueca_peixe.jpg"
+  },
+  {
+    "nome": "Sarapatel",
+    "descricao": "Prato típico nordestino feito com miúdos de porco, temperos fortes e acompanhamentos.",
+    "preco": 36.00,
+    "disponivelApenasNoRestaurante": true,
+    "urlFoto": "http://example.com/sarapatel.jpg"
+  },
+  {
+    "nome": "Cuscuz com Charque",
+    "descricao": "Cuscuz de milho nordestino com charque desfiada e manteiga de garrafa.",
+    "preco": 30.00,
+    "disponivelApenasNoRestaurante": true,
+    "urlFoto": "http://example.com/cuscuz_charque.jpg"
+  }
+]

@@ -1,0 +1,59 @@
+[
+  {
+    "nome": "Roberto Silva",
+    "email": "roberto.silva@example.com",
+    "login": "roberto.silva",
+    "senha": "SenhaForte123!",
+    "cpf": "55443322115",
+    "whatsapp": "5511981234567",
+    "enderecos": [
+      {
+        "estado": "MG",
+        "cidade": "Belo Horizonte",
+        "bairro": "Savassi",
+        "rua": "Rua Pernambuco",
+        "numero": 321,
+        "complemento": "Loja 2",
+        "cep": "30130-150"
+      }
+    ]
+  },
+  {
+    "nome": "Luciana Andrade",
+    "email": "luciana.andrade@example.com",
+    "login": "luciana.andrade",
+    "senha": "SenhaForte123!",
+    "cpf": "99887766554",
+    "whatsapp": "5521987654321",
+    "enderecos": [
+      {
+        "estado": "RJ",
+        "cidade": "Rio de Janeiro",
+        "bairro": "Copacabana",
+        "rua": "Avenida Atlântica",
+        "numero": 1050,
+        "complemento": "Cobertura",
+        "cep": "22021-001"
+      }
+    ]
+  },
+  {
+    "nome": "Marcelo Costa",
+    "email": "marcelo.costa@example.com",
+    "login": "marcelo.costa",
+    "senha": "SenhaForte123!",
+    "cpf": "11223344556",
+    "whatsapp": "5541991122334",
+    "enderecos": [
+      {
+        "estado": "PR",
+        "cidade": "Curitiba",
+        "bairro": "Batel",
+        "rua": "Alameda Dom Pedro II",
+        "numero": 240,
+        "complemento": "Sala 302",
+        "cep": "80420-060"
+      }
+    ]
+  }
+]
