@@ -227,7 +227,7 @@ Seguiremos um fluxo que percorre as camadas da arquitetura, construindo as inter
         package com.postechfiap.meumenu.infrastructure.api.presenters.cliente;
 
         import com.postechfiap.meumenu.core.domain.presenters.cliente.DeletarClienteOutputPort;
-        import com.postechfiap.meumenu.infrastructure.api.dtos.response.MensagemResponseDTO;
+        import com.postechfiap.meumenu.dtos.response.MensagemResponseDTO;
         import lombok.Getter;
         import lombok.NoArgsConstructor;
         import lombok.Setter;
@@ -266,25 +266,18 @@ Seguiremos um fluxo que percorre as camadas da arquitetura, construindo as inter
         import com.postechfiap.meumenu.core.controllers.cliente.BuscarTodosClientesInputPort;
         import com.postechfiap.meumenu.core.controllers.cliente.CadastrarClienteInputPort;
         import com.postechfiap.meumenu.core.controllers.cliente.DeletarClienteInputPort;
-        import com.postechfiap.meumenu.core.dtos.cliente.CadastrarClienteInputModel;
-        import com.postechfiap.meumenu.infrastructure.api.dtos.request.CadastrarClienteRequestDTO;
         import com.postechfiap.meumenu.infrastructure.api.dtos.response.BuscarClientePorIdResponseDTO;
-        import com.postechfiap.meumenu.infrastructure.api.dtos.response.CadastrarClienteResponseDTO;
         import com.postechfiap.meumenu.infrastructure.api.presenters.cliente.BuscarClientePorIdPresenter;
         import com.postechfiap.meumenu.infrastructure.api.presenters.cliente.BuscarTodosClientesPresenter;
         import com.postechfiap.meumenu.infrastructure.api.presenters.cliente.CadastrarClientePresenter;
         import com.postechfiap.meumenu.infrastructure.api.presenters.cliente.DeletarClientePresenter;
         import io.swagger.v3.oas.annotations.Operation;
         import io.swagger.v3.oas.annotations.tags.Tag;
-        import jakarta.validation.Valid;
         import lombok.RequiredArgsConstructor;
-        import org.springframework.http.HttpStatus;
         import org.springframework.http.ResponseEntity;
         import org.springframework.web.bind.annotation.*;
 
-        import java.util.List;
         import java.util.UUID;
-        import java.util.stream.Collectors;
 
         @RestController
         @Tag(name = "Cliente Controller", description = "Operações relacionadas ao Cliente")

@@ -2,7 +2,7 @@ package com.postechfiap.meumenu.infrastructure.api.presenters.admin;
 
 import com.postechfiap.meumenu.core.domain.entities.AdminDomain;
 import com.postechfiap.meumenu.core.domain.presenters.admin.CadastrarAdminOutputPort;
-import com.postechfiap.meumenu.infrastructure.api.dtos.response.CadastrarAdminResponseDTO;
+import com.postechfiap.meumenu.dtos.response.CadastrarAdminResponseDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

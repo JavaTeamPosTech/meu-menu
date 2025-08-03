@@ -7,7 +7,7 @@ import com.postechfiap.meumenu.core.domain.entities.ItemCardapioDomain;
 import com.postechfiap.meumenu.core.domain.entities.TipoCozinhaDomain;
 import com.postechfiap.meumenu.core.domain.presenters.restaurante.BuscarRestaurantePorIdOutputPort;
 
-import com.postechfiap.meumenu.infrastructure.api.dtos.response.*;
+import com.postechfiap.meumenu.dtos.response.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

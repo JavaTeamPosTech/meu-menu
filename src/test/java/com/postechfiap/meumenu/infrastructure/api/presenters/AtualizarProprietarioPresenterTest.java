@@ -4,7 +4,7 @@ import com.postechfiap.meumenu.core.domain.entities.ProprietarioDomain;
 import com.postechfiap.meumenu.core.domain.entities.EnderecoDomain;
 import com.postechfiap.meumenu.core.domain.entities.UsuarioDomain;
 import com.postechfiap.meumenu.core.domain.entities.enums.StatusContaEnum;
-import com.postechfiap.meumenu.infrastructure.api.dtos.response.ProprietarioResponseDTO;
+import com.postechfiap.meumenu.dtos.response.ProprietarioResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.presenters.proprietario.AtualizarProprietarioPresenter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

@@ -2,7 +2,7 @@ package com.postechfiap.meumenu.infrastructure.api.presenters.restaurante.item;
 
 import com.postechfiap.meumenu.core.domain.entities.ItemCardapioDomain;
 import com.postechfiap.meumenu.core.domain.presenters.restaurante.item.AtualizarItemCardapioOutputPort;
-import com.postechfiap.meumenu.infrastructure.api.dtos.response.ItemCardapioResponseDTO;
+import com.postechfiap.meumenu.dtos.response.ItemCardapioResponseDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
