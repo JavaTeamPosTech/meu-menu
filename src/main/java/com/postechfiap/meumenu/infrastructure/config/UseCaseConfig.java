@@ -1,7 +1,6 @@
 package com.postechfiap.meumenu.infrastructure.config;
 
 import com.postechfiap.meumenu.core.domain.presenters.cliente.BuscarTodosClientesOutputPort;
-import com.postechfiap.meumenu.core.domain.presenters.proprietario.DeletarProprietarioOutputPort;
 import com.postechfiap.meumenu.core.domain.presenters.restaurante.*;
 import com.postechfiap.meumenu.core.domain.presenters.restaurante.item.AdicionarItemCardapioOutputPort;
 import com.postechfiap.meumenu.core.domain.presenters.restaurante.item.AtualizarItemCardapioOutputPort;
@@ -130,11 +129,10 @@ public class UseCaseConfig {
 
     @Bean
     public DeletarProprietarioUseCase deletarProprietarioUseCase(
-            ProprietarioGateway proprietarioGateway,
-            DeletarProprietarioOutputPort deletarProprietarioOutputPort) {
+            ProprietarioGateway proprietarioGateway) {
         return new DeletarProprietarioUseCaseImpl(
-                proprietarioGateway,
-                deletarProprietarioOutputPort);
+                proprietarioGateway
+        );
     }
 
     @Bean

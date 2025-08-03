@@ -32,10 +32,7 @@ import com.postechfiap.meumenu.core.controllers.usuario.impl.AlterarSenhaInputPo
 import com.postechfiap.meumenu.core.controllers.usuario.impl.LoginInputPortImpl;
 import com.postechfiap.meumenu.core.domain.presenters.admin.CadastrarAdminOutputPort;
 import com.postechfiap.meumenu.core.domain.presenters.cliente.*;
-import com.postechfiap.meumenu.core.domain.presenters.proprietario.AtualizarProprietarioOutputPort;
-import com.postechfiap.meumenu.core.domain.presenters.proprietario.BuscarProprietarioOutputPort;
-import com.postechfiap.meumenu.core.domain.presenters.proprietario.BuscarTodosProprietariosOutputPort;
-import com.postechfiap.meumenu.core.domain.presenters.proprietario.CadastrarProprietarioOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.proprietario.*;
 import com.postechfiap.meumenu.core.domain.usecases.admin.BuscarTodosClientesAdminUseCase;
 import com.postechfiap.meumenu.core.domain.usecases.admin.BuscarTodosProprietariosAdminUseCase;
 import com.postechfiap.meumenu.core.domain.usecases.admin.CadastrarAdminUseCase;
@@ -127,8 +124,10 @@ public class InputPortsConfig {
 
     @Bean
     public DeletarProprietarioInputPort deletarProprietarioInputPort(
-            DeletarProprietarioUseCase deletarProprietarioUseCase) {
-        return new DeletarProprietarioInputPortImpl(deletarProprietarioUseCase);
+            DeletarProprietarioUseCase deletarProprietarioUseCase,
+            DeletarProprietarioOutputPort deletarProprietarioOutputPort) {
+        return new DeletarProprietarioInputPortImpl(deletarProprietarioUseCase,
+                deletarProprietarioOutputPort);
     }
 
     @Bean

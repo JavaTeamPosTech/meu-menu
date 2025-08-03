@@ -23,6 +23,19 @@ public class DeletarProprietarioPresenter implements DeletarProprietarioOutputPo
         );
     }
 
+    @Override
+    public void presentError(String message) {
+        this.viewModel = new DeletarProprietarioResponseDTO(
+                message,
+                "ERROR"
+        );
+    }
+
+    @Override
+    public boolean hasError() {
+        return this.viewModel != null && "ERROR".equals(this.viewModel.status());
+    }
+
     public DeletarProprietarioResponseDTO getViewModel() {
         return viewModel;
     }

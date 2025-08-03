@@ -1,10 +1,9 @@
 package com.postechfiap.meumenu.core.domain.usecases.proprietario.impl;
 
 import com.postechfiap.meumenu.core.domain.entities.ProprietarioDomain;
-import com.postechfiap.meumenu.core.domain.presenters.proprietario.DeletarProprietarioOutputPort;
 import com.postechfiap.meumenu.core.domain.usecases.proprietario.DeletarProprietarioUseCase;
-import com.postechfiap.meumenu.core.gateways.ProprietarioGateway;
 import com.postechfiap.meumenu.core.exceptions.ResourceNotFoundException;
+import com.postechfiap.meumenu.core.gateways.ProprietarioGateway;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Optional;
@@ -14,7 +13,7 @@ import java.util.UUID;
 public class DeletarProprietarioUseCaseImpl implements DeletarProprietarioUseCase {
 
     private final ProprietarioGateway proprietarioGateway;
-    private final DeletarProprietarioOutputPort deletarProprietarioOutputPort;
+
 
     @Override
     public void execute(UUID id) {
@@ -26,6 +25,6 @@ public class DeletarProprietarioUseCaseImpl implements DeletarProprietarioUseCas
 
         proprietarioGateway.deletarProprietario(id);
 
-        deletarProprietarioOutputPort.presentSuccess("Proprietário com ID " + id + " excluído com sucesso.");
+
     }
 }

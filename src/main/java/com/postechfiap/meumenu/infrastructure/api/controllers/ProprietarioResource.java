@@ -94,9 +94,12 @@ public class ProprietarioResource {
     public ResponseEntity<DeletarProprietarioResponseDTO> deletarProprietario(@PathVariable UUID id) {
         deletarProprietarioInputPort.execute(id);
 
-//        return ResponseEntity.noContent().build();
-        DeletarProprietarioResponseDTO responseDTO = deletarProprietarioPresenter.getViewModel();
-        return ResponseEntity.ok(responseDTO);
+        if (deletarProprietarioPresenter.hasError()) {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        } else {
+            return ResponseEntity.ok(deletarProprietarioPresenter.getViewModel());
+
+        }
     }
 
     @Operation(
