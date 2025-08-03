@@ -12,7 +12,6 @@ import com.postechfiap.meumenu.infrastructure.model.ItemCardapioEntity;
 import com.postechfiap.meumenu.infrastructure.model.RestauranteEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -110,7 +109,6 @@ public class RestauranteGatewayImpl implements RestauranteGateway {
     }
 
     @Override
-    @Transactional
     public ItemCardapioDomain adicionarItemCardapio(UUID restauranteId, ItemCardapioDomain itemCardapioDomain) {
         RestauranteEntity restauranteEntity = restauranteSpringRepository.findById(restauranteId)
                 .orElseThrow(() -> new ResourceNotFoundException("Restaurante com ID " + restauranteId + " não encontrado para adicionar item."));
@@ -123,7 +121,6 @@ public class RestauranteGatewayImpl implements RestauranteGateway {
     }
 
     @Override
-    @Transactional
     public ItemCardapioDomain atualizarItemCardapio(ItemCardapioDomain itemCardapioDomain) {
         if (itemCardapioDomain.getId() == null) {
             throw new IllegalArgumentException("ID do item cardápio não pode ser nulo para atualização.");

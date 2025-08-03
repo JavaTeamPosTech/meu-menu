@@ -7,8 +7,6 @@ import com.postechfiap.meumenu.core.controllers.proprietario.CadastrarProprietar
 import com.postechfiap.meumenu.core.controllers.restaurante.CadastrarRestauranteInputPort;
 import com.postechfiap.meumenu.core.controllers.restaurante.item.AdicionarItemCardapioInputPort;
 import com.postechfiap.meumenu.core.domain.entities.AdminDomain;
-import com.postechfiap.meumenu.core.gateways.AdminGateway;
-import com.postechfiap.meumenu.core.gateways.UsuarioGateway;
 import com.postechfiap.meumenu.core.domain.services.PasswordService;
 import com.postechfiap.meumenu.core.dtos.request.AdicionarItemCardapioRequestDTO;
 import com.postechfiap.meumenu.core.dtos.request.CadastrarClienteRequestDTO;
@@ -16,13 +14,14 @@ import com.postechfiap.meumenu.core.dtos.request.CadastrarProprietarioRequestDTO
 import com.postechfiap.meumenu.core.dtos.request.CadastrarRestauranteRequestDTO;
 import com.postechfiap.meumenu.core.dtos.response.CadastrarProprietarioResponseDTO;
 import com.postechfiap.meumenu.core.dtos.response.CadastrarRestauranteResponseDTO;
+import com.postechfiap.meumenu.core.gateways.AdminGateway;
+import com.postechfiap.meumenu.core.gateways.UsuarioGateway;
 import com.postechfiap.meumenu.infrastructure.api.presenters.proprietario.CadastrarProprietarioPresenter;
 import com.postechfiap.meumenu.infrastructure.api.presenters.restaurante.CadastrarRestaurantePresenter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -55,7 +54,6 @@ public class AdminSeeder implements CommandLineRunner {
     private final ObjectMapper objectMapper;
 
     @Override
-    @Transactional
     public void run(String... args) throws Exception {
         if (!usuarioGateway.existsByLogin(defaultAdminLogin)) {
             System.out.println("Iniciando a criação do primeiro usuário Admin padrão...");
@@ -87,7 +85,8 @@ public class AdminSeeder implements CommandLineRunner {
 
         List<CadastrarClienteRequestDTO> clientes = objectMapper.readValue(
                 inputStream,
-                new TypeReference<List<CadastrarClienteRequestDTO>>() {}
+                new TypeReference<List<CadastrarClienteRequestDTO>>() {
+                }
         );
 
         for (CadastrarClienteRequestDTO cliente : clientes) {
@@ -108,7 +107,8 @@ public class AdminSeeder implements CommandLineRunner {
 
         List<CadastrarProprietarioRequestDTO> proprietarios = objectMapper.readValue(
                 inputStream,
-                new TypeReference<List<CadastrarProprietarioRequestDTO>>() {}
+                new TypeReference<List<CadastrarProprietarioRequestDTO>>() {
+                }
         );
 
         int restauranteIndex = 0;
@@ -128,7 +128,7 @@ public class AdminSeeder implements CommandLineRunner {
         }
     }
 
-    private void loadRestaurante(Integer index, UUID proprietárioID, int  itemCardapioIndex) throws IOException {
+    private void loadRestaurante(Integer index, UUID proprietárioID, int itemCardapioIndex) throws IOException {
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream("restaurantes.json");
         if (inputStream == null) {
             System.out.println("restaurantes.json não encontrado");
@@ -137,12 +137,13 @@ public class AdminSeeder implements CommandLineRunner {
 
         List<CadastrarRestauranteRequestDTO> restaurantes = objectMapper.readValue(
                 inputStream,
-                new TypeReference<List<CadastrarRestauranteRequestDTO>>() {}
+                new TypeReference<List<CadastrarRestauranteRequestDTO>>() {
+                }
         );
 
         try {
             cadastrarRestauranteInputPort.execute(restaurantes.get(index).toInputModel(proprietárioID));
-            CadastrarRestauranteResponseDTO restauranteResponseDTO =  cadastrarRestaurantePresenter.getViewModel();
+            CadastrarRestauranteResponseDTO restauranteResponseDTO = cadastrarRestaurantePresenter.getViewModel();
             loadItemCardapio(itemCardapioIndex, restauranteResponseDTO.id());
         } catch (Exception e) {
             System.err.println("Erro ao cadastrar restaurante: " + restaurantes.get(index).nomeFantasia() + " - " + e.getMessage());
@@ -158,7 +159,8 @@ public class AdminSeeder implements CommandLineRunner {
 
         List<AdicionarItemCardapioRequestDTO> itensCardapio = objectMapper.readValue(
                 inputStream,
-                new TypeReference<List<AdicionarItemCardapioRequestDTO>>() {}
+                new TypeReference<List<AdicionarItemCardapioRequestDTO>>() {
+                }
         );
 
         int startIndex = itemCardapioIndex * 3;
