@@ -37,7 +37,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/restaurantes")
 @RequiredArgsConstructor
-public class RestauranteController {
+public class RestauranteResource {
 
     private final CadastrarRestauranteInputPort cadastrarRestauranteInputPort;
     private final CadastrarRestaurantePresenter cadastrarRestaurantePresenter;

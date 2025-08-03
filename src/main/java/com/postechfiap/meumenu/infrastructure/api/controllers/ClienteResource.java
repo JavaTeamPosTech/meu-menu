@@ -31,7 +31,7 @@ import java.util.UUID;
 @Tag(name = "Cliente")
 @RequestMapping("/clientes")
 @RequiredArgsConstructor
-public class ClienteController {
+public class ClienteResource {
 
     private final AtualizarClienteInputPort atualizarClienteInputPort;
     private final AtualizarClientePresenter atualizarClientePresenter;

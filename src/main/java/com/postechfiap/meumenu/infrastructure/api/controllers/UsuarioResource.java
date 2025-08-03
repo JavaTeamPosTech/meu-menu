@@ -27,7 +27,7 @@ import java.util.UUID;
 @Tag(name = "Usuário")
 @RequestMapping("/usuarios")
 @RequiredArgsConstructor
-public class UsuarioController {
+public class UsuarioResource {
 
     private final LoginInputPort loginInputPort;
     private final LoginPresenter loginPresenter;

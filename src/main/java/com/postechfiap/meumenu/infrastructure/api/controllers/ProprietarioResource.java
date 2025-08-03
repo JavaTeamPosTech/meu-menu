@@ -29,7 +29,7 @@ import java.util.UUID;
 @Tag(name = "Proprietario")
 @RequestMapping("/proprietarios")
 @RequiredArgsConstructor
-public class ProprietarioController {
+public class ProprietarioResource {
 
     private final CadastrarProprietarioInputPort cadastrarProprietarioInputPort;
     private final CadastrarProprietarioPresenter cadastrarProprietarioPresenter;

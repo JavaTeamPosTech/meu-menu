@@ -27,7 +27,7 @@ import java.util.List;
 @RequestMapping("/admin")
 @RequiredArgsConstructor
 @PreAuthorize("hasRole('ADMINENTITY')")
-public class AdminController {
+public class AdminResource {
 
     private final BuscarTodosClientesAdminInputPort  buscarTodosClientesAdminInputPort;
     private final BuscarTodosProprietariosAdminInputPort buscarTodosProprietariosAdminInputPort;
