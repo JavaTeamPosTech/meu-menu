@@ -34,6 +34,7 @@ import com.postechfiap.meumenu.core.domain.presenters.admin.CadastrarAdminOutput
 import com.postechfiap.meumenu.core.domain.presenters.cliente.AtualizarClienteOutputPort;
 import com.postechfiap.meumenu.core.domain.presenters.cliente.BuscarClienteOutputPort;
 import com.postechfiap.meumenu.core.domain.presenters.cliente.BuscarTodosClientesOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.cliente.CadastrarClienteOutputPort;
 import com.postechfiap.meumenu.core.domain.presenters.proprietario.BuscarTodosProprietariosOutputPort;
 import com.postechfiap.meumenu.core.domain.usecases.admin.BuscarTodosClientesAdminUseCase;
 import com.postechfiap.meumenu.core.domain.usecases.admin.BuscarTodosProprietariosAdminUseCase;
@@ -58,9 +59,11 @@ public class InputPortsConfig {
 
     @Bean
     public CadastrarClienteInputPort cadastrarClienteInputPort(
-            CadastrarClienteUseCase cadastrarClienteUseCase) {
+            CadastrarClienteUseCase cadastrarClienteUseCase,
+            CadastrarClienteOutputPort clienteOutputPort) {
         return new CadastrarClienteInputPortImpl(
-                cadastrarClienteUseCase);
+                cadastrarClienteUseCase,
+                clienteOutputPort);
     }
 
     @Bean

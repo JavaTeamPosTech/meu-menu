@@ -1,7 +1,6 @@
 package com.postechfiap.meumenu.infrastructure.config;
 
 import com.postechfiap.meumenu.core.domain.presenters.cliente.BuscarTodosClientesOutputPort;
-import com.postechfiap.meumenu.core.domain.presenters.cliente.CadastrarClienteOutputPort;
 import com.postechfiap.meumenu.core.domain.presenters.cliente.DeletarClienteOutputPort;
 import com.postechfiap.meumenu.core.domain.presenters.proprietario.AtualizarProprietarioOutputPort;
 import com.postechfiap.meumenu.core.domain.presenters.proprietario.BuscarProprietarioOutputPort;
@@ -58,13 +57,13 @@ public class UseCaseConfig {
     public CadastrarClienteUseCase cadastrarClienteUseCase(
             ClienteGateway clienteGateway,
             UsuarioGateway usuarioGateway,
-            PasswordService passwordService,
-            CadastrarClienteOutputPort clienteOutputPort) {
+            PasswordService passwordService
+    ) {
         return new CadastrarClienteUseCaseImpl(
                 clienteGateway,
                 usuarioGateway,
-                passwordService,
-                clienteOutputPort);
+                passwordService)
+                ;
     }
 
     @Bean

@@ -17,7 +17,7 @@ public class CadastrarClientePresenter implements CadastrarClienteOutputPort {
                 cliente.getEmail(),
                 cliente.getLogin(),
                 cliente.getDataCriacao(),
-                " Cliente cadastrado com sucesso!",
+                "Cliente cadastrado com sucesso!",
                 "SUCCESS"
         );
     }
@@ -25,14 +25,19 @@ public class CadastrarClientePresenter implements CadastrarClienteOutputPort {
     @Override
     public void presentError(String message) {
         this.viewModel = new CadastrarClienteResponseDTO(
-        null,
-        null,
-        null,
-        null,
-        null,
-        message,
-        "FAIL"
+                null,
+                null,
+                null,
+                null,
+                null,
+                message,
+                "FAIL"
         );
+    }
+
+    @Override
+    public boolean hasError() {
+        return !"Cliente cadastrado com sucesso!".equals(this.viewModel.getMessage());
     }
 
     public CadastrarClienteResponseDTO getViewModel() {

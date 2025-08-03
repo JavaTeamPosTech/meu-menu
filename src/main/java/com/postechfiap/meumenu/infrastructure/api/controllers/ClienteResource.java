@@ -49,7 +49,16 @@ public class ClienteResource {
     public ResponseEntity<CadastrarClienteResponseDTO> cadastrarCliente(@RequestBody @Valid CadastrarClienteRequestDTO cadastrarClienteRequestDTO) {
         cadastrarClienteInputPort.execute(cadastrarClienteRequestDTO.toInputModel());
         CadastrarClienteResponseDTO responseDTO = cadastrarClientePresenter.getViewModel();
-        return ResponseEntity.status(HttpStatus.CREATED).body(responseDTO);
+
+        if (cadastrarClientePresenter.hasError()) {
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(responseDTO);
+        }
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(responseDTO);
     }
 
     @Operation(
