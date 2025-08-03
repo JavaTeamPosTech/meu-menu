@@ -27,10 +27,12 @@ import com.postechfiap.meumenu.core.controllers.restaurante.item.impl.AtualizarI
 import com.postechfiap.meumenu.core.controllers.restaurante.item.impl.BuscarItemCardapioPorIdInputPortImpl;
 import com.postechfiap.meumenu.core.controllers.restaurante.item.impl.DeletarItemCardapioInputPortImpl;
 import com.postechfiap.meumenu.core.controllers.usuario.AlterarSenhaInputPort;
-import com.postechfiap.meumenu.core.controllers.usuario.impl.AlterarSenhaInputPortImpl;
 import com.postechfiap.meumenu.core.controllers.usuario.LoginInputPort;
+import com.postechfiap.meumenu.core.controllers.usuario.impl.AlterarSenhaInputPortImpl;
 import com.postechfiap.meumenu.core.controllers.usuario.impl.LoginInputPortImpl;
+import com.postechfiap.meumenu.core.domain.presenters.admin.CadastrarAdminOutputPort;
 import com.postechfiap.meumenu.core.domain.presenters.cliente.BuscarTodosClientesOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.proprietario.BuscarTodosProprietariosOutputPort;
 import com.postechfiap.meumenu.core.domain.usecases.admin.BuscarTodosClientesAdminUseCase;
 import com.postechfiap.meumenu.core.domain.usecases.admin.BuscarTodosProprietariosAdminUseCase;
 import com.postechfiap.meumenu.core.domain.usecases.admin.CadastrarAdminUseCase;
@@ -185,16 +187,19 @@ public class InputPortsConfig {
 
     @Bean
     public BuscarTodosProprietariosAdminInputPort buscarTodosProprietariosAdminInputPort(
-            BuscarTodosProprietariosAdminUseCase buscarTodosProprietariosAdminUseCase) {
+            BuscarTodosProprietariosAdminUseCase buscarTodosProprietariosAdminUseCase,
+            BuscarTodosProprietariosOutputPort buscarTodosProprietariosOutputPort) {
         return new BuscarTodosProprietariosAdminAdminInputPortImpl(
-                buscarTodosProprietariosAdminUseCase);
+                buscarTodosProprietariosAdminUseCase,
+                buscarTodosProprietariosOutputPort);
     }
 
     @Bean
     public CadastrarAdminInputPort cadastrarAdminInputPort(
-            CadastrarAdminUseCase cadastrarAdminUseCase) {
+            CadastrarAdminUseCase cadastrarAdminUseCase,
+            CadastrarAdminOutputPort cadastrarAdminOutputPort) {
         return new CadastrarAdminInputPortImpl(
-                cadastrarAdminUseCase);
+                cadastrarAdminUseCase, cadastrarAdminOutputPort);
     }
 
 }

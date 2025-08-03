@@ -5,4 +5,5 @@ import com.postechfiap.meumenu.core.domain.entities.AdminDomain;
 public interface CadastrarAdminOutputPort {
     void presentSuccess(AdminDomain admin);
     void presentError(String message);
+    boolean hasError();
 }

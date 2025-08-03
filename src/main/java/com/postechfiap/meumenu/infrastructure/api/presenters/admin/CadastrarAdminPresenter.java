@@ -42,6 +42,11 @@ public class CadastrarAdminPresenter implements CadastrarAdminOutputPort {
         );
     }
 
+    @Override
+    public boolean hasError() {
+        return !"Admin cadastrado com sucesso".equals(this.viewModel.message());
+    }
+
     public CadastrarAdminResponseDTO getViewModel() {
         return viewModel;
     }

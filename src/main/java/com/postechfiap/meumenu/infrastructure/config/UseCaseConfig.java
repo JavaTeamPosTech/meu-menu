@@ -1,8 +1,10 @@
 package com.postechfiap.meumenu.infrastructure.config;
 
-import com.postechfiap.meumenu.core.domain.presenters.admin.CadastrarAdminOutputPort;
 import com.postechfiap.meumenu.core.domain.presenters.cliente.*;
-import com.postechfiap.meumenu.core.domain.presenters.proprietario.*;
+import com.postechfiap.meumenu.core.domain.presenters.proprietario.AtualizarProprietarioOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.proprietario.BuscarProprietarioOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.proprietario.CadastrarProprietarioOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.proprietario.DeletarProprietarioOutputPort;
 import com.postechfiap.meumenu.core.domain.presenters.restaurante.*;
 import com.postechfiap.meumenu.core.domain.presenters.restaurante.item.AdicionarItemCardapioOutputPort;
 import com.postechfiap.meumenu.core.domain.presenters.restaurante.item.AtualizarItemCardapioOutputPort;
@@ -260,29 +262,27 @@ public class UseCaseConfig {
             BuscarTodosClientesOutputPort buscarTodosClientesOutputPort) {
         return new BuscarTodosClientesAdminUseCaseImpl(
                 clienteGateway
-                );
+        );
     }
 
     @Bean
     public BuscarTodosProprietariosAdminUseCase buscarTodosProprietariosAdminUseCase(
-            ProprietarioGateway proprietarioGateway,
-            BuscarTodosProprietariosOutputPort buscarTodosProprietariosOutputPort) {
+            ProprietarioGateway proprietarioGateway
+    ) {
         return new BuscarTodosProprietariosAdminUseCaseImpl(
-                proprietarioGateway,
-                buscarTodosProprietariosOutputPort);
+                proprietarioGateway);
     }
 
     @Bean
     public CadastrarAdminUseCase cadastrarAdminUseCase(
             AdminGateway adminGateway,
-            UsuarioGateway  usuarioGateway,
-            PasswordService passwordService,
-            CadastrarAdminOutputPort cadastrarAdminOutputPort) {
+            UsuarioGateway usuarioGateway,
+            PasswordService passwordService
+    ) {
         return new CadastrarAdminUseCaseImpl(
                 adminGateway,
                 usuarioGateway,
-                passwordService,
-                cadastrarAdminOutputPort);
+                passwordService);
     }
 
 }

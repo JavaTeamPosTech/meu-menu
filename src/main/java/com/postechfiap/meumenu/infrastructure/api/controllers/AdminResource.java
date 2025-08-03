@@ -7,9 +7,9 @@ import com.postechfiap.meumenu.core.dtos.request.CadastrarAdminRequestDTO;
 import com.postechfiap.meumenu.core.dtos.response.CadastrarAdminResponseDTO;
 import com.postechfiap.meumenu.core.dtos.response.ClienteResponseDTO;
 import com.postechfiap.meumenu.core.dtos.response.ProprietarioResponseDTO;
+import com.postechfiap.meumenu.infrastructure.api.presenters.admin.CadastrarAdminPresenter;
 import com.postechfiap.meumenu.infrastructure.api.presenters.cliente.BuscarTodosClientesPresenter;
 import com.postechfiap.meumenu.infrastructure.api.presenters.proprietario.BuscarTodosProprietariosPresenter;
-import com.postechfiap.meumenu.infrastructure.api.presenters.admin.CadastrarAdminPresenter;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -29,7 +29,7 @@ import java.util.List;
 @PreAuthorize("hasRole('ADMINENTITY')")
 public class AdminResource {
 
-    private final BuscarTodosClientesAdminInputPort  buscarTodosClientesAdminInputPort;
+    private final BuscarTodosClientesAdminInputPort buscarTodosClientesAdminInputPort;
     private final BuscarTodosProprietariosAdminInputPort buscarTodosProprietariosAdminInputPort;
     private final BuscarTodosProprietariosPresenter buscarTodosProprietariosPresenter;
     private final BuscarTodosClientesPresenter buscarTodosClientesPresenter;
@@ -44,8 +44,16 @@ public class AdminResource {
     @PostMapping
     public ResponseEntity<CadastrarAdminResponseDTO> cadastrarAdmin(@RequestBody @Valid CadastrarAdminRequestDTO cadastrarAdminRequestDTO) {
         cadastrarAdminInputPort.execute(cadastrarAdminRequestDTO.toInputModel());
-        CadastrarAdminResponseDTO responseDTO = cadastrarAdminPresenter.getViewModel();
-        return ResponseEntity.status(HttpStatus.CREATED).body(responseDTO);
+
+        if (cadastrarAdminPresenter.hasError()) {
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(cadastrarAdminPresenter.getViewModel());
+        }
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(cadastrarAdminPresenter.getViewModel());
     }
 
     @Operation(
