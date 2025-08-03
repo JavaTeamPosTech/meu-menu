@@ -38,6 +38,11 @@ public class CadastrarProprietarioPresenter implements CadastrarProprietarioOutp
         );
     }
 
+    @Override
+    public boolean hasError() {
+        return !"Proprietário cadastrado com sucesso!".equals(this.viewModel.message());
+    }
+
     public CadastrarProprietarioResponseDTO getViewModel() {
         return viewModel;
     }

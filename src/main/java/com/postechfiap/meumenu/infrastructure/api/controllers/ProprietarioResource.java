@@ -50,7 +50,16 @@ public class ProprietarioResource {
         cadastrarProprietarioInputPort.execute(requestDTO.toInputModel());
 
         CadastrarProprietarioResponseDTO responseDTO = cadastrarProprietarioPresenter.getViewModel();
-        return ResponseEntity.status(HttpStatus.CREATED).body(responseDTO);
+
+        if (cadastrarProprietarioPresenter.hasError()) {
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(responseDTO);
+        }
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(responseDTO);
     }
 
     @Operation(

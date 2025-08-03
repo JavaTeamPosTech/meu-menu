@@ -1,8 +1,7 @@
 package com.postechfiap.meumenu.core.domain.usecases.proprietario.impl;
 
-import com.postechfiap.meumenu.core.domain.entities.ProprietarioDomain;
 import com.postechfiap.meumenu.core.domain.entities.EnderecoDomain;
-import com.postechfiap.meumenu.core.domain.presenters.proprietario.CadastrarProprietarioOutputPort;
+import com.postechfiap.meumenu.core.domain.entities.ProprietarioDomain;
 import com.postechfiap.meumenu.core.domain.services.PasswordService;
 import com.postechfiap.meumenu.core.domain.usecases.proprietario.CadastrarProprietarioUseCase;
 import com.postechfiap.meumenu.core.dtos.proprietario.CadastrarProprietarioInputModel;
@@ -20,20 +19,17 @@ public class CadastrarProprietarioUseCaseImpl implements CadastrarProprietarioUs
     private final ProprietarioGateway proprietarioGateway;
     private final UsuarioGateway usuarioGateway;
     private final PasswordService passwordService;
-    private final CadastrarProprietarioOutputPort cadastrarProprietarioOutputPort;
+
 
     @Override
-    public void execute(CadastrarProprietarioInputModel input) {
+    public ProprietarioDomain execute(CadastrarProprietarioInputModel input) {
         if (usuarioGateway.existsByLogin(input.getLogin())) {
-            cadastrarProprietarioOutputPort.presentError("Login já cadastrado.");
             throw new BusinessException("Login já cadastrado.");
         }
         if (usuarioGateway.existsByEmail(input.getEmail())) {
-            cadastrarProprietarioOutputPort.presentError("Email já cadastrado.");
             throw new BusinessException("Email já cadastrado.");
         }
         if (proprietarioGateway.existsByCpf(input.getCpf())) {
-            cadastrarProprietarioOutputPort.presentError("CPF já cadastrado.");
             throw new BusinessException("CPF já cadastrado.");
         }
 
@@ -59,8 +55,8 @@ public class CadastrarProprietarioUseCaseImpl implements CadastrarProprietarioUs
 
         enderecosDomain.forEach(endereco -> endereco.setUsuario(novoProprietario));
         novoProprietario.setEnderecos(enderecosDomain);
-        ProprietarioDomain proprietarioSalvo = proprietarioGateway.cadastrarProprietario(novoProprietario);
+        return proprietarioGateway.cadastrarProprietario(novoProprietario);
 
-        cadastrarProprietarioOutputPort.presentSuccess(proprietarioSalvo);
+
     }
 }
