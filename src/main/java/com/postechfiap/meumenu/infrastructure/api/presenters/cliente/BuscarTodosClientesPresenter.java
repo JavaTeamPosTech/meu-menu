@@ -99,7 +99,4 @@ public class BuscarTodosClientesPresenter implements BuscarTodosClientesOutputPo
         return isNoContent;
     }
 
-    public String getNoContentMessage() {
-        return noContentMessage;
-    }
 }

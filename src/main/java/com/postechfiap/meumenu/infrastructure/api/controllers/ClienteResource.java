@@ -4,7 +4,6 @@ import com.postechfiap.meumenu.core.controllers.cliente.AtualizarClienteInputPor
 import com.postechfiap.meumenu.core.controllers.cliente.BuscarClientePorIdInputPort;
 import com.postechfiap.meumenu.core.controllers.cliente.CadastrarClienteInputPort;
 import com.postechfiap.meumenu.core.controllers.cliente.DeletarClienteInputPort;
-import com.postechfiap.meumenu.core.domain.entities.ClienteDomain;
 import com.postechfiap.meumenu.core.dtos.request.AtualizarClienteRequestDTO;
 import com.postechfiap.meumenu.core.dtos.request.CadastrarClienteRequestDTO;
 import com.postechfiap.meumenu.core.dtos.response.CadastrarClienteResponseDTO;
@@ -25,7 +24,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -62,13 +60,14 @@ public class ClienteResource {
     @PreAuthorize("#id == authentication.principal.id")
     @GetMapping("/{id}")
     public ResponseEntity<ClienteResponseDTO> buscarClientePorId(@PathVariable UUID id) {
-        Optional<ClienteDomain> cliente = buscarClientePorIdInputPort.execute(id);
+        buscarClientePorIdInputPort.execute(id);
+
         ClienteResponseDTO responseDTO = buscarClientePorIdPresenter.getViewModel();
 
-        if (cliente.isPresent()) {
-            return ResponseEntity.ok(responseDTO);
-        } else {
+        if (buscarClientePorIdPresenter.isNoContent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseDTO);
+        } else {
+            return ResponseEntity.ok(responseDTO);
         }
     }
 

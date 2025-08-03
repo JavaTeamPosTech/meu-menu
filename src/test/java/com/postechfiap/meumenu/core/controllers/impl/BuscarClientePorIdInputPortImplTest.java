@@ -53,11 +53,9 @@ class BuscarClientePorIdInputPortImplTest {
         when(buscarClientePorIdUseCase.execute(eq(clienteId))).thenReturn(Optional.of(clienteDomain));
 
         // Executa o método do InputPortImpl
-        Optional<ClienteDomain> result = assertDoesNotThrow(() -> buscarClientePorIdInputPort.execute(clienteId));
+        assertDoesNotThrow(() -> buscarClientePorIdInputPort.execute(clienteId));
 
         // Verifica
-        assertTrue(result.isPresent());
-        assertEquals(clienteDomain, result.get());
         verify(buscarClientePorIdUseCase, times(1)).execute(eq(clienteId)); // Verifica a delegação
     }
 
@@ -68,10 +66,9 @@ class BuscarClientePorIdInputPortImplTest {
         when(buscarClientePorIdUseCase.execute(eq(clienteId))).thenReturn(Optional.empty());
 
         // Executa o método do InputPortImpl
-        Optional<ClienteDomain> result = assertDoesNotThrow(() -> buscarClientePorIdInputPort.execute(clienteId));
+        assertDoesNotThrow(() -> buscarClientePorIdInputPort.execute(clienteId));
 
         // Verifica
-        assertTrue(result.isEmpty());
         verify(buscarClientePorIdUseCase, times(1)).execute(eq(clienteId)); // Verifica a delegação
     }
 }

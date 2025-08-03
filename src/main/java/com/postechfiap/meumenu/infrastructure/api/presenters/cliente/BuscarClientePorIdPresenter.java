@@ -20,9 +20,14 @@ import java.util.stream.Collectors;
 public class BuscarClientePorIdPresenter implements BuscarClienteOutputPort {
 
     private ClienteResponseDTO viewModel;
+    private String noContentMessage;
+    private boolean isNoContent = false;
 
     @Override
     public void presentSuccess(ClienteDomain cliente) {
+        this.isNoContent = false;
+        this.noContentMessage = null;
+
         List<EnderecoResponseDTO> enderecosResponse = null;
         if (cliente.getEnderecos() != null) {
             enderecosResponse = cliente.getEnderecos().stream()
@@ -51,6 +56,13 @@ public class BuscarClientePorIdPresenter implements BuscarClienteOutputPort {
                 cliente.getDataAtualizacao(),
                 enderecosResponse
         );
+    }
+
+    @Override
+    public void presentNoContent(String message) {
+        this.viewModel = null;
+        this.isNoContent = true;
+        this.noContentMessage = message;
     }
 
     private EnderecoResponseDTO mapEnderecoDomainToResponseDTO(EnderecoDomain enderecoDomain) {
