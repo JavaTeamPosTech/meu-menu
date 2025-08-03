@@ -23,6 +23,20 @@ public class DeletarClientePresenter implements DeletarClienteOutputPort {
         );
     }
 
+    @Override
+    public void presentError(String message) {
+        this.viewModel = new DeletarClienteResponseDTO(
+                message,
+                "ERROR"
+        );
+    }
+
+    @Override
+    public boolean hasError() {
+        return this.viewModel != null && "ERROR".equals(this.viewModel.status());
+    }
+
+
     public DeletarClienteResponseDTO getViewModel() {
         return viewModel;
     }

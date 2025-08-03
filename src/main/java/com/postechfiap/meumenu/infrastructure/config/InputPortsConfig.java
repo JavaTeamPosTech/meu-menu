@@ -31,10 +31,7 @@ import com.postechfiap.meumenu.core.controllers.usuario.LoginInputPort;
 import com.postechfiap.meumenu.core.controllers.usuario.impl.AlterarSenhaInputPortImpl;
 import com.postechfiap.meumenu.core.controllers.usuario.impl.LoginInputPortImpl;
 import com.postechfiap.meumenu.core.domain.presenters.admin.CadastrarAdminOutputPort;
-import com.postechfiap.meumenu.core.domain.presenters.cliente.AtualizarClienteOutputPort;
-import com.postechfiap.meumenu.core.domain.presenters.cliente.BuscarClienteOutputPort;
-import com.postechfiap.meumenu.core.domain.presenters.cliente.BuscarTodosClientesOutputPort;
-import com.postechfiap.meumenu.core.domain.presenters.cliente.CadastrarClienteOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.cliente.*;
 import com.postechfiap.meumenu.core.domain.presenters.proprietario.BuscarTodosProprietariosOutputPort;
 import com.postechfiap.meumenu.core.domain.usecases.admin.BuscarTodosClientesAdminUseCase;
 import com.postechfiap.meumenu.core.domain.usecases.admin.BuscarTodosProprietariosAdminUseCase;
@@ -95,8 +92,10 @@ public class InputPortsConfig {
 
     @Bean
     public DeletarClienteInputPort deletarClienteInputPort(
-            DeletarClienteUseCase deletarClienteUseCase) {
-        return new DeletarClienteInputPortImpl(deletarClienteUseCase);
+            DeletarClienteUseCase deletarClienteUseCase,
+            DeletarClienteOutputPort deletarClienteOutputPort) {
+        return new DeletarClienteInputPortImpl(deletarClienteUseCase,
+                deletarClienteOutputPort);
     }
 
     @Bean

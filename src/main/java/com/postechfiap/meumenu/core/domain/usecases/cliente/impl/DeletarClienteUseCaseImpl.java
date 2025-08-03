@@ -1,10 +1,9 @@
 package com.postechfiap.meumenu.core.domain.usecases.cliente.impl;
 
 import com.postechfiap.meumenu.core.domain.entities.ClienteDomain;
-import com.postechfiap.meumenu.core.domain.presenters.cliente.DeletarClienteOutputPort;
 import com.postechfiap.meumenu.core.domain.usecases.cliente.DeletarClienteUseCase;
-import com.postechfiap.meumenu.core.gateways.ClienteGateway;
 import com.postechfiap.meumenu.core.exceptions.ResourceNotFoundException;
+import com.postechfiap.meumenu.core.gateways.ClienteGateway;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Optional;
@@ -14,7 +13,7 @@ import java.util.UUID;
 public class DeletarClienteUseCaseImpl implements DeletarClienteUseCase {
 
     private final ClienteGateway clienteGateway;
-    private final DeletarClienteOutputPort deletarClienteOutputPort;
+
 
     @Override
     public void execute(UUID id) {
@@ -25,6 +24,6 @@ public class DeletarClienteUseCaseImpl implements DeletarClienteUseCase {
         }
 
         clienteGateway.deletarCliente(id);
-        deletarClienteOutputPort.presentSuccess("Cliente com ID " + id + " excluído com sucesso.");
+
     }
 }

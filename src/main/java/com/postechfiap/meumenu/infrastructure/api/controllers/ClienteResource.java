@@ -88,10 +88,16 @@ public class ClienteResource {
     @PreAuthorize("#id == authentication.principal.id")
     @DeleteMapping("/{id}")
     public ResponseEntity<DeletarClienteResponseDTO> deletarCliente(@PathVariable UUID id) {
+
         deletarClienteInputPort.execute(id);
 
-//         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-        return ResponseEntity.ok(deletarClientePresenter.getViewModel());
+        if (deletarClientePresenter.hasError()) {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        } else {
+            return ResponseEntity.ok(deletarClientePresenter.getViewModel());
+
+        }
+
     }
 
     @Operation(
