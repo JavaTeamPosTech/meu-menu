@@ -74,9 +74,11 @@ public class InputPortsConfig {
 
     @Bean
     public BuscarTodosClientesInputPort buscarTodosClientesInputPort(
-            BuscarTodosClientesUseCase buscarTodosClientesUseCase) {
+            BuscarTodosClientesUseCase buscarTodosClientesUseCase,
+            BuscarTodosClientesOutputPort buscarTodosClientesOutputPort) {
         return new BuscarTodosClientesInputPortImpl(
-                buscarTodosClientesUseCase);
+                buscarTodosClientesUseCase,
+                buscarTodosClientesOutputPort);
     }
 
     @Bean

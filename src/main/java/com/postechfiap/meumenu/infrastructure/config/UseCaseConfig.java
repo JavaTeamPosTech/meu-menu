@@ -88,11 +88,11 @@ public class UseCaseConfig {
 
     @Bean
     public BuscarTodosClientesUseCase buscarTodosClientesUseCase(
-            ClienteGateway clienteGateway,
-            BuscarTodosClientesOutputPort buscarTodosClientesOutputPort) {
+            ClienteGateway clienteGateway
+    ) {
         return new BuscarTodosClientesUseCaseImpl(
-                clienteGateway,
-                buscarTodosClientesOutputPort);
+                clienteGateway
+        );
     }
 
     @Bean
