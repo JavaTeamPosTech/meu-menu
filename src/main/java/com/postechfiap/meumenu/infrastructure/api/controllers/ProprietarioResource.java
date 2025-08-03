@@ -9,6 +9,7 @@ import com.postechfiap.meumenu.core.dtos.request.CadastrarProprietarioRequestDTO
 import com.postechfiap.meumenu.core.dtos.response.CadastrarProprietarioResponseDTO;
 import com.postechfiap.meumenu.core.dtos.response.DeletarProprietarioResponseDTO;
 import com.postechfiap.meumenu.core.dtos.response.ProprietarioResponseDTO;
+import com.postechfiap.meumenu.infrastructure.api.exceptions.ApiResponse;
 import com.postechfiap.meumenu.infrastructure.api.presenters.proprietario.AtualizarProprietarioPresenter;
 import com.postechfiap.meumenu.infrastructure.api.presenters.proprietario.BuscarProprietarioPorIdPresenter;
 import com.postechfiap.meumenu.infrastructure.api.presenters.proprietario.CadastrarProprietarioPresenter;
@@ -76,8 +77,8 @@ public class ProprietarioResource {
         deletarProprietarioInputPort.execute(id);
 
 //        return ResponseEntity.noContent().build();
-         DeletarProprietarioResponseDTO responseDTO = deletarProprietarioPresenter.getViewModel();
-         return ResponseEntity.ok(responseDTO);
+        DeletarProprietarioResponseDTO responseDTO = deletarProprietarioPresenter.getViewModel();
+        return ResponseEntity.ok(responseDTO);
     }
 
     @Operation(
@@ -87,8 +88,18 @@ public class ProprietarioResource {
     @SecurityRequirement(name = "bearerAuth")
     @PreAuthorize("#id == authentication.principal.id")
     @PutMapping("/{id}")
-    public ResponseEntity<ProprietarioResponseDTO> atualizarProprietario(@PathVariable UUID id, @RequestBody @Valid AtualizarProprietarioRequestDTO requestDTO) {
+    public ResponseEntity<ApiResponse<ProprietarioResponseDTO>> atualizarProprietario(@PathVariable UUID id, @RequestBody @Valid AtualizarProprietarioRequestDTO requestDTO) {
         atualizarProprietarioInputPort.execute(requestDTO.toInputModel(id));
-        return ResponseEntity.ok(atualizarProprietarioPresenter.getViewModel());
+
+        ProprietarioResponseDTO viewModel = atualizarProprietarioPresenter.getViewModel();
+
+        if (viewModel == null) {
+            String errorMessage = atualizarProprietarioPresenter.getErrorMessage();
+            return ResponseEntity
+                    .badRequest()
+                    .body(ApiResponse.error(errorMessage));
+        }
+
+        return ResponseEntity.ok(ApiResponse.success(viewModel));
     }
 }

@@ -5,6 +5,7 @@ import com.postechfiap.meumenu.core.domain.presenters.proprietario.AtualizarProp
 import com.postechfiap.meumenu.core.dtos.response.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -13,9 +14,12 @@ import java.util.stream.Collectors;
 @Component
 @Getter
 @NoArgsConstructor
+@Setter
 public class AtualizarProprietarioPresenter implements AtualizarProprietarioOutputPort {
 
     private ProprietarioResponseDTO viewModel;
+
+    private String errorMessage;
 
     @Override
     public void presentSuccess(ProprietarioDomain proprietario) {
@@ -46,6 +50,11 @@ public class AtualizarProprietarioPresenter implements AtualizarProprietarioOutp
                 enderecosResponse,
                 restaurantesResponse
         );
+    }
+
+    @Override
+    public void presentError(String message) {
+        setErrorMessage(message);
     }
 
     private EnderecoResponseDTO mapEnderecoDomainToResponseDTO(EnderecoDomain enderecoDomain) {

@@ -1,7 +1,6 @@
 package com.postechfiap.meumenu.core.domain.usecases.proprietario.impl;
 
 import com.postechfiap.meumenu.core.domain.entities.ProprietarioDomain;
-import com.postechfiap.meumenu.core.domain.presenters.proprietario.AtualizarProprietarioOutputPort;
 import com.postechfiap.meumenu.core.domain.usecases.proprietario.AtualizarProprietarioUseCase;
 import com.postechfiap.meumenu.core.dtos.proprietario.AtualizarProprietarioInputModel;
 import com.postechfiap.meumenu.core.exceptions.BusinessException;
@@ -18,7 +17,7 @@ public class AtualizarProprietarioUseCaseImpl implements AtualizarProprietarioUs
 
     private final ProprietarioGateway proprietarioGateway;
     private final UsuarioGateway usuarioGateway;
-    private final AtualizarProprietarioOutputPort atualizarProprietarioOutputPort;
+
 
     @Override
     public ProprietarioDomain execute(AtualizarProprietarioInputModel input) {
@@ -46,9 +45,7 @@ public class AtualizarProprietarioUseCaseImpl implements AtualizarProprietarioUs
         proprietarioExistente.setStatusConta(input.getStatusConta());
         proprietarioExistente.setDataAtualizacao(LocalDateTime.now());
 
-        ProprietarioDomain proprietarioAtualizado = proprietarioGateway.atualizarProprietario(proprietarioExistente);
-        atualizarProprietarioOutputPort.presentSuccess(proprietarioAtualizado);
+        return proprietarioGateway.atualizarProprietario(proprietarioExistente);
 
-        return proprietarioAtualizado;
     }
 }
