@@ -30,6 +30,7 @@ import com.postechfiap.meumenu.core.controllers.usuario.AlterarSenhaInputPort;
 import com.postechfiap.meumenu.core.controllers.usuario.impl.AlterarSenhaInputPortImpl;
 import com.postechfiap.meumenu.core.controllers.usuario.LoginInputPort;
 import com.postechfiap.meumenu.core.controllers.usuario.impl.LoginInputPortImpl;
+import com.postechfiap.meumenu.core.domain.presenters.cliente.BuscarTodosClientesOutputPort;
 import com.postechfiap.meumenu.core.domain.usecases.admin.BuscarTodosClientesAdminUseCase;
 import com.postechfiap.meumenu.core.domain.usecases.admin.BuscarTodosProprietariosAdminUseCase;
 import com.postechfiap.meumenu.core.domain.usecases.admin.CadastrarAdminUseCase;
@@ -177,9 +178,9 @@ public class InputPortsConfig {
 
     @Bean
     public BuscarTodosClientesAdminInputPort buscarTodosClientesAdminInputPort(
-            BuscarTodosClientesAdminUseCase buscarTodosClientesAdminUseCase) {
+            BuscarTodosClientesAdminUseCase buscarTodosClientesAdminUseCase, BuscarTodosClientesOutputPort buscarTodosClientesOutputPort) {
         return new BuscarTodosClientesAdminInputPortImpl(
-                buscarTodosClientesAdminUseCase);
+                buscarTodosClientesAdminUseCase, buscarTodosClientesOutputPort);
     }
 
     @Bean

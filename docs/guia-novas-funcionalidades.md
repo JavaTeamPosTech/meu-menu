@@ -227,7 +227,7 @@ Seguiremos um fluxo que percorre as camadas da arquitetura, construindo as inter
         package com.postechfiap.meumenu.infrastructure.api.presenters.cliente;
 
         import com.postechfiap.meumenu.core.domain.presenters.cliente.DeletarClienteOutputPort;
-        import com.postechfiap.meumenu.dtos.response.MensagemResponseDTO;
+        import com.postechfiap.meumenu.core.dtos.response.MensagemResponseDTO;
         import lombok.Getter;
         import lombok.NoArgsConstructor;
         import lombok.Setter;

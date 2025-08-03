@@ -13,18 +13,10 @@ import java.util.List;
 public class BuscarTodosClientesAdminUseCaseImpl implements BuscarTodosClientesAdminUseCase {
 
     private final ClienteGateway clienteGateway;
-    private final BuscarTodosClientesOutputPort buscarTodosClientesOutputPort;
+
 
     @Override
     public List<ClienteDomain> execute() {
-        List<ClienteDomain> clientes = clienteGateway.buscarTodosClientes();
-
-        if (clientes.isEmpty()) {
-            buscarTodosClientesOutputPort.presentNoContent("Nenhum cliente encontrado para o administrador.");
-            return Collections.emptyList();
-        }
-
-        buscarTodosClientesOutputPort.presentSuccess(clientes);
-        return clientes;
+        return clienteGateway.buscarTodosClientes();
     }
 }

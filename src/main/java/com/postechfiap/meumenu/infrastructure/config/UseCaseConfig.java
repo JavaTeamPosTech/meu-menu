@@ -259,8 +259,8 @@ public class UseCaseConfig {
             ClienteGateway clienteGateway,
             BuscarTodosClientesOutputPort buscarTodosClientesOutputPort) {
         return new BuscarTodosClientesAdminUseCaseImpl(
-                clienteGateway,
-                buscarTodosClientesOutputPort);
+                clienteGateway
+                );
     }
 
     @Bean

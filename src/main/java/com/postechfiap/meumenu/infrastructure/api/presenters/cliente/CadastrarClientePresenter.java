@@ -2,7 +2,7 @@ package com.postechfiap.meumenu.infrastructure.api.presenters.cliente;
 
 import com.postechfiap.meumenu.core.domain.entities.ClienteDomain;
 import com.postechfiap.meumenu.core.domain.presenters.cliente.CadastrarClienteOutputPort;
-import com.postechfiap.meumenu.dtos.response.CadastrarClienteResponseDTO;
+import com.postechfiap.meumenu.core.dtos.response.CadastrarClienteResponseDTO;
 import org.springframework.stereotype.Component;
 
 @Component

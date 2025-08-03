@@ -1,8 +1,8 @@
 package com.postechfiap.meumenu.infrastructure.api.exceptions;
 
 import com.postechfiap.meumenu.core.exceptions.BusinessException;
-import com.postechfiap.meumenu.dtos.response.ErroValidacaoDTO;
-import com.postechfiap.meumenu.dtos.response.ExcecaoDTO;
+import com.postechfiap.meumenu.core.dtos.response.ErroValidacaoDTO;
+import com.postechfiap.meumenu.core.dtos.response.ExcecaoDTO;
 import com.postechfiap.meumenu.infrastructure.api.presenters.cliente.CadastrarClientePresenter;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;

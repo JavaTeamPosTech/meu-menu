@@ -1,7 +1,7 @@
 package com.postechfiap.meumenu.infrastructure.api.presenters.cliente;
 
 import com.postechfiap.meumenu.core.domain.presenters.cliente.DeletarClienteOutputPort;
-import com.postechfiap.meumenu.dtos.response.DeletarClienteResponseDTO;
+import com.postechfiap.meumenu.core.dtos.response.DeletarClienteResponseDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

@@ -1,6 +1,6 @@
 package com.postechfiap.meumenu.infrastructure.api.presenters;
 
-import com.postechfiap.meumenu.dtos.response.MensagemResponseDTO;
+import com.postechfiap.meumenu.core.dtos.response.MensagemResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.presenters.usuario.AlterarSenhaPresenter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

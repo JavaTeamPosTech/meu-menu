@@ -4,11 +4,11 @@ import com.postechfiap.meumenu.core.controllers.proprietario.AtualizarProprietar
 import com.postechfiap.meumenu.core.controllers.proprietario.BuscarProprietarioPorIdInputPort;
 import com.postechfiap.meumenu.core.controllers.proprietario.CadastrarProprietarioInputPort;
 import com.postechfiap.meumenu.core.controllers.proprietario.DeletarProprietarioInputPort;
-import com.postechfiap.meumenu.dtos.request.AtualizarProprietarioRequestDTO;
-import com.postechfiap.meumenu.dtos.request.CadastrarProprietarioRequestDTO;
-import com.postechfiap.meumenu.dtos.response.CadastrarProprietarioResponseDTO;
-import com.postechfiap.meumenu.dtos.response.DeletarProprietarioResponseDTO;
-import com.postechfiap.meumenu.dtos.response.ProprietarioResponseDTO;
+import com.postechfiap.meumenu.core.dtos.request.AtualizarProprietarioRequestDTO;
+import com.postechfiap.meumenu.core.dtos.request.CadastrarProprietarioRequestDTO;
+import com.postechfiap.meumenu.core.dtos.response.CadastrarProprietarioResponseDTO;
+import com.postechfiap.meumenu.core.dtos.response.DeletarProprietarioResponseDTO;
+import com.postechfiap.meumenu.core.dtos.response.ProprietarioResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.presenters.proprietario.AtualizarProprietarioPresenter;
 import com.postechfiap.meumenu.infrastructure.api.presenters.proprietario.BuscarProprietarioPorIdPresenter;
 import com.postechfiap.meumenu.infrastructure.api.presenters.proprietario.CadastrarProprietarioPresenter;

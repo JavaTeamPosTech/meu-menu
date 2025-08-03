@@ -1,7 +1,7 @@
 package com.postechfiap.meumenu.infrastructure.api.presenters.usuario;
 
 import com.postechfiap.meumenu.core.domain.presenters.usuario.AlterarSenhaOutputPort;
-import com.postechfiap.meumenu.dtos.response.MensagemResponseDTO;
+import com.postechfiap.meumenu.core.dtos.response.MensagemResponseDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

@@ -1,7 +1,7 @@
 package com.postechfiap.meumenu.infrastructure.api.presenters.proprietario;
 
 import com.postechfiap.meumenu.core.domain.presenters.proprietario.DeletarProprietarioOutputPort;
-import com.postechfiap.meumenu.dtos.response.DeletarProprietarioResponseDTO;
+import com.postechfiap.meumenu.core.dtos.response.DeletarProprietarioResponseDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

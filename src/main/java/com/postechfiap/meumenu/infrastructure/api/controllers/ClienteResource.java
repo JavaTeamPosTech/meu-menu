@@ -5,11 +5,11 @@ import com.postechfiap.meumenu.core.controllers.cliente.BuscarClientePorIdInputP
 import com.postechfiap.meumenu.core.controllers.cliente.CadastrarClienteInputPort;
 import com.postechfiap.meumenu.core.controllers.cliente.DeletarClienteInputPort;
 import com.postechfiap.meumenu.core.domain.entities.ClienteDomain;
-import com.postechfiap.meumenu.dtos.request.AtualizarClienteRequestDTO;
-import com.postechfiap.meumenu.dtos.request.CadastrarClienteRequestDTO;
-import com.postechfiap.meumenu.dtos.response.CadastrarClienteResponseDTO;
-import com.postechfiap.meumenu.dtos.response.ClienteResponseDTO;
-import com.postechfiap.meumenu.dtos.response.DeletarClienteResponseDTO;
+import com.postechfiap.meumenu.core.dtos.request.AtualizarClienteRequestDTO;
+import com.postechfiap.meumenu.core.dtos.request.CadastrarClienteRequestDTO;
+import com.postechfiap.meumenu.core.dtos.response.CadastrarClienteResponseDTO;
+import com.postechfiap.meumenu.core.dtos.response.ClienteResponseDTO;
+import com.postechfiap.meumenu.core.dtos.response.DeletarClienteResponseDTO;
 import com.postechfiap.meumenu.infrastructure.api.presenters.cliente.AtualizarClientePresenter;
 import com.postechfiap.meumenu.infrastructure.api.presenters.cliente.BuscarClientePorIdPresenter;
 import com.postechfiap.meumenu.infrastructure.api.presenters.cliente.CadastrarClientePresenter;

@@ -2,7 +2,7 @@ package com.postechfiap.meumenu.infrastructure.api.presenters.proprietario;
 
 import com.postechfiap.meumenu.core.domain.entities.*;
 import com.postechfiap.meumenu.core.domain.presenters.proprietario.BuscarProprietarioOutputPort;
-import com.postechfiap.meumenu.dtos.response.*;
+import com.postechfiap.meumenu.core.dtos.response.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
