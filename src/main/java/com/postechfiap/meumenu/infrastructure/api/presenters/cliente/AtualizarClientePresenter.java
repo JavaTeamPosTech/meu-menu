@@ -21,6 +21,8 @@ public class AtualizarClientePresenter implements AtualizarClienteOutputPort {
 
     private ClienteResponseDTO viewModel;
 
+    private String errorMessage;
+
     @Override
     public void presentSuccess(ClienteDomain cliente) {
         List<EnderecoResponseDTO> enderecosResponse = null;
@@ -52,6 +54,14 @@ public class AtualizarClientePresenter implements AtualizarClienteOutputPort {
                 enderecosResponse
         );
     }
+
+
+    @Override
+    public void presentError(String errorMessage) {
+        setErrorMessage(errorMessage);
+    }
+
+
     private EnderecoResponseDTO mapEnderecoDomainToResponseDTO(EnderecoDomain enderecoDomain) {
         if (enderecoDomain == null) {
             return null;

@@ -10,6 +10,7 @@ import com.postechfiap.meumenu.core.dtos.request.CadastrarClienteRequestDTO;
 import com.postechfiap.meumenu.core.dtos.response.CadastrarClienteResponseDTO;
 import com.postechfiap.meumenu.core.dtos.response.ClienteResponseDTO;
 import com.postechfiap.meumenu.core.dtos.response.DeletarClienteResponseDTO;
+import com.postechfiap.meumenu.infrastructure.api.exceptions.ApiResponse;
 import com.postechfiap.meumenu.infrastructure.api.presenters.cliente.AtualizarClientePresenter;
 import com.postechfiap.meumenu.infrastructure.api.presenters.cliente.BuscarClientePorIdPresenter;
 import com.postechfiap.meumenu.infrastructure.api.presenters.cliente.CadastrarClientePresenter;
@@ -92,8 +93,17 @@ public class ClienteResource {
     @SecurityRequirement(name = "bearerAuth")
     @PreAuthorize("#id == authentication.principal.id")
     @PutMapping("/{id}")
-    public ResponseEntity<ClienteResponseDTO> atualizarCliente(@PathVariable UUID id, @RequestBody @Valid AtualizarClienteRequestDTO requestDTO) {
+    public ResponseEntity<ApiResponse<ClienteResponseDTO>> atualizarCliente(@PathVariable UUID id, @RequestBody @Valid AtualizarClienteRequestDTO requestDTO) {
         atualizarClienteInputPort.execute(requestDTO.toInputModel(id));
-        return ResponseEntity.ok(atualizarClientePresenter.getViewModel());
+        ClienteResponseDTO viewModel = atualizarClientePresenter.getViewModel();
+
+        if (viewModel == null) {
+            String errorMessage = atualizarClientePresenter.getErrorMessage();
+            return ResponseEntity
+                    .badRequest()
+                    .body(ApiResponse.error(errorMessage));
+        }
+
+        return ResponseEntity.ok(ApiResponse.success(viewModel));
     }
 }

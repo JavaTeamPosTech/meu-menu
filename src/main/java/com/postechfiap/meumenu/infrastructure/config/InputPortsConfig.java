@@ -31,6 +31,7 @@ import com.postechfiap.meumenu.core.controllers.usuario.LoginInputPort;
 import com.postechfiap.meumenu.core.controllers.usuario.impl.AlterarSenhaInputPortImpl;
 import com.postechfiap.meumenu.core.controllers.usuario.impl.LoginInputPortImpl;
 import com.postechfiap.meumenu.core.domain.presenters.admin.CadastrarAdminOutputPort;
+import com.postechfiap.meumenu.core.domain.presenters.cliente.AtualizarClienteOutputPort;
 import com.postechfiap.meumenu.core.domain.presenters.cliente.BuscarTodosClientesOutputPort;
 import com.postechfiap.meumenu.core.domain.presenters.proprietario.BuscarTodosProprietariosOutputPort;
 import com.postechfiap.meumenu.core.domain.usecases.admin.BuscarTodosClientesAdminUseCase;
@@ -77,9 +78,11 @@ public class InputPortsConfig {
 
     @Bean
     public AtualizarClienteInputPort atualizarClienteInputPort(
-            AtualizarClienteUseCase atualizarClienteUseCase) {
+            AtualizarClienteUseCase atualizarClienteUseCase,
+            AtualizarClienteOutputPort atualizarClienteOutputPort) {
         return new AtualizarClienteInputPortImpl(
-                atualizarClienteUseCase);
+                atualizarClienteUseCase,
+                atualizarClienteOutputPort);
     }
 
     @Bean

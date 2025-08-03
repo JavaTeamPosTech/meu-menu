@@ -1,7 +1,6 @@
 package com.postechfiap.meumenu.core.domain.usecases.cliente.impl;
 
 import com.postechfiap.meumenu.core.domain.entities.ClienteDomain;
-import com.postechfiap.meumenu.core.domain.presenters.cliente.AtualizarClienteOutputPort;
 import com.postechfiap.meumenu.core.domain.usecases.cliente.AtualizarClienteUseCase;
 import com.postechfiap.meumenu.core.dtos.cliente.AtualizarClienteInputModel;
 import com.postechfiap.meumenu.core.exceptions.BusinessException;
@@ -18,7 +17,7 @@ public class AtualizarClienteUseCaseImpl implements AtualizarClienteUseCase {
 
     private final ClienteGateway clienteGateway;
     private final UsuarioGateway usuarioGateway;
-    private final AtualizarClienteOutputPort atualizarClienteOutputPort;
+
 
     @Override
     public ClienteDomain execute(AtualizarClienteInputModel input) {
@@ -55,9 +54,7 @@ public class AtualizarClienteUseCaseImpl implements AtualizarClienteUseCase {
         // TODO Endereços e senha não são atualizados aqui
         // O clienteVip, saldoPontos, avaliacoesFeitas e ultimoPedido também são gerenciados internamente, não via update geral.
 
-        ClienteDomain clienteAtualizado = clienteGateway.atualizarCliente(clienteExistente);
-        atualizarClienteOutputPort.presentSuccess(clienteAtualizado);
+        return clienteGateway.atualizarCliente(clienteExistente);
 
-        return clienteAtualizado;
     }
 }

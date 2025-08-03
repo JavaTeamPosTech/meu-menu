@@ -1,7 +1,11 @@
-    package com.postechfiap.meumenu.core.domain.presenters.cliente;
+package com.postechfiap.meumenu.core.domain.presenters.cliente;
 
-    import com.postechfiap.meumenu.core.domain.entities.ClienteDomain;
+import com.postechfiap.meumenu.core.domain.entities.ClienteDomain;
 
-    public interface AtualizarClienteOutputPort {
-        void presentSuccess(ClienteDomain cliente);
-    }
+public interface AtualizarClienteOutputPort {
+    void presentSuccess(ClienteDomain cliente);
+
+    void presentError(String message);
+
+    String getErrorMessage();
+}
