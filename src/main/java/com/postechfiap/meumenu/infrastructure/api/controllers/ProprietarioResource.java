@@ -63,7 +63,16 @@ public class ProprietarioResource {
     public ResponseEntity<ProprietarioResponseDTO> buscarProprietarioPorId(@PathVariable UUID id) {
 
         buscarProprietarioPorIdInputPort.execute(id);
-        return ResponseEntity.ok(buscarProprietarioPorIdPresenter.getViewModel());
+
+        ProprietarioResponseDTO responseDTO = buscarProprietarioPorIdPresenter.getViewModel();
+
+        if (buscarProprietarioPorIdPresenter.isNoContent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseDTO);
+        } else {
+            return ResponseEntity.ok(responseDTO);
+        }
+
+
     }
 
     @Operation(

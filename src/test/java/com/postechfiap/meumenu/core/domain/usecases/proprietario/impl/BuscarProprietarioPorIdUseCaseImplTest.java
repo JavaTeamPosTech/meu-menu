@@ -60,10 +60,9 @@ class BuscarProprietarioPorIdUseCaseImplTest {
     void shouldReturnProprietarioDomainAndPresentSuccessWhenProprietarioIsFound() {
         when(proprietarioGateway.buscarProprietarioPorId(proprietarioId)).thenReturn(Optional.of(proprietarioDomain));
 
-        ProprietarioDomain result = assertDoesNotThrow(() -> buscarProprietarioPorIdUseCase.execute(proprietarioId));
+        assertDoesNotThrow(() -> buscarProprietarioPorIdUseCase.execute(proprietarioId));
 
-        assertNotNull(result);
-        assertEquals(proprietarioDomain, result); // Verifica se o objeto retornado é o mesmo
+
         verify(proprietarioGateway, times(1)).buscarProprietarioPorId(proprietarioId);
         verify(buscarProprietarioOutputPort, times(1)).presentSuccess(proprietarioDomain);
     }

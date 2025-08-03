@@ -18,9 +18,14 @@ import java.util.stream.Collectors;
 public class BuscarProprietarioPorIdPresenter implements BuscarProprietarioOutputPort {
 
     private ProprietarioResponseDTO viewModel;
+    private boolean isNoContent;
+    private String noContentMessage;
 
     @Override
     public void presentSuccess(ProprietarioDomain proprietario) {
+        isNoContent = false;
+        noContentMessage = null;
+
         List<EnderecoResponseDTO> enderecosResponse = null;
         if (proprietario.getEnderecos() != null) {
             enderecosResponse = proprietario.getEnderecos().stream()
@@ -48,6 +53,13 @@ public class BuscarProprietarioPorIdPresenter implements BuscarProprietarioOutpu
                 enderecosResponse,
                 restaurantesResponse
         );
+    }
+
+    @Override
+    public void presentNoContent(String message) {
+        this.viewModel = null;
+        this.isNoContent = true;
+        this.noContentMessage = message;
     }
 
     private EnderecoResponseDTO mapEnderecoDomainToResponseDTO(EnderecoDomain enderecoDomain) {
