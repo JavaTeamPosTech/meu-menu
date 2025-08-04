@@ -1,10 +1,11 @@
 {
 	"info": {
-		"_postman_id": "e5bcb37f-78f8-40b8-bfbb-20e25b4a8705",
-		"name": "Meu Menu - Auth User API",
+		"_postman_id": "293a2563-8824-4623-a588-c14ad9590eaa",
+		"name": "TC-2: Meu Menu - Auth User API",
 		"description": "API de Registro, Autenticação e Gerenciamento de Usuários",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "12166195"
+		"_exporter_id": "45387488",
+		"_collection_link": "https://www.postman.com/meumenu-fiap/workspace/tech-challeng-fiap-meumenu/collection/45387488-293a2563-8824-4623-a588-c14ad9590eaa?action=share&source=collection_link&creator=45387488"
 	},
 	"item": [
 		{
@@ -53,7 +54,7 @@
 								"login"
 							]
 						},
-						"description": "### Login\n\nEste endpoint permite que os usuários realizem login enviando uma requisição **POST** para a URL especificada. A requisição deve incluir um **payload JSON** com os campos **\"login\"** e **\"senha\"** (password).\n\nApós a execução bem-sucedida, o servidor responde com o código de status **200** e um objeto **JSON** contendo um **\"token\"** para autenticação.\n\n### Request Body\n\n- `login`: (string) O nome de usuário para login.\n    \n- `senha`: (string) A senha do usuário.\n    \n\n### Response\n\n- Status: 200\n    \n- Content-Type: application/json\n    \n- `token`: (string) Um token para autenticação.\n    \n\n#### Example Response\n\n``` json\n{\"token\":\"    \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLW1hbmFnZXItYXBpIiwic3ViIjoiam9hb2Rhc2lsdmEiLCJpYXQiOjE3NDg1NjY3OTgsImV4cCI6MTc0ODU3MDM5OH0.qqJYOPgRVd1z7DsXUqxFRH_Ck14vIRrhnlMjrbbbzS8\"\"}\n\n ```"
+						"description": "### Login\n\nEste endpoint permite que os usuários realizem login enviando uma requisição **POST** para a URL especificada. A requisição deve incluir um **payload JSON** com os campos **\"login\"** e **\"senha\"** (password).\n\nApós a execução bem-sucedida, o servidor responde com o código de status **200** e um objeto **JSON** contendo um **\"token\"** para autenticação.\n\n### Request Body\n\n- `login`: (string) O nome de usuário para login.\n    \n- `senha`: (string) A senha do usuário.\n    \n\n### Response\n\n- Status: 200\n    \n- Content-Type: application/json\n    \n- `token`: (string) Um token para autenticação.\n    \n\n#### Example Response\n\n``` json\n{\"token\":\"    \"token\": \"{{vault:json-web-token}}\"\"}\n\n ```"
 					},
 					"response": [
 						{
@@ -131,7 +132,469 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLW1hbmFnZXItYXBpIiwic3ViIjoiYW5kcmVkYWNvc3RhIiwiaWF0IjoxNzQ4NTYyNTQ2LCJleHAiOjE3NDg1NjYxNDZ9.WVHZmwqdyaUfMO4QZQF_ad18WoJjfRzTNDUaIvZgjik\"\n}"
+							"body": "{\n    \"token\": \"{{vault:json-web-token}}\"\n}"
+						},
+						{
+							"name": "5 - Login Sucesso Cliente",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"login\": \"joaosilva\",\n  \"senha\": \"SenhaForte123!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/usuarios/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"usuarios",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 29 May 2025 23:49:06 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"{{vault:json-web-token}}\"\n}"
+						},
+						{
+							"name": "23 - Login Sucesso Cliente",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"login\": \"joaosilva\",\n  \"senha\": \"SenhaForte123!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/usuarios/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"usuarios",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 29 May 2025 23:49:06 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"{{vault:json-web-token}}\"\n}"
+						},
+						{
+							"name": "11 - Login Sucesso Admin",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"login\": \"admin\",\n  \"senha\": \"SenhaForte123!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/usuarios/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"usuarios",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 29 May 2025 23:49:06 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"{{vault:json-web-token}}\"\n}"
+						},
+						{
+							"name": "21 - Login Sucesso Proprietario",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"login\": \"joaolima\",\n  \"senha\": \"SenhaForte123!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/usuarios/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"usuarios",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 29 May 2025 23:49:06 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"{{vault:json-web-token}}\"\n}"
+						},
+						{
+							"name": "26 - Login Sucesso Proprietario",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"login\": \"joaolima\",\n  \"senha\": \"SenhaForte123!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/usuarios/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"usuarios",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 29 May 2025 23:49:06 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"{{vault:json-web-token}}\"\n}"
+						},
+						{
+							"name": "33 - Login Sucesso Proprietario",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"login\": \"joaolima\",\n  \"senha\": \"SenhaForte123!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/usuarios/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"usuarios",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 29 May 2025 23:49:06 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"{{vault:json-web-token}}\"\n}"
 						},
 						{
 							"name": "Usuário Não Encontrado",
@@ -211,7 +674,7 @@
 							"body": "{\n    \"mensagem\": \"Usuário com login 'joaodasilvaa' não encontrado.\",\n    \"status\": 404,\n    \"timestamp\": \"2025-05-29T21:15:53.379235\",\n    \"erros\": null\n}"
 						},
 						{
-							"name": "Senha Incorreta",
+							"name": "Credenciais inválidas",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -329,7 +792,7 @@
 					},
 					"response": [
 						{
-							"name": "Senha Alterada Sucesso",
+							"name": "46 - Senha Alterada Sucesso",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [],
@@ -397,7 +860,7 @@
 								}
 							],
 							"cookie": [],
-							"body": null
+							"body": ""
 						}
 					]
 				}
@@ -449,11 +912,11 @@
 								"clientes"
 							]
 						},
-						"description": "### Criar Novo Cliente\n\nEste endpoint permite que o cliente **crie um novo registro** com os detalhes fornecidos.\n\n#### Request Body\n\n- **nome**: _(string)_ O nome do cliente.\n    \n- **cpf**: _(string)_ O número de CPF do cliente.\n    \n- **email**: _(string)_ O endereço de e-mail do cliente.\n    \n- **login**: _(string)_ O nome de usuário para login do cliente.\n    \n- **dataNascimento**: _(string)_ A data de nascimento do cliente.\n    \n- **genero**: _(string)_ O gênero do cliente.\n    \n- **telefone**: _(string)_ O número de telefone do cliente.\n    \n- **preferenciasAlimentares**: _(array)_ Lista de preferências alimentares.\n    \n- **alergias**: _(array)_ Lista de alergias.\n    \n- **metodoPagamentoPreferido**: _(string)_ Método de pagamento preferido.\n    \n- **clienteVip**: _(boolean)_ Indica se o cliente é um membro VIP.\n    \n- **notificacoesAtivas**: _(boolean)_ Indica se as notificações estão ativas para o cliente.\n    \n- **senha**: _(string)_ A senha do cliente.\n    \n- **enderecos**: _(array)_ Lista de endereços, incluindo estado, cidade, bairro, rua, número, complemento e CEP.\n    \n\n#### Response\n\nThe response will include the following JSON schema:\n\n``` json\n{\n    \"usuario\": {\n        \"id\": \"367f19e3-8722-4d63-875d-966786d1b99d\",\n        \"nome\": \"Andre da Costa\",\n        \"email\": \"andredacosta@email.com\",\n        \"login\": \"andredacosta\"\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLW1hbmFnZXItYXBpIiwic3ViIjoiYW5kcmVkYWNvc3RhIiwiaWF0IjoxNzQ4NTU2MTg1LCJleHAiOjE3NDg1NTk3ODV9.duIvdHNzqFVRUmDQOZXVQYM578Qf0bH7knViPB_hf08\"\n}\n\n ```"
+						"description": "### Criar Novo Cliente\n\nEste endpoint permite que o cliente **crie um novo registro** com os detalhes fornecidos.\n\n#### Request Body\n\n- **nome**: _(string)_ O nome do cliente.\n    \n- **cpf**: _(string)_ O número de CPF do cliente.\n    \n- **email**: _(string)_ O endereço de e-mail do cliente.\n    \n- **login**: _(string)_ O nome de usuário para login do cliente.\n    \n- **dataNascimento**: _(string)_ A data de nascimento do cliente.\n    \n- **genero**: _(string)_ O gênero do cliente.\n    \n- **telefone**: _(string)_ O número de telefone do cliente.\n    \n- **preferenciasAlimentares**: _(array)_ Lista de preferências alimentares.\n    \n- **alergias**: _(array)_ Lista de alergias.\n    \n- **metodoPagamentoPreferido**: _(string)_ Método de pagamento preferido.\n    \n- **clienteVip**: _(boolean)_ Indica se o cliente é um membro VIP.\n    \n- **notificacoesAtivas**: _(boolean)_ Indica se as notificações estão ativas para o cliente.\n    \n- **senha**: _(string)_ A senha do cliente.\n    \n- **enderecos**: _(array)_ Lista de endereços, incluindo estado, cidade, bairro, rua, número, complemento e CEP.\n    \n\n#### Response\n\nThe response will include the following JSON schema:\n\n``` json\n{\n    \"usuario\": {\n        \"id\": \"367f19e3-8722-4d63-875d-966786d1b99d\",\n        \"nome\": \"Andre da Costa\",\n        \"email\": \"andredacosta@email.com\",\n        \"login\": \"andredacosta\"\n    },\n    \"token\": \"{{vault:json-web-token}}\"\n}\n\n ```"
 					},
 					"response": [
 						{
-							"name": "Cadastro Sucesso",
+							"name": "1 - Cadastro Sucesso",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -531,85 +994,7 @@
 							"body": "{\n    \"id\": \"0463c2a2-2223-4beb-a2df-4d40e7c72ad8\",\n    \"nome\": \"João Silva\",\n    \"email\": \"joaosilva@email.com\",\n    \"login\": \"joaosilva\",\n    \"dataCriacao\": \"2025-07-30T22:17:02.285857\",\n    \"message\": \" Cliente cadastrado com sucesso!\",\n    \"status\": \"SUCCESS\"\n}"
 						},
 						{
-							"name": "Cadastrar Cliente",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"nome\": \"João Silva\",\n  \"cpf\": \"12345678911\",\n  \"email\": \"joaosilva@email.com\",\n  \"login\": \"joaosilva\",\n  \"dataNascimento\": \"1990-01-01\",\n  \"genero\": \"MASCULINO\",\n  \"telefone\": \"5581999992345\",\n  \"preferenciasAlimentares\": [\n    \"VEGETARIANA\",\n    \"SAUDAVEL\"\n  ],\n  \"alergias\": [\n    \"AMENDOIM\",\n    \"LACTOSE\"\n  ],\n  \"metodoPagamentoPreferido\": \"CREDITO\",\n  \"notificacoesAtivas\": true,\n  \"senha\": \"SenhaForte123!\",\n  \"enderecos\": [\n    {\n      \"estado\": \"SP\",\n      \"cidade\": \"Sao Paulo\",\n      \"bairro\": \"Jardim Paulista\",\n      \"rua\": \"Avenida Paulista\",\n      \"numero\": 123,\n      \"complemento\": \"Apt 101\",\n      \"cep\": \"01311-000\"\n    }\n  ]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:8080/clientes",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"clientes"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "0"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, no-store, max-age=0, must-revalidate"
-								},
-								{
-									"key": "Pragma",
-									"value": "no-cache"
-								},
-								{
-									"key": "Expires",
-									"value": "0"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "DENY"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 31 Jul 2025 01:17:02 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"id\": \"0463c2a2-2223-4beb-a2df-4d40e7c72ad8\",\n    \"nome\": \"João Silva\",\n    \"email\": \"joaosilva@email.com\",\n    \"login\": \"joaosilva\",\n    \"dataCriacao\": \"2025-07-30T22:17:02.285857\",\n    \"message\": \" Cliente cadastrado com sucesso!\",\n    \"status\": \"SUCCESS\"\n}"
-						},
-						{
-							"name": "Erro de Validação",
+							"name": "2 - Erro de Validação",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -683,7 +1068,7 @@
 							"body": "{\n    \"mensagem\": \"Dados inválidos.\",\n    \"status\": 400,\n    \"timestamp\": \"2025-07-30T22:19:20.35976\",\n    \"erros\": [\n        {\n            \"campo\": \"genero\",\n            \"mensagem\": \"Gênero é obrigatório\"\n        },\n        {\n            \"campo\": \"login\",\n            \"mensagem\": \"Login é obrigatório\"\n        },\n        {\n            \"campo\": \"email\",\n            \"mensagem\": \"Email é obrigatório\"\n        },\n        {\n            \"campo\": \"dataNascimento\",\n            \"mensagem\": \"Data de nascimento é obrigatória\"\n        },\n        {\n            \"campo\": \"cpf\",\n            \"mensagem\": \"CPF é obrigatório\"\n        },\n        {\n            \"campo\": \"telefone\",\n            \"mensagem\": \"Telefone é obrigatório\"\n        }\n    ]\n}"
 						},
 						{
-							"name": "Erro Violação Integridade",
+							"name": "3 - Erro Violação Integridade",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -759,238 +1144,6 @@
 					]
 				},
 				{
-					"name": "Buscar Clientes",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{bearerToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/clientes",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"clientes"
-							]
-						},
-						"description": "### GET /clientes\n\nEste endpoint recupera uma **lista de clientes**.\n\n#### Request\n\n- Method: GET\n    \n- URL: `http://localhost:8080/clientes/`\n    \n\n#### Response\n\nA resposta estará no formato **JSON** com o seguinte **schema**:\n\n``` json\n[\n    {\n        \"id\": \"747ba340-9f41-4d35-a07e-988ec5e6c92f\",\n        \"nome\": \"Andre da Costa\",\n        \"cpf\": \"123.456.789-11\",\n        \"dataNascimento\": \"1990-01-01\",\n        \"email\": \"andredacosta@email.com\",\n        \"login\": \"andredacosta\",\n        \"telefone\": \"+5581999992346\",\n        \"enderecos\": [\n            {\n                \"id\": \"57161153-e328-4d07-97eb-8cd100208c97\",\n                \"estado\": \"SP\",\n                \"cidade\": \"Sao Paulo\",\n                \"bairro\": \"Jardim Paulista\",\n                \"rua\": \"Avenida Paulista\",\n                \"numero\": 123,\n                \"complemento\": \"Apt 101\",\n                \"cep\": \"01311-000\"\n            }\n        ]\n    }\n]\n\n ```"
-					},
-					"response": [
-						{
-							"name": "Busca Sucesso",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/clientes",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"clientes"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "0"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, no-store, max-age=0, must-revalidate"
-								},
-								{
-									"key": "Pragma",
-									"value": "no-cache"
-								},
-								{
-									"key": "Expires",
-									"value": "0"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "DENY"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 29 May 2025 23:57:10 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "[\n    {\n        \"id\": \"747ba340-9f41-4d35-a07e-988ec5e6c92f\",\n        \"nome\": \"Andre da Costa\",\n        \"cpf\": \"123.456.789-11\",\n        \"dataNascimento\": \"1990-01-01\",\n        \"email\": \"andredacosta@email.com\",\n        \"login\": \"andredacosta\",\n        \"telefone\": \"+5581999992346\",\n        \"enderecos\": [\n            {\n                \"id\": \"57161153-e328-4d07-97eb-8cd100208c97\",\n                \"estado\": \"SP\",\n                \"cidade\": \"Sao Paulo\",\n                \"bairro\": \"Jardim Paulista\",\n                \"rua\": \"Avenida Paulista\",\n                \"numero\": 123,\n                \"complemento\": \"Apt 101\",\n                \"cep\": \"01311-000\"\n            }\n        ]\n    }\n]"
-						},
-						{
-							"name": "Acesso Negado",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/clientes",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"clientes"
-									]
-								}
-							},
-							"status": "Forbidden",
-							"code": 403,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "0"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, no-store, max-age=0, must-revalidate"
-								},
-								{
-									"key": "Pragma",
-									"value": "no-cache"
-								},
-								{
-									"key": "Expires",
-									"value": "0"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "DENY"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json;charset=ISO-8859-1"
-								},
-								{
-									"key": "Content-Length",
-									"value": "194"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 29 May 2025 23:52:04 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"method\": \"GET\",\n    \"status\": \"403\",\n    \"message\": \"Acesso negado. Voce nao tem permissao para acessar este recurso.\",\n    \"error\": \"Unauthorized\",\n    \"path\": \"/clientes\",\n    \"timestamp\": \"2025-05-29T23:52:04.418651959\"\n}"
-						},
-						{
-							"name": "Token inválido ou Ausente",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/clientes",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"clientes"
-									]
-								}
-							},
-							"status": "Unauthorized",
-							"code": 401,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "0"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, no-store, max-age=0, must-revalidate"
-								},
-								{
-									"key": "Pragma",
-									"value": "no-cache"
-								},
-								{
-									"key": "Expires",
-									"value": "0"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "DENY"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json;charset=ISO-8859-1"
-								},
-								{
-									"key": "Content-Length",
-									"value": "151"
-								},
-								{
-									"key": "Date",
-									"value": "Fri, 30 May 2025 00:38:23 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"timestamp\": \"2025-05-29T21:38:23.668129\",\n    \"method\": \"GET\",\n    \"status\": 401,\n    \"message\": \"Token invalido ou ausente.\",\n    \"error\": \"Unauthorized\",\n    \"path\": \"/clientes\"\n}"
-						}
-					]
-				},
-				{
 					"name": "Buscar Cliente por ID",
 					"request": {
 						"auth": {
@@ -1021,7 +1174,7 @@
 					},
 					"response": [
 						{
-							"name": "Busca Sucesso",
+							"name": "6 - Busca Sucesso",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -1089,75 +1242,7 @@
 							"body": "{\n    \"id\": \"cbfc9c28-1155-4c39-83e5-3314080e8014\",\n    \"nome\": \"João da Silva\",\n    \"cpf\": \"123.456.789-00\",\n    \"dataNascimento\": \"1990-01-01\",\n    \"email\": \"joaodasilva@email.com\",\n    \"login\": \"joaodasilva\",\n    \"telefone\": \"+5581999992345\",\n    \"enderecos\": [\n        {\n            \"id\": \"000d2fff-45a8-47b7-9f43-9a9214bce425\",\n            \"estado\": \"SP\",\n            \"cidade\": \"Sao Paulo\",\n            \"bairro\": \"Jardim Paulista\",\n            \"rua\": \"Avenida Paulista\",\n            \"numero\": 123,\n            \"complemento\": \"Apt 101\",\n            \"cep\": \"01311-000\"\n        }\n    ]\n}"
 						},
 						{
-							"name": "Cliente Não Encontrado",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/clientes/cbfc9c28-1155-4c39-83e5-3314080e8022",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"clientes",
-										"cbfc9c28-1155-4c39-83e5-3314080e8022"
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "0"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, no-store, max-age=0, must-revalidate"
-								},
-								{
-									"key": "Pragma",
-									"value": "no-cache"
-								},
-								{
-									"key": "Expires",
-									"value": "0"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "DENY"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Fri, 30 May 2025 00:23:42 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"mensagem\": \"Cliente com id 'cbfc9c28-1155-4c39-83e5-3314080e8022' não encontrado\",\n    \"status\": 404,\n    \"timestamp\": \"2025-05-29T21:23:42.750515\",\n    \"erros\": null\n}"
-						},
-						{
-							"name": "Acesso Negado",
+							"name": "7 - Acesso negado",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -1225,7 +1310,7 @@
 							"body": "{\n    \"timestamp\": \"2025-05-29T21:28:08.835530\",\n    \"method\": \"GET\",\n    \"status\": \"403\",\n    \"message\": \"Acesso negado. Voce nao tem permissao para acessar este recurso.\",\n    \"error\": \"Unauthorized\",\n    \"path\": \"/clientes/8997963e-291e-403b-892d-516d764b5ae5\"\n}"
 						},
 						{
-							"name": "Token Inválido ou Ausente",
+							"name": "4 - Token Inválido ou Ausente",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -1333,13 +1418,13 @@
 					},
 					"response": [
 						{
-							"name": "Atualizar Sucesso",
+							"name": "8  - Atualizar Sucesso",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"nome\": \"José da Silveira\",\n  \"cpf\": \"123.456.789-33\",\n  \"email\": \"josedasilveira@email.com\",\n  \"login\": \"josedasilveira\",\n  \"dataNascimento\": \"1911-11-11\",\n  \"genero\": \"MASCULINO\",\n  \"telefone\": \"+5581999992342\",\n  \"preferenciasAlimentares\": [\n    \"VEGETARIANA\",\n    \"SAUDAVEL\"\n  ],\n  \"alergias\": [\n    \"FRUTOS_DO_MAR\",\n    \"SOJA\",\n    \"GLUTEN\"\n\n  ],\n  \"metodoPagamentoPreferido\": \"PIX\",\n  \"notificacoesAtivas\": false,\n  \"enderecos\": [\n    {\n      \"estado\": \"SP\",\n      \"cidade\": \"Sao Paulo\",\n      \"bairro\": \"Jardim Paulista\",\n      \"rua\": \"Avenida Paulista\",\n      \"numero\": 123,\n      \"complemento\": \"Apt 101\",\n      \"cep\": \"01311-000\"\n    },\n{\n      \"estado\": \"SP\",\n      \"cidade\": \"Sao Paulo\",\n      \"bairro\": \"Jardim Paulista\",\n      \"rua\": \"Avenida Paulista\",\n      \"numero\": 123,\n      \"complemento\": \"Apt 101\",\n      \"cep\": \"01311-000\"\n    }\n  ]\n}",
+									"raw": "{\n  \"nome\": \"João Silva\",\n  \"cpf\": \"12345678911\",\n  \"email\": \"joaosilva@email.com\",\n  \"login\": \"joaosilva\",\n  \"dataNascimento\": \"1990-01-01\",\n  \"genero\": \"MASCULINO\",\n  \"telefone\": \"5581999992345\",\n  \"preferenciasAlimentares\": [\n    \"CHURRASCO\",\n    \"SAUDAVEL\"\n  ],\n  \"alergias\": [\n    \"AMENDOIM\",\n    \"LACTOSE\"\n  ],\n  \"metodoPagamentoPreferido\": \"CREDITO\",\n  \"notificacoesAtivas\": true,\n  \"senha\": \"SenhaForte123!\",\n  \"enderecos\": [\n    {\n      \"estado\": \"SP\",\n      \"cidade\": \"Sao Paulo\",\n      \"bairro\": \"Jardim Paulista\",\n      \"rua\": \"Avenida Paulista\",\n      \"numero\": 123,\n      \"complemento\": \"Apt 101\",\n      \"cep\": \"01311-000\"\n    }\n  ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1412,7 +1497,7 @@
 							"body": "{\n    \"id\": \"9e8ce239-45c9-416e-b306-5259059f21cf\",\n    \"nome\": \"José da Silveira\",\n    \"cpf\": \"123.456.789-33\",\n    \"dataNascimento\": \"1911-11-11\",\n    \"email\": \"josedasilveira@email.com\",\n    \"login\": \"josedasilveira\",\n    \"telefone\": \"+5581999992342\",\n    \"enderecos\": [\n        {\n            \"id\": \"5a35329b-0f5e-4351-a663-d89ba7f85694\",\n            \"estado\": \"SP\",\n            \"cidade\": \"Sao Paulo\",\n            \"bairro\": \"Jardim Paulista\",\n            \"rua\": \"Avenida Paulista\",\n            \"numero\": 123,\n            \"complemento\": \"Apt 101\",\n            \"cep\": \"01311-000\"\n        },\n        {\n            \"id\": \"b84fe2d8-8440-44ea-82ad-0bebeb029e14\",\n            \"estado\": \"SP\",\n            \"cidade\": \"Sao Paulo\",\n            \"bairro\": \"Jardim Paulista\",\n            \"rua\": \"Avenida Paulista\",\n            \"numero\": 123,\n            \"complemento\": \"Apt 101\",\n            \"cep\": \"01311-000\"\n        }\n    ]\n}"
 						},
 						{
-							"name": "Acesso Negado",
+							"name": "9 - Erro de integridade",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [],
@@ -1489,85 +1574,6 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"error\": \"Unauthorized\",\n    \"message\": \"Acesso negado. Voce nao tem permissao para acessar este recurso.\",\n    \"status\": \"403\",\n    \"method\": \"PUT\",\n    \"timestamp\": \"2025-05-30T20:38:10.752198\",\n    \"path\": \"/clientes/9e8ce239-45c9-416e-b306-5259059f21c2\"\n}"
-						},
-						{
-							"name": "Token Inválido ou Ausente",
-							"originalRequest": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"nome\": \"José da Silveira\",\n  \"cpf\": \"123.456.789-33\",\n  \"email\": \"josedasilveira@email.com\",\n  \"login\": \"josedasilveira\",\n  \"dataNascimento\": \"1911-11-11\",\n  \"genero\": \"MASCULINO\",\n  \"telefone\": \"+5581999992342\",\n  \"preferenciasAlimentares\": [\n    \"VEGETARIANA\",\n    \"SAUDAVEL\"\n  ],\n  \"alergias\": [\n    \"FRUTOS_DO_MAR\",\n    \"SOJA\",\n    \"GLUTEN\"\n\n  ],\n  \"metodoPagamentoPreferido\": \"PIX\",\n  \"notificacoesAtivas\": false,\n  \"enderecos\": [\n    {\n      \"estado\": \"SP\",\n      \"cidade\": \"Sao Paulo\",\n      \"bairro\": \"Jardim Paulista\",\n      \"rua\": \"Avenida Paulista\",\n      \"numero\": 123,\n      \"complemento\": \"Apt 101\",\n      \"cep\": \"01311-000\"\n    },\n{\n      \"estado\": \"SP\",\n      \"cidade\": \"Sao Paulo\",\n      \"bairro\": \"Jardim Paulista\",\n      \"rua\": \"Avenida Paulista\",\n      \"numero\": 123,\n      \"complemento\": \"Apt 101\",\n      \"cep\": \"01311-000\"\n    }\n  ]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:8080/clientes/9e8ce239-45c9-416e-b306-5259059f21c2",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"clientes",
-										"9e8ce239-45c9-416e-b306-5259059f21c2"
-									]
-								}
-							},
-							"status": "Unauthorized",
-							"code": 401,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "0"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, no-store, max-age=0, must-revalidate"
-								},
-								{
-									"key": "Pragma",
-									"value": "no-cache"
-								},
-								{
-									"key": "Expires",
-									"value": "0"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "DENY"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json;charset=ISO-8859-1"
-								},
-								{
-									"key": "Content-Length",
-									"value": "188"
-								},
-								{
-									"key": "Date",
-									"value": "Fri, 30 May 2025 23:39:38 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"error\": \"Unauthorized\",\n    \"message\": \"Token invalido ou ausente.\",\n    \"status\": 401,\n    \"method\": \"PUT\",\n    \"timestamp\": \"2025-05-30T20:39:38.294171\",\n    \"path\": \"/clientes/9e8ce239-45c9-416e-b306-5259059f21c2\"\n}"
 						}
 					]
 				},
@@ -1601,7 +1607,7 @@
 					},
 					"response": [
 						{
-							"name": "Deletar Sucesso",
+							"name": "10 - Deletar Sucesso",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
@@ -1660,7 +1666,7 @@
 								}
 							],
 							"cookie": [],
-							"body": null
+							"body": ""
 						}
 					]
 				}
@@ -1717,7 +1723,7 @@
 					},
 					"response": [
 						{
-							"name": "Cadastro Sucesso",
+							"name": "17 - Erro de validação",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -1790,10 +1796,86 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"usuario\": {\n        \"id\": \"8ca62baf-5f6a-4dc1-9e5b-d794fa5d7024\",\n        \"nome\": \"João Lima\",\n        \"email\": \"joaolima@empresa.com\",\n        \"login\": \"joaolima\"\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyLW1hbmFnZXItYXBpIiwic3ViIjoiam9hb2xpbWEiLCJpYXQiOjE3NDg1NjI4NzgsImV4cCI6MTc0ODU2NjQ3OH0.o3khCbKVh_1UAL5YseIj-cyztOBBazswOQw4-P2gbnI\"\n}"
+							"body": "{\n    \"usuario\": {\n        \"id\": \"8ca62baf-5f6a-4dc1-9e5b-d794fa5d7024\",\n        \"nome\": \"João Lima\",\n        \"email\": \"joaolima@empresa.com\",\n        \"login\": \"joaolima\"\n    },\n    \"token\": \"{{vault:json-web-token}}\"\n}"
 						},
 						{
-							"name": "Erro de Validação",
+							"name": "18 - Cadastrado com sucesso",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"cpf\": \"12345678912\",\n    \"statusConta\": \"ATIVO\",\n    \"nome\": \"João Lima\",\n    \"whatsapp\": \"+5581999999999\",\n    \"email\": \"joaolima@empresa.com\",\n    \"login\": \"joaolima\",\n    \"senha\": \"SenhaForte123!\",\n    \"enderecos\": [\n        {\n            \"estado\": \"SP\",\n            \"cidade\": \"Sao Paulo\",\n            \"bairro\": \"Jardim Paulista\",\n            \"rua\": \"Avenida Paulista\",\n            \"numero\": 123,\n            \"complemento\": \"Apt 101\",\n            \"cep\": \"01311-000\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/proprietarios",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"proprietarios"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 29 May 2025 23:54:38 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"usuario\": {\n        \"id\": \"8ca62baf-5f6a-4dc1-9e5b-d794fa5d7024\",\n        \"nome\": \"João Lima\",\n        \"email\": \"joaolima@empresa.com\",\n        \"login\": \"joaolima\"\n    },\n    \"token\": \"{{vault:json-web-token}}\"\n}"
+						},
+						{
+							"name": "19 - Erro de Validação",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -1854,7 +1936,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 29 May 2025 23:54:09 GMT"
+									"value": "Sun, 03 Aug 2025 21:56:45 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1862,16 +1944,16 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"mensagem\": \"Erro de validação\",\n    \"status\": 400,\n    \"timestamp\": \"2025-05-29T23:54:09.919694253\",\n    \"erros\": [\n        {\n            \"campo\": \"nomeFantasia\",\n            \"mensagem\": \"Nome fantasia precisa estar preenchido\"\n        },\n        {\n            \"campo\": \"razaoSocial\",\n            \"mensagem\": \"Razão Social precisa estar preenchido\"\n        },\n        {\n            \"campo\": \"telefoneComercial\",\n            \"mensagem\": \"Telefone comercial precisa estar preenchido\"\n        },\n        {\n            \"campo\": \"inscricaoEstadual\",\n            \"mensagem\": \"Inscrição estadual precisa estar preenchido\"\n        }\n    ]\n}"
+							"body": "{\n    \"mensagem\": \"Dados inválidos.\",\n    \"status\": 400,\n    \"timestamp\": \"2025-08-03T18:56:45.6044414\",\n    \"erros\": [\n        {\n            \"campo\": \"cpf\",\n            \"mensagem\": \"CPF é obrigatório\"\n        }\n    ]\n}"
 						},
 						{
-							"name": "Violação de Integridade",
+							"name": "20 - Violação de Integridade",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"cnpj\": \"12.345.678/0001-95\",\n  \"razaoSocial\": \"Empresa de Exemplo LTDA\",\n  \"nomeFantasia\": \"Exemplo Comércio\",\n  \"inscricaoEstadual\": \"1234567890\",\n  \"telefoneComercial\": \"+5581999999999\",\n  \"whatsapp\": \"+5581999999999\",\n  \"statusConta\": \"ATIVO\",\n  \"nome\": \"João Lima\",\n  \"email\": \"joaolima@empresa.com\",\n  \"login\": \"joaolima\",\n  \"senha\": \"SenhaForte123!\",\n  \"enderecos\": [\n    {\n      \"estado\": \"SP\",\n      \"cidade\": \"Sao Paulo\",\n      \"bairro\": \"Jardim Paulista\",\n      \"rua\": \"Avenida Paulista\",\n      \"numero\": 123,\n      \"complemento\": \"Apt 101\",\n      \"cep\": \"01311-000\"\n    }\n  ]\n}",
+									"raw": "{\n  \"cpf\": \"12.345.678/0001-95\", \n  \"whatsapp\": \"+5581999999999\",\n  \"statusConta\": \"ATIVO\",\n  \"nome\": \"João Lima\",\n  \"email\": \"joaolima@empresa.com\",\n  \"login\": \"joaolima\",\n  \"senha\": \"SenhaForte123!\",\n  \"enderecos\": [\n    {\n      \"estado\": \"SP\",\n      \"cidade\": \"Sao Paulo\",\n      \"bairro\": \"Jardim Paulista\",\n      \"rua\": \"Avenida Paulista\",\n      \"numero\": 123,\n      \"complemento\": \"Apt 101\",\n      \"cep\": \"01311-000\"\n    }\n  ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1968,18 +2050,18 @@
 					},
 					"response": [
 						{
-							"name": "Busca Sucesso",
+							"name": "22 - Busca Sucesso",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/proprietarios/a7673df6-d1e0-420e-88fb-68275a3805bf",
+									"raw": "{{url}}/proprietarios/5046bbfd-2392-4452-b877-0fd4695d050b",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"proprietarios",
-										"a7673df6-d1e0-420e-88fb-68275a3805bf"
+										"5046bbfd-2392-4452-b877-0fd4695d050b"
 									]
 								}
 							},
@@ -2033,78 +2115,10 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"a7673df6-d1e0-420e-88fb-68275a3805bf\",\n    \"cnpj\": \"12.345.678/0001-33\",\n    \"razaoSocial\": \"Empresa de Exemplo LTDA2\",\n    \"nomeFantasia\": \"Exemplo Comérc2io\",\n    \"inscricaoEstadual\": \"1234567830\",\n    \"telefoneComercial\": \"+5581999999399\",\n    \"whatsapp\": \"+5581999999939\",\n    \"nome\": \"João Lima\",\n    \"email\": \"joaolimaa@empresa.com\",\n    \"login\": \"joaolimaa\",\n    \"enderecos\": [\n        {\n            \"id\": \"d575c0cf-c4ae-4a7f-a877-a88176e320fe\",\n            \"estado\": \"SP\",\n            \"cidade\": \"Sao Paulo\",\n            \"bairro\": \"Jardim Paulista\",\n            \"rua\": \"Avenida Paulista\",\n            \"numero\": 123,\n            \"complemento\": \"Apt 101\",\n            \"cep\": \"01311-000\"\n        }\n    ]\n}"
+							"body": "{\n    \"id\": \"a7673df6-d1e0-420e-88fb-68275a3805bf\",\n    \"cpf\": \"12345678912\",    \n    \"whatsapp\": \"+5581999999939\",\n    \"nome\": \"João Lima\",\n    \"email\": \"joaolimaa@empresa.com\",\n    \"login\": \"joaolimaa\",\n    \"enderecos\": [\n        {\n            \"id\": \"d575c0cf-c4ae-4a7f-a877-a88176e320fe\",\n            \"estado\": \"SP\",\n            \"cidade\": \"Sao Paulo\",\n            \"bairro\": \"Jardim Paulista\",\n            \"rua\": \"Avenida Paulista\",\n            \"numero\": 123,\n            \"complemento\": \"Apt 101\",\n            \"cep\": \"01311-000\"\n        }\n    ]\n}"
 						},
 						{
-							"name": "Proprietário Não Encontrado",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/proprietarios/8997963e-291e-403b-892d-516d764b5ae5",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"proprietarios",
-										"8997963e-291e-403b-892d-516d764b5ae5"
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "0"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, no-store, max-age=0, must-revalidate"
-								},
-								{
-									"key": "Pragma",
-									"value": "no-cache"
-								},
-								{
-									"key": "Expires",
-									"value": "0"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "DENY"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Fri, 30 May 2025 00:34:28 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"mensagem\": \"Proprietário com id '8997963e-291e-403b-892d-516d764b5ae5' não encontrado\",\n    \"status\": 404,\n    \"timestamp\": \"2025-05-29T21:34:28.199777\",\n    \"erros\": null\n}"
-						},
-						{
-							"name": "Acesso Negado",
+							"name": "23 - Acesso Negado",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -2170,74 +2184,6 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"timestamp\": \"2025-05-29T21:36:43.124689\",\n    \"method\": \"GET\",\n    \"status\": \"403\",\n    \"message\": \"Acesso negado. Voce nao tem permissao para acessar este recurso.\",\n    \"error\": \"Unauthorized\",\n    \"path\": \"/proprietarios/a7673df6-d1e0-420e-88fb-68275a3805bf\"\n}"
-						},
-						{
-							"name": "Token invalido ou ausente.",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/proprietarios/a7673df6-d1e0-420e-88fb-68275a3805bf",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"proprietarios",
-										"a7673df6-d1e0-420e-88fb-68275a3805bf"
-									]
-								}
-							},
-							"status": "Unauthorized",
-							"code": 401,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "0"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, no-store, max-age=0, must-revalidate"
-								},
-								{
-									"key": "Pragma",
-									"value": "no-cache"
-								},
-								{
-									"key": "Expires",
-									"value": "0"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "DENY"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json;charset=ISO-8859-1"
-								},
-								{
-									"key": "Content-Length",
-									"value": "193"
-								},
-								{
-									"key": "Date",
-									"value": "Fri, 30 May 2025 00:37:55 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"timestamp\": \"2025-05-29T21:37:55.745661\",\n    \"method\": \"GET\",\n    \"status\": 401,\n    \"message\": \"Token invalido ou ausente.\",\n    \"error\": \"Unauthorized\",\n    \"path\": \"/proprietarios/a7673df6-d1e0-420e-88fb-68275a3805bf\"\n}"
 						}
 					]
 				},
@@ -2271,12 +2217,12 @@
 					},
 					"response": [
 						{
-							"name": "Deletar Sucesso",
+							"name": "25 - Deletar Sucesso",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/proprietarios/91afc5a6-a63c-4159-88cb-a85fb66ac428",
+									"raw": "http://localhost:8080/proprietarios/bdbe91ea-cce6-4e69-a38b-5a15354178ff",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -2284,7 +2230,7 @@
 									"port": "8080",
 									"path": [
 										"proprietarios",
-										"91afc5a6-a63c-4159-88cb-a85fb66ac428"
+										"bdbe91ea-cce6-4e69-a38b-5a15354178ff"
 									]
 								}
 							},
@@ -2330,77 +2276,7 @@
 								}
 							],
 							"cookie": [],
-							"body": null
-						},
-						{
-							"name": "Token Inválido ou Ausente",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:8080/proprietarios/91afc5a6-a63c-4159-88cb-a85fb66ac428",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"proprietarios",
-										"91afc5a6-a63c-4159-88cb-a85fb66ac428"
-									]
-								}
-							},
-							"status": "Unauthorized",
-							"code": 401,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "0"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, no-store, max-age=0, must-revalidate"
-								},
-								{
-									"key": "Pragma",
-									"value": "no-cache"
-								},
-								{
-									"key": "Expires",
-									"value": "0"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "DENY"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json;charset=ISO-8859-1"
-								},
-								{
-									"key": "Content-Length",
-									"value": "151"
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 31 May 2025 00:45:47 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"path\": \"/error\",\n    \"timestamp\": \"2025-05-30T21:45:47.621702\",\n    \"method\": \"DELETE\",\n    \"status\": 401,\n    \"message\": \"Token invalido ou ausente.\",\n    \"error\": \"Unauthorized\"\n}"
+							"body": ""
 						}
 					]
 				},
@@ -2443,13 +2319,13 @@
 					},
 					"response": [
 						{
-							"name": "Atualizar Sucesso",
+							"name": "24 - Atualizar Sucesso",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"cnpj\": \"12.345.678/0001-33\",\n  \"razaoSocial\": \"Empresa de Exemplo LTDA\",\n  \"nomeFantasia\": \"Exemplo Comércio\",\n  \"inscricaoEstadual\": \"3214567833\",\n  \"telefoneComercial\": \"+5581999999321\",\n  \"whatsapp\": \"+5581999999321\",\n  \"statusConta\": \"ATIVO\",\n  \"nome\": \"João A.Lima\",\n  \"email\": \"joaolima@corp.com\",\n  \"login\": \"joaolima\",\n  \"enderecos\": [\n    {\n      \"estado\": \"SP\",\n      \"cidade\": \"Sao Paulo\",\n      \"bairro\": \"Jardim Paulista\",\n      \"rua\": \"Avenida Paulista\",\n      \"numero\": 123,\n      \"complemento\": \"Apt 101\",\n      \"cep\": \"01311-000\"\n    },\n    {\n      \"estado\": \"PE\",\n      \"cidade\": \"Recife\",\n      \"bairro\": \"Jardim Recife\",\n      \"rua\": \"Avenida Recife\",\n      \"numero\": 432,\n      \"complemento\": \"Apt 43\",\n      \"cep\": \"11311-100\"\n    }\n  ]\n}",
+									"raw": "{\n    \"id\": \"5046bbfd-2392-4452-b877-0fd4695d050b\",\n    \"nome\": \"João DA Lima\",\n    \"cpf\": \"12345678912\",\n    \"email\": \"joaolima@empresa.com\",\n    \"login\": \"joaolima\",\n    \"whatsapp\": \"+5581999999999\",\n    \"statusConta\": \"ATIVO\",\n    \"dataCriacao\": \"2025-08-03T21:31:40.723923\",\n    \"dataAtualizacao\": \"2025-08-03T21:31:40.723923\",\n    \"enderecos\": [\n        {\n            \"id\": \"d97ce5d8-6227-40e4-8b2d-7ef75807ac5b\",\n            \"estado\": \"SP\",\n            \"cidade\": \"Sao Paulo\",\n            \"bairro\": \"Jardim Paulista\",\n            \"rua\": \"Avenida Paulista\",\n            \"numero\": 123,\n            \"complemento\": \"Apt 101\",\n            \"cep\": \"01311-000\"\n        }\n    ],\n    \"restaurantes\": []\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2457,7 +2333,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/proprietarios/79b1699e-32f6-4043-bd1c-1ea5b4059119",
+									"raw": "http://localhost:8080/proprietarios/5046bbfd-2392-4452-b877-0fd4695d050b",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -2465,7 +2341,7 @@
 									"port": "8080",
 									"path": [
 										"proprietarios",
-										"79b1699e-32f6-4043-bd1c-1ea5b4059119"
+										"5046bbfd-2392-4452-b877-0fd4695d050b"
 									]
 								}
 							},
@@ -2507,7 +2383,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 31 May 2025 01:07:03 GMT"
+									"value": "Mon, 04 Aug 2025 00:33:41 GMT"
 								},
 								{
 									"key": "Keep-Alive",
@@ -2519,86 +2395,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"id\": \"79b1699e-32f6-4043-bd1c-1ea5b4059119\",\n    \"cnpj\": \"12.345.678/0001-33\",\n    \"razaoSocial\": \"Empresa de Exemplo LTDA\",\n    \"nomeFantasia\": \"Exemplo Comércio\",\n    \"inscricaoEstadual\": \"3214567833\",\n    \"telefoneComercial\": \"+5581999999321\",\n    \"whatsapp\": \"+5581999999321\",\n    \"nome\": \"João A.Lima\",\n    \"email\": \"joaolima@corp.com\",\n    \"login\": \"joaolima\",\n    \"enderecos\": [\n        {\n            \"id\": \"a1b3d435-5259-4581-b4d8-06472bbc4a43\",\n            \"estado\": \"SP\",\n            \"cidade\": \"Sao Paulo\",\n            \"bairro\": \"Jardim Paulista\",\n            \"rua\": \"Avenida Paulista\",\n            \"numero\": 123,\n            \"complemento\": \"Apt 101\",\n            \"cep\": \"01311-000\"\n        },\n        {\n            \"id\": \"eb3d0fe0-b281-4358-9739-6046b0e5cce2\",\n            \"estado\": \"PE\",\n            \"cidade\": \"Recife\",\n            \"bairro\": \"Jardim Recife\",\n            \"rua\": \"Avenida Recife\",\n            \"numero\": 432,\n            \"complemento\": \"Apt 43\",\n            \"cep\": \"11311-100\"\n        }\n    ]\n}"
-						},
-						{
-							"name": "Token Inválido ou Ausente",
-							"originalRequest": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"cnpj\": \"12.345.678/0001-33\",\n  \"razaoSocial\": \"Empresa de Exemplo LTDA\",\n  \"nomeFantasia\": \"Exemplo Comércio\",\n  \"inscricaoEstadual\": \"3214567833\",\n  \"telefoneComercial\": \"+5581999999321\",\n  \"whatsapp\": \"+5581999999321\",\n  \"statusConta\": \"ATIVO\",\n  \"nome\": \"João A.Lima\",\n  \"email\": \"joaolima@corp.com\",\n  \"login\": \"joaolima\",\n  \"enderecos\": [\n    {\n      \"estado\": \"SP\",\n      \"cidade\": \"Sao Paulo\",\n      \"bairro\": \"Jardim Paulista\",\n      \"rua\": \"Avenida Paulista\",\n      \"numero\": 123,\n      \"complemento\": \"Apt 101\",\n      \"cep\": \"01311-000\"\n    },\n    {\n      \"estado\": \"PE\",\n      \"cidade\": \"Recife\",\n      \"bairro\": \"Jardim Recife\",\n      \"rua\": \"Avenida Recife\",\n      \"numero\": 432,\n      \"complemento\": \"Apt 43\",\n      \"cep\": \"11311-100\"\n    }\n  ]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:8080/proprietarios/79b1699e-32f6-4043-bd1c-1ea5b4059119",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"proprietarios",
-										"79b1699e-32f6-4043-bd1c-1ea5b4059119"
-									]
-								}
-							},
-							"status": "Unauthorized",
-							"code": 401,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "0"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, no-store, max-age=0, must-revalidate"
-								},
-								{
-									"key": "Pragma",
-									"value": "no-cache"
-								},
-								{
-									"key": "Expires",
-									"value": "0"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "DENY"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json;charset=ISO-8859-1"
-								},
-								{
-									"key": "Content-Length",
-									"value": "193"
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 31 May 2025 01:10:30 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"path\": \"/proprietarios/79b1699e-32f6-4043-bd1c-1ea5b4059119\",\n    \"timestamp\": \"2025-05-30T22:10:30.410528\",\n    \"method\": \"PUT\",\n    \"status\": 401,\n    \"message\": \"Token invalido ou ausente.\",\n    \"error\": \"Unauthorized\"\n}"
+							"body": "{\n    \"id\": \"5046bbfd-2392-4452-b877-0fd4695d050b\",\n    \"nome\": \"João Lima\",\n    \"cpf\": \"12345678912\",\n    \"email\": \"joaolima@empresa.com\",\n    \"login\": \"joaolima\",\n    \"whatsapp\": \"+5581999999999\",\n    \"statusConta\": \"ATIVO\",\n    \"dataCriacao\": \"2025-08-03T21:31:40.723923\",\n    \"dataAtualizacao\": \"2025-08-03T21:33:41.5790642\",\n    \"enderecos\": [\n        {\n            \"id\": \"d97ce5d8-6227-40e4-8b2d-7ef75807ac5b\",\n            \"estado\": \"SP\",\n            \"cidade\": \"Sao Paulo\",\n            \"bairro\": \"Jardim Paulista\",\n            \"rua\": \"Avenida Paulista\",\n            \"numero\": 123,\n            \"complemento\": \"Apt 101\",\n            \"cep\": \"01311-000\"\n        }\n    ],\n    \"restaurantes\": []\n}"
 						}
 					]
 				}
@@ -2644,7 +2441,86 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "27 - Cadastrar Restaurante",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cnpj\": \"00000000000100\",\n  \"razaoSocial\": \"Empresa de Alimentos SA\",\n  \"nomeFantasia\": \"Restaurante Delícia\",\n  \"inscricaoEstadual\": \"123456789\",\n  \"telefoneComercial\": \"5511912345678\",\n  \"endereco\": {\n    \"estado\": \"SP\",\n    \"cidade\": \"São Paulo\",\n    \"bairro\": \"Centro\",\n    \"rua\": \"Rua da Paz\",\n    \"numero\": 123,\n    \"complemento\": \"Sala 101\",\n    \"cep\": \"01000-000\"\n  },\n  \"tiposCozinha\": [\n    {\n      \"nome\": \"Italiana\"\n    }\n  ],\n  \"horariosFuncionamento\": [\n    {\n      \"abre\": \"12:00\",\n      \"fecha\": \"22:00\",\n      \"diaSemana\": \"SEGUNDA_FEIRA\"\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/restaurantes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"restaurantes"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 03 Aug 2025 22:33:23 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"433bc3a5-43ce-4fe2-b7fd-8c4097614c34\",\n    \"cnpj\": \"00000000000100\",\n    \"razaoSocial\": \"Empresa de Alimentos SA\",\n    \"nomeFantasia\": \"Restaurante Delícia\",\n    \"inscricaoEstadual\": \"123456789\",\n    \"telefoneComercial\": \"5511912345678\",\n    \"proprietarioId\": \"ff725cbb-4ef4-4a6b-a1cd-d55b1e3a01fa\",\n    \"endereco\": {\n        \"id\": \"4f91f5e4-d3b2-4ed5-86d2-497b3c9d922d\",\n        \"estado\": \"SP\",\n        \"cidade\": \"São Paulo\",\n        \"bairro\": \"Centro\",\n        \"rua\": \"Rua da Paz\",\n        \"numero\": 123,\n        \"complemento\": \"Sala 101\",\n        \"cep\": \"01000000\"\n    },\n    \"tiposCozinha\": [\n        {\n            \"id\": \"1227d8d6-ef67-48f3-8e32-422b676f5a3f\",\n            \"nome\": \"Italiana\"\n        }\n    ],\n    \"horariosFuncionamento\": [\n        {\n            \"id\": \"0ab40871-b258-410b-9fcb-72e2cc4390e5\",\n            \"abre\": \"12:00:00\",\n            \"fecha\": \"22:00:00\",\n            \"diaSemana\": \"SEGUNDA_FEIRA\"\n        }\n    ],\n    \"itensCardapio\": [],\n    \"message\": \"Restaurante cadastrado com sucesso!\",\n    \"status\": \"SUCCESS\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Buscar Todos os Restaurantes",
@@ -2666,7 +2542,77 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "28 - Buscar Todos os Restaurantes",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/restaurantes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"restaurantes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 03 Aug 2025 22:33:44 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"f45c6614-8cec-47c2-bf59-581155da5652\",\n        \"cnpj\": \"00000000000001\",\n        \"razaoSocial\": \"Empresa de Alimentos SA\",\n        \"nomeFantasia\": \"Restaurante Delícia\",\n        \"inscricaoEstadual\": \"123456789\",\n        \"telefoneComercial\": \"5511912345678\",\n        \"endereco\": {\n            \"id\": \"bf5729c5-86cc-4183-a571-d395ddc80896\",\n            \"estado\": \"SP\",\n            \"cidade\": \"São Paulo\",\n            \"bairro\": \"Centro\",\n            \"rua\": \"Rua da Paz\",\n            \"numero\": 123,\n            \"complemento\": \"Sala 101\",\n            \"cep\": \"01000000\"\n        },\n        \"tiposCozinha\": [\n            {\n                \"id\": \"1227d8d6-ef67-48f3-8e32-422b676f5a3f\",\n                \"nome\": \"Italiana\"\n            }\n        ],\n        \"horariosFuncionamento\": [\n            {\n                \"id\": \"77e5dfed-8b3a-42ce-b6a9-ad8df40de3e3\",\n                \"abre\": \"12:00:00\",\n                \"fecha\": \"22:00:00\",\n                \"diaSemana\": \"SEGUNDA_FEIRA\"\n            },\n            {\n                \"id\": \"100c7407-bcda-42c4-a171-a014a330e9de\",\n                \"abre\": \"12:00:00\",\n                \"fecha\": \"22:00:00\",\n                \"diaSemana\": \"TERCA_FEIRA\"\n            },\n            {\n                \"id\": \"0d39352d-20e1-406c-b8a9-29761d46caac\",\n                \"abre\": \"12:00:00\",\n                \"fecha\": \"23:00:00\",\n                \"diaSemana\": \"SEXTA_FEIRA\"\n            },\n            {\n                \"id\": \"5fc60d01-a3f8-4a5c-aa1c-abc60c1f39d3\",\n                \"abre\": \"12:00:00\",\n                \"fecha\": \"23:00:00\",\n                \"diaSemana\": \"SABADO\"\n            }\n        ]\n    },\n    {\n        \"id\": \"713994c5-b9c1-48dc-9e87-4d8a1f342be9\",\n        \"cnpj\": \"00000000000711\",\n        \"razaoSocial\": \"Comidas do Sul LTDA\",\n        \"nomeFantasia\": \"Churrascaria Gaúcha\",\n        \"inscricaoEstadual\": \"987654321\",\n        \"telefoneComercial\": \"5547987654321\",\n        \"endereco\": {\n            \"id\": \"f3cee656-007b-4820-a2b3-750d4753c791\",\n            \"estado\": \"RS\",\n            \"cidade\": \"Porto Alegre\",\n            \"bairro\": \"Moinhos de Vento\",\n            \"rua\": \"Rua das Flores\",\n            \"numero\": 77,\n            \"complemento\": \"\",\n            \"cep\": \"90570020\"\n        },\n        \"tiposCozinha\": [\n            {\n                \"id\": \"34a3d420-a546-41b5-b846-96f80cd40aa7\",\n                \"nome\": \"Churrasco\"\n            }\n        ],\n        \"horariosFuncionamento\": [\n            {\n                \"id\": \"30d7360c-b14b-4f0a-a904-28e73cda1322\",\n                \"abre\": \"11:30:00\",\n                \"fecha\": \"23:00:00\",\n                \"diaSemana\": \"QUINTA_FEIRA\"\n            },\n            {\n                \"id\": \"10afdc58-e6b6-41a1-b855-d911b5b2a87c\",\n                \"abre\": \"11:00:00\",\n                \"fecha\": \"23:00:00\",\n                \"diaSemana\": \"SEXTA_FEIRA\"\n            },\n            {\n                \"id\": \"bfae0648-4a9c-4d35-9c52-330729eec9de\",\n                \"abre\": \"11:00:00\",\n                \"fecha\": \"23:30:00\",\n                \"diaSemana\": \"SABADO\"\n            },\n            {\n                \"id\": \"b0a56069-20c9-4eef-8fc9-21d52314de0b\",\n                \"abre\": \"11:00:00\",\n                \"fecha\": \"22:00:00\",\n                \"diaSemana\": \"DOMINGO\"\n            }\n        ]\n    },\n    {\n        \"id\": \"afdcf21e-2f57-4cd8-ada2-d4e80127c238\",\n        \"cnpj\": \"00000000000933\",\n        \"razaoSocial\": \"Delícias Naturais EIRELI\",\n        \"nomeFantasia\": \"Veggie Vida\",\n        \"inscricaoEstadual\": \"5566778899\",\n        \"telefoneComercial\": \"5531991122334\",\n        \"endereco\": {\n            \"id\": \"55ab46d7-9822-412a-9aa8-b3b3d40ca4de\",\n            \"estado\": \"MG\",\n            \"cidade\": \"Belo Horizonte\",\n            \"bairro\": \"Savassi\",\n            \"rua\": \"Rua Paraíba\",\n            \"numero\": 200,\n            \"complemento\": \"Loja 5\",\n            \"cep\": \"30130140\"\n        },\n        \"tiposCozinha\": [\n            {\n                \"id\": \"4a7e0a58-4ffc-4b4f-8ee6-48ae9b58787a\",\n                \"nome\": \"Vegetariana\"\n            }\n        ],\n        \"horariosFuncionamento\": [\n            {\n                \"id\": \"65b8cc4f-a139-4a9c-b56c-ff6a0990a40f\",\n                \"abre\": \"10:00:00\",\n                \"fecha\": \"20:00:00\",\n                \"diaSemana\": \"SEGUNDA_FEIRA\"\n            },\n            {\n                \"id\": \"59c08745-b35a-4838-a353-c16532fac98a\",\n                \"abre\": \"10:00:00\",\n                \"fecha\": \"20:00:00\",\n                \"diaSemana\": \"TERCA_FEIRA\"\n            },\n            {\n                \"id\": \"c0c34690-97ab-4804-b517-732b92eeeddd\",\n                \"abre\": \"10:00:00\",\n                \"fecha\": \"21:00:00\",\n                \"diaSemana\": \"QUINTA_FEIRA\"\n            },\n            {\n                \"id\": \"5ea7e5ff-222b-4090-bc6a-439c6af30a75\",\n                \"abre\": \"12:00:00\",\n                \"fecha\": \"22:00:00\",\n                \"diaSemana\": \"DOMINGO\"\n            }\n        ]\n    },\n    {\n        \"id\": \"22991bf7-5b66-4510-a075-5c4671ab7c7c\",\n        \"cnpj\": \"00000000001044\",\n        \"razaoSocial\": \"Cozinha Nordestina Ltda\",\n        \"nomeFantasia\": \"Sabor do Sertão\",\n        \"inscricaoEstadual\": \"4433221100\",\n        \"telefoneComercial\": \"5583981122334\",\n        \"endereco\": {\n            \"id\": \"f90ca598-22d3-4fc9-9f78-2d536f9c93a2\",\n            \"estado\": \"PE\",\n            \"cidade\": \"Recife\",\n            \"bairro\": \"Boa Viagem\",\n            \"rua\": \"Rua dos Navegantes\",\n            \"numero\": 456,\n            \"complemento\": \"Térreo\",\n            \"cep\": \"51020010\"\n        },\n        \"tiposCozinha\": [\n            {\n                \"id\": \"f7f8d009-b05f-4df6-8d8d-406f177113b4\",\n                \"nome\": \"Nordestina\"\n            }\n        ],\n        \"horariosFuncionamento\": [\n            {\n                \"id\": \"5c723881-4e25-4234-899c-23f90cd81857\",\n                \"abre\": \"11:00:00\",\n                \"fecha\": \"15:00:00\",\n                \"diaSemana\": \"SEGUNDA_FEIRA\"\n            },\n            {\n                \"id\": \"a0926205-faf4-4ac8-bc4d-5cbbd84f0cdf\",\n                \"abre\": \"11:00:00\",\n                \"fecha\": \"15:00:00\",\n                \"diaSemana\": \"TERCA_FEIRA\"\n            },\n            {\n                \"id\": \"ea8ae725-aa31-4953-a6ed-c43804031270\",\n                \"abre\": \"18:00:00\",\n                \"fecha\": \"23:00:00\",\n                \"diaSemana\": \"SEXTA_FEIRA\"\n            },\n            {\n                \"id\": \"6de8cd11-0d12-41a1-82c1-f641d36e422d\",\n                \"abre\": \"11:30:00\",\n                \"fecha\": \"22:00:00\",\n                \"diaSemana\": \"SABADO\"\n            },\n            {\n                \"id\": \"39070b7b-913c-4c94-a298-25e9145eedad\",\n                \"abre\": \"11:30:00\",\n                \"fecha\": \"21:00:00\",\n                \"diaSemana\": \"DOMINGO\"\n            }\n        ]\n    },\n    {\n        \"id\": \"fa490d0b-ffa8-479e-aa54-6bffe8349c0f\",\n        \"cnpj\": \"00000000000700\",\n        \"razaoSocial\": \"Comidas Regionais Ltda\",\n        \"nomeFantasia\": \"Sabor Nordestino\",\n        \"inscricaoEstadual\": \"987654321\",\n        \"telefoneComercial\": \"5583987654321\",\n        \"endereco\": {\n            \"id\": \"aec0dcde-e267-411e-996e-80f052a50f72\",\n            \"estado\": \"PE\",\n            \"cidade\": \"Recife\",\n            \"bairro\": \"Boa Viagem\",\n            \"rua\": \"Avenida Domingos Ferreira\",\n            \"numero\": 789,\n            \"complemento\": \"Térreo\",\n            \"cep\": \"51011051\"\n        },\n        \"tiposCozinha\": [\n            {\n                \"id\": \"f7f8d009-b05f-4df6-8d8d-406f177113b4\",\n                \"nome\": \"Nordestina\"\n            }\n        ],\n        \"horariosFuncionamento\": [\n            {\n                \"id\": \"a42e7e4d-9b9c-4e48-ae70-5632bf44af12\",\n                \"abre\": \"11:00:00\",\n                \"fecha\": \"15:00:00\",\n                \"diaSemana\": \"SEGUNDA_FEIRA\"\n            },\n            {\n                \"id\": \"77ffd45b-43ba-401d-b60f-53adeb65fbb8\",\n                \"abre\": \"11:00:00\",\n                \"fecha\": \"15:00:00\",\n                \"diaSemana\": \"TERCA_FEIRA\"\n            },\n            {\n                \"id\": \"10e3a913-da13-49af-9782-594d6064cd7b\",\n                \"abre\": \"11:00:00\",\n                \"fecha\": \"15:00:00\",\n                \"diaSemana\": \"QUARTA_FEIRA\"\n            },\n            {\n                \"id\": \"0f940a89-2507-48c2-ae91-97100c5e5371\",\n                \"abre\": \"11:00:00\",\n                \"fecha\": \"16:00:00\",\n                \"diaSemana\": \"SABADO\"\n            },\n            {\n                \"id\": \"326e0280-6a48-44af-ab69-b66a55bab0e9\",\n                \"abre\": \"12:00:00\",\n                \"fecha\": \"17:00:00\",\n                \"diaSemana\": \"DOMINGO\"\n            }\n        ]\n    },\n    {\n        \"id\": \"433bc3a5-43ce-4fe2-b7fd-8c4097614c34\",\n        \"cnpj\": \"00000000000100\",\n        \"razaoSocial\": \"Empresa de Alimentos SA\",\n        \"nomeFantasia\": \"Restaurante Delícia\",\n        \"inscricaoEstadual\": \"123456789\",\n        \"telefoneComercial\": \"5511912345678\",\n        \"endereco\": {\n            \"id\": \"4f91f5e4-d3b2-4ed5-86d2-497b3c9d922d\",\n            \"estado\": \"SP\",\n            \"cidade\": \"São Paulo\",\n            \"bairro\": \"Centro\",\n            \"rua\": \"Rua da Paz\",\n            \"numero\": 123,\n            \"complemento\": \"Sala 101\",\n            \"cep\": \"01000000\"\n        },\n        \"tiposCozinha\": [\n            {\n                \"id\": \"1227d8d6-ef67-48f3-8e32-422b676f5a3f\",\n                \"nome\": \"Italiana\"\n            }\n        ],\n        \"horariosFuncionamento\": [\n            {\n                \"id\": \"0ab40871-b258-410b-9fcb-72e2cc4390e5\",\n                \"abre\": \"12:00:00\",\n                \"fecha\": \"22:00:00\",\n                \"diaSemana\": \"SEGUNDA_FEIRA\"\n            }\n        ]\n    }\n]"
+						}
+					]
 				},
 				{
 					"name": "Buscar Restaurante por ID",
@@ -2689,7 +2635,78 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "29 - Buscar Restaurante por ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/restaurantes/f45c6614-8cec-47c2-bf59-581155da5652",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"restaurantes",
+										"f45c6614-8cec-47c2-bf59-581155da5652"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 03 Aug 2025 22:35:23 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"f45c6614-8cec-47c2-bf59-581155da5652\",\n    \"cnpj\": \"00000000000001\",\n    \"razaoSocial\": \"Empresa de Alimentos SA\",\n    \"nomeFantasia\": \"Restaurante Delícia\",\n    \"inscricaoEstadual\": \"123456789\",\n    \"telefoneComercial\": \"5511912345678\",\n    \"endereco\": {\n        \"id\": \"bf5729c5-86cc-4183-a571-d395ddc80896\",\n        \"estado\": \"SP\",\n        \"cidade\": \"São Paulo\",\n        \"bairro\": \"Centro\",\n        \"rua\": \"Rua da Paz\",\n        \"numero\": 123,\n        \"complemento\": \"Sala 101\",\n        \"cep\": \"01000000\"\n    },\n    \"tiposCozinha\": [\n        {\n            \"id\": \"1227d8d6-ef67-48f3-8e32-422b676f5a3f\",\n            \"nome\": \"Italiana\"\n        }\n    ],\n    \"horariosFuncionamento\": [\n        {\n            \"id\": \"77e5dfed-8b3a-42ce-b6a9-ad8df40de3e3\",\n            \"abre\": \"12:00:00\",\n            \"fecha\": \"22:00:00\",\n            \"diaSemana\": \"SEGUNDA_FEIRA\"\n        },\n        {\n            \"id\": \"100c7407-bcda-42c4-a171-a014a330e9de\",\n            \"abre\": \"12:00:00\",\n            \"fecha\": \"22:00:00\",\n            \"diaSemana\": \"TERCA_FEIRA\"\n        },\n        {\n            \"id\": \"0d39352d-20e1-406c-b8a9-29761d46caac\",\n            \"abre\": \"12:00:00\",\n            \"fecha\": \"23:00:00\",\n            \"diaSemana\": \"SEXTA_FEIRA\"\n        },\n        {\n            \"id\": \"5fc60d01-a3f8-4a5c-aa1c-abc60c1f39d3\",\n            \"abre\": \"12:00:00\",\n            \"fecha\": \"23:00:00\",\n            \"diaSemana\": \"SABADO\"\n        }\n    ],\n    \"itensCardapio\": [\n        {\n            \"id\": \"3b3ca420-5237-4718-802e-6428c15318f2\",\n            \"nome\": \"Spaghetti alla Carbonara\",\n            \"descricao\": \"Massa tradicional italiana com molho à base de ovos, queijo parmesão, pancetta e pimenta-do-reino.\",\n            \"preco\": 42,\n            \"disponivelApenasNoRestaurante\": true,\n            \"urlFoto\": \"http://example.com/spaghetti_carbonara.jpg\"\n        },\n        {\n            \"id\": \"06563ea9-0b04-4aa5-8658-b477ceaca2d3\",\n            \"nome\": \"Risoto de Funghi\",\n            \"descricao\": \"Risoto cremoso preparado com cogumelos secos e finalizado com parmesão.\",\n            \"preco\": 49,\n            \"disponivelApenasNoRestaurante\": true,\n            \"urlFoto\": \"http://example.com/risoto_funghi.jpg\"\n        },\n        {\n            \"id\": \"f531054f-2a8b-4eed-b28c-ed43e5b52718\",\n            \"nome\": \"Lasanha à Bolonhesa\",\n            \"descricao\": \"Lasanha de massa fresca com camadas de molho à bolonhesa e molho branco.\",\n            \"preco\": 45,\n            \"disponivelApenasNoRestaurante\": true,\n            \"urlFoto\": \"http://example.com/lasanha_bolonhesa.jpg\"\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "Atualizar Restaurante por ID",
@@ -2708,7 +2725,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"cnpj\": \"00000000001100\",\n  \"razaoSocial\": \"Empresa de Alimentos SA\",\n  \"nomeFantasia\": \"Restaurante Delícia\",\n  \"inscricaoEstadual\": \"123456789\",\n  \"telefoneComercial\": \"5511912345678\",\n  \"endereco\": {\n    \"estado\": \"SP\",\n    \"cidade\": \"São Paulo\",\n    \"bairro\": \"Centro\",\n    \"rua\": \"Rua da Paz\",\n    \"numero\": 123,\n    \"complemento\": \"Sala 101\",\n    \"cep\": \"01000-000\"\n  },\n  \"tiposCozinha\": [\n    {\n      \"nome\": \"Italiana\"\n    }\n  ],\n  \"horariosFuncionamento\": [\n    {\n      \"abre\": \"12:00\",\n      \"fecha\": \"22:00\",\n      \"diaSemana\": \"SEGUNDA_FEIRA\"\n    }\n  ]\n}",
+							"raw": "  {\n        \"id\": \"f45c6614-8cec-47c2-bf59-581155da5652\",\n        \"cnpj\": \"00000000000001\",\n        \"razaoSocial\": \"Empresa de Alimentos SA\",\n        \"nomeFantasia\": \"Restaurante Delícia\",\n        \"inscricaoEstadual\": \"123456789\",\n        \"telefoneComercial\": \"5511912345678\",\n        \"endereco\": {\n            \"id\": \"bf5729c5-86cc-4183-a571-d395ddc80896\",\n            \"estado\": \"SP\",\n            \"cidade\": \"São Paulo\",\n            \"bairro\": \"Centro\",\n            \"rua\": \"Rua da Paz\",\n            \"numero\": 123,\n            \"complemento\": \"Sala 101\",\n            \"cep\": \"00000-000\"\n        },\n        \"tiposCozinha\": [\n            {\n                \"id\": \"1227d8d6-ef67-48f3-8e32-422b676f5a3f\",\n                \"nome\": \"Italiana\"\n            }\n        ],\n        \"horariosFuncionamento\": [\n            {\n                \"id\": \"77e5dfed-8b3a-42ce-b6a9-ad8df40de3e3\",\n                \"abre\": \"12:00:00\",\n                \"fecha\": \"22:00:00\",\n                \"diaSemana\": \"SEGUNDA_FEIRA\"\n            },\n            {\n                \"id\": \"100c7407-bcda-42c4-a171-a014a330e9de\",\n                \"abre\": \"12:00:00\",\n                \"fecha\": \"22:00:00\",\n                \"diaSemana\": \"TERCA_FEIRA\"\n            },\n            {\n                \"id\": \"0d39352d-20e1-406c-b8a9-29761d46caac\",\n                \"abre\": \"12:00:00\",\n                \"fecha\": \"23:00:00\",\n                \"diaSemana\": \"SEXTA_FEIRA\"\n            },\n            {\n                \"id\": \"5fc60d01-a3f8-4a5c-aa1c-abc60c1f39d3\",\n                \"abre\": \"12:00:00\",\n                \"fecha\": \"23:00:00\",\n                \"diaSemana\": \"SABADO\"\n            }\n        ]\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2716,7 +2733,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/restaurantes/1c15fe13-23e5-4fe4-a629-ab8c1b1ddc14",
+							"raw": "http://localhost:8080/restaurantes/f45c6614-8cec-47c2-bf59-581155da5652",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -2724,11 +2741,170 @@
 							"port": "8080",
 							"path": [
 								"restaurantes",
-								"1c15fe13-23e5-4fe4-a629-ab8c1b1ddc14"
+								"f45c6614-8cec-47c2-bf59-581155da5652"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "30 - Atualizar Restaurante por ID",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"14f372f3-f341-42bc-9b92-ecd78ae277a4\",\n    \"cnpj\": \"00000000000100\",\n    \"razaoSocial\": \"Empresa de Alimentos SA\",\n    \"nomeFantasia\": \"Restaurante DA Delícia\",\n    \"inscricaoEstadual\": \"123456789\",\n    \"telefoneComercial\": \"5511912345678\",\n    \"endereco\": {\n        \"id\": \"37d28871-0811-4b00-b51b-7eb518a980fd\",\n        \"estado\": \"SP\",\n        \"cidade\": \"São Paulo\",\n        \"bairro\": \"Centro\",\n        \"rua\": \"Rua da Paz\",\n        \"numero\": 123,\n        \"complemento\": \"Sala 101\",\n        \"cep\": \"00000-000\"\n    },\n    \"tiposCozinha\": [\n        {\n            \"id\": \"b9f755c2-9d54-4ed5-9d94-18c00252e4e1\",\n            \"nome\": \"Italiana\"\n        }\n    ],\n    \"horariosFuncionamento\": [\n        {\n            \"id\": \"aa9370ff-8d5a-437c-9777-04284d3ceb77\",\n            \"abre\": \"12:00:00\",\n            \"fecha\": \"22:00:00\",\n            \"diaSemana\": \"SEGUNDA_FEIRA\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/restaurantes/14f372f3-f341-42bc-9b92-ecd78ae277a4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"restaurantes",
+										"14f372f3-f341-42bc-9b92-ecd78ae277a4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 03 Aug 2025 22:37:35 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"f45c6614-8cec-47c2-bf59-581155da5652\",\n    \"cnpj\": \"00000000000001\",\n    \"razaoSocial\": \"Empresa de Alimentos SA\",\n    \"nomeFantasia\": \"Restaurante Delícia\",\n    \"inscricaoEstadual\": \"123456789\",\n    \"telefoneComercial\": \"5511912345678\",\n    \"endereco\": {\n        \"id\": \"bf5729c5-86cc-4183-a571-d395ddc80896\",\n        \"estado\": \"SP\",\n        \"cidade\": \"São Paulo\",\n        \"bairro\": \"Centro\",\n        \"rua\": \"Rua da Paz\",\n        \"numero\": 123,\n        \"complemento\": \"Sala 101\",\n        \"cep\": \"00000000\"\n    },\n    \"tiposCozinha\": [\n        {\n            \"id\": \"1227d8d6-ef67-48f3-8e32-422b676f5a3f\",\n            \"nome\": \"Italiana\"\n        }\n    ],\n    \"horariosFuncionamento\": [\n        {\n            \"id\": \"7d083b1f-29b8-441c-b0e9-f66e70209226\",\n            \"abre\": \"12:00:00\",\n            \"fecha\": \"22:00:00\",\n            \"diaSemana\": \"SEGUNDA_FEIRA\"\n        },\n        {\n            \"id\": \"9684b0a9-6dec-4dd0-ac6b-b78083bb6f14\",\n            \"abre\": \"12:00:00\",\n            \"fecha\": \"22:00:00\",\n            \"diaSemana\": \"TERCA_FEIRA\"\n        },\n        {\n            \"id\": \"04a6fb29-235d-4eb3-bf23-fecd7d7f38e5\",\n            \"abre\": \"12:00:00\",\n            \"fecha\": \"23:00:00\",\n            \"diaSemana\": \"SEXTA_FEIRA\"\n        },\n        {\n            \"id\": \"cbc1f763-bb22-44e4-9415-ca1291559b16\",\n            \"abre\": \"12:00:00\",\n            \"fecha\": \"23:00:00\",\n            \"diaSemana\": \"SABADO\"\n        }\n    ],\n    \"itensCardapio\": [\n        {\n            \"id\": \"3b3ca420-5237-4718-802e-6428c15318f2\",\n            \"nome\": \"Spaghetti alla Carbonara\",\n            \"descricao\": \"Massa tradicional italiana com molho à base de ovos, queijo parmesão, pancetta e pimenta-do-reino.\",\n            \"preco\": 42,\n            \"disponivelApenasNoRestaurante\": true,\n            \"urlFoto\": \"http://example.com/spaghetti_carbonara.jpg\"\n        },\n        {\n            \"id\": \"06563ea9-0b04-4aa5-8658-b477ceaca2d3\",\n            \"nome\": \"Risoto de Funghi\",\n            \"descricao\": \"Risoto cremoso preparado com cogumelos secos e finalizado com parmesão.\",\n            \"preco\": 49,\n            \"disponivelApenasNoRestaurante\": true,\n            \"urlFoto\": \"http://example.com/risoto_funghi.jpg\"\n        },\n        {\n            \"id\": \"f531054f-2a8b-4eed-b28c-ed43e5b52718\",\n            \"nome\": \"Lasanha à Bolonhesa\",\n            \"descricao\": \"Lasanha de massa fresca com camadas de molho à bolonhesa e molho branco.\",\n            \"preco\": 45,\n            \"disponivelApenasNoRestaurante\": true,\n            \"urlFoto\": \"http://example.com/lasanha_bolonhesa.jpg\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "31 - Proprietário Logado altera só o próprio restaurante",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "  {\n        \"id\": \"f45c6614-8cec-47c2-bf59-581155da5652\",\n        \"cnpj\": \"00000000000001\",\n        \"razaoSocial\": \"Empresa de Alimentos SA\",\n        \"nomeFantasia\": \"Restaurante Delícia\",\n        \"inscricaoEstadual\": \"123456789\",\n        \"telefoneComercial\": \"5511912345678\",\n        \"endereco\": {\n            \"id\": \"bf5729c5-86cc-4183-a571-d395ddc80896\",\n            \"estado\": \"SP\",\n            \"cidade\": \"São Paulo\",\n            \"bairro\": \"Centro\",\n            \"rua\": \"Rua da Paz\",\n            \"numero\": 123,\n            \"complemento\": \"Sala 101\",\n            \"cep\": \"00000-000\"\n        },\n        \"tiposCozinha\": [\n            {\n                \"id\": \"1227d8d6-ef67-48f3-8e32-422b676f5a3f\",\n                \"nome\": \"Italiana\"\n            }\n        ],\n        \"horariosFuncionamento\": [\n            {\n                \"id\": \"77e5dfed-8b3a-42ce-b6a9-ad8df40de3e3\",\n                \"abre\": \"12:00:00\",\n                \"fecha\": \"22:00:00\",\n                \"diaSemana\": \"SEGUNDA_FEIRA\"\n            },\n            {\n                \"id\": \"100c7407-bcda-42c4-a171-a014a330e9de\",\n                \"abre\": \"12:00:00\",\n                \"fecha\": \"22:00:00\",\n                \"diaSemana\": \"TERCA_FEIRA\"\n            },\n            {\n                \"id\": \"0d39352d-20e1-406c-b8a9-29761d46caac\",\n                \"abre\": \"12:00:00\",\n                \"fecha\": \"23:00:00\",\n                \"diaSemana\": \"SEXTA_FEIRA\"\n            },\n            {\n                \"id\": \"5fc60d01-a3f8-4a5c-aa1c-abc60c1f39d3\",\n                \"abre\": \"12:00:00\",\n                \"fecha\": \"23:00:00\",\n                \"diaSemana\": \"SABADO\"\n            }\n        ]\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/restaurantes/4e9950d6-2deb-4452-9b97-6c67ad71bd14",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"restaurantes",
+										"4e9950d6-2deb-4452-9b97-6c67ad71bd14"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 03 Aug 2025 22:37:35 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"f45c6614-8cec-47c2-bf59-581155da5652\",\n    \"cnpj\": \"00000000000001\",\n    \"razaoSocial\": \"Empresa de Alimentos SA\",\n    \"nomeFantasia\": \"Restaurante Delícia\",\n    \"inscricaoEstadual\": \"123456789\",\n    \"telefoneComercial\": \"5511912345678\",\n    \"endereco\": {\n        \"id\": \"bf5729c5-86cc-4183-a571-d395ddc80896\",\n        \"estado\": \"SP\",\n        \"cidade\": \"São Paulo\",\n        \"bairro\": \"Centro\",\n        \"rua\": \"Rua da Paz\",\n        \"numero\": 123,\n        \"complemento\": \"Sala 101\",\n        \"cep\": \"00000000\"\n    },\n    \"tiposCozinha\": [\n        {\n            \"id\": \"1227d8d6-ef67-48f3-8e32-422b676f5a3f\",\n            \"nome\": \"Italiana\"\n        }\n    ],\n    \"horariosFuncionamento\": [\n        {\n            \"id\": \"7d083b1f-29b8-441c-b0e9-f66e70209226\",\n            \"abre\": \"12:00:00\",\n            \"fecha\": \"22:00:00\",\n            \"diaSemana\": \"SEGUNDA_FEIRA\"\n        },\n        {\n            \"id\": \"9684b0a9-6dec-4dd0-ac6b-b78083bb6f14\",\n            \"abre\": \"12:00:00\",\n            \"fecha\": \"22:00:00\",\n            \"diaSemana\": \"TERCA_FEIRA\"\n        },\n        {\n            \"id\": \"04a6fb29-235d-4eb3-bf23-fecd7d7f38e5\",\n            \"abre\": \"12:00:00\",\n            \"fecha\": \"23:00:00\",\n            \"diaSemana\": \"SEXTA_FEIRA\"\n        },\n        {\n            \"id\": \"cbc1f763-bb22-44e4-9415-ca1291559b16\",\n            \"abre\": \"12:00:00\",\n            \"fecha\": \"23:00:00\",\n            \"diaSemana\": \"SABADO\"\n        }\n    ],\n    \"itensCardapio\": [\n        {\n            \"id\": \"3b3ca420-5237-4718-802e-6428c15318f2\",\n            \"nome\": \"Spaghetti alla Carbonara\",\n            \"descricao\": \"Massa tradicional italiana com molho à base de ovos, queijo parmesão, pancetta e pimenta-do-reino.\",\n            \"preco\": 42,\n            \"disponivelApenasNoRestaurante\": true,\n            \"urlFoto\": \"http://example.com/spaghetti_carbonara.jpg\"\n        },\n        {\n            \"id\": \"06563ea9-0b04-4aa5-8658-b477ceaca2d3\",\n            \"nome\": \"Risoto de Funghi\",\n            \"descricao\": \"Risoto cremoso preparado com cogumelos secos e finalizado com parmesão.\",\n            \"preco\": 49,\n            \"disponivelApenasNoRestaurante\": true,\n            \"urlFoto\": \"http://example.com/risoto_funghi.jpg\"\n        },\n        {\n            \"id\": \"f531054f-2a8b-4eed-b28c-ed43e5b52718\",\n            \"nome\": \"Lasanha à Bolonhesa\",\n            \"descricao\": \"Lasanha de massa fresca com camadas de molho à bolonhesa e molho branco.\",\n            \"preco\": 45,\n            \"disponivelApenasNoRestaurante\": true,\n            \"urlFoto\": \"http://example.com/lasanha_bolonhesa.jpg\"\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "Deletar Restaurante pelo ID",
@@ -2746,7 +2922,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/restaurantes/1c15fe13-23e5-4fe4-a629-ab8c1b1ddc14",
+							"raw": "http://localhost:8080/restaurantes/f45c6614-8cec-47c2-bf59-581155da5652",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -2754,11 +2930,74 @@
 							"port": "8080",
 							"path": [
 								"restaurantes",
-								"1c15fe13-23e5-4fe4-a629-ab8c1b1ddc14"
+								"f45c6614-8cec-47c2-bf59-581155da5652"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "32 - Deletar Restaurante pelo ID",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/restaurantes/f45c6614-8cec-47c2-bf59-581155da5652",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"restaurantes",
+										"f45c6614-8cec-47c2-bf59-581155da5652"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 03 Aug 2025 22:38:13 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
 				}
 			]
 		},
@@ -2782,7 +3021,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nome\": \"Bobó de Camarão\",\n    \"descricao\": \"Camaronas ao molho cremoso de mandioca, leite de coco e temperos regionais.\",\n    \"preco\": 58.50,\n    \"disponivelApenasNoRestaurante\": true,\n    \"urlFoto\": \"http://example.com/bobo_camarao.jpg\"\n}",
+							"raw": "{\n    \"nome\": \"Dadinho de tapioca\",\n    \"descricao\": \"Cubinhos crocantes de tapioca com queijo coalho, servidos com molho agridoce artesanal.\",\n    \"preco\": 14.99,\n    \"disponivelApenasNoRestaurante\": true,\n    \"urlFoto\": \"http://example.com/dadidnho_de_tapioca.jpg\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2790,7 +3029,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/restaurantes/1c15fe13-23e5-4fe4-a629-ab8c1b1ddc14/itens",
+							"raw": "http://localhost:8080/restaurantes/f45c6614-8cec-47c2-bf59-581155da5652/itens",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -2798,12 +3037,93 @@
 							"port": "8080",
 							"path": [
 								"restaurantes",
-								"1c15fe13-23e5-4fe4-a629-ab8c1b1ddc14",
+								"f45c6614-8cec-47c2-bf59-581155da5652",
 								"itens"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "34 - Cadastrar Item do Cardápio",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nome\": \"Dadinho de tapioca\",\n    \"descricao\": \"Cubinhos crocantes de tapioca com queijo coalho, servidos com molho agridoce artesanal.\",\n    \"preco\": 14.99,\n    \"disponivelApenasNoRestaurante\": true,\n    \"urlFoto\": \"http://example.com/dadidnho_de_tapioca.jpg\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/restaurantes/f45c6614-8cec-47c2-bf59-581155da5652/itens",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"restaurantes",
+										"f45c6614-8cec-47c2-bf59-581155da5652",
+										"itens"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 03 Aug 2025 22:40:57 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"6f1c6552-b2a2-475a-9f87-fd11da75e1ab\",\n    \"nome\": \"Bobó de Camarão 2\",\n    \"descricao\": \"Camaronas ao molho cremoso de mandioca, leite de coco e temperos regionais.\",\n    \"preco\": 58.5,\n    \"disponivelApenasNoRestaurante\": true,\n    \"urlFoto\": \"http://example.com/bobo_camarao.jpg\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Buscar Item do Cardápio do ID",
@@ -2814,7 +3134,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/restaurantes/34466800-4637-42e8-a7b7-7ec36179cba3/itens/34466800-4637-42e8-a7b7-7ec36179cba3",
+							"raw": "http://localhost:8080/restaurantes/f45c6614-8cec-47c2-bf59-581155da5652/itens/6f1c6552-b2a2-475a-9f87-fd11da75e1ab",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -2822,13 +3142,86 @@
 							"port": "8080",
 							"path": [
 								"restaurantes",
-								"34466800-4637-42e8-a7b7-7ec36179cba3",
+								"f45c6614-8cec-47c2-bf59-581155da5652",
 								"itens",
-								"34466800-4637-42e8-a7b7-7ec36179cba3"
+								"6f1c6552-b2a2-475a-9f87-fd11da75e1ab"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "35 - Buscar Item do Cardápio do ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/restaurantes/f45c6614-8cec-47c2-bf59-581155da5652/itens/6f1c6552-b2a2-475a-9f87-fd11da75e1ab",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"restaurantes",
+										"f45c6614-8cec-47c2-bf59-581155da5652",
+										"itens",
+										"6f1c6552-b2a2-475a-9f87-fd11da75e1ab"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 03 Aug 2025 22:44:02 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"6f1c6552-b2a2-475a-9f87-fd11da75e1ab\",\n    \"nome\": \"Dadinho de tapioca\",\n    \"descricao\": \"Cubinhos crocantes de tapioca com queijo coalho, servidos com molho agridoce artesanal.\",\n    \"preco\": 14.99,\n    \"disponivelApenasNoRestaurante\": true,\n    \"urlFoto\": \"http://example.com/dadidnho_de_tapioca.jpg\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Deletar Item do Cardápio por ID",
@@ -2846,7 +3239,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/restaurantes/34466800-4637-42e8-a7b7-7ec36179cba3/itens/34466800-4637-42e8-a7b7-7ec36179cba3",
+							"raw": "http://localhost:8080/restaurantes/f45c6614-8cec-47c2-bf59-581155da5652/itens/6f1c6552-b2a2-475a-9f87-fd11da75e1ab",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -2854,13 +3247,78 @@
 							"port": "8080",
 							"path": [
 								"restaurantes",
-								"34466800-4637-42e8-a7b7-7ec36179cba3",
+								"f45c6614-8cec-47c2-bf59-581155da5652",
 								"itens",
-								"34466800-4637-42e8-a7b7-7ec36179cba3"
+								"6f1c6552-b2a2-475a-9f87-fd11da75e1ab"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "36 - Deletar Item do Cardápio por ID",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/restaurantes/f45c6614-8cec-47c2-bf59-581155da5652/itens/6f1c6552-b2a2-475a-9f87-fd11da75e1ab",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"restaurantes",
+										"f45c6614-8cec-47c2-bf59-581155da5652",
+										"itens",
+										"6f1c6552-b2a2-475a-9f87-fd11da75e1ab"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 03 Aug 2025 22:45:30 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
 				},
 				{
 					"name": "Atualizar Item do Cardápio por ID",
@@ -2879,7 +3337,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nome\": \"Bobó de Camarão da Malásia\",\n    \"descricao\": \"Camaronas ao molho cremoso de mandioca, leite de coco.\",\n    \"preco\": 75.50,\n    \"disponivelApenasNoRestaurante\": true,\n    \"urlFoto\": \"http://example.com/bobo_camarao_grande.jpg\"\n}",
+							"raw": "{\n    \"nome\": \"Bobó de Camarão da Malásia\",\n    \"descricao\": \"Camaronas ao molho cremoso de mandioca, leite de coco.\",\n    \"preco\": 78.96,\n    \"disponivelApenasNoRestaurante\": true,\n    \"urlFoto\": \"http://example.com/bobo_camarao_grande.jpg\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2887,7 +3345,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/restaurantes/1c15fe13-23e5-4fe4-a629-ab8c1b1ddc14/itens/f52fe02d-bb52-47b2-a38c-126446e67495",
+							"raw": "http://localhost:8080/restaurantes/f45c6614-8cec-47c2-bf59-581155da5652/itens/0996af04-0051-48b1-b4e5-5c956a855b4d",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -2895,13 +3353,95 @@
 							"port": "8080",
 							"path": [
 								"restaurantes",
-								"1c15fe13-23e5-4fe4-a629-ab8c1b1ddc14",
+								"f45c6614-8cec-47c2-bf59-581155da5652",
 								"itens",
-								"f52fe02d-bb52-47b2-a38c-126446e67495"
+								"0996af04-0051-48b1-b4e5-5c956a855b4d"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "37 - Atualizar Item do Cardápio por ID",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nome\": \"Bobó de Camarão da Malásia\",\n    \"descricao\": \"Camaronas ao molho cremoso de mandioca, leite de coco.\",\n    \"preco\": 78.96,\n    \"disponivelApenasNoRestaurante\": true,\n    \"urlFoto\": \"http://example.com/bobo_camarao_grande.jpg\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/restaurantes/f45c6614-8cec-47c2-bf59-581155da5652/itens/0996af04-0051-48b1-b4e5-5c956a855b4d",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"restaurantes",
+										"f45c6614-8cec-47c2-bf59-581155da5652",
+										"itens",
+										"0996af04-0051-48b1-b4e5-5c956a855b4d"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 03 Aug 2025 22:47:59 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"0996af04-0051-48b1-b4e5-5c956a855b4d\",\n    \"nome\": \"Bobó de Camarão da Malásia\",\n    \"descricao\": \"Camaronas ao molho cremoso de mandioca, leite de coco.\",\n    \"preco\": 78.96,\n    \"disponivelApenasNoRestaurante\": true,\n    \"urlFoto\": \"http://example.com/bobo_camarao_grande.jpg\"\n}"
+						}
+					]
 				}
 			]
 		},
@@ -2936,7 +3476,78 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "15 - Buscar Todos os Proprietários",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/admin/proprietarios",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"proprietarios"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 03 Aug 2025 21:46:02 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"33e26d94-346e-4fbf-bf4c-89765c59b37c\",\n        \"nome\": \"Roberto Silva\",\n        \"cpf\": \"55443322115\",\n        \"email\": \"roberto.silva@example.com\",\n        \"login\": \"roberto.silva\",\n        \"whatsapp\": \"5511981234567\",\n        \"statusConta\": \"ATIVO\",\n        \"dataCriacao\": \"2025-08-03T18:19:46.454779\",\n        \"dataAtualizacao\": \"2025-08-03T18:19:46.454779\",\n        \"enderecos\": [\n            {\n                \"id\": \"a335ece7-5a31-4d90-b2f4-d629a7a01f9c\",\n                \"estado\": \"MG\",\n                \"cidade\": \"Belo Horizonte\",\n                \"bairro\": \"Savassi\",\n                \"rua\": \"Rua Pernambuco\",\n                \"numero\": 321,\n                \"complemento\": \"Loja 2\",\n                \"cep\": \"30130-150\"\n            }\n        ],\n        \"restaurantes\": [\n            {\n                \"id\": \"59086f15-5f5a-452d-94f7-33071eef3857\",\n                \"cnpj\": \"00000000000001\",\n                \"razaoSocial\": \"Empresa de Alimentos SA\",\n                \"nomeFantasia\": \"Restaurante Delícia\",\n                \"inscricaoEstadual\": \"123456789\",\n                \"telefoneComercial\": \"5511912345678\"\n            },\n            {\n                \"id\": \"afa19a7b-d967-4b35-8ca1-4222318a1943\",\n                \"cnpj\": \"00000000000711\",\n                \"razaoSocial\": \"Comidas do Sul LTDA\",\n                \"nomeFantasia\": \"Churrascaria Gaúcha\",\n                \"inscricaoEstadual\": \"987654321\",\n                \"telefoneComercial\": \"5547987654321\"\n            }\n        ]\n    },\n    {\n        \"id\": \"d4ab8304-3aae-4d7f-b559-e1f782b80fa8\",\n        \"nome\": \"Luciana Andrade\",\n        \"cpf\": \"99887766554\",\n        \"email\": \"luciana.andrade@example.com\",\n        \"login\": \"luciana.andrade\",\n        \"whatsapp\": \"5521987654321\",\n        \"statusConta\": \"ATIVO\",\n        \"dataCriacao\": \"2025-08-03T18:19:46.734937\",\n        \"dataAtualizacao\": \"2025-08-03T18:19:46.734937\",\n        \"enderecos\": [\n            {\n                \"id\": \"64e9bc26-e7ac-43a6-8aab-a298e2cb1f58\",\n                \"estado\": \"RJ\",\n                \"cidade\": \"Rio de Janeiro\",\n                \"bairro\": \"Copacabana\",\n                \"rua\": \"Avenida Atlântica\",\n                \"numero\": 1050,\n                \"complemento\": \"Cobertura\",\n                \"cep\": \"22021-001\"\n            }\n        ],\n        \"restaurantes\": [\n            {\n                \"id\": \"a10bc2d2-c1e1-49cf-978a-2f8faa0a5506\",\n                \"cnpj\": \"00000000000933\",\n                \"razaoSocial\": \"Delícias Naturais EIRELI\",\n                \"nomeFantasia\": \"Veggie Vida\",\n                \"inscricaoEstadual\": \"5566778899\",\n                \"telefoneComercial\": \"5531991122334\"\n            }\n        ]\n    },\n    {\n        \"id\": \"912ff8b4-7150-42a3-9325-7a4c791086c8\",\n        \"nome\": \"Marcelo Costa\",\n        \"cpf\": \"11223344556\",\n        \"email\": \"marcelo.costa@example.com\",\n        \"login\": \"marcelo.costa\",\n        \"whatsapp\": \"5541991122334\",\n        \"statusConta\": \"ATIVO\",\n        \"dataCriacao\": \"2025-08-03T18:19:46.945038\",\n        \"dataAtualizacao\": \"2025-08-03T18:19:46.945038\",\n        \"enderecos\": [\n            {\n                \"id\": \"9cc7eb23-1282-4a59-aed3-dbab525a2c95\",\n                \"estado\": \"PR\",\n                \"cidade\": \"Curitiba\",\n                \"bairro\": \"Batel\",\n                \"rua\": \"Alameda Dom Pedro II\",\n                \"numero\": 240,\n                \"complemento\": \"Sala 302\",\n                \"cep\": \"80420-060\"\n            }\n        ],\n        \"restaurantes\": [\n            {\n                \"id\": \"cfa49ce5-1915-4d16-89ae-1a81b0e837ea\",\n                \"cnpj\": \"00000000001044\",\n                \"razaoSocial\": \"Cozinha Nordestina Ltda\",\n                \"nomeFantasia\": \"Sabor do Sertão\",\n                \"inscricaoEstadual\": \"4433221100\",\n                \"telefoneComercial\": \"5583981122334\"\n            },\n            {\n                \"id\": \"fc1a37a9-8e61-486b-934c-46025b14f60d\",\n                \"cnpj\": \"00000000000700\",\n                \"razaoSocial\": \"Comidas Regionais Ltda\",\n                \"nomeFantasia\": \"Sabor Nordestino\",\n                \"inscricaoEstadual\": \"987654321\",\n                \"telefoneComercial\": \"5583987654321\"\n            }\n        ]\n    }\n]"
+						}
+					]
 				},
 				{
 					"name": "Buscar Todos os Clientes",
@@ -2966,7 +3577,78 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "16 - Buscar Todos os Clientes",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/admin/clientes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"admin",
+										"clientes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 03 Aug 2025 21:46:39 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"17078377-3067-4e64-9556-19cfaf789b23\",\n        \"nome\": \"Patrícia Lima\",\n        \"cpf\": \"56789012344\",\n        \"dataNascimento\": \"1995-01-18\",\n        \"email\": \"patricia.lima@email.com\",\n        \"login\": \"patlima\",\n        \"telefone\": \"5583981122334\",\n        \"genero\": \"FEMININO\",\n        \"preferenciasAlimentares\": [\n            \"CHURRASCO\",\n            \"PIZZARIA\"\n        ],\n        \"alergias\": [\n            \"SOJA\"\n        ],\n        \"metodoPagamentoPreferido\": \"CREDITO\",\n        \"ultimoPedido\": null,\n        \"saldoPontos\": 0,\n        \"clienteVip\": false,\n        \"avaliacoesFeitas\": 0,\n        \"notificacoesAtivas\": true,\n        \"dataCriacao\": \"2025-08-03T18:19:45.891015\",\n        \"dataAtualizacao\": \"2025-08-03T18:19:45.892036\",\n        \"enderecos\": [\n            {\n                \"id\": \"f31450aa-b95c-490a-b98b-16d4e844f88f\",\n                \"estado\": \"BA\",\n                \"cidade\": \"Salvador\",\n                \"bairro\": \"Barra\",\n                \"rua\": \"Avenida Oceânica\",\n                \"numero\": 555,\n                \"complemento\": \"Apto 1101\",\n                \"cep\": \"40140-130\"\n            }\n        ]\n    },\n    {\n        \"id\": \"ee9856cc-3728-452d-a688-026bcc68bd18\",\n        \"nome\": \"Carlos Mendes\",\n        \"cpf\": \"12345678901\",\n        \"dataNascimento\": \"1988-07-09\",\n        \"email\": \"carlos.mendes@email.com\",\n        \"login\": \"cmendes\",\n        \"telefone\": \"5511998765432\",\n        \"genero\": \"MASCULINO\",\n        \"preferenciasAlimentares\": [\n            \"JAPONESA\",\n            \"VEGANA\"\n        ],\n        \"alergias\": [\n            \"AMENDOIM\"\n        ],\n        \"metodoPagamentoPreferido\": \"DEBITO\",\n        \"ultimoPedido\": null,\n        \"saldoPontos\": 0,\n        \"clienteVip\": false,\n        \"avaliacoesFeitas\": 0,\n        \"notificacoesAtivas\": false,\n        \"dataCriacao\": \"2025-08-03T18:19:46.025131\",\n        \"dataAtualizacao\": \"2025-08-03T18:19:46.025131\",\n        \"enderecos\": [\n            {\n                \"id\": \"01edee3f-b6de-4b5b-bf41-5663ed940827\",\n                \"estado\": \"SP\",\n                \"cidade\": \"São Paulo\",\n                \"bairro\": \"Vila Mariana\",\n                \"rua\": \"Rua Domingos de Morais\",\n                \"numero\": 1234,\n                \"complemento\": \"Casa 2\",\n                \"cep\": \"04010-001\"\n            }\n        ]\n    },\n    {\n        \"id\": \"f6d4c9f8-4bfe-4dcb-80b8-431e43d1d26d\",\n        \"nome\": \"Mariana Souza\",\n        \"cpf\": \"23456789012\",\n        \"dataNascimento\": \"1992-11-03\",\n        \"email\": \"mariana.souza@email.com\",\n        \"login\": \"msouza\",\n        \"telefone\": \"5521976543210\",\n        \"genero\": \"FEMININO\",\n        \"preferenciasAlimentares\": [\n            \"ITALIANA\"\n        ],\n        \"alergias\": [],\n        \"metodoPagamentoPreferido\": \"PIX\",\n        \"ultimoPedido\": null,\n        \"saldoPontos\": 0,\n        \"clienteVip\": false,\n        \"avaliacoesFeitas\": 0,\n        \"notificacoesAtivas\": true,\n        \"dataCriacao\": \"2025-08-03T18:19:46.123608\",\n        \"dataAtualizacao\": \"2025-08-03T18:19:46.123608\",\n        \"enderecos\": [\n            {\n                \"id\": \"bbf31960-f789-4d01-b54d-824d11aa5bf3\",\n                \"estado\": \"RJ\",\n                \"cidade\": \"Rio de Janeiro\",\n                \"bairro\": \"Copacabana\",\n                \"rua\": \"Rua Barata Ribeiro\",\n                \"numero\": 999,\n                \"complemento\": \"Cobertura\",\n                \"cep\": \"22040-002\"\n            }\n        ]\n    },\n    {\n        \"id\": \"7c5e6fed-fe5f-42ae-b19d-3f6935607939\",\n        \"nome\": \"José Ferreira\",\n        \"cpf\": \"34567890123\",\n        \"dataNascimento\": \"1979-03-22\",\n        \"email\": \"jose.ferreira@email.com\",\n        \"login\": \"jferreira\",\n        \"telefone\": \"5531999887766\",\n        \"genero\": \"MASCULINO\",\n        \"preferenciasAlimentares\": [\n            \"BRASILEIRA\",\n            \"ARABE\"\n        ],\n        \"alergias\": [\n            \"GLUTEN\"\n        ],\n        \"metodoPagamentoPreferido\": \"DINHEIRO\",\n        \"ultimoPedido\": null,\n        \"saldoPontos\": 0,\n        \"clienteVip\": false,\n        \"avaliacoesFeitas\": 0,\n        \"notificacoesAtivas\": false,\n        \"dataCriacao\": \"2025-08-03T18:19:46.239057\",\n        \"dataAtualizacao\": \"2025-08-03T18:19:46.239057\",\n        \"enderecos\": [\n            {\n                \"id\": \"dfcbbfb2-4bb9-455e-8098-12e5b2d15bb4\",\n                \"estado\": \"MG\",\n                \"cidade\": \"Belo Horizonte\",\n                \"bairro\": \"Savassi\",\n                \"rua\": \"Avenida Cristóvão Colombo\",\n                \"numero\": 300,\n                \"complemento\": \"Sala 501\",\n                \"cep\": \"30140-140\"\n            }\n        ]\n    },\n    {\n        \"id\": \"caab05cc-2b90-49ba-a702-4c3f0c555b6c\",\n        \"nome\": \"Ana Beatriz Ramos\",\n        \"cpf\": \"45678901234\",\n        \"dataNascimento\": \"2000-05-14\",\n        \"email\": \"ana.ramos@email.com\",\n        \"login\": \"anaramos\",\n        \"telefone\": \"5548991122334\",\n        \"genero\": \"FEMININO\",\n        \"preferenciasAlimentares\": [\n            \"MEXICANA\"\n        ],\n        \"alergias\": [],\n        \"metodoPagamentoPreferido\": \"CREDITO\",\n        \"ultimoPedido\": null,\n        \"saldoPontos\": 0,\n        \"clienteVip\": false,\n        \"avaliacoesFeitas\": 0,\n        \"notificacoesAtivas\": true,\n        \"dataCriacao\": \"2025-08-03T18:19:46.335556\",\n        \"dataAtualizacao\": \"2025-08-03T18:19:46.335556\",\n        \"enderecos\": [\n            {\n                \"id\": \"76426bc5-41bd-4c4d-9911-29349aaa101b\",\n                \"estado\": \"SC\",\n                \"cidade\": \"Florianópolis\",\n                \"bairro\": \"Centro\",\n                \"rua\": \"Rua Felipe Schmidt\",\n                \"numero\": 800,\n                \"complemento\": \"Apto 302\",\n                \"cep\": \"88010-001\"\n            }\n        ]\n    },\n    {\n        \"id\": \"5a5a2c3b-3b73-48ae-87fa-7cb5f1dfb37d\",\n        \"nome\": \"João Silva\",\n        \"cpf\": \"12345678911\",\n        \"dataNascimento\": \"1990-01-01\",\n        \"email\": \"joaosilva@email.com\",\n        \"login\": \"joaosilva\",\n        \"telefone\": \"5581999992345\",\n        \"genero\": \"MASCULINO\",\n        \"preferenciasAlimentares\": [\n            \"VEGETARIANA\",\n            \"SAUDAVEL\"\n        ],\n        \"alergias\": [\n            \"AMENDOIM\",\n            \"LACTOSE\"\n        ],\n        \"metodoPagamentoPreferido\": \"CREDITO\",\n        \"ultimoPedido\": null,\n        \"saldoPontos\": 0,\n        \"clienteVip\": false,\n        \"avaliacoesFeitas\": 0,\n        \"notificacoesAtivas\": true,\n        \"dataCriacao\": \"2025-08-03T18:20:46.612577\",\n        \"dataAtualizacao\": \"2025-08-03T18:20:46.612577\",\n        \"enderecos\": [\n            {\n                \"id\": \"88a16352-63b7-4eb6-8d2f-ad4092a99d12\",\n                \"estado\": \"SP\",\n                \"cidade\": \"Sao Paulo\",\n                \"bairro\": \"Jardim Paulista\",\n                \"rua\": \"Avenida Paulista\",\n                \"numero\": 123,\n                \"complemento\": \"Apt 101\",\n                \"cep\": \"01311-000\"\n            }\n        ]\n    }\n]"
+						}
+					]
 				},
 				{
 					"name": "Cadastrar Admin",
@@ -2991,9 +3673,235 @@
 									"language": "json"
 								}
 							}
+						},
+						"url": {
+							"raw": "{{url}}/admin",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admin"
+							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "12 - Cadastro com sucesso",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nome\": \"Admin Master\",\n  \"email\": \"adminMaster@meumenu.com\",\n  \"login\": \"admin.master\",\n  \"senha\": \"AdminSenhaForte123!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/admin",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 03 Aug 2025 21:47:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"mensagem\": \"Email já cadastrado.\",\n    \"status\": 400,\n    \"timestamp\": \"2025-08-03T18:47:00.3869071\",\n    \"erros\": null\n}"
+						},
+						{
+							"name": "13 - Email já cadastrado",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nome\": \"Admin Master Plus\",\n  \"email\": \"adminMaster@meumenu.com\",\n  \"login\": \"admin.master.plus\",\n  \"senha\": \"AdminSenhaForte123!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/admin",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 03 Aug 2025 21:47:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"mensagem\": \"Email já cadastrado.\",\n    \"status\": 400,\n    \"timestamp\": \"2025-08-03T18:47:00.3869071\",\n    \"erros\": null\n}"
+						},
+						{
+							"name": "14 - Login já cadastrado",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nome\": \"Admin Master\",\n  \"email\": \"adminMaster@meumenu.com\",\n  \"login\": \"admin.master\",\n  \"senha\": \"AdminSenhaForte123!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/admin",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"admin"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 03 Aug 2025 21:47:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"mensagem\": \"Email já cadastrado.\",\n    \"status\": 400,\n    \"timestamp\": \"2025-08-03T18:47:00.3869071\",\n    \"erros\": null\n}"
+						}
+					]
 				}
 			]
 		}
