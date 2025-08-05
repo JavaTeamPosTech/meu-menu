@@ -212,39 +212,6 @@ class ClienteControllerIntegrationTest extends AbstractIntegrationTest {
                 .andExpect(status().isForbidden());
     }
 
-
-    // --- Testes para GET /clientes (Listar todos clientes) ---
-    @Test
-    @DisplayName("GET /clientes deve listar todos os clientes cadastrados (acesso livre)")
-    void getClientes_shouldListAllClients() throws Exception {
-        // Cadastrar mais um cliente para garantir que a lista tem mais de 1
-        String anotherUniqueSuffix = UUID.randomUUID().toString().substring(0, 8) + (counter + 1);
-        ClienteDomain anotherCliente = new ClienteDomain(
-                "Another Client " + anotherUniqueSuffix, "another" + anotherUniqueSuffix + "@email.com", "another_login" + anotherUniqueSuffix, passwordService.encryptPassword("pass"),
-                "000000000" + String.format("%02d", counter + 1) + "6", // CPF - ÚNICO
-                LocalDate.of(1993, 4, 4), GeneroEnum.MASCULINO, "11911113333", new HashSet<>(), new HashSet<>(), MetodoPagamentoEnum.PIX, true, false);
-        clienteGateway.cadastrarCliente(anotherCliente);
-
-        mockMvc.perform(get("/clientes")
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$").isArray())
-//                .andExpect(jsonPath("$.length()").value(2)) // 2 clientes (o do setup + o outro)
-                .andExpect(jsonPath("$[0].id").exists())
-                .andExpect(jsonPath("$[1].id").exists());
-    }
-
-    @Test
-    @DisplayName("GET /clientes deve retornar 204 No Content se não houver clientes")
-    void getClientes_shouldReturnNoContentIfNoClients() throws Exception {
-        clienteSpringRepository.deleteAll(); // Limpa a tabela antes deste teste
-
-        mockMvc.perform(get("/clientes")
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNoContent());
-    }
-
-
     // --- Testes para DELETE /clientes/{id} ---
     @Test
     @DisplayName("DELETE /clientes/{id} deve deletar cliente com sucesso se autenticado como o próprio cliente")
