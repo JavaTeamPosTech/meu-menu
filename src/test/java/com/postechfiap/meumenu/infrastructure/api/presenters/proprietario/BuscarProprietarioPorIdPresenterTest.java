@@ -92,25 +92,6 @@ class BuscarProprietarioPorIdPresenterTest {
         assertEquals(tipoCozinhaDomain.getNome(), responseDTO.nome());
     }
 
-//    @Test
-//    void testMapHorarioFuncionamentoDomainToResponseDTO() {
-//        HorarioFuncionamentoDomain horarioFuncionamentoDomain = new HorarioFuncionamentoDomain(
-//                UUID.randomUUID(),
-//                LocalTime.of(9, 0),
-//                LocalTime.of(18, 0),
-//                DiaSemanaEnum.SEGUNDA_FEIRA,
-//                new RestauranteDomain()
-//        );
-//
-//        HorarioFuncionamentoDomain responseDTO = ReflectionTestUtils.invokeMethod(
-//                presenter, "mapHorarioFuncionamentoDomainToResponseDTO", horarioFuncionamentoDomain
-//        );
-//
-//        assertEquals(horarioFuncionamentoDomain.getAbre(), responseDTO.getAbre());
-//        assertEquals(horarioFuncionamentoDomain.getFecha(), responseDTO.getFecha());
-//        assertEquals(horarioFuncionamentoDomain.getDiaSemana(), responseDTO.getDiaSemana());
-//    }
-
     @Test
     void testMapItemCardapioDomainToResponseDTO() {
         ItemCardapioDomain itemCardapioDomain = new ItemCardapioDomain(
