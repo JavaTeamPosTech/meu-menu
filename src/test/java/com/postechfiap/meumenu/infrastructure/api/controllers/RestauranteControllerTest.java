@@ -4,6 +4,7 @@ import com.postechfiap.meumenu.core.controllers.restaurante.*;
 import com.postechfiap.meumenu.infrastructure.api.dtos.request.*;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.*;
 import com.postechfiap.meumenu.infrastructure.api.presenters.restaurante.*;
+import com.postechfiap.meumenu.infrastructure.model.ProprietarioEntity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -11,6 +12,9 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.Collections;
 import java.util.List;
@@ -54,24 +58,36 @@ class RestauranteControllerTest {
     @Mock
     private DeletarRestaurantePresenter deletarRestaurantePresenter;
 
+    @Mock
+    private SecurityContext securityContext;
+
+    @Mock
+    private Authentication authentication;
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
+        SecurityContextHolder.setContext(securityContext);
     }
 
-//    @Test
-//    void testCadastrarRestaurante() {
-//        CadastrarRestauranteRequestDTO requestDTO = mock(CadastrarRestauranteRequestDTO.class);
-//        CadastrarRestauranteResponseDTO responseDTO = mock(CadastrarRestauranteResponseDTO.class);
-//
-//        when(cadastrarRestaurantePresenter.getViewModel()).thenReturn(responseDTO);
-//
-//        ResponseEntity<CadastrarRestauranteResponseDTO> response = restauranteController.cadastrarRestaurante(requestDTO);
-//
-//        assertEquals(HttpStatus.CREATED, response.getStatusCode());
-//        assertEquals(responseDTO, response.getBody());
-//        verify(cadastrarRestauranteInputPort, times(1)).execute(any());
-//    }
+    @Test
+    void testCadastrarRestaurante() {
+        CadastrarRestauranteRequestDTO requestDTO = mock(CadastrarRestauranteRequestDTO.class);
+        CadastrarRestauranteResponseDTO responseDTO = mock(CadastrarRestauranteResponseDTO.class);
+        when(securityContext.getAuthentication()).thenReturn(authentication);
+        when(authentication.isAuthenticated()).thenReturn(true);
+        ProprietarioEntity proprietario = new ProprietarioEntity();
+        proprietario.setId(UUID.randomUUID());
+        when(authentication.getPrincipal()).thenReturn(proprietario);
+
+        when(cadastrarRestaurantePresenter.getViewModel()).thenReturn(responseDTO);
+
+        ResponseEntity<CadastrarRestauranteResponseDTO> response = restauranteController.cadastrarRestaurante(requestDTO);
+
+        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+        assertEquals(responseDTO, response.getBody());
+        verify(cadastrarRestauranteInputPort, times(1)).execute(any());
+    }
 
     @Test
     void testBuscarTodosRestaurantes_ComConteudo() {
@@ -112,29 +128,39 @@ class RestauranteControllerTest {
         assertEquals(responseDTO, response.getBody());
         verify(buscarRestaurantePorIdInputPort, times(1)).execute(id);
     }
-//
-//    @Test
-//    void testAtualizarRestaurante() {
-//        UUID id = UUID.randomUUID();
-//        AtualizarRestauranteRequestDTO requestDTO = mock(AtualizarRestauranteRequestDTO.class);
-//        RestauranteResponseDTO responseDTO = mock(RestauranteResponseDTO.class);
-//
-//        when(atualizarRestaurantePresenter.getViewModel()).thenReturn(responseDTO);
-//
-//        ResponseEntity<RestauranteResponseDTO> response = restauranteController.atualizarRestaurante(id, requestDTO);
-//
-//        assertEquals(HttpStatus.OK, response.getStatusCode());
-//        assertEquals(responseDTO, response.getBody());
-//        verify(atualizarRestauranteInputPort, times(1)).execute(eq(id), any());
-//    }
-//
-//    @Test
-//    void testDeletarRestaurante() {
-//        UUID id = UUID.randomUUID();
-//
-//        ResponseEntity<Void> response = restauranteController.deletarRestaurante(id);
-//
-//        assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
-//        verify(deletarRestauranteInputPort, times(1)).execute(eq(id), any());
-//    }
+
+    @Test
+    void testAtualizarRestaurante() {
+        UUID id = UUID.randomUUID();
+        AtualizarRestauranteRequestDTO requestDTO = mock(AtualizarRestauranteRequestDTO.class);
+        RestauranteResponseDTO responseDTO = mock(RestauranteResponseDTO.class);
+        when(securityContext.getAuthentication()).thenReturn(authentication);
+        when(authentication.isAuthenticated()).thenReturn(true);
+        ProprietarioEntity proprietario = new ProprietarioEntity();
+        proprietario.setId(UUID.randomUUID());
+        when(authentication.getPrincipal()).thenReturn(proprietario);
+
+        when(atualizarRestaurantePresenter.getViewModel()).thenReturn(responseDTO);
+
+        ResponseEntity<RestauranteResponseDTO> response = restauranteController.atualizarRestaurante(id, requestDTO);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(responseDTO, response.getBody());
+        verify(atualizarRestauranteInputPort, times(1)).execute(eq(id), any());
+    }
+
+    @Test
+    void testDeletarRestaurante() {
+        UUID id = UUID.randomUUID();
+        when(securityContext.getAuthentication()).thenReturn(authentication);
+        when(authentication.isAuthenticated()).thenReturn(true);
+        ProprietarioEntity proprietario = new ProprietarioEntity();
+        proprietario.setId(UUID.randomUUID());
+        when(authentication.getPrincipal()).thenReturn(proprietario);
+
+        ResponseEntity<Void> response = restauranteController.deletarRestaurante(id);
+
+        assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
+        verify(deletarRestauranteInputPort, times(1)).execute(eq(id), any());
+    }
 }
