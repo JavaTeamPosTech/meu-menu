@@ -22,6 +22,7 @@ import com.postechfiap.meumenu.infrastructure.api.presenters.restaurante.Cadastr
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,6 +33,7 @@ import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
+@Profile("!test")
 public class AdminSeeder implements CommandLineRunner {
 
     @Value("${meumenu.admin.login}")
