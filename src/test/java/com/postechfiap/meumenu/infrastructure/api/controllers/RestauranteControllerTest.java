@@ -1,9 +1,16 @@
 package com.postechfiap.meumenu.infrastructure.api.controllers;
 
 import com.postechfiap.meumenu.core.controllers.restaurante.*;
+import com.postechfiap.meumenu.core.controllers.restaurante.item.AdicionarItemCardapioInputPort;
+import com.postechfiap.meumenu.core.controllers.restaurante.item.AtualizarItemCardapioInputPort;
+import com.postechfiap.meumenu.core.controllers.restaurante.item.DeletarItemCardapioInputPort;
+import com.postechfiap.meumenu.core.exceptions.BusinessException;
 import com.postechfiap.meumenu.infrastructure.api.dtos.request.*;
 import com.postechfiap.meumenu.infrastructure.api.dtos.response.*;
 import com.postechfiap.meumenu.infrastructure.api.presenters.restaurante.*;
+import com.postechfiap.meumenu.infrastructure.api.presenters.restaurante.item.AdicionarItemCardapioPresenter;
+import com.postechfiap.meumenu.infrastructure.api.presenters.restaurante.item.AtualizarItemCardapioPresenter;
+import com.postechfiap.meumenu.infrastructure.model.ClienteEntity;
 import com.postechfiap.meumenu.infrastructure.model.ProprietarioEntity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -57,6 +64,21 @@ class RestauranteControllerTest {
 
     @Mock
     private DeletarRestaurantePresenter deletarRestaurantePresenter;
+
+    @Mock
+    private AtualizarItemCardapioPresenter atualizarItemCardapioPresenter;
+
+    @Mock
+    private AtualizarItemCardapioInputPort atualizarItemCardapioInputPort;
+
+    @Mock
+    private DeletarItemCardapioInputPort deletarItemCardapioInputPort;
+
+    @Mock
+    private AdicionarItemCardapioPresenter adicionarItemCardapioPresenter;
+
+    @Mock
+    private AdicionarItemCardapioInputPort adicionarItemCardapioInputPort;
 
     @Mock
     private SecurityContext securityContext;
@@ -162,5 +184,136 @@ class RestauranteControllerTest {
 
         assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
         verify(deletarRestauranteInputPort, times(1)).execute(eq(id), any());
+    }
+
+    @Test
+    void testAtualizarItemCardapio() {
+        UUID restauranteId = UUID.randomUUID();
+        UUID itemId = UUID.randomUUID();
+        AtualizarItemCardapioRequestDTO requestDTO = mock(AtualizarItemCardapioRequestDTO.class);
+        ItemCardapioResponseDTO responseDTO = mock(ItemCardapioResponseDTO.class);
+
+        when(securityContext.getAuthentication()).thenReturn(authentication);
+        when(authentication.isAuthenticated()).thenReturn(true);
+        ProprietarioEntity proprietario = new ProprietarioEntity();
+        proprietario.setId(UUID.randomUUID());
+        when(authentication.getPrincipal()).thenReturn(proprietario);
+
+        when(atualizarItemCardapioPresenter.getViewModel()).thenReturn(responseDTO);
+
+        ResponseEntity<ItemCardapioResponseDTO> response = restauranteController.atualizarItemCardapio(restauranteId, itemId, requestDTO);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(responseDTO, response.getBody());
+        verify(atualizarItemCardapioInputPort, times(1)).execute(eq(restauranteId), eq(itemId), any(), eq(proprietario.getId()));
+    }
+
+    @Test
+    void testDeletarItemCardapio() {
+        UUID restauranteId = UUID.randomUUID();
+        UUID itemId = UUID.randomUUID();
+        when(securityContext.getAuthentication()).thenReturn(authentication);
+        when(authentication.isAuthenticated()).thenReturn(true);
+        ProprietarioEntity proprietario = new ProprietarioEntity();
+        proprietario.setId(UUID.randomUUID());
+        when(authentication.getPrincipal()).thenReturn(proprietario);
+
+        ResponseEntity<Void> response = restauranteController.deletarItemCardapio(restauranteId, itemId);
+
+        assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
+        verify(deletarItemCardapioInputPort, times(1)).execute(eq(restauranteId), eq(itemId), eq(proprietario.getId()));
+    }
+
+    @Test
+    void testAdicionarItemCardapio() {
+        UUID restauranteId = UUID.randomUUID();
+        AdicionarItemCardapioRequestDTO requestDTO = mock(AdicionarItemCardapioRequestDTO.class);
+        ItemCardapioResponseDTO responseDTO = mock(ItemCardapioResponseDTO.class);
+
+        when(securityContext.getAuthentication()).thenReturn(authentication);
+        when(authentication.isAuthenticated()).thenReturn(true);
+        ProprietarioEntity proprietario = new ProprietarioEntity();
+        proprietario.setId(UUID.randomUUID());
+        when(authentication.getPrincipal()).thenReturn(proprietario);
+
+        when(adicionarItemCardapioPresenter.getViewModel()).thenReturn(responseDTO);
+
+        ResponseEntity<ItemCardapioResponseDTO> response = restauranteController.adicionarItemCardapio(restauranteId, requestDTO);
+
+        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+        assertEquals(responseDTO, response.getBody());
+        verify(adicionarItemCardapioInputPort, times(1)).execute(eq(restauranteId), any());
+    }
+
+    @Test
+    void testCadastrarRestaurante_UsuarioNaoAutenticado() {
+        when(securityContext.getAuthentication()).thenReturn(null);
+
+        BusinessException exception = assertThrows(BusinessException.class, () -> {
+            restauranteController.cadastrarRestaurante(mock(CadastrarRestauranteRequestDTO.class));
+        });
+
+        assertEquals("Usuário não autenticado. Acesso negado.", exception.getMessage());
+    }
+
+    @Test
+    void testCadastrarRestaurante_TipoPrincipalInvalido() {
+        when(securityContext.getAuthentication()).thenReturn(authentication);
+        when(authentication.isAuthenticated()).thenReturn(true);
+        when(authentication.getPrincipal()).thenReturn(new ClienteEntity());
+
+        BusinessException exception = assertThrows(BusinessException.class, () -> {
+            restauranteController.cadastrarRestaurante(mock(CadastrarRestauranteRequestDTO.class));
+        });
+
+        assertEquals("Apenas usuários do tipo Proprietário podem cadastrar restaurantes. Tipo de principal inesperado ou role inválida.", exception.getMessage());
+    }
+
+    @Test
+    void testAtualizarRestaurante_UsuarioNaoAutenticado() {
+        when(securityContext.getAuthentication()).thenReturn(null);
+
+        BusinessException exception = assertThrows(BusinessException.class, () -> {
+            restauranteController.atualizarRestaurante(UUID.randomUUID(), mock(AtualizarRestauranteRequestDTO.class));
+        });
+
+        assertEquals("Usuário não autenticado. Acesso negado.", exception.getMessage());
+    }
+
+    @Test
+    void testAtualizarRestaurante_TipoPrincipalInvalido() {
+        when(securityContext.getAuthentication()).thenReturn(authentication);
+        when(authentication.isAuthenticated()).thenReturn(true);
+        when(authentication.getPrincipal()).thenReturn(new ClienteEntity());
+
+        BusinessException exception = assertThrows(BusinessException.class, () -> {
+            restauranteController.atualizarRestaurante(UUID.randomUUID(), mock(AtualizarRestauranteRequestDTO.class));
+        });
+
+        assertEquals("Apenas usuários do tipo Proprietário podem atualizar restaurantes. Tipo de principal inesperado.", exception.getMessage());
+    }
+
+    @Test
+    void testDeletarRestaurante_UsuarioNaoAutenticado() {
+        when(securityContext.getAuthentication()).thenReturn(null);
+
+        BusinessException exception = assertThrows(BusinessException.class, () -> {
+            restauranteController.deletarRestaurante(UUID.randomUUID());
+        });
+
+        assertEquals("Usuário não autenticado. Acesso negado.", exception.getMessage());
+    }
+
+    @Test
+    void testDeletarRestaurante_TipoPrincipalInvalido() {
+        when(securityContext.getAuthentication()).thenReturn(authentication);
+        when(authentication.isAuthenticated()).thenReturn(true);
+        when(authentication.getPrincipal()).thenReturn(new ClienteEntity());
+
+        BusinessException exception = assertThrows(BusinessException.class, () -> {
+            restauranteController.deletarRestaurante(UUID.randomUUID());
+        });
+
+        assertEquals("Apenas usuários do tipo Proprietário podem deletar restaurantes. Tipo de principal inesperado.", exception.getMessage());
     }
 }
